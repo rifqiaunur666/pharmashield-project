@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom selection ─────────────────────────────────── */
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* ─── Focus ring (keyboard nav) ────────────────────────── */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+header :focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+
+/* ─── Smooth scrolling ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Fade-in animation ────────────────────────────────── */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none;
+  }
+}
+
+/* ─── Custom scrollbar (Webkit) ─────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ─── Table: fixed layout for overflow ──────────────────── */
+table {
+  border-collapse: collapse;
+}
+
+/* ─── Line-clamp utility (backup for older Tailwind) ─────── */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
