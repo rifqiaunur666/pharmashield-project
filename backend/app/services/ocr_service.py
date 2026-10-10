@@ -35,14 +35,23 @@ logger = logging.getLogger(__name__)
 pytesseract.pytesseract.tesseract_cmd = settings.tesseract_cmd
 _TESS_CONFIG = r"--oem 3 --psm 6"
 
-try:
-    from rapidocr_onnxruntime import RapidOCR
-    _rapid_ocr_engine = RapidOCR()
-    _has_rapid_ocr = True
-except Exception as _e:
-    _rapid_ocr_engine = None
-    _has_rapid_ocr = False
-    logger.info("[OCR] RapidOCR initialization note: %s", _e)
+_has_rapid_ocr = True
+_rapid_ocr_engine = None
+
+def get_rapid_ocr_engine():
+    global _rapid_ocr_engine, _has_rapid_ocr
+    if not _has_rapid_ocr:
+        return None
+    if _rapid_ocr_engine is None:
+        try:
+            from rapidocr_onnxruntime import RapidOCR
+            _rapid_ocr_engine = RapidOCR()
+        except Exception as _e:
+            _rapid_ocr_engine = None
+            _has_rapid_ocr = False
+            logger.info("[OCR] RapidOCR initialization note: %s", _e)
+    return _rapid_ocr_engine
+
 
 # ─── Date Parsing Helper (Backwards Compatibility) ───────────────────────────
 import calendar
@@ -616,10 +625,11 @@ def extract_medicine_info(image_bytes: bytes) -> ExtractedMedicine:
     rapid_conf_scores: list[float] = []
     all_rapid_items: list[Any] = []
 
-    if _has_rapid_ocr and _rapid_ocr_engine is not None:
+    engine = get_rapid_ocr_engine()
+    if engine is not None:
         try:
             # RapidOCR can run on both preprocessed and raw RGB image
-            ocr_res, _ = _rapid_ocr_engine(preprocessed_img)
+            ocr_res, _ = engine(preprocessed_img)
             if ocr_res:
                 all_rapid_items.extend(ocr_res)
                 for item in ocr_res:
@@ -638,7 +648,7 @@ def extract_medicine_info(image_bytes: bytes) -> ExtractedMedicine:
                 nparr = np.frombuffer(image_bytes, np.uint8)
                 raw_bgr = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
                 if raw_bgr is not None:
-                    ocr_res2, _ = _rapid_ocr_engine(raw_bgr)
+                    ocr_res2, _ = engine(raw_bgr)
                     if ocr_res2:
                         all_rapid_items.extend(ocr_res2)
                         for item in ocr_res2:
