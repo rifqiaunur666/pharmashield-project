@@ -1,9 +1,11 @@
 /**
  * src/app/layout.jsx
- * PharmaShield — Admin Dashboard Root Layout (Dark Neon Aesthetic).
+ * PharmaShield — Root Layout with AuthProvider.
  */
 import { Manrope } from 'next/font/google';
 import AdminShell from '@/components/AdminShell';
+import { AuthProvider } from '@/lib/AuthContext';
+import { ThemeProvider } from '@/lib/ThemeContext';
 import './globals.css';
 
 const manrope = Manrope({
@@ -14,9 +16,10 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title:       'PharmaShield ID — Dashboard Scanner & Datasheet Obat',
-  description: 'Sistem pemantauan dan analisis keamanan obat berbasis AI & OCR serta datasheet referensi obat penyakit umum di Indonesia.',
-  keywords:    ['obat', 'farmasi', 'OCR', 'dashboard', 'keamanan obat', 'datasheet obat indonesia', 'dark mode'],
+  title:       'PharmaShield ID — AI Drug Recognition & Safety Scanner',
+  description: 'Sistem pemantauan dan analisis keamanan obat berbasis pemindaian kemasan AI satu kali, skrining alergi & interaksi klinis, serta datasheet obat Indonesia.',
+  keywords:    ['obat', 'farmasi', 'OCR', 'AI safety scan', 'interaksi obat', 'alergi obat', 'BPOM'],
+
 };
 
 export const viewport = {
@@ -25,9 +28,13 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${manrope.variable} dark`}>
-      <body className={`${manrope.className} bg-[#0c0e12] text-neutral-100 antialiased`}>
-        <AdminShell>{children}</AdminShell>
+    <html lang="id" className={`${manrope.variable} dark`} suppressHydrationWarning>
+      <body className={`${manrope.className} antialiased`}>
+        <ThemeProvider>
+          <AuthProvider>
+            <AdminShell>{children}</AdminShell>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

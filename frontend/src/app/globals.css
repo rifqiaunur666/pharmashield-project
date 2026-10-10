@@ -20,7 +20,7 @@
   --color-danger: #fb7185;
   --color-info: #38bdf8;
   
-  /* Dark Surfaces */
+  /* Dark Surfaces (Default / Hitam) */
   --color-body-bg: #0c0e12;
   --color-sidebar-bg: #11141a;
   --color-header-bg: #11141a;
@@ -37,6 +37,38 @@
   --font-main: var(--font-manrope, 'Manrope', system-ui, sans-serif);
 }
 
+/* ─── Light Theme Variables (Putih / Ocean Blue Design System) ───────────── */
+html.light, .light {
+  color-scheme: light;
+  
+  /* Light Surfaces (Off-White & White) */
+  --color-body-bg: #f8fafc;
+  --color-sidebar-bg: #ffffff;
+  --color-header-bg: #ffffff;
+  --color-card-bg: #ffffff;
+  --color-card-hover: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-subtle: rgba(0, 0, 0, 0.05);
+  
+  /* Typography & Text Contrast (Slate 900 / 700 / 500) */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  
+  /* Primary / Brand Accent (Deep Ocean Blue) */
+  --color-primary: #0284c7;
+  --color-primary-hover: #075985;
+  --color-primary-text: #ffffff;
+  --color-primary-glow: rgba(2, 132, 199, 0.2);
+  --color-primary-tint: #f0f9ff;
+  
+  /* Status Colors in Light Mode */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+  --color-info: #0284c7;
+}
+
 /* ─── Base Reset ─────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -45,6 +77,9 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+html.dark {
   color-scheme: dark;
 }
 
@@ -54,17 +89,142 @@ body {
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection {
-  background: var(--color-primary);
-  color: #0c1004;
+/* Light mode overrides for text & cards */
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+html.light .admin-layout {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+html.light .sidebar {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+html.light .main-content {
+  background-color: #f8fafc;
+}
+html.light header {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: #e2e8f0;
+}
+html.light footer {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+html.light .admin-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+html.light .admin-card:hover {
+  border-color: #cbd5e1;
+}
+html.light .admin-table thead th {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+html.light .admin-table tbody tr {
+  border-color: #f1f5f9;
+}
+html.light .admin-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+html.light .admin-table tbody td {
+  color: #1e293b;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
 }
 
-/* ─── Focus Ring ─────────────────────────────────────────────────────────── */
+/* Light Mode Primary Action & Button Overrides (Ocean Blue) */
+html.light button.bg-\[\#c8f93a\],
+html.light a.bg-\[\#c8f93a\],
+html.light .btn-primary-action {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.3) !important;
+}
+html.light button.bg-\[\#c8f93a\]:hover,
+html.light a.bg-\[\#c8f93a\]:hover,
+html.light .btn-primary-action:hover {
+  background-color: #075985 !important;
+  color: #ffffff !important;
+}
+
+/* Light Mode Sidebar Active Link (Ocean Blue with Soft Tint) */
+html.light .sidebar a[aria-current="page"],
+html.light .sidebar a.bg-\[\#c8f93a\] {
+  background-color: #f0f9ff !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+  box-shadow: none !important;
+}
+html.light .sidebar a[aria-current="page"] span.bg-black\/80 {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+html.light .sidebar .bg-\[\#c8f93a\] {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Light Mode Badges & Contrasts */
+html.light .text-white {
+  color: #0f172a !important;
+}
+html.light .text-neutral-300 {
+  color: #334155 !important;
+}
+html.light .text-neutral-400 {
+  color: #64748b !important;
+}
+html.light .bg-[#161922] {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+html.light .bg-[#11141b], html.light .bg-[#12151d] {
+  background-color: #f8fafc !important;
+}
+html.light .bg-black\/40, html.light .bg-black\/30, html.light .bg-black\/20 {
+  background-color: #f1f5f9 !important;
+}
+html.light .border-white\/5, html.light .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Light Mode Status Badges: Clear WCAG AA Compliant Palettes */
+html.light .status-green,
+html.light [data-status="green"] {
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #86efac !important;
+}
+html.light .status-yellow,
+html.light [data-status="yellow"] {
+  background-color: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fcd34d !important;
+}
+html.light .status-red,
+html.light [data-status="red"] {
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #fca5a5 !important;
+}
+
+/* Focus Visible with clear high contrast ring */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #0284c7;
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -256,4 +416,285 @@ table { border-collapse: collapse; }
 /* ─── Glowing Curve & Chart Utilities ────────────────────────────────────── */
 .chart-glow {
   filter: drop-shadow(0 0 8px rgba(200, 249, 58, 0.4));
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   AKSESIBILITAS — CSS Accessibility Layer (PharmaShield)
+   Applied via <html> class names from AccessibilityContext.jsx
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Teks Lebih Besar ─────────────────────────────────────────────────── */
+html.a11y-large-text { font-size: 118% !important; }
+html.a11y-large-text * { font-weight: 600 !important; line-height: 1.7 !important; }
+
+/* ── 4. Ramah Disleksia ──────────────────────────────────────────────────── */
+html.a11y-dyslexia, html.a11y-dyslexia * { font-family: 'Comic Sans MS', 'Arial', system-ui, sans-serif !important; letter-spacing: 0.06em !important; word-spacing: 0.18em !important; line-height: 1.8 !important; }
+
+/* ── 5. Jeda Animasi ─────────────────────────────────────────────────────── */
+html.a11y-pause-animation *, html.a11y-pause-animation *::before, html.a11y-pause-animation *::after { animation: none !important; transition: none !important; }
+
+/* ── 6. Kursor Besar ─────────────────────────────────────────────────────── */
+html.a11y-large-cursor, html.a11y-large-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M8 5l24 15-12 3L16 36z' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E") 0 0, default !important; }
+
+/* ── 7a. Protanopia/Deuteranopia: Buta Warna Merah-Hijau ─────────────────────
+   Brand: Cobalt/Royal Blue (#2563EB / #1D4ED8)
+   Aman: Soft Sky Blue (#E0F2FE) / Deep Blue text (#0369A1) [✓]
+   Peringatan: Bright Amber/Orange (#FFEDD5) / Dark Orange text (#C2410C) [!]
+   Bahaya: High-Contrast Magenta-Pink (#FCE7F3) / Deep Purple text (#7E22CE) [X]
+   ───────────────────────────────────────────────────────────────────────────── */
+html.a11y-cb-protanopia,
+html[data-colorblind="protanopia"] {
+  --color-primary: #2563eb !important;
+  --color-primary-hover: #1d4ed8 !important;
+  --color-primary-text: #ffffff !important;
+  --color-primary-glow: rgba(37, 99, 235, 0.25) !important;
+  --color-success: #0369a1 !important;
+  --color-warning: #c2410c !important;
+  --color-danger:  #7e22ce !important;
+}
+
+/* Light mode specific mapping for Protanopia */
+html.light.a11y-cb-protanopia,
+html.light[data-colorblind="protanopia"] {
+  --color-primary: #2563eb !important;
+  --color-primary-hover: #1d4ed8 !important;
+  --color-primary-text: #ffffff !important;
+}
+
+/* Status safe badge & indicators */
+html.a11y-cb-protanopia .status-green,
+html[data-colorblind="protanopia"] .status-green,
+html.a11y-cb-protanopia [data-status="green"],
+html[data-colorblind="protanopia"] [data-status="green"] {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #38bdf8 !important;
+}
+
+/* Status warning badge & indicators */
+html.a11y-cb-protanopia .status-yellow,
+html[data-colorblind="protanopia"] .status-yellow,
+html.a11y-cb-protanopia [data-status="yellow"],
+html[data-colorblind="protanopia"] [data-status="yellow"] {
+  background-color: #ffedd5 !important;
+  color: #c2410c !important;
+  border-color: #fb923c !important;
+}
+
+/* Status danger badge & indicators */
+html.a11y-cb-protanopia .status-red,
+html[data-colorblind="protanopia"] .status-red,
+html.a11y-cb-protanopia [data-status="red"],
+html[data-colorblind="protanopia"] [data-status="red"] {
+  background-color: #fce7f3 !important;
+  color: #7e22ce !important;
+  border-color: #c084fc !important;
+}
+
+/* General component overrides for Protanopia */
+html.a11y-cb-protanopia button.bg-\[\#c8f93a\],
+html.a11y-cb-protanopia button.bg-\[\#a3e635\],
+html.a11y-cb-protanopia .bg-\[\#c8f93a\],
+html.a11y-cb-protanopia .bg-\[\#a3e635\],
+html[data-colorblind="protanopia"] button.bg-\[\#c8f93a\],
+html[data-colorblind="protanopia"] button.bg-\[\#a3e635\],
+html[data-colorblind="protanopia"] .bg-\[\#c8f93a\],
+html[data-colorblind="protanopia"] .bg-\[\#a3e635\] {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+html.a11y-cb-protanopia [class*='text-\[\#c8f93a\]'],
+html.a11y-cb-protanopia [class*='text-\[\#a3e635\]'],
+html[data-colorblind="protanopia"] [class*='text-\[\#c8f93a\]'],
+html[data-colorblind="protanopia"] [class*='text-\[\#a3e635\]'] {
+  color: #2563eb !important;
+}
+
+/* ── 7b. Tritanopia: Buta Warna Biru-Kuning ──────────────────────────────────
+   Brand: Coral Red / Vivid Crimson (#E11D48)
+   Aman: Light Teal / Cyan (#CCFBF1) / Dark Cyan text (#0F766E) [✓]
+   Peringatan: Soft Lavender / Purple (#F3E8FF) / Dark Purple text (#6B21A8) [!]
+   Bahaya: Light Rose / Coral (#FFE4E6) / Deep Red text (#9F1239) [X]
+   ───────────────────────────────────────────────────────────────────────────── */
+html.a11y-cb-tritanopia,
+html[data-colorblind="tritanopia"] {
+  --color-primary: #e11d48 !important;
+  --color-primary-hover: #be123c !important;
+  --color-primary-text: #ffffff !important;
+  --color-primary-glow: rgba(225, 29, 72, 0.25) !important;
+  --color-success: #0f766e !important;
+  --color-warning: #6b21a8 !important;
+  --color-danger:  #9f1239 !important;
+}
+
+html.light.a11y-cb-tritanopia,
+html.light[data-colorblind="tritanopia"] {
+  --color-primary: #e11d48 !important;
+  --color-primary-hover: #be123c !important;
+  --color-primary-text: #ffffff !important;
+}
+
+/* Status safe badge & indicators (Tritanopia) */
+html.a11y-cb-tritanopia .status-green,
+html[data-colorblind="tritanopia"] .status-green,
+html.a11y-cb-tritanopia [data-status="green"],
+html[data-colorblind="tritanopia"] [data-status="green"] {
+  background-color: #ccfbf1 !important;
+  color: #0f766e !important;
+  border-color: #2dd4bf !important;
+}
+
+/* Status warning badge & indicators (Tritanopia) */
+html.a11y-cb-tritanopia .status-yellow,
+html[data-colorblind="tritanopia"] .status-yellow,
+html.a11y-cb-tritanopia [data-status="yellow"],
+html[data-colorblind="tritanopia"] [data-status="yellow"] {
+  background-color: #f3e8ff !important;
+  color: #6b21a8 !important;
+  border-color: #c084fc !important;
+}
+
+/* Status danger badge & indicators (Tritanopia) */
+html.a11y-cb-tritanopia .status-red,
+html[data-colorblind="tritanopia"] .status-red,
+html.a11y-cb-tritanopia [data-status="red"],
+html[data-colorblind="tritanopia"] [data-status="red"] {
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #fb7185 !important;
+}
+
+/* General component overrides for Tritanopia */
+html.a11y-cb-tritanopia button.bg-\[\#c8f93a\],
+html.a11y-cb-tritanopia button.bg-\[\#a3e635\],
+html.a11y-cb-tritanopia .bg-\[\#c8f93a\],
+html.a11y-cb-tritanopia .bg-\[\#a3e635\],
+html[data-colorblind="tritanopia"] button.bg-\[\#c8f93a\],
+html[data-colorblind="tritanopia"] button.bg-\[\#a3e635\],
+html[data-colorblind="tritanopia"] .bg-\[\#c8f93a\],
+html[data-colorblind="tritanopia"] .bg-\[\#a3e635\] {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+}
+
+html.a11y-cb-tritanopia [class*='text-\[\#c8f93a\]'],
+html.a11y-cb-tritanopia [class*='text-\[\#a3e635\]'],
+html[data-colorblind="tritanopia"] [class*='text-\[\#c8f93a\]'],
+html[data-colorblind="tritanopia"] [class*='text-\[\#a3e635\]'] {
+  color: #e11d48 !important;
+}
+
+/* ── 7c. Low Vision / Mata Minus: Kontras Ekstrem WCAG AAA ─────────────────
+   Semua kartu/container: border-2 border-slate-900 (atau border-yellow-400 pada dark)
+   Teks: Hitam Pekat #000000 (pada light mode) atau Putih Pekat #FFFFFF (pada dark)
+   Focus Ring: focus:ring-4 focus:ring-yellow-400 pada seluruh elemen interaktif
+   ───────────────────────────────────────────────────────────────────────────── */
+html.a11y-cb-low-vision,
+html[data-colorblind="low-vision"] {
+  --color-border: #000000 !important;
+}
+
+/* Light mode specific for Low Vision */
+html.light.a11y-cb-low-vision,
+html.light[data-colorblind="low-vision"] {
+  --color-body-bg: #ffffff !important;
+  --color-card-bg: #ffffff !important;
+  --color-sidebar-bg: #ffffff !important;
+  --color-header-bg: #ffffff !important;
+  --color-text-primary: #000000 !important;
+  --color-text-secondary: #000000 !important;
+  --color-text-muted: #1e293b !important;
+  --color-border: #000000 !important;
+}
+
+html.light.a11y-cb-low-vision body,
+html.light[data-colorblind="low-vision"] body {
+  color: #000000 !important;
+}
+
+/* Enforce 2px solid border on all cards, tables, inputs, buttons */
+html.light.a11y-cb-low-vision .admin-card,
+html.light.a11y-cb-low-vision table,
+html.light.a11y-cb-low-vision th,
+html.light.a11y-cb-low-vision td,
+html.light.a11y-cb-low-vision [class*='rounded-2xl'],
+html.light.a11y-cb-low-vision [class*='rounded-xl'],
+html.light[data-colorblind="low-vision"] .admin-card,
+html.light[data-colorblind="low-vision"] table,
+html.light[data-colorblind="low-vision"] th,
+html.light[data-colorblind="low-vision"] td,
+html.light[data-colorblind="low-vision"] [class*='rounded-2xl'],
+html.light[data-colorblind="low-vision"] [class*='rounded-xl'] {
+  border: 2px solid #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Text boldness and contrast */
+html.a11y-cb-low-vision p,
+html.a11y-cb-low-vision span,
+html.a11y-cb-low-vision h1,
+html.a11y-cb-low-vision h2,
+html.a11y-cb-low-vision h3,
+html.a11y-cb-low-vision td,
+html[data-colorblind="low-vision"] p,
+html[data-colorblind="low-vision"] span,
+html[data-colorblind="low-vision"] h1,
+html[data-colorblind="low-vision"] h2,
+html[data-colorblind="low-vision"] h3,
+html[data-colorblind="low-vision"] td {
+  font-weight: 600 !important;
+}
+
+/* Focus ring: 4px solid yellow-400 */
+html.a11y-cb-low-vision button:focus,
+html.a11y-cb-low-vision a:focus,
+html.a11y-cb-low-vision input:focus,
+html.a11y-cb-low-vision select:focus,
+html.a11y-cb-low-vision *:focus,
+html[data-colorblind="low-vision"] button:focus,
+html[data-colorblind="low-vision"] a:focus,
+html[data-colorblind="low-vision"] input:focus,
+html[data-colorblind="low-vision"] select:focus,
+html[data-colorblind="low-vision"] *:focus {
+  outline: 4px solid #facc15 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.45) !important;
+}
+
+/* Dark mode low vision fallback */
+html.dark.a11y-cb-low-vision {
+  --color-body-bg: #000000 !important;
+  --color-card-bg: #000000 !important;
+  --color-sidebar-bg: #000000 !important;
+  --color-header-bg: #000000 !important;
+  --color-text-primary: #ffffff !important;
+  --color-text-secondary: #ffffff !important;
+  --color-text-muted: #e5e5e5 !important;
+  --color-border: #ffff00 !important;
+}
+html.dark.a11y-cb-low-vision *:not(img):not(svg):not(path):not(circle):not(rect):not(video):not([data-a11y-modal]):not(.a11y-modal-panel):not(.a11y-modal-panel *) {
+  border-color: #ffff00 !important;
+  color: #ffffff !important;
+}
+
+/* ── 8. Saturation filter (applied via body CSS var set by JS) ─────────────── */
+body { filter: var(--a11y-filter, none); }
+html { --a11y-filter: none; }
+
+/* ── 9. Accessibility Modal Isolation ─────────────────────────────────────── */
+[data-a11y-modal="true"],
+.a11y-modal-panel {
+  filter: none !important;
+}
+html.light .a11y-modal-panel {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+html.dark .a11y-modal-panel {
+  background-color: #05080e !important;
+  border-color: #1e2d42 !important;
+  color: #ffffff !important;
 }

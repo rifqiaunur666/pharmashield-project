@@ -1,42 +1,57 @@
 /**
  * src/components/AdminShell.jsx
- * PharmaShield — Full admin layout shell (Dark Mode & Neon Lime Style).
- * Collapsible Sidebar + Sticky TopHeader + Dark Content Area.
+ * PharmaShield — Full Admin Layout Shell with Global Modals & Accessibility.
  */
 'use client';
 
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
-import Sidebar   from './Sidebar';
+import Sidebar from './Sidebar';
 import TopHeader from './TopHeader';
+import AuthModal from './AuthModal';
+import MedicalProfileModal from './MedicalProfileModal';
+import AccessibilityModal from './AccessibilityModal';
+import { useAuth } from '@/lib/AuthContext';
+import { AccessibilityProvider, useAccessibility } from '@/lib/AccessibilityContext';
 
+// ─── Sidebar context (usable from Sidebar, page.jsx etc.) ────────────────────
 const SidebarCtx = createContext(null);
 export function useSidebar() { return useContext(SidebarCtx); }
 
-export default function AdminShell({ children }) {
-  const [collapsed,   setCollapsed]   = useState(false);
-  const [mobileOpen,  setMobileOpen]  = useState(false);
+// ─── Inner shell — needs AccessibilityProvider above it ──────────────────────
+function AdminShellInner({ children }) {
+  const [collapsed,       setCollapsed]       = useState(false);
+  const [mobileOpen,      setMobileOpen]      = useState(false);
+  const [authModalOpen,   setAuthModalOpen]   = useState(false);
+  const [profileModalOpen,setProfileModalOpen]= useState(false);
+  const { user, saveMedicalProfile } = useAuth();
+  const { toggleModal: toggleA11y } = useAccessibility();
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 1024) setMobileOpen(false); };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const toggleCollapse  = useCallback(() => setCollapsed((v) => !v), []);
-  const toggleMobile    = useCallback(() => setMobileOpen((v) => !v), []);
-  const closeMobile     = useCallback(() => setMobileOpen(false), []);
+  const toggleCollapse = useCallback(() => setCollapsed((v) => !v), []);
+  const toggleMobile   = useCallback(() => setMobileOpen((v) => !v), []);
+  const closeMobile    = useCallback(() => setMobileOpen(false), []);
 
-  const ctx = { collapsed, mobileOpen, toggleCollapse, toggleMobile, closeMobile };
+  const ctx = {
+    collapsed,
+    mobileOpen,
+    toggleCollapse,
+    toggleMobile,
+    closeMobile,
+    openAuthModal:    () => setAuthModalOpen(true),
+    openProfileModal: () => setProfileModalOpen(true),
+    toggleA11yModal:  toggleA11y,
+  };
 
   return (
     <SidebarCtx.Provider value={ctx}>
-      <div className="admin-layout min-h-screen bg-[#0c0e12] text-neutral-100">
-
-        {/* ── Sidebar ── */}
+      <div className="admin-layout min-h-screen bg-[var(--color-body-bg)] text-[var(--color-text-primary)]">
         <Sidebar />
 
-        {/* ── Mobile backdrop ── */}
         {mobileOpen && (
           <div
             className="fixed inset-0 bg-black/70 backdrop-blur-sm z-30 lg:hidden"
@@ -45,30 +60,55 @@ export default function AdminShell({ children }) {
           />
         )}
 
-        {/* ── Main content column ── */}
         <div
           className={[
-            'main-content flex flex-col min-h-screen bg-[#0c0e12]',
+            'main-content flex flex-col min-h-screen bg-[var(--color-body-bg)]',
             collapsed ? 'sidebar-collapsed' : '',
           ].join(' ')}
         >
-          {/* Sticky top header */}
-          <TopHeader />
+          <TopHeader
+            onOpenAuth={() => setAuthModalOpen(true)}
+            onOpenProfile={() => setProfileModalOpen(true)}
+          />
 
-          {/* Page body */}
-          <main
-            id="main-content"
-            className="flex-1 px-4 sm:px-6 py-6 overflow-x-hidden"
-          >
+          <main id="main-content" className="flex-1 px-4 sm:px-6 py-6 overflow-x-hidden">
             {children}
           </main>
 
-          {/* Footer */}
-          <footer className="text-center text-xs text-neutral-500 py-5 px-6 border-t border-[var(--color-border)] bg-[#0c0e12]">
-            © 2026 <span className="font-extrabold text-[#c8f93a]">PharmaShield ID</span> — Sistem Keamanan Konsumsi Obat &amp; Datasheet Penyakit Umum Indonesia
+          <footer className="text-center text-xs text-[var(--color-text-secondary)] py-5 px-6 border-t border-[var(--color-border)] bg-[var(--color-sidebar-bg)]">
+            © 2026 <span className="font-extrabold text-[#0f172a] dark:text-[#c8f93a]">PharmaShield ID</span> — Sistem Keamanan Konsumsi Obat &amp; Datasheet Penyakit Umum Indonesia
           </footer>
         </div>
+
+        {/* Global Auth Modal */}
+        <AuthModal
+          isOpen={authModalOpen}
+          onClose={() => setAuthModalOpen(false)}
+          onSuccess={(action) => {
+            if (action === 'register') setProfileModalOpen(true);
+          }}
+        />
+
+        {/* Global Medical Profile Modal */}
+        <MedicalProfileModal
+          isOpen={profileModalOpen}
+          onClose={() => setProfileModalOpen(false)}
+          initialProfile={user?.medical_profile}
+          onSave={saveMedicalProfile}
+        />
+
+        {/* Global Accessibility Modal */}
+        <AccessibilityModal />
       </div>
     </SidebarCtx.Provider>
+  );
+}
+
+// ─── Default export wraps inner with AccessibilityProvider ───────────────────
+export default function AdminShell({ children }) {
+  return (
+    <AccessibilityProvider>
+      <AdminShellInner>{children}</AdminShellInner>
+    </AccessibilityProvider>
   );
 }

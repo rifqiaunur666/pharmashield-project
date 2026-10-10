@@ -20,6 +20,9 @@ class Settings:
     fonnte_token: str        = os.getenv("FONNTE_TOKEN", "")
     wa_target_number: str   = os.getenv("WA_TARGET_NUMBER", "")
 
+    # ── Google Gemini AI ──────────────────────────────────────────────────────
+    gemini_api_key: str      = os.getenv("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY_HERE")
+
     # ── Application ──────────────────────────────────────────────────────────
     app_env: str             = os.getenv("APP_ENV", "development")
     port: int                = int(os.getenv("PORT", "8000"))

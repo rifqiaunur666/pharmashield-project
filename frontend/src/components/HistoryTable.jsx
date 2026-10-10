@@ -24,11 +24,11 @@ function formatTimestamp(iso) {
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center gap-3 py-14 text-center text-neutral-400 bg-[#161922] rounded-2xl border border-dashed border-[var(--color-border)]">
+    <div className="flex flex-col items-center gap-3 py-14 text-center text-slate-500 dark:text-neutral-400 bg-slate-50 dark:bg-[#161922] rounded-2xl border border-dashed border-[var(--color-border)]">
       <span className="text-4xl" aria-hidden="true">📋</span>
       <div>
-        <p className="font-extrabold text-neutral-200 text-sm">Belum ada riwayat pemindaian</p>
-        <p className="mt-1 text-xs text-neutral-500 max-w-sm">
+        <p className="font-extrabold text-slate-800 dark:text-neutral-200 text-sm">Belum ada riwayat pemindaian</p>
+        <p className="mt-1 text-xs text-slate-500 dark:text-neutral-500 max-w-sm">
           Pindai kemasan obat untuk mencatat riwayat pemindaian dan evaluasi keamanan otomatis.
         </p>
       </div>
@@ -40,29 +40,29 @@ function HistoryRow({ item, onRemove, onSelect }) {
   const statusKey = item.status || 'yellow';
 
   return (
-    <tr className="group border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+    <tr className="group border-b border-slate-100 dark:border-white/[0.04] hover:bg-slate-50/60 dark:hover:bg-white/[0.02] transition-colors">
       {/* Timestamp */}
-      <td className="py-3.5 px-4 text-xs text-neutral-400 whitespace-nowrap font-mono">
+      <td className="py-3.5 px-4 text-xs text-slate-500 dark:text-neutral-400 whitespace-nowrap font-mono">
         {formatTimestamp(item.scannedAt || item.scanned_at)}
       </td>
 
       {/* Medicine Name */}
       <td className="py-3.5 px-4">
         <div className="flex flex-col">
-          <span className="font-extrabold text-sm text-white group-hover:text-[#c8f93a] transition-colors line-clamp-1">
+          <span className="font-extrabold text-sm text-[var(--color-text-primary)] group-hover:text-[#0284c7] dark:group-hover:text-[#c8f93a] transition-colors line-clamp-1">
             {item.name || item.medicine_name || (
-              <span className="italic text-neutral-500">Tidak Teridentifikasi</span>
+              <span className="italic text-[var(--color-text-muted)]">Tidak Teridentifikasi</span>
             )}
           </span>
-          <span className="text-[11px] text-neutral-400 mt-0.5 line-clamp-1">
+          <span className="text-[11px] text-[var(--color-text-secondary)] mt-0.5 line-clamp-1">
             {item.purpose || 'Pengobatan / Suplemen'}
           </span>
         </div>
       </td>
 
-      {/* Kategori / Indikasi (Menggantikan kolom kedaluwarsa) */}
-      <td className="py-3.5 px-4 text-xs text-neutral-300 whitespace-nowrap">
-        <span className="inline-block px-2.5 py-1 rounded-lg bg-black/40 border border-white/5 text-neutral-300">
+      {/* Kategori / Indikasi */}
+      <td className="py-3.5 px-4 text-xs text-[var(--color-text-secondary)] whitespace-nowrap">
+        <span className="inline-block px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-black/40 border border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium">
           {item.purpose ? item.purpose.slice(0, 32) : 'Umum'}
         </span>
       </td>
@@ -73,7 +73,7 @@ function HistoryRow({ item, onRemove, onSelect }) {
       </td>
 
       {/* Keterangan Evaluasi */}
-      <td className="py-3.5 px-4 text-xs text-neutral-400 max-w-xs hidden md:table-cell">
+      <td className="py-3.5 px-4 text-xs text-slate-500 dark:text-neutral-400 max-w-xs hidden md:table-cell">
         <p className="line-clamp-1">
           {item.shelfLifeNote || item.shelf_life_note || item.recommendation || 'Evaluasi standar'}
         </p>
@@ -86,7 +86,7 @@ function HistoryRow({ item, onRemove, onSelect }) {
             <button
               onClick={() => onSelect(item)}
               aria-label="Lihat detail"
-              className="text-xs font-bold px-3 py-1.5 rounded-xl text-[#c8f93a] bg-[#c8f93a]/10 hover:bg-[#c8f93a] hover:text-[#0c1004] transition-all"
+              className="text-xs font-bold px-3 py-1.5 rounded-xl text-sky-700 bg-sky-50 hover:bg-[#0284c7] hover:text-white dark:text-[#c8f93a] dark:bg-[#c8f93a]/10 dark:hover:bg-[#c8f93a] dark:hover:text-[#0c1004] transition-all"
             >
               Lihat
             </button>
@@ -119,23 +119,23 @@ export default function HistoryTable({ items = [], onRemove, onSelect, isLoading
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse" aria-label="Tabel riwayat pemindaian obat">
           <thead>
-            <tr className="bg-[#11141b] border-b border-[var(--color-border)]">
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+            <tr className="bg-slate-50 dark:bg-[#11141b] border-b border-[var(--color-border)]">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400">
                 Waktu Pindai
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400">
                 Nama Obat
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400">
                 Indikasi
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400">
                 Status Keamanan
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 hidden md:table-cell">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400 hidden md:table-cell">
                 Keterangan
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 text-right">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400 text-right">
                 Aksi
               </th>
             </tr>

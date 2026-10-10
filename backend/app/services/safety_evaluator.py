@@ -63,27 +63,30 @@ def evaluate_consumption_safety(
     """
     confidence_pct = int(round(overall_confidence * 100))
 
-    # Determine Readability Status
-    if is_unreadable or confidence_pct < 60 or not medicine_name or medicine_name == "Kemasan Tidak Teridentifikasi":
+    # Determine Readability Status based on 3-tier safety standard:
+    # Kategori 1: AMAN (80% - 100%)
+    # Kategori 2: PERLU HATI-HATI / WASPADA (50% - 79%)
+    # Kategori 3: TIDAK TERIDENTIFIKASI / BAHAYA (0% - 49%)
+    if is_unreadable or confidence_pct < 50 or not medicine_name or medicine_name == "Kemasan Tidak Teridentifikasi":
         readability = "tidak_teridentifikasi"
         readability_label = "Kemasan Rusak / Tidak Teridentifikasi"
-    elif confidence_pct < 85 or not has_dosage_instructions:
+    elif confidence_pct < 80 or not has_dosage_instructions:
         readability = "kurang_jelas"
         readability_label = "Label Kurang Jelas / Perlu Verifikasi"
     else:
         readability = "valid"
         readability_label = "Label Valid & Terbaca Jelas"
 
-    # ─── RISK TRIGGER 1: Unreadable, Damaged, or Low Confidence (<60%) ───────────
+    # ─── KATEGORI 3: TIDAK TERIDENTIFIKASI / BAHAYA (RED STATUS: 0% - 49%) ───────
     if readability == "tidak_teridentifikasi":
-        reason = unreadable_reason or "Label kemasan obat rusak, buram, atau tidak cocok dengan database obat resmi."
-        logger.warning("[SafetyEngine] Low confidence (%d%%) / unreadable → RED (Peringatan Ketat)", confidence_pct)
+        reason = unreadable_reason or "Foto sama sekali tidak menampilkan kemasan obat yang dikenali, objek tidak relevan, atau buram total."
+        logger.warning("[SafetyEngine] Low confidence (%d%%) / unreadable → RED (Kategori 3: Tidak Teridentifikasi)", confidence_pct)
 
         return SafetyResult(
             status="red",
             status_id="Bahaya",
             status_emoji="🔴",
-            consumption_status_label="Peringatan Ketat / Berisiko",
+            consumption_status_label="Tidak Teridentifikasi / Berbahaya",
             readability_status="tidak_teridentifikasi",
             readability_label=readability_label,
             confidence_percentage=confidence_pct,
@@ -93,73 +96,48 @@ def evaluate_consumption_safety(
             is_expired=True,
             expiry_date=None,
             shelf_life_note=(
-                f"Tingkat akurasi identifikasi ({confidence_pct}%) berada di bawah batas aman (85%). "
-                f"{reason} Dilarang mengonsumsi obat ini tanpa verifikasi fisik dari apoteker."
+                f"Tingkat akurasi identifikasi ({confidence_pct}%) berada di bawah batas minimal (50%). "
+                f"{reason} Dilarang mengonsumsi produk tanpa kepastian identitas resmi."
             ),
             recommendation=(
-                "⚠️ REKOMENDASI KESELAMATAN WAJIB: Jangan mengonsumsi obat jika label kemasan tidak dapat dipastikan secara mutlak. "
-                "Bawa kemasan fisik obat ke fasilitas kesehatan atau apotek terdekat untuk konsultasi dengan Apoteker atau Dokter."
+                "⚠️ REKOMENDASI KESELAMATAN WAJIB: Ambil foto ulang dengan pencahayaan terang dan fokus pada nama produk/zat aktif, atau bawa kemasan fisik obat ke apoteker/dokter."
             ),
         )
 
-    # ─── RISK TRIGGER 2: Severe Warning or Prescription-only Drug (Obat Keras) ──
+    # ─── KATEGORI 2: PERLU HATI-HATI / WASPADA (YELLOW STATUS: 50% - 79% atau Obat Keras/Perlu Resep) ──
     is_obat_keras = (
         has_severe_warning
         or (bpom_class and "keras" in bpom_class.lower())
     )
 
-    if is_obat_keras:
-        logger.info("[SafetyEngine] Prescription drug / severe warning → YELLOW (Perhatian Khusus)")
+    if is_obat_keras or confidence_pct < 80 or not has_dosage_instructions:
+        logger.info("[SafetyEngine] Category 2 Caution / Prescription (%d%%) → YELLOW (Perlu Hati-hati)", confidence_pct)
         return SafetyResult(
             status="yellow",
             status_id="Peringatan",
             status_emoji="🟡",
-            consumption_status_label="Perhatian Khusus / Wajib Resep",
+            consumption_status_label="Perlu Hati-hati / Waspada",
             readability_status=readability,
             readability_label=readability_label,
             confidence_percentage=confidence_pct,
-            is_safe_to_consume=False,
+            is_safe_to_consume=not is_obat_keras,
             risk_level="Sedang",
             days_remaining=90,
             is_expired=False,
             expiry_date=None,
             shelf_life_note=(
-                f"Obat teridentifikasi sebagai '{medicine_name}' dengan akurasi {confidence_pct}%. "
-                "Obat ini termasuk golongan Obat Keras (K) atau memiliki peringatan kontraindikasi khusus."
+                f"Produk teridentifikasi sebagai '{medicine_name}' dengan tingkat keyakinan {confidence_pct}%. "
+                + ("Produk ini termasuk golongan obat keras yang memerlukan resep dokter atau petunjuk penggunaan khusus."
+                   if is_obat_keras
+                   else "Kualitas foto terdistorsi atau petunjuk dosis spesifik pada kemasan perlu dikonfirmasi ulang.")
             ),
             recommendation=(
-                "Obat ini memerlukan resep dokter atau pengawasan apoteker (OWA). "
-                "Patuhi dosis dan waktu konsumsi yang dianjurkan dokter. Jangan meningkatkan dosis secara mandiri."
+                "Perhatikan petunjuk penggunaan pada brosur kemasan atau konsultasikan ke apoteker/dokter untuk memastikan takaran dosis yang tepat bagi kondisi Anda."
             ),
         )
 
-    # ─── RISK TRIGGER 3: Moderate Confidence (60% - 84%) or Unclear Dosage ───────
-    if confidence_pct < 85 or not has_dosage_instructions:
-        logger.info("[SafetyEngine] Moderate confidence (%d%%) → YELLOW (Perhatian Khusus)", confidence_pct)
-        return SafetyResult(
-            status="yellow",
-            status_id="Peringatan",
-            status_emoji="🟡",
-            consumption_status_label="Perhatian Khusus",
-            readability_status=readability,
-            readability_label=readability_label,
-            confidence_percentage=confidence_pct,
-            is_safe_to_consume=True,
-            risk_level="Sedang",
-            days_remaining=90,
-            is_expired=False,
-            expiry_date=None,
-            shelf_life_note=(
-                f"Obat terdeteksi mendekati '{medicine_name}' dengan akurasi {confidence_pct}%. "
-                "Petunjuk dosis spesifik pada kemasan perlu diperiksa ulang sebelum konsumsi."
-            ),
-            recommendation=(
-                "Periksa kembali petunjuk penggunaan pada brosur kemasan obat atau konsultasikan ke apoteker untuk memastikan takaran dosis yang tepat bagi kondisi Anda."
-            ),
-        )
-
-    # ─── HIGH CONFIDENCE & VALID OTC (>= 85%) ────────────────────────────────────
-    logger.info("[SafetyEngine] High confidence (%d%%) → GREEN (Aman)", confidence_pct)
+    # ─── KATEGORI 1: AMAN / VERIFIKASI TINGGI (GREEN STATUS: 80% - 100%) ─────────
+    logger.info("[SafetyEngine] Category 1 Safe (%d%%) → GREEN (Aman)", confidence_pct)
     return SafetyResult(
         status="green",
         status_id="Aman",
@@ -175,11 +153,10 @@ def evaluate_consumption_safety(
         expiry_date=None,
         shelf_life_note=(
             f"Kemasan teridentifikasi secara valid sebagai '{medicine_name}' dengan tingkat akurasi tinggi ({confidence_pct}%). "
-            "Data cocok dengan database resmi obat bebas/terbatas Indonesia."
+            "Data cocok dengan database resmi obat legal dan terdaftar BPOM Indonesia."
         ),
         recommendation=(
-            "Obat layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera. "
-            "Gunakan air putih, patuhi jadwal minum, dan simpan di tempat sejuk terlindung dari sinar matahari langsung."
+            "Produk aman dan layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera pada kemasan."
         ),
     )
 

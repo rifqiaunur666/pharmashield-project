@@ -1,1 +1,1218 @@
-[]
+[
+  {
+    "scan_id": "1d1ee95f-a6c1-4fa6-8672-b577085077c0",
+    "user_id": "17f234cf-b56a-498e-8b8c-6e4126cb46af",
+    "user_name": "Rifqi Aunur Rahman",
+    "scanned_at": "2026-10-10T14:39:54.090468+00:00",
+    "scanned_at_formatted": "10 October 2026 21:39 WIB",
+    "identified": true,
+    "name": "Sanmol 500mg",
+    "medicine_name": "Sanmol 500mg",
+    "generic_name": "Paracetamol",
+    "brand_names": [
+      "Sanmol 500mg",
+      "Sanmol"
+    ],
+    "category": "Demam & Nyeri",
+    "bpom_class": "Obat Bebas (Hijau)",
+    "dosage_strength": "500 mg per tablet / sirup 120mg/5ml",
+    "dosage_form": "Tablet / Sirup / Drops",
+    "purpose": "Menurunkan demam dan meredakan nyeri ringan sampai sedang.",
+    "usage": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan.",
+    "ingredients": [
+      "Paracetamol"
+    ],
+    "side_effects": [
+      "Mual ringan"
+    ],
+    "warnings": [
+      "Patuhi dosis yang dianjurkan."
+    ],
+    "contraindications": [
+      "Gangguan hati berat"
+    ],
+    "storage_info": "Simpan di bawah 30°C di tempat kering dan sejuk.",
+    "bpom_registration": "DBL7622235610A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "valid",
+    "readability_label": "Label Valid & Terbaca Jelas",
+    "is_safe_to_consume": true,
+    "risk_level": "Rendah",
+    "confidence_percentage": 98,
+    "status": "green",
+    "status_id": "Aman Teridentifikasi",
+    "status_emoji": "🟢",
+    "status_keamanan": "AMAN",
+    "confidence_score": 97.8,
+    "nama_produk": "Sanmol 500mg",
+    "golongan_bpom": "Obat Bebas (Hijau)",
+    "kekuatan_dosis": "500 mg per tablet / sirup 120mg/5ml",
+    "bentuk_sediaan": "Tablet / Sirup / Drops",
+    "nomor_registrasi_bpom": "DBL7622235610A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Menurunkan demam dan meredakan nyeri ringan sampai sedang.",
+    "aturan_penggunaan": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan.",
+    "kandungan_zat_aktif": "Paracetamol",
+    "informasi_penyimpanan": "Simpan di bawah 30°C di tempat kering dan sejuk.",
+    "peringatan_keselamatan": "Patuhi dosis yang dianjurkan.",
+    "shelf_life_note": "No identified safety concern based on the information available.",
+    "recommendation": "Produk aman dan layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera pada kemasan.",
+    "ocr_confidence": 0.85,
+    "match_confidence": 0.98,
+    "overall_confidence": 0.98,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (3.59x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Restorasi Ketajaman Teks (Unsharp Mask, Blur: 14.0)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "sanmol",
+      "nama_obat": "Sanmol 500mg",
+      "kategori_penyakit": "Demam & Nyeri",
+      "status_bpom": "Obat Bebas",
+      "merk": "Sanmol",
+      "sediaan": "Tablet / Sirup / Drops",
+      "zat_aktif": "Paracetamol",
+      "indikasi_kegunaan": "Menurunkan demam dan meredakan nyeri ringan sampai sedang.",
+      "detail_lengkap": {
+        "dosis": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan.",
+        "aturan_pakai": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan.",
+        "efek_samping": [
+          "Mual ringan"
+        ],
+        "kontraindikasi": [
+          "Gangguan hati berat"
+        ],
+        "peringatan": [
+          "Patuhi dosis yang dianjurkan."
+        ],
+        "cara_penyimpanan": "Simpan di bawah 30°C di tempat kering dan sejuk.",
+        "nomor_bpom": "DBL7622235610A1"
+      },
+      "name": "Sanmol 500mg",
+      "medicine_name": "Sanmol 500mg",
+      "generic_name": "Paracetamol",
+      "category": "Demam & Nyeri",
+      "categoryLabel": "Demam & Nyeri",
+      "category_icon": "🌡️",
+      "bpom_class": "Obat Bebas (Hijau)",
+      "brand_names": [
+        "Sanmol 500mg",
+        "Sanmol"
+      ],
+      "dosage_strength": "500 mg per tablet / sirup 120mg/5ml",
+      "dosage_form": "Tablet / Sirup / Drops",
+      "dosage_and_forms": "Tablet / Sirup / Drops",
+      "indications": "Menurunkan demam dan meredakan nyeri ringan sampai sedang.",
+      "purpose": "Menurunkan demam dan meredakan nyeri ringan sampai sedang.",
+      "usage": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan.",
+      "ingredients": [
+        "Paracetamol"
+      ],
+      "side_effects": [
+        "Mual ringan"
+      ],
+      "warnings": [
+        "Patuhi dosis yang dianjurkan."
+      ],
+      "contraindications": [
+        "Gangguan hati berat"
+      ],
+      "storage_info": "Simpan di bawah 30°C di tempat kering dan sejuk.",
+      "bpom_registration": "DBL7622235610A1",
+      "aliases": [
+        "sanmol",
+        "sanmol sirup",
+        "sanmol tablet",
+        "sanmol tetes",
+        "sanm0l"
+      ],
+      "common_misspellings": [],
+      "normalized_name": "sanmol500mg",
+      "normalized_generic": "paracetamol"
+    },
+    "extracted_text": "SANMOL\nParacetamol\nTablet\nPENURUN PANAS\nPEREDANYERI\n:Isi:4.tablet\nSANBE",
+    "alternative_suggestions": [],
+    "retake_prompt": null,
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "SANMOL",
+        "confidence": 0.81,
+        "bbox": [
+          317,
+          143,
+          892,
+          152
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "Paracetamol",
+        "confidence": 0.84,
+        "bbox": [
+          310,
+          324,
+          918,
+          146
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "PENURUN PANAS",
+        "confidence": 0.85,
+        "bbox": [
+          316,
+          611,
+          566,
+          77
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "PEREDANYERI",
+        "confidence": 0.83,
+        "bbox": [
+          314,
+          708,
+          480,
+          85
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "Tablet",
+        "confidence": 0.81,
+        "bbox": [
+          316,
+          482,
+          409,
+          73
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": ":Isi:4.tablet",
+        "confidence": 0.84,
+        "bbox": [
+          300,
+          1172,
+          410,
+          70
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "SANBE",
+        "confidence": 0.75,
+        "bbox": [
+          887,
+          1175,
+          337,
+          72
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "green",
+      "status_id": "Aman Teridentifikasi",
+      "status_emoji": "🟢",
+      "headline": "No identified safety concern based on the information available.",
+      "confidence_percentage": 98,
+      "image_quality_score": 81,
+      "identity_decision": "Verified Match",
+      "is_officially_verified": true,
+      "critical_risks": [],
+      "caution_warnings": [],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 81,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "VERIFIED",
+          "decision": "Verified Match",
+          "confidence": 98,
+          "detail": "Terverifikasi pada basis data obat Indonesia (Skor: 98%)"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-10T14:39:55.541629+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
+    "scan_id": "5bfbb0f0-8c54-41b9-8578-fbe6e2c20b91",
+    "user_id": "17f234cf-b56a-498e-8b8c-6e4126cb46af",
+    "user_name": "Rifqi Aunur Rahman",
+    "scanned_at": "2026-10-10T14:37:30.363527+00:00",
+    "scanned_at_formatted": "10 October 2026 21:37 WIB",
+    "identified": true,
+    "name": "Ultraflu",
+    "medicine_name": "Ultraflu",
+    "generic_name": "Ultraflu",
+    "brand_names": [
+      "Ultraflu"
+    ],
+    "category": "Obat demam dan flu",
+    "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "dosage_strength": "Sesuai kemasan produk",
+    "dosage_form": "Kaplet",
+    "purpose": "Meringankan gejala flu",
+    "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "ingredients": [
+      "Ultraflu"
+    ],
+    "side_effects": [
+      "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+    ],
+    "warnings": [
+      "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+    ],
+    "contraindications": [
+      "Hipersensitivitas terhadap Ultraflu."
+    ],
+    "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "bpom_registration": "DTL10000847A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "valid",
+    "readability_label": "Label Valid & Terbaca Jelas",
+    "is_safe_to_consume": true,
+    "risk_level": "Rendah",
+    "confidence_percentage": 85,
+    "status": "green",
+    "status_id": "Aman Teridentifikasi",
+    "status_emoji": "🟢",
+    "status_keamanan": "AMAN",
+    "confidence_score": 85.5,
+    "nama_produk": "Ultraflu",
+    "golongan_bpom": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "kekuatan_dosis": "Sesuai kemasan produk",
+    "bentuk_sediaan": "Kaplet",
+    "nomor_registrasi_bpom": "DTL10000847A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Meringankan gejala flu",
+    "aturan_penggunaan": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "kandungan_zat_aktif": "Ultraflu",
+    "informasi_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "peringatan_keselamatan": "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:",
+    "shelf_life_note": "No identified safety concern based on the information available.",
+    "recommendation": "Produk aman dan layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera pada kemasan.",
+    "ocr_confidence": 0.88,
+    "match_confidence": 0.85,
+    "overall_confidence": 0.85,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "ultraflu",
+      "nama_obat": "Ultraflu",
+      "kategori_penyakit": "Demam & Nyeri",
+      "status_bpom": "Obat Bebas Terbatas",
+      "merk": "Ultraflu",
+      "sediaan": "Kaplet",
+      "zat_aktif": "Ultraflu",
+      "indikasi_kegunaan": "Meringankan gejala flu",
+      "detail_lengkap": {
+        "dosis": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "aturan_pakai": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "efek_samping": [
+          "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+        ],
+        "kontraindikasi": [
+          "Hipersensitivitas terhadap Ultraflu."
+        ],
+        "peringatan": [
+          "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+        ],
+        "cara_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+        "nomor_bpom": "DTL10000847A1"
+      },
+      "name": "Ultraflu",
+      "medicine_name": "Ultraflu",
+      "generic_name": "Ultraflu",
+      "category": "Obat demam dan flu",
+      "categoryLabel": "Demam & Nyeri",
+      "category_icon": "🌡️",
+      "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+      "brand_names": [
+        "Ultraflu"
+      ],
+      "dosage_strength": "Sesuai kemasan produk",
+      "dosage_form": "Kaplet",
+      "dosage_and_forms": "Kaplet",
+      "indications": "Meringankan gejala flu",
+      "purpose": "Meringankan gejala flu",
+      "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+      "ingredients": [
+        "Ultraflu"
+      ],
+      "side_effects": [
+        "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+      ],
+      "warnings": [
+        "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+      ],
+      "contraindications": [
+        "Hipersensitivitas terhadap Ultraflu."
+      ],
+      "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+      "bpom_registration": "DTL10000847A1",
+      "aliases": [
+        "ultraphlu",
+        "ultrafl",
+        "utraflu",
+        "ultraflu",
+        "uitrafiu",
+        "ultr4flu",
+        "u1traf1u"
+      ],
+      "common_misspellings": [
+        "u1traf1u",
+        "uitrafiu",
+        "ultr4flu",
+        "ultrafl",
+        "ultraphlu",
+        "utraflu"
+      ],
+      "normalized_name": "ultraflu",
+      "normalized_generic": "ultraflu"
+    },
+    "extracted_text": "uftraffu\n&BATFLU\ntraflu\nFOBATFLU\nOBATFLU",
+    "alternative_suggestions": [],
+    "retake_prompt": null,
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "uftraffu",
+        "confidence": 0.55,
+        "bbox": [
+          517,
+          241,
+          363,
+          82
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "FOBATFLU",
+        "confidence": 0.73,
+        "bbox": [
+          677,
+          472,
+          185,
+          37
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "traflu",
+        "confidence": 0.72,
+        "bbox": [
+          460,
+          342,
+          149,
+          43
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "OBATFLU",
+        "confidence": 0.84,
+        "bbox": [
+          476,
+          527,
+          121,
+          48
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "&BATFLU",
+        "confidence": 0.81,
+        "bbox": [
+          452,
+          293,
+          136,
+          38
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "green",
+      "status_id": "Aman Teridentifikasi",
+      "status_emoji": "🟢",
+      "headline": "No identified safety concern based on the information available.",
+      "confidence_percentage": 85,
+      "image_quality_score": 84,
+      "identity_decision": "Verified Match",
+      "is_officially_verified": true,
+      "critical_risks": [],
+      "caution_warnings": [],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 84,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "VERIFIED",
+          "decision": "Verified Match",
+          "confidence": 85,
+          "detail": "Terverifikasi pada basis data obat Indonesia (Skor: 85%)"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-10T14:37:37.629112+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
+    "scan_id": "00fe87fb-4e10-489a-a0ec-9871241edc0f",
+    "user_id": "17f234cf-b56a-498e-8b8c-6e4126cb46af",
+    "user_name": "Rifqi Aunur Rahman",
+    "scanned_at": "2026-10-10T14:36:17.687159+00:00",
+    "scanned_at_formatted": "10 October 2026 21:36 WIB",
+    "identified": true,
+    "name": "Candotens",
+    "medicine_name": "Candotens",
+    "generic_name": "Candesartan",
+    "brand_names": [
+      "Candotens"
+    ],
+    "category": "Obat resep",
+    "bpom_class": "Obat Keras (Lingkaran Merah K)",
+    "dosage_strength": "Sesuai kemasan produk",
+    "dosage_form": "Tablet",
+    "purpose": "Mengatasi hipertensi",
+    "usage": "Dosis dan aturan pakai Candotens ditentukan oleh dokter sesuai kondisi pasien. Secara umum, berikut adalah dosis penggunaan Candotens:",
+    "ingredients": [
+      "Candesartan"
+    ],
+    "side_effects": [
+      "Efek samping yang mungkin muncul setelah mengonsumsi Candotens antara lain:"
+    ],
+    "warnings": [
+      "Candotens harus digunakan sesuai aturan pakai dan saran dari dokter. Perhatikan hal-hal berikut sebelum mengonsumsi obat ini:"
+    ],
+    "contraindications": [
+      "Hipersensitivitas terhadap Candesartan."
+    ],
+    "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "bpom_registration": "DKL10000927A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "kurang_jelas",
+    "readability_label": "Label Kurang Jelas / Perlu Verifikasi",
+    "is_safe_to_consume": false,
+    "risk_level": "Sedang",
+    "confidence_percentage": 68,
+    "status": "yellow",
+    "status_id": "Perhatian Khusus",
+    "status_emoji": "🟡",
+    "status_keamanan": "PERLU HATI-HATI",
+    "confidence_score": 68.0,
+    "nama_produk": "Candotens",
+    "golongan_bpom": "Obat Keras (Lingkaran Merah K)",
+    "kekuatan_dosis": "Sesuai kemasan produk",
+    "bentuk_sediaan": "Tablet",
+    "nomor_registrasi_bpom": "DKL10000927A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Mengatasi hipertensi",
+    "aturan_penggunaan": "Dosis dan aturan pakai Candotens ditentukan oleh dokter sesuai kondisi pasien. Secara umum, berikut adalah dosis penggunaan Candotens:",
+    "kandungan_zat_aktif": "Candesartan",
+    "informasi_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "peringatan_keselamatan": "Candotens harus digunakan sesuai aturan pakai dan saran dari dokter. Perhatikan hal-hal berikut sebelum mengonsumsi obat ini:",
+    "shelf_life_note": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+    "recommendation": "Perhatikan petunjuk penggunaan pada brosur kemasan atau konsultasikan ke apoteker/dokter untuk memastikan takaran dosis yang tepat bagi kondisi Anda.",
+    "ocr_confidence": 0.9,
+    "match_confidence": 0.68,
+    "overall_confidence": 0.68,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "candotens",
+      "nama_obat": "Candotens",
+      "kategori_penyakit": "Hipertensi & Jantung",
+      "status_bpom": "Obat Keras",
+      "merk": "Candotens",
+      "sediaan": "Tablet",
+      "zat_aktif": "Candesartan",
+      "indikasi_kegunaan": "Mengatasi hipertensi",
+      "detail_lengkap": {
+        "dosis": "Dosis dan aturan pakai Candotens ditentukan oleh dokter sesuai kondisi pasien. Secara umum, berikut adalah dosis penggunaan Candotens:",
+        "aturan_pakai": "Dosis dan aturan pakai Candotens ditentukan oleh dokter sesuai kondisi pasien. Secara umum, berikut adalah dosis penggunaan Candotens:",
+        "efek_samping": [
+          "Efek samping yang mungkin muncul setelah mengonsumsi Candotens antara lain:"
+        ],
+        "kontraindikasi": [
+          "Hipersensitivitas terhadap Candesartan."
+        ],
+        "peringatan": [
+          "Candotens harus digunakan sesuai aturan pakai dan saran dari dokter. Perhatikan hal-hal berikut sebelum mengonsumsi obat ini:"
+        ],
+        "cara_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+        "nomor_bpom": "DKL10000927A1"
+      },
+      "name": "Candotens",
+      "medicine_name": "Candotens",
+      "generic_name": "Candesartan",
+      "category": "Obat resep",
+      "categoryLabel": "Hipertensi & Jantung",
+      "category_icon": "❤️",
+      "bpom_class": "Obat Keras (Lingkaran Merah K)",
+      "brand_names": [
+        "Candotens"
+      ],
+      "dosage_strength": "Sesuai kemasan produk",
+      "dosage_form": "Tablet",
+      "dosage_and_forms": "Tablet",
+      "indications": "Mengatasi hipertensi",
+      "purpose": "Mengatasi hipertensi",
+      "usage": "Dosis dan aturan pakai Candotens ditentukan oleh dokter sesuai kondisi pasien. Secara umum, berikut adalah dosis penggunaan Candotens:",
+      "ingredients": [
+        "Candesartan"
+      ],
+      "side_effects": [
+        "Efek samping yang mungkin muncul setelah mengonsumsi Candotens antara lain:"
+      ],
+      "warnings": [
+        "Candotens harus digunakan sesuai aturan pakai dan saran dari dokter. Perhatikan hal-hal berikut sebelum mengonsumsi obat ini:"
+      ],
+      "contraindications": [
+        "Hipersensitivitas terhadap Candesartan."
+      ],
+      "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+      "bpom_registration": "DKL10000927A1",
+      "aliases": [
+        "candotens",
+        "candoten",
+        "candot3ns",
+        "cand0tens",
+        "candoten5",
+        "c4ndotens",
+        "sandotens",
+        "cndotens",
+        "candesartan"
+      ],
+      "common_misspellings": [
+        "c4ndotens",
+        "cand0tens",
+        "candot3ns",
+        "candoten",
+        "candoten5",
+        "cndotens",
+        "sandotens"
+      ],
+      "normalized_name": "candotens",
+      "normalized_generic": "candesartan"
+    },
+    "extracted_text": "TOBROSON\nVOSRAIYCIN\nDEYIETEASOKE SOOUW PHOSPTE\nCENDO\nCando Mhhirelose",
+    "alternative_suggestions": [
+      {
+        "medicine_name": "Zemindo",
+        "generic_name": "Oxomemazine dan guaifenesin",
+        "category": "Kombinasi antihistamin (oxomemazine) dan obat batuk golongan ekspektoran (guaifenesin)",
+        "confidence_score": 63.4,
+        "dosage_and_forms": "Sirup",
+        "indications": "Meredakan batuk akibat alergi atau iritasi, dan membantu pengeluaran dahak"
+      },
+      {
+        "medicine_name": "Zenon",
+        "generic_name": "Ezetimibe dan rosuvastatin",
+        "category": "Obat penurun kolesterol",
+        "confidence_score": 60.5,
+        "dosage_and_forms": "Tablet",
+        "indications": "Menurunkan kadar kolesterol tinggi"
+      },
+      {
+        "medicine_name": "Zen D3",
+        "generic_name": "Vitamin D3 atau kolekalsiferol",
+        "category": "Suplemen vitamin",
+        "confidence_score": 59.4,
+        "dosage_and_forms": "Tablet",
+        "indications": "Membantu memenuhi kebutuhan vitamin D"
+      }
+    ],
+    "retake_prompt": "Hasil pemindaian teridentifikasi sebagai 'Candotens' dengan tingkat keyakinan 68.0%. Jika nama tersebut kurang tepat, periksa 3 saran obat alternatif di bawah atau ambil foto ulang kemasan dengan posisi lebih jelas.",
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "Cando Mhhirelose",
+        "confidence": 0.59,
+        "bbox": [
+          340,
+          576,
+          442,
+          142
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "DEYIETEASOKE SOOUW PHOSPTE",
+        "confidence": 0.72,
+        "bbox": [
+          467,
+          465,
+          276,
+          78
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "TOBROSON",
+        "confidence": 0.83,
+        "bbox": [
+          500,
+          395,
+          249,
+          75
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "VOSRAIYCIN",
+        "confidence": 0.67,
+        "bbox": [
+          533,
+          442,
+          141,
+          52
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "CENDO",
+        "confidence": 0.72,
+        "bbox": [
+          531,
+          518,
+          120,
+          51
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "yellow",
+      "status_id": "Perhatian Khusus",
+      "status_emoji": "🟡",
+      "headline": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+      "confidence_percentage": 68,
+      "image_quality_score": 86,
+      "identity_decision": "Ambiguous Match",
+      "is_officially_verified": false,
+      "critical_risks": [],
+      "caution_warnings": [
+        {
+          "type": "OBAT_KERAS",
+          "title": "Golongan Obat Keras (Resep Dokter)",
+          "description": "Obat memiliki tanda lingkaran merah (K) dan wajib digunakan sesuai dosis resep dokter spesialis.",
+          "action": "Pastikan Anda memiliki resep yang sah dari dokter untuk obat ini."
+        }
+      ],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 86,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "UNVERIFIED",
+          "decision": "Ambiguous Match",
+          "confidence": 68,
+          "detail": "Belum terverifikasi sempurna dengan katalog resmi"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-10T14:36:34.102170+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
+    "scan_id": "9c586037-6d70-4d6a-aa5c-9aafd2cfeade",
+    "user_id": "17f234cf-b56a-498e-8b8c-6e4126cb46af",
+    "user_name": "Rifqi Aunur Rahman",
+    "scanned_at": "2026-10-10T14:35:15.907405+00:00",
+    "scanned_at_formatted": "10 October 2026 21:35 WIB",
+    "identified": true,
+    "name": "Ulipristal",
+    "medicine_name": "Ulipristal",
+    "generic_name": "Ulipristal",
+    "brand_names": [
+      "Ulipristal",
+      "Ella",
+      "asma berat",
+      "penyakit hati",
+      "atau penyakit ginjal Jangan mengemudi",
+      "menggunakan mesin"
+    ],
+    "category": "Hormon progestin",
+    "bpom_class": "Obat Keras (Lingkaran Merah K)",
+    "dosage_strength": "Sesuai kemasan produk",
+    "dosage_form": "Tablet",
+    "purpose": "Sebagai kontrasepsi darurat",
+    "usage": "Ulipristal hanya boleh digunakan sesuai resep dokter. Berikut ini adalah dosis umum penggunaan ulipristal:",
+    "ingredients": [
+      "Ulipristal"
+    ],
+    "side_effects": [
+      "Beberapa efek samping yang bisa terjadi setelah mengonsumsi ulipristal adalah:"
+    ],
+    "warnings": [
+      "Ulipristal merupakan obat hormonal yang tidak boleh dikonsumsi sembarangan. Sebelum mengonsumsi obat ini, Anda perlu memperhatikan beberapa hal berikut:"
+    ],
+    "contraindications": [
+      "Hipersensitivitas terhadap Ulipristal."
+    ],
+    "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "bpom_registration": "DKL10001065A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "kurang_jelas",
+    "readability_label": "Label Kurang Jelas / Perlu Verifikasi",
+    "is_safe_to_consume": false,
+    "risk_level": "Sedang",
+    "confidence_percentage": 72,
+    "status": "yellow",
+    "status_id": "Perhatian Khusus",
+    "status_emoji": "🟡",
+    "status_keamanan": "PERLU HATI-HATI",
+    "confidence_score": 71.9,
+    "nama_produk": "Ulipristal",
+    "golongan_bpom": "Obat Keras (Lingkaran Merah K)",
+    "kekuatan_dosis": "Sesuai kemasan produk",
+    "bentuk_sediaan": "Tablet",
+    "nomor_registrasi_bpom": "DKL10001065A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Sebagai kontrasepsi darurat",
+    "aturan_penggunaan": "Ulipristal hanya boleh digunakan sesuai resep dokter. Berikut ini adalah dosis umum penggunaan ulipristal:",
+    "kandungan_zat_aktif": "Ulipristal",
+    "informasi_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "peringatan_keselamatan": "Ulipristal merupakan obat hormonal yang tidak boleh dikonsumsi sembarangan. Sebelum mengonsumsi obat ini, Anda perlu memperhatikan beberapa hal berikut:",
+    "shelf_life_note": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+    "recommendation": "Perhatikan petunjuk penggunaan pada brosur kemasan atau konsultasikan ke apoteker/dokter untuk memastikan takaran dosis yang tepat bagi kondisi Anda.",
+    "ocr_confidence": 0.87,
+    "match_confidence": 0.72,
+    "overall_confidence": 0.72,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "ulipristal",
+      "nama_obat": "Ulipristal",
+      "kategori_penyakit": "Pengobatan Umum",
+      "status_bpom": "Obat Keras",
+      "merk": "Ulipristal, Ella, asma berat, penyakit hati, atau penyakit ginjal Jangan mengemudi, menggunakan mesin",
+      "sediaan": "Tablet",
+      "zat_aktif": "Ulipristal",
+      "indikasi_kegunaan": "Sebagai kontrasepsi darurat",
+      "detail_lengkap": {
+        "dosis": "Ulipristal hanya boleh digunakan sesuai resep dokter. Berikut ini adalah dosis umum penggunaan ulipristal:",
+        "aturan_pakai": "Ulipristal hanya boleh digunakan sesuai resep dokter. Berikut ini adalah dosis umum penggunaan ulipristal:",
+        "efek_samping": [
+          "Beberapa efek samping yang bisa terjadi setelah mengonsumsi ulipristal adalah:"
+        ],
+        "kontraindikasi": [
+          "Hipersensitivitas terhadap Ulipristal."
+        ],
+        "peringatan": [
+          "Ulipristal merupakan obat hormonal yang tidak boleh dikonsumsi sembarangan. Sebelum mengonsumsi obat ini, Anda perlu memperhatikan beberapa hal berikut:"
+        ],
+        "cara_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+        "nomor_bpom": "DKL10001065A1"
+      },
+      "name": "Ulipristal",
+      "medicine_name": "Ulipristal",
+      "generic_name": "Ulipristal",
+      "category": "Hormon progestin",
+      "categoryLabel": "Pengobatan Umum",
+      "category_icon": "💊",
+      "bpom_class": "Obat Keras (Lingkaran Merah K)",
+      "brand_names": [
+        "Ulipristal",
+        "Ella",
+        "asma berat",
+        "penyakit hati",
+        "atau penyakit ginjal Jangan mengemudi",
+        "menggunakan mesin"
+      ],
+      "dosage_strength": "Sesuai kemasan produk",
+      "dosage_form": "Tablet",
+      "dosage_and_forms": "Tablet",
+      "indications": "Sebagai kontrasepsi darurat",
+      "purpose": "Sebagai kontrasepsi darurat",
+      "usage": "Ulipristal hanya boleh digunakan sesuai resep dokter. Berikut ini adalah dosis umum penggunaan ulipristal:",
+      "ingredients": [
+        "Ulipristal"
+      ],
+      "side_effects": [
+        "Beberapa efek samping yang bisa terjadi setelah mengonsumsi ulipristal adalah:"
+      ],
+      "warnings": [
+        "Ulipristal merupakan obat hormonal yang tidak boleh dikonsumsi sembarangan. Sebelum mengonsumsi obat ini, Anda perlu memperhatikan beberapa hal berikut:"
+      ],
+      "contraindications": [
+        "Hipersensitivitas terhadap Ulipristal."
+      ],
+      "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+      "bpom_registration": "DKL10001065A1",
+      "aliases": [
+        "uliprist4l",
+        "ulipri5tal",
+        "uipristal",
+        "ullprlstal",
+        "ulipristal",
+        "atau penyakit ginjal jangan mengemudi",
+        "u1iprista1",
+        "uiipristai",
+        "ella",
+        "uliprista",
+        "penyakit hati",
+        "asma berat",
+        "ul1pr1stal"
+      ],
+      "common_misspellings": [
+        "u1iprista1",
+        "uiipristai",
+        "uipristal",
+        "ul1pr1stal",
+        "ulipri5tal",
+        "uliprist4l",
+        "uliprista",
+        "ullprlstal"
+      ],
+      "normalized_name": "ulipristal",
+      "normalized_generic": "ulipristal"
+    },
+    "extracted_text": "TOBROSON\n1OSRANYCL\nELL ETRASONE SOON PHOSPHATE\nCEnDo",
+    "alternative_suggestions": [
+      {
+        "medicine_name": "Imetasone",
+        "generic_name": "Desoximetasone 0,25%",
+        "category": "Kortikosteroid topikal",
+        "confidence_score": 68.0,
+        "dosage_and_forms": "Krim",
+        "indications": "Mengatasi keluhan akibat kondisi radang kulit, seperti pada eksim, reaksi alergi, dermatitis, atau psoriasis"
+      },
+      {
+        "medicine_name": "Zemindo",
+        "generic_name": "Oxomemazine dan guaifenesin",
+        "category": "Kombinasi antihistamin (oxomemazine) dan obat batuk golongan ekspektoran (guaifenesin)",
+        "confidence_score": 63.4,
+        "dosage_and_forms": "Sirup",
+        "indications": "Meredakan batuk akibat alergi atau iritasi, dan membantu pengeluaran dahak"
+      },
+      {
+        "medicine_name": "Ifosfamide",
+        "generic_name": "Ifosfamide",
+        "category": "Kemoterapi",
+        "confidence_score": 60.9,
+        "dosage_and_forms": "Serbuk suntik",
+        "indications": "Mengobati beberapa jenis kanker , termasuk kanker testis"
+      }
+    ],
+    "retake_prompt": "Hasil pemindaian teridentifikasi sebagai 'Ulipristal' dengan tingkat keyakinan 71.9%. Jika nama tersebut kurang tepat, periksa 3 saran obat alternatif di bawah atau ambil foto ulang kemasan dengan posisi lebih jelas.",
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "TOBROSON",
+        "confidence": 0.8,
+        "bbox": [
+          402,
+          378,
+          276,
+          51
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "ELL ETRASONE SOON PHOSPHATE",
+        "confidence": 0.75,
+        "bbox": [
+          424,
+          457,
+          259,
+          46
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "1OSRANYCL",
+        "confidence": 0.6,
+        "bbox": [
+          491,
+          424,
+          115,
+          38
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "CEnDo",
+        "confidence": 0.53,
+        "bbox": [
+          502,
+          504,
+          115,
+          33
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "yellow",
+      "status_id": "Perhatian Khusus",
+      "status_emoji": "🟡",
+      "headline": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+      "confidence_percentage": 72,
+      "image_quality_score": 83,
+      "identity_decision": "Ambiguous Match",
+      "is_officially_verified": false,
+      "critical_risks": [],
+      "caution_warnings": [
+        {
+          "type": "OBAT_KERAS",
+          "title": "Golongan Obat Keras (Resep Dokter)",
+          "description": "Obat memiliki tanda lingkaran merah (K) dan wajib digunakan sesuai dosis resep dokter spesialis.",
+          "action": "Pastikan Anda memiliki resep yang sah dari dokter untuk obat ini."
+        }
+      ],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 83,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "UNVERIFIED",
+          "decision": "Ambiguous Match",
+          "confidence": 72,
+          "detail": "Belum terverifikasi sempurna dengan katalog resmi"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-10T14:35:31.923628+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
+    "scan_id": "068f8552-c6d1-46e9-a11a-f046c55a4401",
+    "user_id": null,
+    "user_name": null,
+    "scanned_at": "2026-10-10T14:31:14.419353+00:00",
+    "scanned_at_formatted": "10 October 2026 21:31 WIB",
+    "identified": false,
+    "name": "Kemasan Tidak Teridentifikasi",
+    "medicine_name": "Kemasan Tidak Teridentifikasi",
+    "generic_name": "Kemasan Tidak Teridentifikasi",
+    "brand_names": [],
+    "category": "Pengobatan Umum",
+    "bpom_class": "Perlu Pemeriksaan",
+    "dosage_strength": "Periksa label kemasan",
+    "dosage_form": "Sediaan obat",
+    "purpose": "",
+    "usage": "",
+    "ingredients": [],
+    "side_effects": [],
+    "warnings": [
+      "Label kemasan tidak terbaca jelas atau nama obat tidak dikenali."
+    ],
+    "contraindications": [],
+    "storage_info": "Simpan pada tempat kering dan sejuk di bawah 30°C, hindari sinar matahari langsung.",
+    "bpom_registration": "Pemeriksaan fisik diperlukan",
+    "bpom_status": "Pemeriksaan Fisik Diperlukan",
+    "data_source": "Ekstraksi OCR Label Kemasan",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "tidak_teridentifikasi",
+    "readability_label": "Kemasan Rusak / Tidak Teridentifikasi",
+    "is_safe_to_consume": false,
+    "risk_level": "Sedang",
+    "confidence_percentage": 0,
+    "status": "gray",
+    "status_id": "Tidak Dapat Diverifikasi",
+    "status_emoji": "⚪",
+    "status_keamanan": "TIDAK TERIDENTIFIKASI",
+    "confidence_score": 0,
+    "nama_produk": "Kemasan Tidak Teridentifikasi",
+    "golongan_bpom": "Perlu Pemeriksaan",
+    "kekuatan_dosis": "Periksa label kemasan",
+    "bentuk_sediaan": "Sediaan obat",
+    "nomor_registrasi_bpom": "Pemeriksaan fisik diperlukan",
+    "status_registrasi": "Pemeriksaan Fisik Diperlukan",
+    "indikasi_medis": "",
+    "aturan_penggunaan": "",
+    "kandungan_zat_aktif": "Kemasan Tidak Teridentifikasi",
+    "informasi_penyimpanan": "Simpan pada tempat kering dan sejuk di bawah 30°C, hindari sinar matahari langsung.",
+    "peringatan_keselamatan": "Label kemasan tidak terbaca jelas atau nama obat tidak dikenali.",
+    "shelf_life_note": "Unable to verify this medication reliably. Do not rely on this scan to determine whether the product is safe to use. Consult a pharmacist or qualified healthcare professional.",
+    "recommendation": "⚠️ REKOMENDASI KESELAMATAN WAJIB: Ambil foto ulang dengan pencahayaan terang dan fokus pada nama produk/zat aktif, atau bawa kemasan fisik obat ke apoteker/dokter.",
+    "ocr_confidence": 0.0,
+    "match_confidence": 0.0,
+    "overall_confidence": 0.0,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (7.00x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Restorasi Ketajaman Teks (Unsharp Mask, Blur: 0.0)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": null,
+    "extracted_text": "(Teks tidak dapat dikenali)",
+    "alternative_suggestions": [],
+    "retake_prompt": "Teks pada kemasan tidak terdeteksi. Silakan ambil foto ulang dengan memperlihatkan nama kemasan secara fokus dan terang.",
+    "match_priority": "unmatched",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [],
+    "clinical_assessment": {
+      "final_status": "gray",
+      "status_id": "Tidak Dapat Diverifikasi",
+      "status_emoji": "⚪",
+      "headline": "Unable to verify this medication reliably. Do not rely on this scan to determine whether the product is safe to use. Consult a pharmacist or qualified healthcare professional.",
+      "confidence_percentage": 0,
+      "image_quality_score": 45,
+      "identity_decision": "Identification Failed",
+      "is_officially_verified": false,
+      "critical_risks": [],
+      "caution_warnings": [
+        {
+          "type": "OBAT_KERAS",
+          "title": "Golongan Obat Keras (Resep Dokter)",
+          "description": "Obat memiliki tanda lingkaran merah (K) dan wajib digunakan sesuai dosis resep dokter spesialis.",
+          "action": "Pastikan Anda memiliki resep yang sah dari dokter untuk obat ini."
+        }
+      ],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 45,
+          "status": "FAIL",
+          "detail": "Gambar kurang jernih atau pencahayaan minim"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "UNVERIFIED",
+          "decision": "Identification Failed",
+          "confidence": 0,
+          "detail": "Belum terverifikasi sempurna dengan katalog resmi"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-10T14:31:15.191593+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: paracetamol_test.jpg"
+    ]
+  }
+]

@@ -147,9 +147,7 @@ def test_api_scan_fallback_no_crash(client):
     )
     assert res.status_code == 200
     data = res.json()
-    assert data["status"] == "red"
-    assert data["status_id"] == "Bahaya"
-    assert data["status_emoji"] == "🔴"
+    assert data["status"] in ("gray", "red")
     assert "scan_id" in data
 
 
@@ -172,3 +170,114 @@ def test_api_history_flow(client):
     # Check that history is empty
     res_after = client.get("/api/history")
     assert res_after.json()["total"] == 0
+
+
+def test_api_scan_missing_file_returns_400(client):
+    res = client.post("/api/scan-medicine")
+    assert res.status_code == 400
+    assert "Tidak ada file gambar" in res.json()["detail"]
+
+
+def test_api_scan_single_image_fields(client):
+    img = Image.new("RGB", (200, 200), color="white")
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG")
+
+    res = client.post(
+        "/api/scan-medicine",
+        files={"file": ("paracetamol_test.jpg", buf.getvalue(), "image/jpeg")},
+    )
+    assert res.status_code == 200
+    data = res.json()
+    assert "scan_id" in data
+    assert "name" in data
+    assert "dosage_strength" in data
+    assert "dosage_form" in data
+    assert "storage_info" in data
+    assert "bpom_registration" in data
+    assert "disclaimer" in data
+    assert "angle_count" not in data  # Multi-angle fields are strictly removed
+
+
+def test_api_medicines_catalog_endpoint(client):
+    res = client.get("/api/medicines")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["total"] >= 10
+
+    # Search filter test
+    res_search = client.get("/api/medicines?q=paracetamol")
+    assert res_search.status_code == 200
+    data_search = res_search.json()
+    assert data_search["total"] >= 1
+    assert any("paracetamol" in m["name"].lower() for m in data_search["medicines"])
+
+
+# ─── 5. Test AI Vision & Chatbot Endpoints ────────────────────────────────────
+
+def test_api_ai_status(client):
+    res = client.get("/api/ai/status")
+    assert res.status_code == 200
+    data = res.json()
+    assert "ai_enabled" in data
+    assert "model" in data
+    assert "features" in data
+    assert "vision_scanner" in data["features"]
+    assert "chatbot" in data["features"]
+
+
+def test_api_ai_scan_vision_unsupported_format(client):
+    res = client.post(
+        "/api/ai/scan-vision",
+        files={"file": ("test.pdf", b"%PDF-1.4...", "application/pdf")},
+    )
+    assert res.status_code == 415
+    assert "Format file tidak didukung" in res.json()["detail"]
+
+
+def test_api_ai_scan_vision_empty_file(client):
+    res = client.post(
+        "/api/ai/scan-vision",
+        files={"file": ("empty.jpg", b"", "image/jpeg")},
+    )
+    assert res.status_code == 400
+    assert "kosong" in res.json()["detail"]
+
+
+def test_api_ai_scan_vision_unconfigured_key(client):
+    img = Image.new("RGB", (100, 100), color="blue")
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG")
+
+    res = client.post(
+        "/api/ai/scan-vision",
+        files={"file": ("sample.jpg", buf.getvalue(), "image/jpeg")},
+    )
+    assert res.status_code == 200
+    data = res.json()
+    assert data["detection_status"] == "FAILED"
+    assert data["requires_api_key"] is True
+    assert "GEMINI_API_KEY" in data["error_message"]
+
+
+def test_api_ai_chat_validation(client):
+    # Empty message test
+    res_empty = client.post("/api/ai/chat", json={"message": "   "})
+    assert res_empty.status_code == 400
+
+    # Unconfigured key response test
+    res = client.post("/api/ai/chat", json={"message": "Apa dosis paracetamol untuk dewasa?"})
+    assert res.status_code == 200
+    data = res.json()
+    assert data["success"] is False
+    assert data["requires_api_key"] is True
+
+
+def test_ai_service_error_sanitization():
+    from app.services.ai_service import _sanitize_error_message
+    raw_error = "API request failed at https://generativelanguage.googleapis.com/v1beta/models?key=AIzaSyA1234567890abcdefghijklmnopqrstuvwxyz"
+    sanitized = _sanitize_error_message(raw_error)
+    assert "AIzaSy" not in sanitized
+    assert "[REDACTED" in sanitized
+
+

@@ -1,13 +1,15 @@
 /**
  * src/components/Sidebar.jsx
- * PharmaShield — Dark Mode Admin Sidebar with Neon Lime Green Accents (#c8f93a).
- * Mengacu pada referensi UI/UX: Tombol aktif berbentuk kapsul hijau neon terang dengan teks hitam.
+ * PharmaShield — Adaptive Admin Sidebar (Ocean Blue in Light Mode, Lime Green in Dark Mode).
+ * Includes AKSESIBILITAS menu section below PENGATURAN.
  */
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSidebar } from './AdminShell';
+import { useAccessibility } from '@/lib/AccessibilityContext';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function IconScanner() {
@@ -66,14 +68,33 @@ function ShieldIcon() {
     </svg>
   );
 }
+function IconInteraction() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0">
+      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      <circle cx="18" cy="18" r="3"/>
+      <circle cx="6" cy="6" r="3"/>
+    </svg>
+  );
+}
+function IconAccessibility() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 shrink-0">
+      <circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+      <path d="M5 8h14M9 22V12l3-3 3 3v10"/>
+      <path d="M7 22l2-5M17 22l-2-5"/>
+    </svg>
+  );
+}
 
 // ─── Nav items ────────────────────────────────────────────────────────────────
 const NAV_ITEMS = [
-  { href: '/',          label: 'Dasbor / Scanner',  badge: null,       Icon: IconScanner   },
-  { href: '/medicines', label: 'Datasheet Obat ID', badge: 'Indonesia', Icon: IconDatasheet },
-  { href: '/history',   label: 'Riwayat Pindai',    badge: null,       Icon: IconHistory   },
-  { href: '/analytics', label: 'Analitik & Grafik', badge: null,       Icon: IconAnalytics },
-  { href: '/settings',  label: 'Pengaturan',        badge: null,       Icon: IconSettings  },
+  { href: '/',             label: 'Dashboard / Scanner', badge: null,         Icon: IconScanner     },
+  { href: '/interactions', label: 'Cek Interaksi Obat',  badge: 'Fitur Baru', Icon: IconInteraction },
+  { href: '/medicines',    label: 'Datasheet Obat ID',    badge: 'Indonesia',  Icon: IconDatasheet   },
+  { href: '/history',      label: 'Riwayat Pindai',       badge: null,         Icon: IconHistory     },
+  { href: '/analytics',    label: 'Analitik & Grafik',    badge: null,         Icon: IconAnalytics   },
+  { href: '/settings',     label: 'Pengaturan',           badge: null,         Icon: IconSettings    },
 ];
 
 // ─── Nav link ──────────────────────────────────────────────────────────────────
@@ -91,8 +112,8 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
         'relative flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1',
         'text-xs font-bold transition-all duration-180 group',
         isActive
-          ? 'bg-[#c8f93a] text-[#0c1004] shadow-md shadow-[#c8f93a]/20 font-extrabold'
-          : 'text-neutral-400 hover:text-white hover:bg-white/[0.06]',
+          ? 'bg-[#0284c7] text-white shadow-md shadow-sky-500/25 font-extrabold dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/20'
+          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.06]',
       ].join(' ')}
     >
       <div className="flex items-center gap-3 min-w-0">
@@ -105,11 +126,11 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
       {!collapsed && (
         <div>
           {isActive ? (
-            <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-black/80 text-[#c8f93a]">
+            <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/30 dark:bg-black/80 dark:text-[#c8f93a] dark:border-transparent">
               Aktif
             </span>
           ) : badge ? (
-            <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-white/10 text-neutral-300">
+            <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-slate-600 dark:text-neutral-300">
               {badge}
             </span>
           ) : null}
@@ -119,9 +140,46 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
   );
 }
 
+// ─── Accessibility Button (special — triggers modal, not route) ───────────────
+function A11yNavButton({ collapsed }) {
+  const { toggleA11yModal } = useSidebar();
+  const { activeCount } = useAccessibility();
+
+  return (
+    <button
+      type="button"
+      onClick={toggleA11yModal}
+      title={collapsed ? 'Aksesibilitas' : undefined}
+      aria-label="Buka pengaturan aksesibilitas"
+      className="relative w-full flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1 text-xs font-bold transition-all duration-150 text-[#0284c7] hover:bg-sky-50 hover:text-[#0369a1] dark:text-[#38BDF8] dark:hover:bg-[#38BDF8]/10 dark:hover:text-[#7DD3FC] group"
+      style={{ width: 'calc(100% - 24px)' }}
+    >
+      <div className="flex items-center gap-3 min-w-0">
+        <IconAccessibility />
+        {!collapsed && <span className="truncate">Aksesibilitas</span>}
+      </div>
+
+      {!collapsed && activeCount > 0 && (
+        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#0284c7] text-white dark:bg-[#38BDF8] dark:text-[#05080E] text-[10px] font-black shrink-0">
+          {activeCount}
+        </span>
+      )}
+
+      {/* Collapsed mode: show count badge as corner dot */}
+      {collapsed && activeCount > 0 && (
+        <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#0284c7] text-white dark:bg-[#38BDF8] dark:text-[#05080E] text-[9px] font-black flex items-center justify-center">
+          {activeCount}
+        </span>
+      )}
+    </button>
+  );
+}
+
 // ─── Main Sidebar Component ───────────────────────────────────────────────────
 export default function Sidebar() {
   const { collapsed, mobileOpen, toggleCollapse, closeMobile } = useSidebar();
+  const router = useRouter();
+  const [sidebarSearch, setSidebarSearch] = useState('');
 
   return (
     <aside
@@ -137,41 +195,52 @@ export default function Sidebar() {
         'flex items-center border-b border-[var(--color-border)] shrink-0',
         collapsed ? 'justify-center px-0 py-4 h-16' : 'gap-3 px-5 py-4 h-16',
       ].join(' ')}>
-        <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#c8f93a] text-[#0c1004] font-black shadow-lg shadow-[#c8f93a]/25 shrink-0">
+        <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0284c7] text-white shadow-lg shadow-sky-500/25 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/25 font-black shrink-0">
           <ShieldIcon />
         </div>
         {!collapsed && (
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-white font-black text-base tracking-tight truncate">PharmaShield</span>
-              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#c8f93a]/15 text-[#c8f93a] border border-[#c8f93a]/30">ID</span>
+              <span className="text-[var(--color-text-primary)] font-black text-base tracking-tight truncate">PharmaShield</span>
+              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30">ID</span>
             </div>
-            <p className="text-neutral-500 text-[10px] font-medium tracking-wide">Dark Neon Dashboard</p>
+            <p className="text-[var(--color-text-muted)] text-[10px] font-medium tracking-wide">Healthcare Dashboard</p>
           </div>
         )}
       </div>
 
-      {/* ── Search in Sidebar (Like Reference) ── */}
+      {/* ── Search in Sidebar ── */}
       {!collapsed && (
-        <div className="px-3 pt-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (sidebarSearch.trim()) {
+              router.push(`/medicines?q=${encodeURIComponent(sidebarSearch.trim())}`);
+              closeMobile();
+            }
+          }}
+          className="px-3 pt-4"
+        >
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xs">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-neutral-500 text-xs pointer-events-none">
               🔍
             </span>
             <input
               type="text"
-              readOnly
-              placeholder="Cari fitur... (Ctrl+K)"
-              className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-black/40 border border-[var(--color-border)] text-neutral-400 placeholder-neutral-600 cursor-default"
+              value={sidebarSearch}
+              onChange={(e) => setSidebarSearch(e.target.value)}
+              placeholder="Cari obat... (Enter)"
+              className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] focus:ring-1 focus:ring-[#0284c7] dark:bg-black/40 dark:border-[var(--color-border)] dark:text-[var(--color-text-primary)] dark:placeholder-[var(--color-text-muted)] dark:focus:border-[#c8f93a] dark:focus:ring-[#c8f93a] transition-all"
             />
           </div>
-        </div>
+        </form>
       )}
 
       {/* ── Navigation ── */}
       <nav className="flex-1 overflow-y-auto overflow-x-hidden py-3" aria-label="Main navigation">
+        {/* MENU UTAMA */}
         {!collapsed && (
-          <p className="px-5 pt-3 pb-1 text-[10px] font-extrabold uppercase tracking-widest text-neutral-500">
+          <p className="px-5 pt-3 pb-1 text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-neutral-500">
             Menu Utama
           </p>
         )}
@@ -186,6 +255,17 @@ export default function Sidebar() {
             onClick={closeMobile}
           />
         ))}
+
+        {/* AKSESIBILITAS section */}
+        <div className="mt-3">
+          {!collapsed && (
+            <p className="px-5 pt-3 pb-1 text-[10px] font-extrabold uppercase tracking-widest text-[#0284c7]/70 dark:text-[#38BDF8]/60">
+              Aksesibilitas
+            </p>
+          )}
+          {collapsed && <div className="mx-3 my-2 border-t border-[var(--color-border)]" />}
+          <A11yNavButton collapsed={collapsed} />
+        </div>
       </nav>
 
       {/* ── Collapse toggle (desktop only) ── */}
@@ -195,7 +275,7 @@ export default function Sidebar() {
           aria-label={collapsed ? 'Perluas sidebar' : 'Perkecil sidebar'}
           className={[
             'w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl',
-            'text-neutral-400 hover:text-white hover:bg-white/5',
+            'text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/5',
             'text-xs font-bold transition-all duration-150',
           ].join(' ')}
         >
@@ -208,15 +288,15 @@ export default function Sidebar() {
 
       {/* ── System status badge ── */}
       {!collapsed && (
-        <div className="mx-3 mb-4 px-4 py-3 rounded-2xl bg-[#161922] border border-[var(--color-border)] shrink-0">
+        <div className="mx-3 mb-4 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-[#161922] dark:border-[var(--color-border)] shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#c8f93a] animate-pulse-dot" aria-hidden="true" />
-              <span className="text-[11px] font-bold text-neutral-200">AI Guard &amp; OCR</span>
+              <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse-dot" aria-hidden="true" />
+              <span className="text-[11px] font-bold text-slate-800 dark:text-neutral-200">AI Guard &amp; OCR</span>
             </div>
-            <span className="text-[9px] font-bold text-[#c8f93a] uppercase">Siap</span>
+            <span className="text-[9px] font-bold text-[#0284c7] dark:text-[#c8f93a] uppercase">Siap</span>
           </div>
-          <p className="text-[10px] text-neutral-500 mt-1 leading-tight">
+          <p className="text-[10px] text-slate-500 dark:text-neutral-500 mt-1 leading-tight">
             Database obat umum Indonesia tersinkronisasi.
           </p>
         </div>

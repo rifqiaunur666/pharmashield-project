@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.config import settings
 from app.api.endpoints import router as api_router
+from app.api.ai_endpoints import router as ai_router
 
 # ─── Logging Setup ────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -63,6 +64,9 @@ app.add_middleware(
 # ─── Routers ──────────────────────────────────────────────────────────────────
 # Primary strict prefix: /api/scan-medicine, /api/history, /api/stats
 app.include_router(api_router, prefix="/api", tags=["PharmaShield API"])
+
+# AI Vision Scanner & Chatbot: /api/ai/scan-vision, /api/ai/chat, /api/ai/status
+app.include_router(ai_router, prefix="/api", tags=["AI Vision & Chatbot"])
 
 # Direct fallback without /api prefix for maximum client resilience
 app.include_router(api_router, tags=["Direct Routes (Convenience)"])
