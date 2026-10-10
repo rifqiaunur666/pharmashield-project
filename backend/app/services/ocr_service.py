@@ -21,7 +21,11 @@ import shutil
 from pathlib import Path
 from typing import Any, TypedDict
 
-import cv2
+try:
+    import cv2
+except Exception as _cv_err:
+    cv2 = None
+
 import numpy as np
 import pytesseract
 from PIL import Image
@@ -30,6 +34,9 @@ from app.config import settings
 from app.services.matching_service import verification_engine, VerificationResult
 
 logger = logging.getLogger(__name__)
+
+if cv2 is None:
+    logger.warning("[OCR] OpenCV (cv2) not available, pure Pillow fallback active.")
 
 # ─── Tesseract & RapidOCR Configuration ─────────────────────────────────────
 pytesseract.pytesseract.tesseract_cmd = settings.tesseract_cmd
@@ -223,6 +230,8 @@ def _correct_skew(image: np.ndarray) -> tuple[np.ndarray, float]:
     Detect text skew angle and rotate image to align horizontally.
     Uses edge detection and minAreaRect on text regions.
     """
+    if cv2 is None:
+        return image, 0.0
     try:
         # Binarize for contour analysis
         _, thresh = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
@@ -346,6 +355,12 @@ def preprocess_image_pipeline(image_bytes: bytes) -> tuple[np.ndarray, list[str]
     9. Adaptive Gaussian Thresholding
     """
     applied_steps = []
+
+    if cv2 is None:
+        from io import BytesIO
+        pil_img = Image.open(BytesIO(image_bytes)).convert("RGB")
+        gray_img = pil_img.convert("L")
+        return [pil_img, gray_img], ["Pure Pillow Fallback (OpenCV system libraries not found)"]
 
     # 1. Decode multi-format bytes (JPG, PNG, WEBP)
     nparr = np.frombuffer(image_bytes, np.uint8)

@@ -2,9 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies (libgomp for onnxruntime, tesseract for OCR)
+# Install system dependencies (libgomp for onnxruntime, libgl1/libglib for opencv, tesseract for OCR)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
+    libgl1 \
+    libglib2.0-0 \
     tesseract-ocr \
     tesseract-ocr-ind \
     curl \

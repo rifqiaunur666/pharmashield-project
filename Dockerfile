@@ -3,9 +3,11 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies (libgomp for onnxruntime, tesseract for OCR)
+# Install system dependencies (libgomp for onnxruntime, libgl1/libglib for opencv, tesseract for OCR)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
+    libgl1 \
+    libglib2.0-0 \
     tesseract-ocr \
     tesseract-ocr-ind \
     curl \
@@ -24,7 +26,7 @@ COPY backend/ ./
 # Copy python runner script
 COPY run.py ./run.py
 
-# Configure environment (Railway defaults to 8080)
+# Configure environment
 ENV PORT=8080
 ENV TESSERACT_CMD=/usr/bin/tesseract
 ENV PYTHONUNBUFFERED=1
