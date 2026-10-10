@@ -1,0 +1,3 @@
+# Exclude backend and python environment from Vercel deployment
+backend/
+.venv/
