@@ -14,8 +14,17 @@ if __name__ == "__main__":
     except (ValueError, TypeError):
         port = 8000
 
-    print(f"==================================================")
-    print(f"  PharmaShield API starting on 0.0.0.0:{port}     ")
-    print(f"==================================================")
+    print("==================================================")
+    print(f"  PharmaShield API starting on 0.0.0.0:{port}")
+    print("==================================================", flush=True)
 
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port, workers=1)
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=port,
+        workers=1,
+        proxy_headers=True,
+        forwarded_allow_ips="*",
+        timeout_keep_alive=65,
+        access_log=True,
+    )

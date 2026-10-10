@@ -1,3 +1,9 @@
 # Exclude backend and python environment from Vercel deployment
 backend/
 .venv/
+requirements.txt
+start.sh
+Procfile
+Dockerfile
+.dockerignore
+run.py
