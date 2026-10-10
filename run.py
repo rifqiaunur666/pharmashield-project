@@ -11,11 +11,12 @@ if os.path.exists(backend_dir):
 import uvicorn
 
 if __name__ == "__main__":
-    raw_port = os.environ.get("PORT", "8000")
+    # Railway defaults to 8080 or injects PORT dynamically
+    raw_port = os.environ.get("PORT", "8080")
     try:
         port = int(raw_port)
     except (ValueError, TypeError):
-        port = 8000
+        port = 8080
 
     print("==================================================")
     print(f"  PharmaShield API starting on 0.0.0.0:{port}")

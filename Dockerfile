@@ -24,11 +24,12 @@ COPY backend/ ./
 # Copy python runner script
 COPY run.py ./run.py
 
-# Configure environment
-ENV PORT=8000
+# Configure environment (Railway defaults to 8080)
+ENV PORT=8080
 ENV TESSERACT_CMD=/usr/bin/tesseract
 ENV PYTHONUNBUFFERED=1
 
+EXPOSE 8080
 EXPOSE 8000
 
 # Start FastAPI server via robust Python runner
