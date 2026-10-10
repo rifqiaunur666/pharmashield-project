@@ -1,129 +1,155 @@
 /**
  * src/app/history/page.jsx
- * PharmaShield — Scan History page.
- * Reads from localStorage (lib/history.js), with manual refresh + clear all.
+ * PharmaShield — Log & Riwayat Pemindaian Obat (Dark Mode & Neon Lime Style).
+ * Bersih tanpa pelacak kedaluwarsa.
  */
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import HistoryTable from '@/components/HistoryTable';
-import { getHistory, removeHistory, clearHistory } from '@/lib/history';
+import { fetchHistory, deleteHistoryItem, clearAllHistory } from '@/lib/api';
 
-// ─── Page header ──────────────────────────────────────────────────────────────
-function PageHeader({ count, onClear, onRefresh, isLoading }) {
-  return (
-    <div className="flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-black">
-          📋 Riwayat Pemindaian
-        </h1>
-        <p className="mt-1 text-sm text-neutral-500">
-          {count > 0
-            ? `${count} obat terakhir disimpan di perangkat ini (maks. 50).`
-            : 'Belum ada riwayat. Pindai obat di halaman Scanner.'}
-        </p>
-      </div>
-
-      <div className="flex items-center gap-2 shrink-0">
-        {/* Refresh button */}
-        <button
-          onClick={onRefresh}
-          disabled={isLoading}
-          aria-label="Muat ulang riwayat"
-          className={[
-            'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all',
-            'border border-slate-200 bg-white text-neutral-700',
-            'hover:bg-neutral-50 hover:border-slate-300 active:scale-95',
-            isLoading && 'opacity-50 cursor-not-allowed',
-          ].join(' ')}
-        >
-          <span
-            className={`text-base leading-none ${isLoading ? 'animate-spin' : ''}`}
-            aria-hidden="true"
-          >
-            ↻
-          </span>
-          Segarkan
-        </button>
-
-        {/* Clear all */}
-        {count > 0 && (
-          <button
-            onClick={onClear}
-            className={[
-              'px-3.5 py-2 rounded-xl text-sm font-semibold transition-all',
-              'border border-rose-200 bg-rose-50 text-rose-700',
-              'hover:bg-rose-100 active:scale-95',
-            ].join(' ')}
-          >
-            Hapus Semua
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── Main page ────────────────────────────────────────────────────────────────
 export default function HistoryPage() {
-  const [items,     setItems]     = useState([]);
+  const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
 
-  const loadHistory = useCallback(() => {
+  const loadHistory = useCallback(async () => {
     setIsLoading(true);
-    // Simulate async feel (localStorage is sync, but UX is cleaner)
-    setTimeout(() => {
-      setItems(getHistory());
+    setError(null);
+    try {
+      const data = await fetchHistory();
+      setItems(data.items);
+    } catch (err) {
+      console.error('[History] Failed loading:', err);
+      setError(err.message || 'Gagal mengambil data riwayat pemindaian.');
+    } finally {
       setIsLoading(false);
-    }, 250);
+    }
   }, []);
 
   useEffect(() => {
     loadHistory();
   }, [loadHistory]);
 
-  const handleRemove = useCallback((id) => {
-    setItems(removeHistory(id));
+  const handleRemove = useCallback(async (id) => {
+    if (!id) return;
+    const ok = await deleteHistoryItem(id);
+    if (ok) {
+      setItems((prev) => prev.filter((i) => (i.id || i.scan_id) !== id));
+    } else {
+      alert('Gagal menghapus entri riwayat.');
+    }
   }, []);
 
-  const handleClear = useCallback(() => {
-    if (!window.confirm('Hapus semua riwayat pemindaian? Tindakan ini tidak dapat dibatalkan.')) return;
-    setItems(clearHistory());
+  const handleClear = useCallback(async () => {
+    if (!window.confirm('Hapus semua riwayat pemindaian? Tindakan ini permanen.')) return;
+    const ok = await clearAllHistory();
+    if (ok) {
+      setItems([]);
+    } else {
+      alert('Gagal membersihkan riwayat.');
+    }
   }, []);
+
+  // Filtered items by search query & status
+  const filteredItems = useMemo(() => {
+    return items.filter((item) => {
+      const name = (item.name || item.medicine_name || '').toLowerCase();
+      const purpose = (item.purpose || '').toLowerCase();
+      const q = searchQuery.toLowerCase();
+      const matchesSearch = !q || name.includes(q) || purpose.includes(q);
+
+      const status = item.status || 'yellow';
+      const matchesStatus = statusFilter === 'all' || status === statusFilter;
+
+      return matchesSearch && matchesStatus;
+    });
+  }, [items, searchQuery, statusFilter]);
 
   return (
     <div className="space-y-6">
-      <PageHeader
-        count={items.length}
-        onClear={handleClear}
-        onRefresh={loadHistory}
-        isLoading={isLoading}
-      />
+      {/* ── Page Header ── */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-black tracking-tight text-white">
+            📋 Log &amp; Riwayat Pemindaian
+          </h1>
+          <p className="mt-1 text-sm text-neutral-400">
+            Daftar lengkap hasil OCR label obat, indikasi klinis, dan status evaluasi keamanan.
+          </p>
+        </div>
 
-      {/* Loading skeleton */}
-      {isLoading ? (
-        <div className="animate-pulse rounded-2xl border border-slate-200 overflow-hidden">
-          <div className="h-10 bg-neutral-50 border-b border-slate-200" />
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex gap-4 px-4 py-3.5 border-b border-slate-100">
-              <div className="h-4 w-28 bg-neutral-100 rounded" />
-              <div className="h-4 flex-1 bg-neutral-100 rounded" />
-              <div className="h-4 w-20 bg-neutral-100 rounded" />
-              <div className="h-4 w-16 bg-neutral-100 rounded" />
-            </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={loadHistory}
+            disabled={isLoading}
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-[var(--color-border)] bg-[#161922] text-neutral-300 hover:text-white hover:border-[#c8f93a]/30 transition-all"
+          >
+            <span className={isLoading ? 'animate-spin' : ''}>↻</span>
+            <span>Segarkan</span>
+          </button>
+
+          {items.length > 0 && (
+            <button
+              onClick={handleClear}
+              className="px-3.5 py-2 text-xs font-bold rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 transition-all"
+            >
+              Hapus Semua
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* ── Filter & Search Bar ── */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Cari nama obat, indikasi..."
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-[var(--color-border)] bg-[#161922] text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#c8f93a] focus:ring-1 focus:ring-[#c8f93a] transition-all"
+          />
+        </div>
+
+        <div className="flex items-center gap-2">
+          {[
+            { id: 'all', label: 'Semua' },
+            { id: 'green', label: '🟢 Aman' },
+            { id: 'yellow', label: '🟡 Perhatian' },
+            { id: 'red', label: '🔴 Peringatan' },
+          ].map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => setStatusFilter(id)}
+              className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${
+                statusFilter === id
+                  ? 'bg-[#c8f93a] text-[#0c1004] border-[#c8f93a] font-extrabold shadow-md shadow-[#c8f93a]/20'
+                  : 'bg-[#161922] text-neutral-400 border-[var(--color-border)] hover:text-white'
+              }`}
+            >
+              {label}
+            </button>
           ))}
         </div>
-      ) : (
-        <HistoryTable items={items} onRemove={handleRemove} />
+      </div>
+
+      {/* Error alert */}
+      {error && (
+        <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-xs text-rose-300">
+          {error}
+        </div>
       )}
 
-      {/* Disclaimer */}
-      {!isLoading && (
-        <p className="text-xs text-center text-neutral-400">
-          Riwayat disimpan secara lokal di browser ini. Membersihkan cache atau
-          menggunakan browser berbeda akan menghapus riwayat.
-        </p>
-      )}
+      {/* Table */}
+      <HistoryTable
+        items={filteredItems}
+        onRemove={handleRemove}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

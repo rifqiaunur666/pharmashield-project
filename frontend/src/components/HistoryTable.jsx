@@ -1,138 +1,153 @@
 /**
  * src/components/HistoryTable.jsx
- * PharmaShield — Responsive monochrome scan history table.
- *
- * Props:
- *   items:    object[]       — Array of history entries (from lib/history.js)
- *   onRemove: (id) => void   — Called when user deletes a row
+ * PharmaShield — Dark Mode History Table populated via GET /api/history.
+ * Bersih tanpa pelacak atau kolom kedaluwarsa.
  */
 'use client';
 
 import StatusBadge from './StatusBadge';
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
 function formatTimestamp(iso) {
   if (!iso) return '—';
-  return new Date(iso).toLocaleString('id-ID', {
-    day:    '2-digit',
-    month:  'short',
-    year:   'numeric',
-    hour:   '2-digit',
-    minute: '2-digit',
-  });
+  try {
+    return new Date(iso).toLocaleString('id-ID', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  } catch {
+    return iso;
+  }
 }
-
-function formatExpiry(s) {
-  if (!s) return '—';
-  const t = Date.parse(s);
-  return Number.isNaN(t) ? s : new Date(t).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
-}
-
-// ─── Empty state ──────────────────────────────────────────────────────────────
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center gap-4 py-16 text-center text-neutral-400">
-      <span className="text-5xl" aria-hidden="true">📋</span>
+    <div className="flex flex-col items-center gap-3 py-14 text-center text-neutral-400 bg-[#161922] rounded-2xl border border-dashed border-[var(--color-border)]">
+      <span className="text-4xl" aria-hidden="true">📋</span>
       <div>
-        <p className="font-semibold text-neutral-600">Belum ada riwayat pemindaian</p>
-        <p className="mt-1 text-sm">Pindai kemasan obat di halaman Scanner untuk memulai.</p>
+        <p className="font-extrabold text-neutral-200 text-sm">Belum ada riwayat pemindaian</p>
+        <p className="mt-1 text-xs text-neutral-500 max-w-sm">
+          Pindai kemasan obat untuk mencatat riwayat pemindaian dan evaluasi keamanan otomatis.
+        </p>
       </div>
     </div>
   );
 }
 
-// ─── Table row ────────────────────────────────────────────────────────────────
+function HistoryRow({ item, onRemove, onSelect }) {
+  const statusKey = item.status || 'yellow';
 
-function HistoryRow({ item, onRemove }) {
   return (
-    <tr className="group border-b border-slate-100 hover:bg-neutral-50 transition-colors">
+    <tr className="group border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
       {/* Timestamp */}
-      <td className="py-3 px-4 text-xs text-neutral-500 whitespace-nowrap">
-        {formatTimestamp(item.scannedAt)}
+      <td className="py-3.5 px-4 text-xs text-neutral-400 whitespace-nowrap font-mono">
+        {formatTimestamp(item.scannedAt || item.scanned_at)}
       </td>
 
-      {/* Medicine name */}
-      <td className="py-3 px-4">
-        <span className="font-semibold text-sm text-black">
-          {item.name ?? <span className="italic text-neutral-400">Tidak dikenali</span>}
-        </span>
-        {item.purpose && (
-          <p className="text-xs text-neutral-500 mt-0.5 line-clamp-1">{item.purpose}</p>
-        )}
-      </td>
-
-      {/* Expiry date */}
-      <td className="py-3 px-4 text-sm whitespace-nowrap">
-        {item.expiryDate ? (
-          <span className={item.expired ? 'text-rose-600 font-semibold' : 'text-neutral-700'}>
-            {formatExpiry(item.expiryDate)}
-            {item.expired && (
-              <span className="ml-1.5 text-[10px] font-bold uppercase tracking-wide bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded-full">
-                Exp
-              </span>
+      {/* Medicine Name */}
+      <td className="py-3.5 px-4">
+        <div className="flex flex-col">
+          <span className="font-extrabold text-sm text-white group-hover:text-[#c8f93a] transition-colors line-clamp-1">
+            {item.name || item.medicine_name || (
+              <span className="italic text-neutral-500">Tidak Teridentifikasi</span>
             )}
           </span>
-        ) : (
-          <span className="text-neutral-400">—</span>
-        )}
+          <span className="text-[11px] text-neutral-400 mt-0.5 line-clamp-1">
+            {item.purpose || 'Pengobatan / Suplemen'}
+          </span>
+        </div>
       </td>
 
-      {/* Status */}
-      <td className="py-3 px-4">
-        {item.identified
-          ? <StatusBadge status={item.status} size="sm" />
-          : <span className="text-xs text-neutral-400 italic">—</span>}
+      {/* Kategori / Indikasi (Menggantikan kolom kedaluwarsa) */}
+      <td className="py-3.5 px-4 text-xs text-neutral-300 whitespace-nowrap">
+        <span className="inline-block px-2.5 py-1 rounded-lg bg-black/40 border border-white/5 text-neutral-300">
+          {item.purpose ? item.purpose.slice(0, 32) : 'Umum'}
+        </span>
       </td>
 
-      {/* Delete action */}
-      <td className="py-3 px-4 text-right">
-        <button
-          onClick={() => onRemove(item.id)}
-          aria-label={`Hapus riwayat ${item.name ?? 'entri ini'}`}
-          className="text-neutral-300 hover:text-rose-500 transition-colors opacity-0 group-hover:opacity-100 focus-visible:opacity-100 p-1 rounded"
-        >
-          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-            <path fillRule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l.3-7.5z" clipRule="evenodd" />
-          </svg>
-        </button>
+      {/* Status Keamanan */}
+      <td className="py-3.5 px-4 whitespace-nowrap">
+        <StatusBadge status={statusKey} size="sm" />
+      </td>
+
+      {/* Keterangan Evaluasi */}
+      <td className="py-3.5 px-4 text-xs text-neutral-400 max-w-xs hidden md:table-cell">
+        <p className="line-clamp-1">
+          {item.shelfLifeNote || item.shelf_life_note || item.recommendation || 'Evaluasi standar'}
+        </p>
+      </td>
+
+      {/* Actions */}
+      <td className="py-3.5 px-4 text-right whitespace-nowrap">
+        <div className="flex items-center justify-end gap-1.5">
+          {onSelect && (
+            <button
+              onClick={() => onSelect(item)}
+              aria-label="Lihat detail"
+              className="text-xs font-bold px-3 py-1.5 rounded-xl text-[#c8f93a] bg-[#c8f93a]/10 hover:bg-[#c8f93a] hover:text-[#0c1004] transition-all"
+            >
+              Lihat
+            </button>
+          )}
+          {onRemove && (
+            <button
+              onClick={() => onRemove(item.id || item.scan_id)}
+              aria-label={`Hapus entri ${item.name || 'ini'}`}
+              className="p-1.5 rounded-xl text-neutral-500 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+              title="Hapus baris ini"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
+          )}
+        </div>
       </td>
     </tr>
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
-
-export default function HistoryTable({ items = [], onRemove }) {
-  if (!items.length) return <EmptyState />;
+export default function HistoryTable({ items = [], onRemove, onSelect, isLoading = false }) {
+  if (!items.length && !isLoading) {
+    return <EmptyState />;
+  }
 
   return (
-    <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+    <div className="rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card-bg)] shadow-md">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse" aria-label="Tabel riwayat pemindaian obat">
           <thead>
-            <tr className="bg-neutral-50 border-b border-slate-200">
-              <th className="py-2.5 px-4 text-[11px] font-bold uppercase tracking-widest text-neutral-400">
-                Waktu
+            <tr className="bg-[#11141b] border-b border-[var(--color-border)]">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+                Waktu Pindai
               </th>
-              <th className="py-2.5 px-4 text-[11px] font-bold uppercase tracking-widest text-neutral-400">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
                 Nama Obat
               </th>
-              <th className="py-2.5 px-4 text-[11px] font-bold uppercase tracking-widest text-neutral-400">
-                Kedaluwarsa
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+                Indikasi
               </th>
-              <th className="py-2.5 px-4 text-[11px] font-bold uppercase tracking-widest text-neutral-400">
-                Status
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">
+                Status Keamanan
               </th>
-              <th className="py-2.5 px-4 text-[11px] font-bold uppercase tracking-widest text-neutral-400 text-right">
-                Hapus
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 hidden md:table-cell">
+                Keterangan
+              </th>
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 text-right">
+                Aksi
               </th>
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
-              <HistoryRow key={item.id} item={item} onRemove={onRemove} />
+            {items.map((item, idx) => (
+              <HistoryRow
+                key={item.id || item.scan_id || idx}
+                item={item}
+                onRemove={onRemove}
+                onSelect={onSelect}
+              />
             ))}
           </tbody>
         </table>

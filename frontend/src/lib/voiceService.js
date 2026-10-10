@@ -1,32 +1,33 @@
 /**
  * src/lib/voiceService.js
  * PharmaShield — Web Speech API wrapper for Indonesian (id-ID) TTS.
+ * Bersih dari narasi kedaluwarsa. Membaca nama obat, indikasi, dosis, dan petunjuk pemakaian.
  */
 
 /**
- * Build the full TTS script from a normalised medicine result.
- * @param {import('./api').NormalisedResult} result
+ * Builds spoken script in Indonesian from the evaluation result.
+ * @param {object} result - Normalized scan result
  * @returns {string}
  */
 export function buildSpeechText(result) {
-  const STATUS_LABELS = {
-    green:  'Aman untuk digunakan',
-    yellow: 'Harap berhati-hati, baca petunjuk dengan seksama',
-    red:    'Berbahaya atau sudah kedaluwarsa, jangan digunakan',
+  if (!result) return '';
+
+  const statusVoiceovers = {
+    green: 'Status: Aman. Obat aman dikonsumsi sesuai petunjuk dan indikasi.',
+    yellow: 'Status: Perhatian. Harap perhatikan petunjuk dosis atau konsultasikan dengan apoteker.',
+    red: 'Status: Peringatan. Informasi kemasan tidak terbaca jelas atau terdapat kontraindikasi khusus.',
   };
 
+  const statusText = statusVoiceovers[result.status] || (
+    result.statusId ? `Status: ${result.statusId}.` : ''
+  );
+
   const parts = [
-    result.name && `Informasi obat ${result.name}.`,
-    result.purpose && `Fungsi: ${result.purpose}.`,
-    result.usage && `Aturan penggunaan: ${result.usage}.`,
-    result.ingredients?.length && `Kandungan: ${result.ingredients.join(', ')}.`,
-    result.sideEffects?.length && `Efek samping: ${result.sideEffects.join('. ')}.`,
-    result.warnings?.length && `Peringatan: ${result.warnings.join('. ')}.`,
-    result.expiryDate &&
-      (result.expired
-        ? `Obat ini sudah kedaluwarsa. Jangan digunakan.`
-        : `Berlaku hingga ${result.expiryDate}.`),
-    result.status && `Status keamanan: ${STATUS_LABELS[result.status] ?? result.status}.`,
+    result.name ? `Hasil pemindaian obat: ${result.name}.` : 'Kemasan obat terdeteksi.',
+    statusText,
+    result.purpose ? `Indikasi: ${result.purpose}.` : null,
+    result.recommendation ? `Rekomendasi: ${result.recommendation}.` : null,
+    result.usage ? `Aturan pakai: ${result.usage}.` : null,
   ].filter(Boolean);
 
   return parts.join(' ');
@@ -34,19 +35,21 @@ export function buildSpeechText(result) {
 
 /**
  * Speak the given text in Indonesian using the Web Speech API.
- * Returns a cleanup function that cancels speech.
+ * Returns a cancel function.
  *
- * @param {string}   text
- * @param {object}  [options]
- * @param {number}  [options.rate=0.92]    - Speech rate (0.1–10)
- * @param {number}  [options.pitch=1]      - Voice pitch (0–2)
- * @param {()=>void} [options.onEnd]       - Called when speech ends naturally
- * @returns {()=>void} cancel function
+ * @param {string} text
+ * @param {object} [options]
+ * @param {number} [options.rate=0.92]
+ * @param {number} [options.pitch=1]
+ * @param {()=>void} [options.onEnd]
+ * @returns {()=>void}
  */
 export function speak(text, { rate = 0.92, pitch = 1, onEnd } = {}) {
-  const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
-  if (!synth) return () => {};
+  if (typeof window === 'undefined' || !window.speechSynthesis) {
+    return () => {};
+  }
 
+  const synth = window.speechSynthesis;
   synth.cancel();
 
   const utterance = new SpeechSynthesisUtterance(text);
@@ -54,16 +57,25 @@ export function speak(text, { rate = 0.92, pitch = 1, onEnd } = {}) {
   utterance.rate = rate;
   utterance.pitch = pitch;
 
-  if (onEnd) utterance.onend = onEnd;
+  // Attempt to select an Indonesian voice if available
+  const voices = synth.getVoices();
+  const idVoice = voices.find((v) => v.lang.startsWith('id') || v.lang.includes('ID'));
+  if (idVoice) {
+    utterance.voice = idVoice;
+  }
+
+  if (onEnd) {
+    utterance.onend = onEnd;
+    utterance.onerror = onEnd;
+  }
 
   synth.speak(utterance);
-
   return () => synth.cancel();
 }
 
-/** Cancel any ongoing speech. */
+/** Cancel any active speech synthesis. */
 export function cancelSpeech() {
-  if (typeof window !== 'undefined') {
-    window.speechSynthesis?.cancel();
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.cancel();
   }
 }

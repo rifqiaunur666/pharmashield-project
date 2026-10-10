@@ -2,76 +2,258 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Custom selection ─────────────────────────────────── */
-::selection {
-  background: #000;
-  color: #fff;
+/* ─── CSS Variables (Dark Neon Green Dashboard Theme) ─────────────────────── */
+:root {
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
+  
+  /* Primary Neon Accent */
+  --color-primary: #c8f93a;
+  --color-primary-hover: #b5f524;
+  --color-primary-text: #0c1004;
+  --color-primary-glow: rgba(200, 249, 58, 0.25);
+  
+  /* Status Colors */
+  --color-success: #c8f93a;
+  --color-warning: #facc15;
+  --color-danger: #fb7185;
+  --color-info: #38bdf8;
+  
+  /* Dark Surfaces */
+  --color-body-bg: #0c0e12;
+  --color-sidebar-bg: #11141a;
+  --color-header-bg: #11141a;
+  --color-card-bg: #161922;
+  --color-card-hover: #1c202c;
+  --color-border: #232735;
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  
+  /* Text */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #8e96a4;
+  --color-text-muted: #5e6575;
+  
+  --font-main: var(--font-manrope, 'Manrope', system-ui, sans-serif);
 }
 
-/* ─── Focus ring (keyboard nav) ────────────────────────── */
-:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 3px;
-  border-radius: 4px;
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-header :focus-visible,
-footer :focus-visible {
-  outline-color: #fff;
-}
-
-/* ─── Smooth scrolling ─────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
 }
 
-/* ─── Fade-in animation ────────────────────────────────── */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-body-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-primary);
+  color: #0c1004;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in {
-    animation: none;
-  }
+/* ─── Focus Ring ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
-/* ─── Custom scrollbar (Webkit) ─────────────────────────── */
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0c0e12;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 3px;
+  background: #232735;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: #363c4f;
 }
 
-/* ─── Table: fixed layout for overflow ──────────────────── */
-table {
-  border-collapse: collapse;
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.9); }
+}
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(200, 249, 58, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 6px rgba(200, 249, 58, 0.15);
+  }
 }
 
-/* ─── Line-clamp utility (backup for older Tailwind) ─────── */
-.line-clamp-1 {
+.animate-fade-in    { animation: fade-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-pulse-dot  { animation: pulse-dot 1.8s ease-in-out infinite; }
+.animate-neon-pulse { animation: neon-pulse 2.2s ease-in-out infinite; }
+
+/* ─── Admin Layout ───────────────────────────────────────────────────────── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-body-bg);
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--color-sidebar-bg);
+  border-right: 1px solid var(--color-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.25s ease, transform 0.25s ease;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    width: var(--sidebar-width);
+  }
+}
+
+/* ─── Main Content Area ──────────────────────────────────────────────────── */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-width: 0;
+  transition: margin-left 0.25s ease;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+@media (max-width: 1024px) {
+  .main-content { margin-left: 0; }
+}
+
+/* ─── Cards & Containers ─────────────────────────────────────────────────── */
+.admin-card {
+  background: var(--color-card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.admin-card:hover {
+  border-color: rgba(200, 249, 58, 0.2);
+}
+
+/* ─── Neon Accent Button ─────────────────────────────────────────────────── */
+.btn-neon {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  font-weight: 700;
+  border-radius: 12px;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 14px var(--color-primary-glow);
+}
+.btn-neon:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 20px rgba(200, 249, 58, 0.4);
+  transform: translateY(-1px);
+}
+.btn-neon:active {
+  transform: translateY(0);
+}
+
+/* ─── Status Pills ───────────────────────────────────────────────────────── */
+.pill-neon {
+  background: rgba(200, 249, 58, 0.12);
+  color: #c8f93a;
+  border: 1px solid rgba(200, 249, 58, 0.3);
+}
+.pill-yellow {
+  background: rgba(250, 204, 21, 0.12);
+  color: #fde047;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+}
+.pill-red {
+  background: rgba(251, 113, 133, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.25);
+}
+.pill-blue {
+  background: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* ─── Scan Frame Reticle ─────────────────────────────────────────────────── */
+.scan-corner::before,
+.scan-corner::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: #c8f93a;
+  border-style: solid;
+}
+
+/* ─── Dark Mode Tables ───────────────────────────────────────────────────── */
+table { border-collapse: collapse; }
+
+.admin-table thead th {
+  background: #11141b;
+  color: #8e96a4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background-color 0.15s ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.admin-table tbody td {
+  padding: 13px 16px;
+  font-size: 13px;
+  color: #e2e8f0;
+  vertical-align: middle;
+}
+
+/* ─── Glowing Curve & Chart Utilities ────────────────────────────────────── */
+.chart-glow {
+  filter: drop-shadow(0 0 8px rgba(200, 249, 58, 0.4));
 }

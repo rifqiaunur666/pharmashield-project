@@ -1,94 +1,116 @@
 /**
  * src/components/CameraScanner.jsx
- * PharmaShield — Live webcam viewport with capture-to-Blob functionality.
- *
- * Props:
- *   onCapture(blob: Blob) — called with JPEG blob on capture
- *   isLoading: boolean    — disables button while backend processes
+ * PharmaShield — Live Webcam Viewport + File Upload Fallback with Dark Neon Green Aesthetic.
  */
 'use client';
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
-// ─── Scan-frame corners SVG overlay ──────────────────────────────────────────
 function ScanFrame() {
   return (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      {/* Top-left */}
-      <polyline points="5,18 5,5 18,5"  fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Top-right */}
-      <polyline points="82,5 95,5 95,18" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Bottom-left */}
-      <polyline points="5,82 5,95 18,95" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Bottom-right */}
-      <polyline points="82,95 95,95 95,82" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
+    <div className="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between">
+      <div className="flex justify-between items-start">
+        <div className="w-8 h-8 border-t-2 border-l-2 border-[#c8f93a] rounded-tl-lg shadow-[0_0_8px_rgba(200,249,58,0.4)]" />
+        <div className="w-8 h-8 border-t-2 border-r-2 border-[#c8f93a] rounded-tr-lg shadow-[0_0_8px_rgba(200,249,58,0.4)]" />
+      </div>
+      <div className="flex justify-center items-center">
+        <div className="w-56 h-0.5 bg-[#c8f93a] shadow-[0_0_14px_rgba(200,249,58,0.9)] animate-pulse" />
+      </div>
+      <div className="flex justify-between items-end">
+        <div className="w-8 h-8 border-b-2 border-l-2 border-[#c8f93a] rounded-bl-lg shadow-[0_0_8px_rgba(200,249,58,0.4)]" />
+        <div className="w-8 h-8 border-b-2 border-r-2 border-[#c8f93a] rounded-br-lg shadow-[0_0_8px_rgba(200,249,58,0.4)]" />
+      </div>
+    </div>
   );
 }
 
-// ─── Camera error state ───────────────────────────────────────────────────────
-function CameraError({ error, onRetry }) {
+function CameraErrorPrompt({ error, onRetry, onChooseUpload }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 p-8 text-center h-full text-white">
+    <div className="flex flex-col items-center justify-center gap-3 p-6 text-center h-full text-white bg-black/90 rounded-2xl">
       <span className="text-4xl" aria-hidden="true">📷</span>
-      <div>
-        <p className="font-bold text-sm">Kamera tidak dapat diakses</p>
-        <p className="mt-1 text-xs text-white/60">{error}</p>
+      <div className="max-w-xs space-y-1">
+        <p className="font-bold text-sm text-rose-400">Akses Kamera Terkendala</p>
+        <p className="text-xs text-neutral-400 leading-relaxed">{error}</p>
       </div>
-      <button
-        onClick={onRetry}
-        className="px-4 py-2 text-xs font-semibold bg-white text-black rounded-lg hover:bg-white/90 transition-colors"
-      >
-        Coba Lagi
-      </button>
+      <div className="flex flex-wrap gap-2 mt-2">
+        <button
+          onClick={onRetry}
+          className="px-4 py-2 text-xs font-bold bg-[#c8f93a] text-[#0c1004] rounded-xl hover:bg-[#b5f524] transition-colors"
+        >
+          Coba Kamera Lagi
+        </button>
+        <button
+          onClick={onChooseUpload}
+          className="px-4 py-2 text-xs font-bold bg-neutral-800 text-white rounded-xl hover:bg-neutral-700 transition-colors"
+        >
+          Unggah File Foto
+        </button>
+      </div>
     </div>
   );
 }
 
 export default function CameraScanner({ onCapture, isLoading }) {
-  const videoRef  = useRef(null);
+  const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const fileInputRef = useRef(null);
   const streamRef = useRef(null);
 
   const [cameraError, setCameraError] = useState(null);
   const [isCameraReady, setIsCameraReady] = useState(false);
+  const [facingMode, setFacingMode] = useState('environment'); // back camera preferred
+  const [hasCamera, setHasCamera] = useState(true);
 
-  // ── Start camera ────────────────────────────────────────────────────────────
+  // ─── Initialize Camera ──────────────────────────────────────────────────────
   const startCamera = useCallback(async () => {
     setCameraError(null);
     setIsCameraReady(false);
+
+    if (typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
+      setCameraError('Browser ini tidak mendukung akses kamera langsung. Silakan gunakan tombol unggah gambar.');
+      setHasCamera(false);
+      return;
+    }
+
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((t) => t.stop());
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: { ideal: 'environment' },
-          width:  { ideal: 1280 },
+          facingMode: { ideal: facingMode },
+          width: { ideal: 1280 },
           height: { ideal: 720 },
         },
+        audio: false,
       });
-      streamRef.current = mediaStream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-      }
-    } catch (err) {
-      const msg =
-        err.name === 'NotAllowedError'
-          ? 'Izin kamera ditolak. Aktifkan izin di pengaturan browser.'
-          : err.name === 'NotFoundError'
-          ? 'Tidak ada kamera yang terdeteksi pada perangkat ini.'
-          : `Gagal mengakses kamera: ${err.message}`;
-      setCameraError(msg);
-    }
-  }, []);
 
-  // ── Stop camera ─────────────────────────────────────────────────────────────
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+      setHasCamera(true);
+    } catch (err) {
+      console.warn('[Camera] getUserMedia failed:', err);
+      const isDenied = err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError';
+      const isNotFound = err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError';
+
+      if (isDenied) {
+        setCameraError('Izin akses kamera ditolak. Silakan izinkan di pengaturan browser.');
+      } else if (isNotFound) {
+        setCameraError('Tidak ada perangkat kamera yang terpasang.');
+      } else {
+        setCameraError(`Kamera tidak dapat dimulai (${err.message || 'Error'}). Silakan unggah file.`);
+      }
+    }
+  }, [facingMode]);
+
   const stopCamera = useCallback(() => {
-    streamRef.current?.getTracks().forEach((t) => t.stop());
-    streamRef.current = null;
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+    }
   }, []);
 
   useEffect(() => {
@@ -96,30 +118,52 @@ export default function CameraScanner({ onCapture, isLoading }) {
     return stopCamera;
   }, [startCamera, stopCamera]);
 
-  // ── Capture frame → JPEG Blob ────────────────────────────────────────────────
+  // ─── Frame Capture ──────────────────────────────────────────────────────────
   const handleCapture = useCallback(() => {
-    const video  = videoRef.current;
+    const video = videoRef.current;
     const canvas = canvasRef.current;
-    if (!video || !canvas || !isCameraReady) return;
+    if (!video || !canvas || !isCameraReady || isLoading) return;
 
-    canvas.width  = video.videoWidth  || 1280;
+    canvas.width = video.videoWidth || 1280;
     canvas.height = video.videoHeight || 720;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     canvas.toBlob(
-      (blob) => { if (blob) onCapture(blob); },
+      (blob) => {
+        if (blob) onCapture(blob);
+      },
       'image/jpeg',
       0.92,
     );
-  }, [isCameraReady, onCapture]);
+  }, [isCameraReady, isLoading, onCapture]);
+
+  // ─── File Upload Handler ────────────────────────────────────────────────────
+  const handleFileUpload = useCallback(
+    (e) => {
+      const file = e.target.files?.[0];
+      if (file && onCapture) {
+        onCapture(file);
+      }
+      if (e.target) e.target.value = '';
+    },
+    [onCapture],
+  );
+
+  const toggleFacingMode = () => {
+    setFacingMode((prev) => (prev === 'environment' ? 'user' : 'environment'));
+  };
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 w-full">
       {/* ── Viewport ── */}
-      <div className="relative w-full max-w-xl aspect-video bg-black rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+      <div className="relative w-full aspect-video bg-black rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-md flex items-center justify-center">
         {cameraError ? (
-          <CameraError error={cameraError} onRetry={startCamera} />
+          <CameraErrorPrompt
+            error={cameraError}
+            onRetry={startCamera}
+            onChooseUpload={() => fileInputRef.current?.click()}
+          />
         ) : (
           <>
             <video
@@ -129,55 +173,112 @@ export default function CameraScanner({ onCapture, isLoading }) {
               muted
               onCanPlay={() => setIsCameraReady(true)}
               className="w-full h-full object-cover"
-              aria-label="Umpan kamera langsung"
+              aria-label="Tampilan langsung kamera pemindai obat"
             />
-            {/* Scan-frame overlay */}
+
+            {/* Target Reticle Overlay with Neon Accent */}
             <ScanFrame />
-            {/* "Camera active" dot */}
-            {isCameraReady && (
-              <span className="absolute top-3 right-3 flex items-center gap-1.5 text-[10px] font-semibold text-white bg-black/50 px-2 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-                Kamera Aktif
+
+            {/* Header Status Chips inside Camera */}
+            <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+              <span className="flex items-center gap-1.5 text-[11px] font-bold text-white bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    isCameraReady ? 'bg-[#c8f93a] animate-pulse' : 'bg-amber-400'
+                  }`}
+                  aria-hidden="true"
+                />
+                {isCameraReady ? 'Kamera Aktif' : 'Menghubungkan…'}
               </span>
-            )}
+
+              {hasCamera && (
+                <button
+                  type="button"
+                  onClick={toggleFacingMode}
+                  className="pointer-events-auto p-1.5 rounded-full bg-black/70 text-white/80 hover:text-white hover:bg-black transition-colors border border-white/10"
+                  title="Ganti Kamera Depan/Belakang"
+                  aria-label="Ganti Kamera"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Instruction Banner at bottom of camera */}
+            <div className="absolute bottom-3 inset-x-3 flex justify-center pointer-events-none">
+              <span className="text-[11px] font-semibold text-neutral-200 bg-black/80 backdrop-blur-md px-3.5 py-1 rounded-full text-center border border-white/10">
+                Posisikan nama obat atau label kemasan di dalam kotak bidik neon
+              </span>
+            </div>
           </>
         )}
-        {/* Hidden canvas for capture */}
+
+        {/* Hidden Canvas & File Input */}
         <canvas ref={canvasRef} className="hidden" aria-hidden="true" />
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={handleFileUpload}
+          className="hidden"
+          aria-label="Unggah file foto obat"
+        />
       </div>
 
-      {/* ── Capture button ── */}
-      <button
-        onClick={handleCapture}
-        disabled={isLoading || !!cameraError || !isCameraReady}
-        aria-busy={isLoading}
-        className={[
-          'w-full max-w-xl py-4 px-6 rounded-2xl font-bold text-sm tracking-wide',
-          'transition-all duration-200 flex justify-center items-center gap-2.5',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2',
-          isLoading || cameraError || !isCameraReady
-            ? 'bg-neutral-200 text-neutral-500 cursor-not-allowed'
-            : 'bg-black text-white hover:bg-neutral-800 active:scale-[0.98] shadow-sm',
-        ].join(' ')}
-      >
-        {isLoading ? (
-          <>
-            <span
-              className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"
-              aria-hidden="true"
-            />
-            <span>Memproses OCR &amp; Analisis AI…</span>
-          </>
-        ) : (
-          <>
-            <span aria-hidden="true">📸</span>
-            <span>Pindai Kemasan Obat</span>
-          </>
-        )}
-      </button>
+      {/* ── Action Buttons ── */}
+      <div className="w-full flex flex-col sm:flex-row gap-3">
+        {/* Main Camera Capture Button (Neon Lime) */}
+        <button
+          type="button"
+          onClick={handleCapture}
+          disabled={isLoading || Boolean(cameraError) || !isCameraReady}
+          aria-busy={isLoading}
+          className={[
+            'flex-1 py-3.5 px-6 rounded-xl font-extrabold text-xs tracking-wide',
+            'transition-all duration-180 flex justify-center items-center gap-2.5 shadow-lg',
+            isLoading || cameraError || !isCameraReady
+              ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed border border-white/5'
+              : 'btn-neon',
+          ].join(' ')}
+        >
+          {isLoading ? (
+            <>
+              <span
+                className="w-4 h-4 border-2 border-[#0c1004] border-t-transparent rounded-full animate-spin"
+                aria-hidden="true"
+              />
+              <span>Menganalisis OCR &amp; Keamanan AI…</span>
+            </>
+          ) : (
+            <>
+              <span className="text-base" aria-hidden="true">📸</span>
+              <span>Pindai Kemasan Obat</span>
+            </>
+          )}
+        </button>
 
-      <p className="text-xs text-neutral-500 text-center max-w-xs">
-        Arahkan kamera ke label kemasan obat, lalu tekan tombol di atas untuk memindai.
+        {/* Secondary File Upload Button */}
+        <button
+          type="button"
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isLoading}
+          className={[
+            'py-3.5 px-5 rounded-xl font-bold text-xs tracking-wide transition-all',
+            'border border-[var(--color-border)] bg-[#11141b] text-neutral-300 hover:text-white hover:bg-neutral-800',
+            'flex items-center justify-center gap-2 shadow-sm',
+            isLoading && 'opacity-50 cursor-not-allowed',
+          ].join(' ')}
+          title="Unggah foto langsung dari galeri atau berkas komputer"
+        >
+          <span className="text-base" aria-hidden="true">📁</span>
+          <span>Unggah Berkas</span>
+        </button>
+      </div>
+
+      <p className="text-[11px] text-neutral-500 text-center">
+        Mendukung tangkapan kamera langsung atau unggahan berkas foto format JPG, PNG, WEBP.
       </p>
     </div>
   );
