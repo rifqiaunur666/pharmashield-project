@@ -8,9 +8,21 @@
  * - History and Dashboard Aggregate Stats
  */
 
-const BASE_URL = (
-  process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
-).replace(/\/+$/, '');
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL.replace(/\/+$/, '');
+  }
+  // When accessed from Vercel or any non-local client, target Railway production backend
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host !== 'localhost' && host !== '127.0.0.1' && !host.startsWith('192.168.')) {
+      return 'https://pharmashield-project-production.up.railway.app';
+    }
+  }
+  return 'http://127.0.0.1:8000';
+};
+
+const BASE_URL = getBaseUrl();
 
 export const API_BASE = `${BASE_URL}/api`;
 

@@ -45,20 +45,23 @@ app = FastAPI(
 )
 
 # ─── CORS Middleware ──────────────────────────────────────────────────────────
-# Strictly allow Next.js development origins and configured origins
+# Permissive CORS supporting localhost, Vercel deployments (*.vercel.app), and custom origins
 cors_origins = list(set([
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
+    "https://pharmashield-project.vercel.app",
 ] + settings.cors_origins))
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=r"^https?:\/\/.*$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # ─── Routers ──────────────────────────────────────────────────────────────────
@@ -76,6 +79,9 @@ app.include_router(api_router, tags=["Direct Routes (Convenience)"])
 @app.get("/", tags=["Health"])
 @app.get("/health", tags=["Health"])
 @app.get("/api/health", tags=["Health"])
+@app.head("/", tags=["Health"])
+@app.head("/health", tags=["Health"])
+@app.head("/api/health", tags=["Health"])
 async def root_health():
     return {
         "status": "ok",

@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://URL-BACKEND-RAILWAY-ANDA.up.railway.app/:path*"
+      "destination": "https://pharmashield-project-production.up.railway.app/api/:path*"
     }
   ]
 }

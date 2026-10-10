@@ -1,0 +1,9 @@
+[phases.setup]
+nixPkgs = ["python311", "tesseract", "tesseract-data-ind", "libGL", "glib"]
+aptPkgs = ["libgomp1", "tesseract-ocr", "tesseract-ocr-ind", "curl"]
+
+[phases.install]
+cmds = ["python -m pip install --upgrade pip", "pip install -r requirements.txt"]
+
+[start]
+cmd = "python run.py"
