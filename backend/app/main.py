@@ -74,6 +74,8 @@ app.include_router(api_router, tags=["Direct Routes (Convenience)"])
 
 # ─── Health Check ─────────────────────────────────────────────────────────────
 @app.get("/", tags=["Health"])
+@app.get("/health", tags=["Health"])
+@app.get("/api/health", tags=["Health"])
 async def root_health():
     return {
         "status": "ok",
@@ -87,6 +89,7 @@ async def root_health():
             "docs": "/docs",
         },
     }
+
 
 
 # ─── Dev Runner ───────────────────────────────────────────────────────────────

@@ -21,6 +21,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy the entire backend directory into container
 COPY backend/ ./
 
+# Copy python runner script
+COPY run.py ./run.py
+
 # Configure environment
 ENV PORT=8000
 ENV TESSERACT_CMD=/usr/bin/tesseract
@@ -28,5 +31,5 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-# Start FastAPI server
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Start FastAPI server via robust Python runner
+CMD ["python", "run.py"]
