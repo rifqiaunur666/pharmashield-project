@@ -7,9 +7,11 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import HistoryTable from '@/components/HistoryTable';
+import { useAuth } from '@/lib/AuthContext';
 import { fetchHistory, deleteHistoryItem, clearAllHistory } from '@/lib/api';
 
 export default function HistoryPage() {
+  const { isAuthenticated } = useAuth();
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,6 +19,11 @@ export default function HistoryPage() {
   const [statusFilter, setStatusFilter] = useState('all');
 
   const loadHistory = useCallback(async () => {
+    if (!isAuthenticated) {
+      setItems([]);
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     setError(null);
     try {
@@ -28,7 +35,7 @@ export default function HistoryPage() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     loadHistory();
@@ -149,6 +156,7 @@ export default function HistoryPage() {
         items={filteredItems}
         onRemove={handleRemove}
         isLoading={isLoading}
+        isGuest={!isAuthenticated}
       />
     </div>
   );

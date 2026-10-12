@@ -136,6 +136,13 @@ export default function AppHomePage() {
   const [metrics, setMetrics] = useState({ total: 0, safe: 0, warning: 0, danger: 0 });
 
   const loadHistoryData = useCallback(async () => {
+    // Guest users don't have personal history — skip API call
+    if (!isAuthenticated) {
+      setHistoryItems([]);
+      setMetrics({ total: 0, safe: 0, warning: 0, danger: 0 });
+      setIsHistoryLoading(false);
+      return;
+    }
     setIsHistoryLoading(true);
     try {
       const data = await fetchHistory();
@@ -151,7 +158,7 @@ export default function AppHomePage() {
     } finally {
       setIsHistoryLoading(false);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     loadHistoryData();
@@ -438,6 +445,7 @@ export default function AppHomePage() {
               onRemove={handleDeleteRow}
               onClearAll={handleClearAll}
               isLoading={isHistoryLoading}
+              isGuest={!isAuthenticated}
             />
           </div>
         </div>

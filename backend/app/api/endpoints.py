@@ -603,13 +603,13 @@ async def api_check_drug_interactions(req_body: dict[str, Any]):
 async def get_history(user_optional: Optional[dict[str, Any]] = Depends(get_current_user_optional)):
     all_items = _load_history_from_disk()
 
-    # If logged in user, filter items associated with user, or return all for guest/single-tenant
+    # Personal history: only show items belonging to the authenticated user.
+    # Guest/anonymous users receive an empty list — their scans are not stored globally.
     if user_optional and user_optional.get("id"):
         uid = user_optional["id"]
-        # Include items belonging to user or created before auth was set
-        items = [i for i in all_items if i.get("user_id") == uid or not i.get("user_id")]
+        items = [i for i in all_items if i.get("user_id") == uid]
     else:
-        items = all_items
+        items = []
 
     total = len(items)
     safe_count = sum(1 for i in items if i.get("status") == "green")

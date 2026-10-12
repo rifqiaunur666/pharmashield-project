@@ -22,14 +22,18 @@ function formatTimestamp(iso) {
   }
 }
 
-function EmptyState() {
+function EmptyState({ isGuest = false }) {
   return (
     <div className="flex flex-col items-center gap-3 py-14 text-center text-slate-500 dark:text-neutral-400 bg-slate-50 dark:bg-[#161922] rounded-2xl border border-dashed border-[var(--color-border)]">
-      <span className="text-4xl" aria-hidden="true">📋</span>
+      <span className="text-4xl" aria-hidden="true">{isGuest ? '🔒' : '📋'}</span>
       <div>
-        <p className="font-extrabold text-slate-800 dark:text-neutral-200 text-sm">Belum ada riwayat pemindaian</p>
+        <p className="font-extrabold text-slate-800 dark:text-neutral-200 text-sm">
+          {isGuest ? 'Login untuk melihat riwayat' : 'Belum ada riwayat pemindaian'}
+        </p>
         <p className="mt-1 text-xs text-slate-500 dark:text-neutral-500 max-w-sm">
-          Pindai kemasan obat untuk mencatat riwayat pemindaian dan evaluasi keamanan otomatis.
+          {isGuest
+            ? 'Riwayat pemindaian bersifat personal. Masuk atau buat akun agar hasil scan tersimpan ke profil Anda.'
+            : 'Pindai kemasan obat untuk mencatat riwayat pemindaian dan evaluasi keamanan otomatis.'}
         </p>
       </div>
     </div>
@@ -109,15 +113,15 @@ function HistoryRow({ item, onRemove, onSelect }) {
   );
 }
 
-export default function HistoryTable({ items = [], onRemove, onSelect, isLoading = false }) {
+export default function HistoryTable({ items = [], onRemove, onSelect, isLoading = false, isGuest = false }) {
   if (!items.length && !isLoading) {
-    return <EmptyState />;
+    return <EmptyState isGuest={isGuest} />;
   }
 
   return (
     <div className="rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card-bg)] shadow-md">
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse" aria-label="Tabel riwayat pemindaian obat">
+        <table className="w-full min-w-[640px] text-left border-collapse" aria-label="Tabel riwayat pemindaian obat">
           <thead>
             <tr className="bg-slate-50 dark:bg-[#11141b] border-b border-[var(--color-border)]">
               <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400">
@@ -135,7 +139,7 @@ export default function HistoryTable({ items = [], onRemove, onSelect, isLoading
               <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400 hidden md:table-cell">
                 Keterangan
               </th>
-              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400 text-right">
+              <th className="py-3.5 px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-neutral-400 text-right whitespace-nowrap">
                 Aksi
               </th>
             </tr>

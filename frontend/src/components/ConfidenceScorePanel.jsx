@@ -150,25 +150,27 @@ export default function ConfidenceScorePanel({ result }) {
       className={`rounded-2xl border ${tier.borderClass} ${tier.bgClass} overflow-hidden shadow-sm bg-white dark:bg-[#101726]`}
     >
       {/* ── Header bar ── */}
-      <div className="flex items-center justify-between px-5 py-2.5 border-b border-slate-200 dark:border-slate-800/70 bg-slate-50 dark:bg-[#0b1320]/60">
-        <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">
-          <span>🤖</span>
-          <span>Confidence Score — AI Analysis</span>
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-4 py-2.5 border-b border-slate-200 dark:border-slate-800/70 bg-slate-50 dark:bg-[#0b1320]/60">
+        <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 min-w-0">
+          <span className="shrink-0">🤖</span>
+          <span className="truncate">Confidence Score — AI Analysis</span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           <span
             className={`w-2 h-2 rounded-full animate-pulse ${tier.dotClass}`}
           />
-          <span className={`text-[10px] font-bold uppercase tracking-wider ${tier.colorClass}`}>
+          <span className={`text-[10px] font-bold uppercase tracking-wider ${tier.colorClass} whitespace-nowrap`}>
             {tier.id === 'high' ? 'Terverifikasi Akurat' : tier.id === 'medium' ? 'Konfirmasi Sebagian' : 'Tidak Terdeteksi'}
           </span>
         </div>
       </div>
 
       {/* ── Main score block ── */}
-      <div className="flex items-center gap-6 p-5">
-        {/* Radial ring */}
-        <ConfidenceRing pct={pct} tier={tier} />
+      <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-5">
+        {/* Radial ring — slightly smaller on very small screens */}
+        <div className="shrink-0">
+          <ConfidenceRing pct={pct} tier={tier} />
+        </div>
 
         {/* Right-side info */}
         <div className="flex-1 min-w-0 space-y-3">
@@ -176,7 +178,7 @@ export default function ConfidenceScorePanel({ result }) {
           <div>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Confidence Score</p>
             <p
-              className={`text-4xl font-black tabular-nums leading-none mt-0.5 ${
+              className={`text-2xl sm:text-4xl font-black tabular-nums leading-none mt-0.5 break-words ${
                 tier.id === 'high'
                   ? 'text-emerald-700 dark:text-[#a3e635]'
                   : tier.id === 'medium'
@@ -186,7 +188,7 @@ export default function ConfidenceScorePanel({ result }) {
             >
               Akurasi: {pct}%
             </p>
-            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-snug">
               {pct >= 85
                 ? `✅ Terverifikasi Akurat (≥85%) — Aman untuk referensi.`
                 : pct >= 60
