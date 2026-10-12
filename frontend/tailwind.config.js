@@ -4,6 +4,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xs': '420px',
+      },
       fontFamily: {
         sans: ['var(--font-manrope)', 'system-ui', 'sans-serif'],
       },

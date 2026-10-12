@@ -122,7 +122,7 @@ export default function HistoryPage() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 max-w-full">
           {[
             { id: 'all', label: 'Semua' },
             { id: 'green', label: '🟢 Aman' },
@@ -132,7 +132,7 @@ export default function HistoryPage() {
             <button
               key={id}
               onClick={() => setStatusFilter(id)}
-              className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${
+              className={`px-3 py-2 text-xs font-bold rounded-xl border whitespace-nowrap transition-all ${
                 statusFilter === id
                   ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-md shadow-[#0284c7]/20 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:border-[#c8f93a] dark:shadow-[#c8f93a]/20 font-extrabold'
                   : 'bg-white dark:bg-[#161922] text-slate-600 dark:text-neutral-400 border-[var(--color-border)] hover:text-slate-900 dark:hover:text-white'

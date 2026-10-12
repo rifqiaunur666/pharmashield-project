@@ -160,20 +160,20 @@ export default function MedicineResultCard({
       </div>
 
       {/* ── Medication Identity Card (Tahap D Requirements) ── */}
-      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-6 space-y-5 shadow-sm">
-        <div className="flex flex-wrap items-start justify-between gap-4 border-b border-slate-200 dark:border-white/5 pb-4">
-          <div>
-            <span className="text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-neutral-400">
+      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-4 sm:p-6 space-y-4 sm:space-y-5 shadow-sm">
+        <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4 border-b border-slate-200 dark:border-white/5 pb-3 sm:pb-4">
+          <div className="min-w-0 w-full">
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-neutral-400">
               Identitas Produk Farmasi
             </span>
-            <h3 className="text-2xl font-black text-[var(--color-text-primary)] mt-0.5">
+            <h3 className="text-xl sm:text-2xl font-black text-[var(--color-text-primary)] mt-0.5 break-words">
               {result.name || 'Kemasan Tidak Teridentifikasi'}
             </h3>
-            <p className="text-xs text-[var(--color-text-secondary)] mt-1">
-              Nama Generik: <span className="text-[var(--color-text-primary)] font-bold">{result.genericName || result.name}</span> | Golongan BPOM: <span className="text-[#0284c7] dark:text-[#c8f93a] font-bold">{result.bpomClass}</span>
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 leading-relaxed">
+              Nama Generik: <span className="text-[var(--color-text-primary)] font-bold">{result.genericName || result.name}</span> <span className="hidden xs:inline">|</span><br className="xs:hidden" /> Golongan BPOM: <span className="text-[#0284c7] dark:text-[#c8f93a] font-bold">{result.bpomClass}</span>
             </p>
             {result.brandNames?.length > 0 && (
-              <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-0.5">
+              <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-0.5 break-words">
                 Merek / Alias Terdata: <span className="text-slate-700 dark:text-neutral-300">{result.brandNames.join(', ')}</span>
               </p>
             )}

@@ -87,7 +87,7 @@ function ConfidenceRing({ pct, tier }) {
   const dashOffset = circ - (pct / 100) * circ;
 
   return (
-    <div className="relative flex items-center justify-center w-28 h-28 shrink-0">
+    <div className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 shrink-0">
       <svg className="w-full h-full -rotate-90" viewBox="0 0 96 96">
         {/* Track */}
         <circle
@@ -119,7 +119,7 @@ function ConfidenceRing({ pct, tier }) {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
         <span className="text-[9px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Akurasi</span>
         <span
-          className={`text-2xl font-black tabular-nums ${
+          className={`text-xl sm:text-2xl font-black tabular-nums my-0.5 ${
             tier.id === 'high'
               ? 'text-emerald-700 dark:text-[#a3e635]'
               : tier.id === 'medium'
@@ -129,7 +129,7 @@ function ConfidenceRing({ pct, tier }) {
         >
           {pct}%
         </span>
-        <span className="text-[8px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">{tier.label}</span>
+        <span className="text-[8px] text-slate-500 dark:text-slate-400 font-medium">{tier.label}</span>
       </div>
     </div>
   );
@@ -166,29 +166,32 @@ export default function ConfidenceScorePanel({ result }) {
       </div>
 
       {/* ── Main score block ── */}
-      <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-5">
-        {/* Radial ring — slightly smaller on very small screens */}
-        <div className="shrink-0">
+      <div className="flex flex-col xs:flex-row items-center sm:items-start gap-4 sm:gap-6 p-4 sm:p-5">
+        {/* Radial ring */}
+        <div className="shrink-0 flex justify-center">
           <ConfidenceRing pct={pct} tier={tier} />
         </div>
 
         {/* Right-side info */}
-        <div className="flex-1 min-w-0 space-y-3">
+        <div className="flex-1 min-w-0 w-full space-y-2.5 sm:space-y-3 text-center xs:text-left">
           {/* Large label */}
           <div>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Confidence Score</p>
-            <p
-              className={`text-2xl sm:text-4xl font-black tabular-nums leading-none mt-0.5 break-words ${
-                tier.id === 'high'
-                  ? 'text-emerald-700 dark:text-[#a3e635]'
-                  : tier.id === 'medium'
-                  ? 'text-amber-700 dark:text-amber-400'
-                  : 'text-rose-700 dark:text-rose-500'
-              }`}
-            >
-              Akurasi: {pct}%
-            </p>
-            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-snug">
+            <div className="flex flex-wrap items-baseline justify-center xs:justify-start gap-x-2 gap-y-0.5 mt-0.5">
+              <span className="text-sm font-extrabold text-slate-500 dark:text-neutral-400">Tingkat Akurasi:</span>
+              <span
+                className={`text-xl xs:text-2xl sm:text-3xl font-black tabular-nums leading-tight ${
+                  tier.id === 'high'
+                    ? 'text-emerald-700 dark:text-[#a3e635]'
+                    : tier.id === 'medium'
+                    ? 'text-amber-700 dark:text-amber-400'
+                    : 'text-rose-700 dark:text-rose-500'
+                }`}
+              >
+                {pct}%
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-1 leading-snug">
               {pct >= 85
                 ? `✅ Terverifikasi Akurat (≥85%) — Aman untuk referensi.`
                 : pct >= 60
@@ -198,9 +201,9 @@ export default function ConfidenceScorePanel({ result }) {
           </div>
 
           {/* Tier badge */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center xs:justify-start gap-2">
             <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${tier.borderClass} ${tier.colorClass}`}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold border ${tier.borderClass} ${tier.colorClass}`}
               style={{ background: 'rgba(255,255,255,0.04)' }}
             >
               <span>{tier.icon}</span>
@@ -219,7 +222,7 @@ export default function ConfidenceScorePanel({ result }) {
 
           {/* Applied algorithms badge row */}
           {result.appliedAlgorithms?.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap items-center justify-center xs:justify-start gap-1.5">
               {result.appliedAlgorithms.slice(0, 4).map((alg, i) => (
                 <span
                   key={i}
