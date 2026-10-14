@@ -137,7 +137,7 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
               value={searchQuery}
               onChange={(e) => handleQueryChange(e.target.value)}
               placeholder="Cari obat umum Indonesia (misal: Paracetamol, Panadol, Sanmol, Bodrex, Amoxicillin)..."
-              className="w-full pl-10 pr-24 py-2.5 text-sm rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] focus:ring-1 focus:ring-[#0284c7] dark:border-slate-800 dark:bg-[#0b1320] dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-[#a3e635] dark:focus:ring-[#a3e635] transition-all"
+              className="w-full pl-10 pr-24 py-2.5 text-sm rounded-xl border border-slate-300 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] focus:ring-1 focus:ring-[#0284c7] dark:border-slate-800 dark:bg-[#0b1320] dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-[#a3e635] dark:focus:ring-[#a3e635] transition-all shadow-xs"
             />
             <div className="absolute right-2 flex items-center gap-1.5">
               {searchQuery && (
@@ -152,7 +152,7 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
               )}
               <button
                 type="submit"
-                className="px-3 py-1 rounded-lg text-xs font-bold bg-[#0284c7] hover:bg-[#075985] text-white shadow-xs dark:bg-[#a3e635] dark:text-slate-950 dark:hover:bg-[#bef264] transition-all"
+                className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-xs dark:bg-[#a3e635] dark:text-slate-950 dark:hover:bg-[#bef264] transition-all"
               >
                 Cari
               </button>
@@ -161,7 +161,7 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
 
           {/* Quick stats indicator */}
           <div className="flex items-center gap-2 text-xs font-semibold shrink-0 self-center">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-[#0284c7] dark:bg-[#182234] dark:border-slate-700/60 dark:text-[#a3e635]">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] font-bold dark:bg-[#182234] dark:border-slate-700/60 dark:text-[#a3e635]">
               <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#a3e635] animate-pulse" />
               {filteredMedicines.length} dari {INDONESIA_MEDICINES.length} Obat Terindeks
             </span>
@@ -176,28 +176,32 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium whitespace-nowrap transition-all duration-150 ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all duration-150 border ${
                   isActive
-                    ? 'bg-sky-50 text-[#0284c7] font-bold border border-[#0284c7] shadow-xs dark:bg-[#182234] dark:text-[#a3e635] dark:border-[#a3e635]/60'
-                    : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200 border border-slate-200 dark:bg-[#0b1320] dark:text-slate-400 dark:hover:text-white dark:hover:bg-[#162032] dark:border-slate-800'
+                    ? 'bg-sky-50 text-[#0284c7] font-black border-[#0284c7] shadow-sm dark:bg-[#182234] dark:text-[#a3e635] dark:border-[#a3e635]'
+                    : 'bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border-slate-300 dark:bg-[#0b1320] dark:text-slate-300 dark:hover:text-white dark:hover:bg-[#162032] dark:border-slate-800 font-bold'
                 }`}
               >
                 <span>{cat.icon}</span>
-                <span>{cat.label}</span>
+                <span className={isActive ? 'text-[#0284c7] dark:text-[#a3e635] font-black' : 'text-slate-800 dark:text-slate-200 font-bold'}>
+                  {cat.label}
+                </span>
               </button>
             );
           })}
         </div>
 
         {/* ── BPOM Class Filter ── */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-400">
-          <span className="font-semibold text-slate-500 dark:text-slate-400 text-[11px] uppercase tracking-wider">Golongan BPOM:</span>
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/80 text-xs text-slate-700 dark:text-slate-300">
+          <span className="font-extrabold text-slate-700 dark:text-slate-300 text-[11px] uppercase tracking-wider">
+            Golongan BPOM:
+          </span>
           <button
             onClick={() => handleBpomChange('all')}
-            className={`px-2.5 py-1 rounded-lg text-xs transition-colors ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
               selectedBpom === 'all'
-                ? 'bg-[#0284c7] text-white font-bold border border-[#0284c7] dark:bg-[#182234] dark:text-white dark:border-slate-700'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-sm dark:bg-[#182234] dark:text-white dark:border-slate-700'
+                : 'bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-300 dark:bg-[#0b1320] dark:text-slate-400 dark:hover:text-white dark:border-slate-800'
             }`}
           >
             Semua
@@ -206,14 +210,16 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
             <button
               key={bpom.code}
               onClick={() => handleBpomChange(bpom.code)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
                 selectedBpom === bpom.code
-                  ? `${bpom.badgeColor} font-bold ring-1 ring-current`
-                  : 'border-slate-200 bg-slate-50 text-slate-600 hover:text-slate-900 dark:border-slate-800 dark:bg-[#0b1320] dark:text-slate-400 dark:hover:text-slate-200'
+                  ? `${bpom.badgeColor} ring-2 ring-current font-extrabold`
+                  : 'border-slate-300 bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 dark:border-slate-800 dark:bg-[#0b1320] dark:text-slate-400 dark:hover:text-slate-200'
               }`}
             >
               <span>{bpom.symbol}</span>
-              <span>{bpom.label}</span>
+              <span className={selectedBpom === bpom.code ? 'font-extrabold' : 'text-slate-700 dark:text-slate-300'}>
+                {bpom.label}
+              </span>
             </button>
           ))}
         </div>

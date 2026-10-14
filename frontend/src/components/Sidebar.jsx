@@ -120,16 +120,20 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
       title={collapsed ? label : undefined}
       className={[
         'relative flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1',
-        'text-xs font-bold transition-all duration-180 group',
+        'text-xs transition-all duration-180 group',
         isActive
           ? 'bg-[#0284c7] text-white shadow-md shadow-sky-500/25 font-extrabold dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/20'
-          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.06]',
+          : 'text-slate-800 hover:text-slate-950 hover:bg-slate-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/[0.06] font-bold',
       ].join(' ')}
     >
       <div className="flex items-center gap-3 min-w-0">
-        <Icon />
+        <span className={isActive ? 'text-white' : 'text-slate-600 group-hover:text-slate-950 dark:text-neutral-400 dark:group-hover:text-white'}>
+          <Icon />
+        </span>
         {!collapsed && (
-          <span className="truncate">{label}</span>
+          <span className={`truncate ${isActive ? 'text-white font-black' : 'text-slate-800 group-hover:text-slate-950 dark:text-neutral-200 dark:group-hover:text-white font-bold'}`}>
+            {label}
+          </span>
         )}
       </div>
 
@@ -140,7 +144,7 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
               Aktif
             </span>
           ) : badge ? (
-            <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-slate-600 dark:text-neutral-300">
+            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-slate-700 dark:bg-white/10 dark:border-transparent dark:text-neutral-300">
               {badge}
             </span>
           ) : null}
@@ -161,12 +165,12 @@ function A11yNavButton({ collapsed }) {
       onClick={toggleA11yModal}
       title={collapsed ? 'Aksesibilitas' : undefined}
       aria-label="Buka pengaturan aksesibilitas"
-      className="relative w-full flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1 text-xs font-bold transition-all duration-150 text-[#0284c7] hover:bg-sky-50 hover:text-[#0369a1] dark:text-[#38BDF8] dark:hover:bg-[#38BDF8]/10 dark:hover:text-[#7DD3FC] group"
+      className="relative w-full flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1 text-xs font-bold transition-all duration-150 text-[#0284c7] bg-sky-50 hover:bg-sky-100 hover:text-[#0369a1] border border-sky-200 dark:bg-transparent dark:border-transparent dark:text-[#38BDF8] dark:hover:bg-[#38BDF8]/10 dark:hover:text-[#7DD3FC] group"
       style={{ width: 'calc(100% - 24px)' }}
     >
       <div className="flex items-center gap-3 min-w-0">
         <IconAccessibility />
-        {!collapsed && <span className="truncate">Aksesibilitas</span>}
+        {!collapsed && <span className="truncate font-extrabold">Aksesibilitas</span>}
       </div>
 
       {!collapsed && activeCount > 0 && (
@@ -250,7 +254,7 @@ export default function Sidebar() {
       <nav className="flex-1 overflow-y-auto overflow-x-hidden py-3" aria-label="Main navigation">
         {/* MENU UTAMA */}
         {!collapsed && (
-          <p className="px-5 pt-3 pb-1 text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-neutral-500">
+          <p className="px-5 pt-3 pb-1 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-neutral-400">
             Menu Utama
           </p>
         )}
@@ -269,7 +273,7 @@ export default function Sidebar() {
         {/* AKSESIBILITAS section */}
         <div className="mt-3">
           {!collapsed && (
-            <p className="px-5 pt-3 pb-1 text-[10px] font-extrabold uppercase tracking-widest text-[#0284c7]/70 dark:text-[#38BDF8]/60">
+            <p className="px-5 pt-3 pb-1 text-[11px] font-black uppercase tracking-wider text-[#0284c7] dark:text-[#38BDF8]">
               Aksesibilitas
             </p>
           )}

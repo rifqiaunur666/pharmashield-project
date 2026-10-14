@@ -173,43 +173,35 @@ html.light [class*="shadow-xl"] {
   box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 1px 4px -1px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* ─── High-Contrast White Text Enforcement on All Primary / Blue Buttons ─── */
-html.light button.text-white,
-html.light a.text-white,
-html.light button[class*="text-white"],
-html.light a[class*="text-white"],
+/* ─── High-Contrast White Text on Solid Primary / Action Buttons Only ─── */
 html.light button.bg-\[\#0284c7\],
 html.light a.bg-\[\#0284c7\],
 html.light button[class*="bg-[#0284c7]"],
 html.light a[class*="bg-[#0284c7]"],
-html.light button[class*="bg-sky-600"],
-html.light a[class*="bg-sky-600"],
-html.light button[class*="bg-blue-600"],
-html.light a[class*="bg-blue-600"],
-html.light button[class*="bg-emerald-600"],
-html.light a[class*="bg-emerald-600"],
-html.light button[class*="bg-rose-600"],
-html.light a[class*="bg-rose-600"],
-html.light button.bg-\[\#c8f93a\],
-html.light a.bg-\[\#c8f93a\],
+html.light button.bg-blue-600,
+html.light a.bg-blue-600,
+html.light button.bg-sky-600,
+html.light a.bg-sky-600,
+html.light button.bg-emerald-600,
+html.light a.bg-emerald-600,
+html.light button.bg-rose-600,
+html.light a.bg-rose-600,
 html.light .btn-primary,
-html.light .btn-primary-action,
-html.light button.text-white *,
-html.light a.text-white *,
-html.light button[class*="text-white"] *,
-html.light a[class*="text-white"] *,
+html.light .btn-primary-action {
+  color: #ffffff !important;
+}
 html.light button.bg-\[\#0284c7\] *,
 html.light a.bg-\[\#0284c7\] *,
 html.light button[class*="bg-[#0284c7]"] *,
 html.light a[class*="bg-[#0284c7]"] *,
-html.light button[class*="bg-sky-600"] *,
-html.light a[class*="bg-sky-600"] *,
-html.light button[class*="bg-blue-600"] *,
-html.light a[class*="bg-blue-600"] *,
-html.light button[class*="bg-emerald-600"] *,
-html.light a[class*="bg-emerald-600"] *,
-html.light button.bg-\[\#c8f93a\] *,
-html.light a.bg-\[\#c8f93a\] *,
+html.light button.bg-blue-600 *,
+html.light a.bg-blue-600 *,
+html.light button.bg-sky-600 *,
+html.light a.bg-sky-600 *,
+html.light button.bg-emerald-600 *,
+html.light a.bg-emerald-600 *,
+html.light button.bg-rose-600 *,
+html.light a.bg-rose-600 *,
 html.light .btn-primary *,
 html.light .btn-primary-action * {
   color: #ffffff !important;
@@ -296,21 +288,49 @@ html.light .btn-primary-action:hover {
   color: #ffffff !important;
 }
 
-/* Light Mode Sidebar Active Link (Ocean Blue with Soft Tint) */
-html.light .sidebar a[aria-current="page"],
-html.light .sidebar a.bg-\[\#c8f93a\] {
-  background-color: #f0f9ff !important;
-  color: #0369a1 !important;
-  border: 1px solid #bae6fd !important;
-  box-shadow: none !important;
+/* ─── Light Mode Sidebar - High Contrast & Crystal Clear Readability ─── */
+html.light .sidebar {
+  background-color: #ffffff !important;
+  border-right: 1px solid #e2e8f0 !important;
 }
-html.light .sidebar a[aria-current="page"] span.bg-black\/80 {
+html.light .sidebar a[aria-current="page"] {
   background-color: #0284c7 !important;
   color: #ffffff !important;
+  box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.35) !important;
+  border: 1px solid #0284c7 !important;
 }
-html.light .sidebar .bg-\[\#c8f93a\] {
-  background-color: #0284c7 !important;
+html.light .sidebar a[aria-current="page"] * {
   color: #ffffff !important;
+}
+html.light .sidebar a[aria-current="page"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+html.light .sidebar a[aria-current="page"] span {
+  color: #ffffff !important;
+}
+/* Inactive links in Sidebar: High contrast dark slate 800 */
+html.light .sidebar a:not([aria-current="page"]) {
+  color: #1e293b !important;
+  background-color: transparent !important;
+}
+html.light .sidebar a:not([aria-current="page"]) * {
+  color: #1e293b !important;
+}
+html.light .sidebar a:not([aria-current="page"]) svg {
+  color: #475569 !important;
+  stroke: #475569 !important;
+}
+html.light .sidebar a:not([aria-current="page"]):hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+html.light .sidebar a:not([aria-current="page"]):hover * {
+  color: #0f172a !important;
+}
+html.light .sidebar a:not([aria-current="page"]):hover svg {
+  color: #0f172a !important;
+  stroke: #0f172a !important;
 }
 
 /* Light Mode Badges & Contrasts */
