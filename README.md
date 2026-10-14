@@ -10,7 +10,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python)](https://python.org)
 [![Gemini AI](https://img.shields.io/badge/Google_Gemini_AI-Integrated-4285F4?style=flat-square&logo=google)](https://aistudio.google.com)
-[![Fonnte WA](https://img.shields.io/badge/WhatsApp_Bot-Fonnte-25D366?style=flat-square&logo=whatsapp)](https://fonnte.com)
+[![WhatsApp Bot](https://img.shields.io/badge/WhatsApp_Bot-Fonnte-25D366?style=flat-square&logo=whatsapp)](https://fonnte.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 </div>
@@ -25,15 +25,20 @@
 - [Struktur Project](#-struktur-project)
 - [Tech Stack](#-tech-stack)
 - [Prasyarat](#-prasyarat)
-- [Instalasi & Setup Lokal](#-instalasi--setup-lokal)
-- [Environment Variables](#-environment-variables)
-- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
+- [Cara Menjalankan Lokal (Step by Step)](#-cara-menjalankan-lokal-step-by-step)
+  - [1. Clone Repository](#1-clone-repository)
+  - [2. Setup Backend (FastAPI)](#2-setup-backend-fastapi)
+  - [3. Setup Frontend (Next.js)](#3-setup-frontend-nextjs)
+  - [4. Jalankan Aplikasi](#4-jalankan-aplikasi)
+  - [5. Verifikasi Berjalan](#5-verifikasi-berjalan)
+- [Environment Variables Lengkap](#-environment-variables-lengkap)
+- [Menjalankan dengan Docker](#-menjalankan-dengan-docker)
 - [API Endpoints](#-api-endpoints)
 - [WhatsApp Bot & Notifikasi](#-whatsapp-bot--notifikasi)
-- [Deployment](#-deployment)
+- [Deployment (Railway + Vercel)](#-deployment-railway--vercel)
 - [Testing](#-testing)
+- [Troubleshooting](#-troubleshooting)
 - [Kontribusi](#-kontribusi)
-- [Kolaborator](#-kolaborator)
 
 ---
 
@@ -41,9 +46,9 @@
 
 **PharmaShield** adalah platform kesehatan digital yang dirancang khusus untuk membantu pasien dan keluarga lansia dalam:
 
-1. **📸 Memindai kemasan obat** — Scan foto kemasan obat menggunakan AI Vision + OCR untuk mengekstrak nama obat, tanggal kedaluwarsa, dan status keamanan secara otomatis.
-2. **⏰ Pengingat minum obat otomatis** — Bot WhatsApp yang mengirimkan notifikasi pengingat secara real-time ke nomor pasien sesuai jadwal yang didaftarkan.
-3. **🤖 AI Chatbot Farmasi** — Chatbot bertenaga Google Gemini untuk tanya jawab seputar obat-obatan.
+1. **📸 Memindai kemasan obat** — AI Vision + OCR mengekstrak nama obat, tanggal kedaluwarsa, dan status keamanan secara otomatis.
+2. **⏰ Pengingat minum obat otomatis** — Bot WhatsApp mengirimkan notifikasi ke nomor pasien sesuai jadwal yang didaftarkan, dari nomor bot **+6289520344305**.
+3. **🤖 AI Chatbot Farmasi** — Tanya jawab seputar obat-obatan bertenaga Google Gemini.
 4. **💊 Katalog Interaksi Obat** — Database interaksi antar obat untuk keselamatan penggunaan.
 5. **📊 Riwayat & Analitik** — Histori pemindaian dan statistik penggunaan obat.
 
@@ -54,14 +59,14 @@
 | Fitur | Deskripsi |
 |-------|-----------|
 | 🔍 **AI Vision Scanner** | Scan kemasan obat via foto — ekstrak nama, exp date, status otomatis |
-| 📅 **Pengingat Otomatis** | Bot WhatsApp kirim notifikasi H-10 menit & tepat waktu minum obat |
-| 💬 **Interactive Bot** | Pasien bisa konfirmasi sudah/belum minum via tombol reply WhatsApp |
+| 📅 **Pengingat Otomatis** | Bot WA kirim notifikasi H-10 menit & tepat waktu minum obat |
+| 💬 **Interactive Bot** | Pasien konfirmasi sudah/belum minum via tombol reply WhatsApp |
 | 🔄 **Dynamic Rescheduling** | Jadwal otomatis disesuaikan jika pasien terlambat minum |
 | 🤖 **AI Chatbot** | Tanya jawab farmasi berbasis Google Gemini AI |
-| 💊 **Cek Interaksi Obat** | Deteksi kombinasi obat yang berpotensi berbahaya |
+| 💊 **Cek Interaksi Obat** | Deteksi kombinasi obat berpotensi berbahaya |
 | 📋 **Katalog Obat** | 1000+ data obat Indonesia dari Alodokter |
-| 🔐 **Autentikasi** | Sistem login user dengan JWT token |
-| 🌙 **Dark UI** | Antarmuka modern dark-mode dengan Tailwind CSS |
+| 🔐 **Autentikasi** | Login user dengan JWT token |
+| 🌙 **Dark UI** | Antarmuka modern dark-mode |
 | 📱 **Responsive** | Optimal di desktop, tablet, dan mobile |
 
 ---
@@ -70,35 +75,37 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        USER / PATIENT                        │
+│                        USER / PASIEN                        │
 └──────────────────────────┬──────────────────────────────────┘
-                           │
+                           │  Browser
               ┌────────────▼────────────┐
               │   Next.js Frontend      │
-              │   (Port 3000 / Vercel)  │
+              │   localhost:3000        │
+              │   (atau Vercel)         │
               └────────────┬────────────┘
-                           │ REST API
+                           │ HTTP REST API
               ┌────────────▼────────────┐
               │   FastAPI Backend       │
-              │   (Port 8000 / Railway) │
+              │   localhost:8000        │
+              │   (atau Railway)        │
               │                         │
-              │  ┌──────────────────┐   │
-              │  │  Reminder Engine │   │
-              │  │  + Scheduler     │   │
-              │  └────────┬─────────┘   │
-              └───────────┼─────────────┘
-                          │
-          ┌───────────────┼───────────────┐
-          │               │               │
-    ┌─────▼─────┐  ┌──────▼──────┐  ┌───▼───────┐
-    │ Fonnte WA │  │ Gemini AI   │  │ OCR Engine│
-    │  Bot API  │  │  Vision API │  │ Tesseract │
-    └─────┬─────┘  └─────────────┘  └───────────┘
-          │
-    ┌─────▼──────────────┐
-    │  WhatsApp Pasien   │
-    │  (+62895xxxxxxxx)  │
-    └────────────────────┘
+              │  ┌─────────────────┐    │
+              │  │ Reminder Engine │    │
+              │  │ Scheduler (30s) │    │
+              │  └───────┬─────────┘    │
+              └──────────┼──────────────┘
+                         │
+         ┌───────────────┼────────────────┐
+         │               │                │
+   ┌─────▼──────┐  ┌─────▼──────┐  ┌────▼──────┐
+   │ Fonnte WA  │  │ Gemini AI  │  │   OCR     │
+   │ Bot API    │  │ Vision API │  │ Tesseract │
+   └─────┬──────┘  └────────────┘  └───────────┘
+         │
+   ┌─────▼──────────────┐
+   │  WhatsApp Pasien   │
+   │  (nomor terdaftar) │
+   └────────────────────┘
 ```
 
 ---
@@ -108,7 +115,7 @@
 ```
 pharmashield-project/
 │
-├── 📂 backend/                        # FastAPI Backend
+├── 📂 backend/                        # FastAPI Backend (Python)
 │   ├── 📂 app/
 │   │   ├── 📂 api/                    # Route Handlers
 │   │   │   ├── endpoints.py           # Scan & History endpoints
@@ -120,30 +127,28 @@ pharmashield-project/
 │   │   │   ├── wa_service.py          # WhatsApp alert (Fonnte)
 │   │   │   ├── meta_wa_service.py     # WhatsApp Cloud API + Fonnte fallback
 │   │   │   ├── reminder_service.py    # Patient & schedule engine
-│   │   │   ├── scheduler_worker.py    # Background scheduler worker
+│   │   │   ├── scheduler_worker.py    # Background scheduler (30s tick)
 │   │   │   ├── ai_service.py          # Gemini AI chatbot
 │   │   │   ├── ocr_service.py         # OCR + image preprocessing
 │   │   │   ├── safety_evaluator.py    # Expiry & safety check
 │   │   │   ├── matching_service.py    # Fuzzy medicine matching
 │   │   │   ├── drug_interaction_service.py  # Drug interaction check
 │   │   │   ├── auth_service.py        # JWT authentication
-│   │   │   ├── wa_qr_service.py       # WhatsApp QR contact scan
 │   │   │   └── personalized_safety.py # Personalized safety AI
 │   │   ├── config.py                  # Centralized settings (.env loader)
 │   │   └── main.py                    # FastAPI app entry + lifespan
 │   ├── 📂 data/                       # JSON persistence storage
-│   │   ├── scan_history.json
-│   │   ├── users.json
-│   │   └── reminders_engine.json      # Patients & schedules DB
+│   │   ├── scan_history.json          # Riwayat scan
+│   │   ├── users.json                 # Data user
+│   │   └── reminders_engine.json      # Pasien & jadwal obat
 │   ├── 📂 database/                   # Medicines database
 │   │   ├── medicines.db               # SQLite
-│   │   ├── medicines.json             # Flat JSON catalog
 │   │   └── medicines_alodokter_1000.json  # 1000+ obat Indonesia
 │   ├── 📂 tests/                      # Unit & Integration tests
 │   ├── 📂 uploads/                    # Temporary scan uploads
-│   ├── .env                           # ⚠️ Jangan di-commit! (lihat .env.example)
-│   ├── requirements.txt
-│   └── run.py
+│   ├── .env                           # ⚠️ Secret! Jangan di-commit
+│   ├── requirements.txt               # Python dependencies
+│   └── run.py                         # Entry point server
 │
 ├── 📂 frontend/                       # Next.js 14 Frontend
 │   ├── 📂 src/
@@ -156,24 +161,15 @@ pharmashield-project/
 │   │   │   ├── analytics/page.jsx     # Analitik & Statistik
 │   │   │   └── settings/page.jsx      # Pengaturan
 │   │   ├── 📂 components/             # Reusable React Components
-│   │   │   ├── AIChatBot.jsx          # Chatbot sidebar
-│   │   │   ├── CameraScanner.jsx      # Kamera & upload scanner
-│   │   │   ├── Sidebar.jsx            # Navigation sidebar
-│   │   │   ├── AuthModal.jsx          # Login/Register modal
-│   │   │   └── ...
 │   │   └── 📂 lib/                    # Utilities & API clients
-│   │       ├── api.js                 # Axios API client
-│   │       ├── AuthContext.jsx        # Auth state management
-│   │       └── ...
-│   ├── .env.local                     # ⚠️ Jangan di-commit!
+│   ├── .env.local                     # ⚠️ Secret! Jangan di-commit
 │   ├── .env.example                   # Template env variables
 │   └── package.json
 │
-├── Dockerfile                         # Docker build (full stack)
-├── docker-compose.yml                 # Local Docker Compose
+├── Dockerfile                         # Docker build config
+├── Procfile                           # Railway / Heroku runner
 ├── railway.json                       # Railway deployment config
-├── vercel.json                        # Vercel deployment config
-├── Procfile                           # Heroku / Railway Procfile
+├── vercel.json                        # Vercel API proxy config
 └── README.md                          # 📖 File ini
 ```
 
@@ -182,55 +178,84 @@ pharmashield-project/
 ## 🛠️ Tech Stack
 
 ### Backend
-| Layer | Teknologi |
-|-------|-----------|
-| Web Framework | FastAPI 0.110+ |
-| Language | Python 3.10+ |
-| OCR Engine | Tesseract OCR + RapidOCR (ONNX) |
-| Image Processing | OpenCV Headless + Pillow |
-| AI / Vision | Google Gemini 1.5 Flash |
-| String Matching | RapidFuzz + Levenshtein |
-| HTTP Client | httpx (async) + requests |
-| Auth | JWT (python-jose) + bcrypt |
-| Data Storage | JSON flat-file (reminders, history, users) |
-| Medicine DB | SQLite + JSON (1000+ obat Indonesia) |
+| Layer | Teknologi | Versi |
+|-------|-----------|-------|
+| Web Framework | FastAPI | ≥ 0.110 |
+| Language | Python | ≥ 3.10 |
+| OCR Engine | Tesseract + RapidOCR (ONNX) | Latest |
+| Image Processing | OpenCV Headless + Pillow | Latest |
+| AI / Vision | Google Gemini 1.5 Flash | Latest |
+| String Matching | RapidFuzz + Levenshtein | Latest |
+| HTTP Client | httpx (async) + requests | Latest |
+| Auth | JWT (python-jose) + bcrypt | Latest |
 
 ### Frontend
-| Layer | Teknologi |
-|-------|-----------|
-| Framework | Next.js 14 (App Router) |
-| Language | JavaScript / JSX |
-| Styling | Tailwind CSS 3 |
-| Icons | Lucide React |
-| HTTP Client | Axios |
-| State | React Context API |
-
-### Infrastruktur & Deployment
-| Komponen | Platform |
-|----------|----------|
-| Backend Hosting | Railway |
-| Frontend Hosting | Vercel |
-| Container | Docker |
-| WhatsApp API | Fonnte.com (Bot sender: +6289520344305) |
-| AI API | Google Gemini AI Studio |
+| Layer | Teknologi | Versi |
+|-------|-----------|-------|
+| Framework | Next.js | 14 |
+| Language | JavaScript / JSX | ES2022 |
+| Styling | Tailwind CSS | 3 |
+| Icons | Lucide React | Latest |
+| HTTP Client | Axios | Latest |
 
 ---
 
 ## ✅ Prasyarat
 
-Pastikan tools berikut sudah terinstall di komputer kamu:
+Install semua tools berikut **sebelum** memulai:
 
-- **Python** ≥ 3.10 → [python.org](https://www.python.org/downloads/)
-- **Node.js** ≥ 18 → [nodejs.org](https://nodejs.org/)
-- **Git** → [git-scm.com](https://git-scm.com/)
-- **Tesseract OCR** → [instalasi Tesseract](https://github.com/tesseract-ocr/tesseract#installing-tesseract)
-  - Windows: `winget install UB-Mannheim.TesseractOCR`
-  - Ubuntu: `sudo apt install tesseract-ocr`
-  - macOS: `brew install tesseract`
+### 1. Python ≥ 3.10
+```bash
+# Cek versi
+python --version
+# atau
+python3 --version
+```
+Download: https://www.python.org/downloads/
+
+### 2. Node.js ≥ 18
+```bash
+# Cek versi
+node --version
+npm --version
+```
+Download: https://nodejs.org/
+
+### 3. Git
+```bash
+git --version
+```
+Download: https://git-scm.com/
+
+### 4. Tesseract OCR
+Dibutuhkan untuk fitur scan kemasan obat.
+
+**Windows:**
+```bash
+winget install UB-Mannheim.TesseractOCR
+# Path default: C:\Program Files\Tesseract-OCR\tesseract.exe
+```
+Atau download installer: https://github.com/UB-Mannheim/tesseract/wiki
+
+**Ubuntu / Debian:**
+```bash
+sudo apt update
+sudo apt install tesseract-ocr tesseract-ocr-ind -y
+```
+
+**macOS:**
+```bash
+brew install tesseract
+```
+
+Verifikasi instalasi:
+```bash
+tesseract --version
+```
 
 ---
 
-## 🚀 Instalasi & Setup Lokal
+## 🚀 Cara Menjalankan Lokal (Step by Step)
 
 ### 1. Clone Repository
 
@@ -239,100 +264,265 @@ git clone https://github.com/rifqiaunur666/pharmashield-project.git
 cd pharmashield-project
 ```
 
-### 2. Setup Backend
+---
 
+### 2. Setup Backend (FastAPI)
+
+#### 2a. Masuk ke folder backend
 ```bash
 cd backend
+```
 
-# Buat virtual environment
+#### 2b. Buat Virtual Environment
+
+**Windows (PowerShell / CMD):**
+```bash
 python -m venv venv
-
-# Aktifkan venv
-# Windows:
 venv\Scripts\activate
-# macOS / Linux:
-source venv/bin/activate
+```
 
-# Install dependencies
+**macOS / Linux:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+> Jika berhasil, terminal akan menampilkan prefix `(venv)` di awal baris.
+
+#### 2c. Install Dependencies Python
+```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 3. Konfigurasi Environment Backend
+> ⏳ Proses ini membutuhkan waktu 2–5 menit karena menginstall library OCR dan AI.
+
+#### 2d. Buat File `.env` Backend
+
+Buat file baru bernama `.env` di dalam folder `backend/`:
 
 ```bash
-# Salin template (jika ada)
-cp .env.example .env   # atau buat manual
-
-# Edit .env sesuai instruksi di bawah
+# Windows
+copy NUL .env
+# atau buka dengan Notepad / VS Code
+notepad .env
 ```
 
-Isi file `backend/.env`:
+```bash
+# macOS / Linux
+touch .env
+nano .env
+# atau
+code .env
+```
+
+Isi dengan konfigurasi berikut:
 
 ```env
-# ─── Fonnte WhatsApp API ──────────────────────────────────────
-FONNTE_TOKEN=YOUR_FONNTE_DEVICE_TOKEN_HERE
+# ─────────────────────────────────────────────────────────────
+# WAJIB DIISI untuk fitur WhatsApp Bot
+# ─────────────────────────────────────────────────────────────
 
-# Nomor bot pengirim (device yang terhubung di Fonnte)
+# Token device WhatsApp dari fonnte.com
+# Cara dapat: Daftar di fonnte.com → Sambungkan WA → Salin Device Token
+FONNTE_TOKEN=ISI_TOKEN_FONNTE_KAMU_DISINI
+
+# Nomor bot pengirim (nomor WA yang terhubung di Fonnte)
 FONNTE_SENDER_NUMBER=6289520344305
 
-# Nomor default penerima alert scan obat
+# Nomor default penerima alert scan obat (format internasional, tanpa +)
 WA_TARGET_NUMBER=6285374497583
 
-# ─── Google Gemini AI ─────────────────────────────────────────
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+# ─────────────────────────────────────────────────────────────
+# WAJIB DIISI untuk fitur AI Scanner & Chatbot
+# ─────────────────────────────────────────────────────────────
 
-# ─── App Settings ─────────────────────────────────────────────
+# API Key Google Gemini AI (GRATIS)
+# Cara dapat: https://aistudio.google.com/app/apikey → klik "Get API Key"
+GEMINI_API_KEY=ISI_API_KEY_GEMINI_KAMU_DISINI
+
+# ─────────────────────────────────────────────────────────────
+# Konfigurasi Server (bisa dibiarkan default)
+# ─────────────────────────────────────────────────────────────
 APP_ENV=development
 PORT=8000
 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+
+# Path Tesseract OCR (sesuaikan jika berbeda)
+# Windows default:
+TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
+# Linux/macOS:
+# TESSERACT_CMD=/usr/bin/tesseract
 ```
 
-### 4. Setup Frontend
+---
+
+### 3. Setup Frontend (Next.js)
+
+Buka **terminal baru** (jangan tutup terminal backend), lalu:
+
+#### 3a. Masuk ke folder frontend
+```bash
+# Dari root project
+cd frontend
+```
+
+#### 3b. Install Dependencies Node.js
+```bash
+npm install
+```
+
+> ⏳ Proses ini membutuhkan waktu 1–3 menit.
+
+#### 3c. Buat File `.env.local` Frontend
 
 ```bash
-cd ../frontend
-
-# Install dependencies
-npm install
-
-# Buat .env.local
-cp .env.example .env.local
+# Windows
+copy NUL .env.local
+notepad .env.local
 ```
 
-Isi file `frontend/.env.local`:
+```bash
+# macOS / Linux
+touch .env.local
+nano .env.local
+```
+
+Isi dengan:
 
 ```env
+# URL backend FastAPI (jangan ada trailing slash)
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 ```
 
 ---
 
-## ▶️ Menjalankan Aplikasi
+### 4. Jalankan Aplikasi
 
-### Jalankan Backend (Terminal 1)
+Kamu membutuhkan **2 terminal** yang berjalan bersamaan.
+
+#### Terminal 1 — Jalankan Backend
 
 ```bash
+# Pastikan sudah di folder backend dan venv aktif
 cd backend
-venv\Scripts\activate   # atau source venv/bin/activate
 
-# Development mode
-uvicorn app.main:app --reload --port 8000
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
 
-# Atau menggunakan run.py
-python run.py
+# Jalankan server development (dengan auto-reload)
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Backend akan tersedia di: **http://localhost:8000**
-API Docs (Swagger): **http://localhost:8000/docs**
+Output yang diharapkan:
+```
+INFO:     Started server process [xxxx]
+INFO:     Waiting for application startup.
+INFO:     [SchedulerWorker] High-precision background reminder worker started.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+```
 
-### Jalankan Frontend (Terminal 2)
+#### Terminal 2 — Jalankan Frontend
 
 ```bash
+# Pastikan sudah di folder frontend
 cd frontend
+
+# Jalankan development server
 npm run dev
 ```
 
-Frontend akan tersedia di: **http://localhost:3000**
+Output yang diharapkan:
+```
+  ▲ Next.js 14.x.x
+  - Local:        http://localhost:3000
+  - Network:      http://192.168.x.x:3000
+
+✓ Ready in 2.5s
+```
+
+---
+
+### 5. Verifikasi Berjalan
+
+Buka browser dan akses URL berikut:
+
+| URL | Keterangan |
+|-----|-----------|
+| http://localhost:3000 | ✅ Aplikasi PharmaShield (Frontend) |
+| http://localhost:8000 | ✅ Backend API Health Check |
+| http://localhost:8000/docs | ✅ Swagger UI — Dokumentasi API Interaktif |
+| http://localhost:8000/redoc | ✅ ReDoc — Dokumentasi API Alternatif |
+
+**Test API secara manual:**
+```bash
+# Cek health backend
+curl http://localhost:8000/health
+
+# Response yang diharapkan:
+# {"status":"ok","service":"PharmaShield API","version":"2.0.0",...}
+```
+
+---
+
+## 🔧 Environment Variables Lengkap
+
+### Backend (`backend/.env`)
+
+| Variable | Wajib | Default | Keterangan |
+|----------|-------|---------|-----------|
+| `FONNTE_TOKEN` | ✅ Ya | — | Device token dari [fonnte.com](https://fonnte.com) |
+| `FONNTE_SENDER_NUMBER` | — | `6289520344305` | Nomor bot pengirim WA |
+| `WA_TARGET_NUMBER` | — | — | Nomor default penerima alert scan |
+| `GEMINI_API_KEY` | ✅ Ya | — | API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey) |
+| `APP_ENV` | — | `development` | `development` / `production` |
+| `PORT` | — | `8000` | Port server backend |
+| `CORS_ORIGINS` | — | `http://localhost:3000,...` | Origin yang diizinkan (pisah koma) |
+| `TESSERACT_CMD` | — | Auto-detect | Path ke binary Tesseract |
+
+### Frontend (`frontend/.env.local`)
+
+| Variable | Wajib | Default | Keterangan |
+|----------|-------|---------|-----------|
+| `NEXT_PUBLIC_API_URL` | ✅ Ya | `http://127.0.0.1:8000` | URL backend FastAPI |
+
+---
+
+## 🐳 Menjalankan dengan Docker
+
+Alternatif jika tidak ingin setup manual (membutuhkan [Docker Desktop](https://www.docker.com/products/docker-desktop/)):
+
+### Build & Jalankan Backend saja
+
+```bash
+# Dari root project
+docker build -t pharmashield-backend .
+
+# Jalankan dengan env variables
+docker run -p 8000:8000 \
+  -e FONNTE_TOKEN=token_kamu \
+  -e GEMINI_API_KEY=key_kamu \
+  -e APP_ENV=development \
+  pharmashield-backend
+```
+
+### Menggunakan Docker Compose (Backend + Frontend)
+
+```bash
+# Dari root project
+docker compose up --build
+
+# Atau jalankan di background
+docker compose up -d --build
+
+# Stop
+docker compose down
+```
+
+Akses aplikasi di http://localhost:3000
 
 ---
 
@@ -342,25 +532,24 @@ Frontend akan tersedia di: **http://localhost:3000**
 
 | Method | Endpoint | Deskripsi |
 |--------|----------|-----------|
-| `POST` | `/api/scan-medicine` | Upload foto kemasan obat untuk dianalisis AI |
+| `POST` | `/api/scan-medicine` | Upload foto kemasan obat untuk dianalisis |
 | `GET` | `/api/history` | Ambil riwayat pemindaian |
 | `DELETE` | `/api/history/{id}` | Hapus item riwayat |
-| `GET` | `/api/medicines` | Daftar katalog obat |
-| `GET` | `/api/interactions` | Cek interaksi antar obat |
+| `GET` | `/api/stats` | Statistik penggunaan |
 
 ### ⏰ Reminder & WhatsApp Bot
 
 | Method | Endpoint | Deskripsi |
 |--------|----------|-----------|
-| `GET` | `/api/reminders/patients` | Daftar semua pasien terdaftar |
+| `GET` | `/api/reminders/patients` | Daftar semua pasien |
 | `POST` | `/api/reminders/patients` | Daftarkan pasien baru |
 | `DELETE` | `/api/reminders/patients/{id}` | Hapus pasien |
 | `POST` | `/api/reminders/schedules` | Tambah jadwal minum obat |
 | `GET` | `/api/reminders/schedules` | Daftar jadwal aktif |
 | `DELETE` | `/api/reminders/schedules/{id}` | Hapus jadwal |
 | `POST` | `/api/reminders/simulate-tick` | Simulasi trigger scheduler |
-| `GET` | `/api/reminders/gateway-status` | Cek status koneksi bot WA |
-| `POST` | `/api/reminders/update-credentials` | Update token Fonnte/Meta |
+| `GET` | `/api/reminders/gateway-status` | Status koneksi bot WA |
+| `POST` | `/api/reminders/update-credentials` | Update token gateway |
 | `GET` | `/api/reminders/logs` | Riwayat pengiriman notifikasi |
 
 ### 🤖 AI Chatbot
@@ -368,7 +557,8 @@ Frontend akan tersedia di: **http://localhost:3000**
 | Method | Endpoint | Deskripsi |
 |--------|----------|-----------|
 | `POST` | `/api/ai/chat` | Chat dengan AI farmasi (Gemini) |
-| `POST` | `/api/ai/analyze-image` | Analisis gambar via Gemini Vision |
+| `POST` | `/api/ai/scan-vision` | Analisis gambar via Gemini Vision |
+| `GET` | `/api/ai/status` | Status koneksi Gemini AI |
 
 ### 🔐 Autentikasi
 
@@ -378,147 +568,243 @@ Frontend akan tersedia di: **http://localhost:3000**
 | `POST` | `/api/auth/login` | Login & dapatkan JWT token |
 | `GET` | `/api/auth/me` | Info user yang sedang login |
 
+> 💡 Dokumentasi API interaktif lengkap tersedia di **http://localhost:8000/docs** saat backend berjalan.
+
 ---
 
 ## 📱 WhatsApp Bot & Notifikasi
 
-PharmaShield menggunakan **[Fonnte](https://fonnte.com)** sebagai gateway WhatsApp bot.
+PharmaShield menggunakan **[Fonnte](https://fonnte.com)** sebagai gateway WhatsApp.
 
-### Cara Kerja
+### Cara Kerja Otomatis
 
 ```
-Scheduler (setiap 30 detik)
-    ↓
-Cek jadwal yang akan jatuh tempo
-    ↓
-H-10 menit → Kirim pesan persiapan
-    ↓
-H-0 menit → Kirim pesan + tombol [Ya, Sudah Minum] / [Belum]
-    ↓
-Jika [Belum] → Kirim follow-up 10 menit kemudian
-    ↓
-Dynamic rescheduling otomatis
+Scheduler berjalan setiap 30 detik
+         ↓
+Cek semua jadwal minum obat terdaftar
+         ↓
+H-10 menit sebelum jadwal
+→ Kirim pesan persiapan ke pasien
+         ↓
+Tepat waktu jadwal (H-0)
+→ Kirim pesan + tombol [Ya, Sudah Minum] / [Belum]
+         ↓
+Jika pasien membalas [Belum]
+→ Kirim follow-up reminder 10 menit kemudian
+         ↓
+Jika pasien membalas [Ya, Sudah] / melewati batas waktu
+→ Dynamic rescheduling: jadwal berikutnya disesuaikan otomatis
 ```
 
-### Setup Token Fonnte
+### Cara Setup Token Fonnte
 
-1. Daftar di [fonnte.com](https://fonnte.com)
-2. Sambungkan nomor WhatsApp kamu sebagai **device**
+1. Daftar di **[fonnte.com](https://fonnte.com)**
+2. Klik **"Tambah Device"** → sambungkan nomor WhatsApp dengan scan QR
 3. Salin **Device Token** dari dashboard Fonnte
-4. Masukkan token di `backend/.env` → `FONNTE_TOKEN`
-5. Atau input langsung di UI → klik tombol **"🔑 Masukkan Token WhatsApp"**
+4. Di aplikasi PharmaShield → halaman **Pengingat** → klik **"🔑 Masukkan Token WhatsApp"**
+5. Paste token → Simpan
 
-> **Bot Pengirim:** +6289520344305 (nomor yang terhubung di Fonnte)
-
----
-
-## 🐳 Menjalankan dengan Docker
-
-```bash
-# Build dan jalankan semua service
-docker compose up --build
-
-# Hanya backend
-docker build -t pharmashield-backend ./backend
-docker run -p 8000:8000 --env-file backend/.env pharmashield-backend
-```
+> **Bot Pengirim:** `+6289520344305` — Semua notifikasi dikirim dari nomor ini.
 
 ---
 
-## ☁️ Deployment
+## ☁️ Deployment (Railway + Vercel)
 
 ### Backend → Railway
 
-1. Push ke branch `main`
-2. Railway auto-detect dari `railway.json` & `Procfile`
-3. Set Environment Variables di Railway dashboard (sama seperti `.env`)
+1. Buat akun di [railway.app](https://railway.app)
+2. Klik **"New Project"** → **"Deploy from GitHub Repo"**
+3. Pilih repo `pharmashield-project`
+4. Di tab **"Variables"**, tambahkan semua env dari `backend/.env`:
+   ```
+   FONNTE_TOKEN=...
+   GEMINI_API_KEY=...
+   APP_ENV=production
+   PORT=8080
+   ```
+5. Railway akan otomatis build & deploy menggunakan `Dockerfile` dan `Procfile`
+6. Salin URL Railway yang diberikan (format: `https://xxx.up.railway.app`)
 
 ### Frontend → Vercel
 
-1. Connect repo di [vercel.com](https://vercel.com)
-2. Set **Root Directory** → `frontend`
-3. Set Environment Variable:
+1. Buat akun di [vercel.com](https://vercel.com)
+2. Klik **"Add New Project"** → import dari GitHub
+3. Set **Root Directory** → `frontend`
+4. Di tab **"Environment Variables"**, tambahkan:
    ```
-   NEXT_PUBLIC_API_URL=https://your-railway-backend-url.railway.app
+   NEXT_PUBLIC_API_URL=https://URL_RAILWAY_KAMU.up.railway.app
    ```
-4. Deploy otomatis setiap push ke `main`
+5. Klik **Deploy**
+
+### Update URL Railway di Kode
+
+Setelah dapat URL Railway, update file `frontend/next.config.js`:
+
+```js
+// Ganti baris ini:
+destination: 'https://pharmashield-project-production.up.railway.app/api/:path*'
+// Dengan URL Railway kamu:
+destination: 'https://URL_RAILWAY_KAMU.up.railway.app/api/:path*'
+```
 
 ---
 
 ## 🧪 Testing
 
 ```bash
+# Masuk ke folder backend
 cd backend
 
 # Aktifkan virtual environment
+# Windows:
 venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
 
 # Jalankan semua test
 pytest tests/ -v
 
-# Test spesifik
+# Jalankan test tertentu
 pytest tests/test_reminder_engine.py -v
 pytest tests/test_pharmashield.py -v
+
+# Jalankan dengan coverage report
+pytest tests/ -v --tb=short
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### ❌ `ModuleNotFoundError: No module named 'app'`
+```bash
+# Pastikan menjalankan dari folder backend, bukan root project
+cd backend
+uvicorn app.main:app --reload --port 8000
+```
+
+### ❌ `TesseractNotFoundError`
+```bash
+# Windows: Tambahkan path Tesseract ke .env
+TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
+
+# Linux/macOS: Cek path instalasi
+which tesseract
+# Lalu set di .env:
+TESSERACT_CMD=/usr/bin/tesseract
+```
+
+### ❌ `CORS Error` di browser
+```bash
+# Pastikan CORS_ORIGINS di backend/.env mencakup URL frontend kamu
+CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+```
+
+### ❌ WhatsApp bot tidak mengirim pesan
+- Pastikan `FONNTE_TOKEN` sudah diisi dengan **Device Token** (bukan Account Token)
+- Cek status device di dashboard Fonnte — harus **Connected**
+- Pastikan nomor target dalam format internasional: `628xxxxxxxxx` (tanpa `+`)
+
+### ❌ AI Chatbot / Scanner tidak bekerja
+- Pastikan `GEMINI_API_KEY` sudah diisi dengan benar
+- Cek kuota API di [Google AI Studio](https://aistudio.google.com)
+- Tier gratis: 60 request/menit, 1.500 request/hari
+
+### ❌ `npm install` gagal
+```bash
+# Hapus node_modules dan install ulang
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### ❌ Port 8000 sudah digunakan
+```bash
+# Ganti port di backend/.env
+PORT=8001
+
+# Jalankan dengan port baru
+uvicorn app.main:app --reload --port 8001
+
+# Update frontend/.env.local
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8001
 ```
 
 ---
 
 ## 🤝 Kontribusi
 
-Kami sangat menyambut kontribusi dari siapapun! Berikut panduan berkontribusi:
+Kami sangat menyambut kontribusi! Berikut panduan untuk kolaborator:
 
-### Alur Kerja (Git Flow)
+### Alur Kerja Git
 
 ```
-main                    # Branch production — selalu stabil
-  └── develop           # Branch development utama
-        ├── feature/xxx # Fitur baru
-        ├── fix/xxx     # Bug fix
-        └── docs/xxx    # Update dokumentasi
+main                    ← Branch production, selalu stabil
+  └── develop           ← Branch development utama (opsional)
+        ├── feature/xxx ← Fitur baru
+        ├── fix/xxx     ← Bug fix
+        └── docs/xxx    ← Update dokumentasi
 ```
 
 ### Langkah Kontribusi
 
-1. **Fork** repository ini
+1. **Fork** repository ini di GitHub
+
 2. **Clone** fork kamu:
    ```bash
-   git clone https://github.com/USERNAME/pharmashield-project.git
+   git clone https://github.com/USERNAME_KAMU/pharmashield-project.git
+   cd pharmashield-project
    ```
-3. **Buat branch** baru dari `main`:
+
+3. **Buat branch** baru:
    ```bash
    git checkout -b feature/nama-fitur-kamu
+   # Contoh:
+   git checkout -b feature/multi-dosis-reminder
+   git checkout -b fix/parser-tanggal-kedaluwarsa
    ```
-4. **Kerjakan perubahan** kamu
-5. **Commit** dengan pesan yang jelas (gunakan [Conventional Commits](https://www.conventionalcommits.org)):
+
+4. **Kerjakan perubahan**, lalu commit:
    ```bash
+   git add .
    git commit -m "feat: tambah fitur pengingat multi-dosis"
-   git commit -m "fix: perbaiki bug parser tanggal kedaluwarsa"
-   git commit -m "docs: update README instruksi instalasi"
    ```
-6. **Push** ke branch kamu:
+
+5. **Push** branch ke GitHub:
    ```bash
    git push origin feature/nama-fitur-kamu
    ```
-7. **Buat Pull Request** ke branch `main`
 
-### Konvensi Commit
+6. **Buat Pull Request** di GitHub → pilih base branch `main`
 
-| Prefix | Penggunaan |
-|--------|-----------|
-| `feat:` | Fitur baru |
-| `fix:` | Bug fix |
-| `docs:` | Perubahan dokumentasi |
+### Konvensi Commit Message
+
+Format: `<type>: <deskripsi singkat>`
+
+| Type | Kapan digunakan |
+|------|----------------|
+| `feat:` | Menambah fitur baru |
+| `fix:` | Memperbaiki bug |
+| `docs:` | Mengubah dokumentasi |
 | `style:` | Perubahan tampilan / CSS |
-| `refactor:` | Refactoring kode |
+| `refactor:` | Refactoring kode (tanpa ubah fitur) |
 | `test:` | Menambah atau mengubah test |
 | `chore:` | Update dependency, config, dll |
 
+Contoh:
+```
+feat: tambah notifikasi WhatsApp multi-bahasa
+fix: perbaiki parsing tanggal exp format MM/YYYY
+docs: tambah panduan setup Docker di README
+refactor: pisah reminder engine menjadi modul terpisah
+```
+
 ### Aturan Coding
 
-- **Python**: Ikuti PEP 8, gunakan type hints
+- **Python**: Ikuti PEP 8, gunakan type hints untuk semua fungsi
 - **JavaScript/JSX**: Gunakan functional components & React Hooks
-- **Komentar**: Tulis dalam Bahasa Indonesia untuk kode bisnis, Inggris untuk komentar teknis
-- **Jangan commit**: file `.env`, `node_modules/`, `venv/`, `__pycache__/`, file upload
+- **Komentar**: Bahasa Indonesia untuk komentar bisnis logic
+- **Jangan commit**: `.env`, `node_modules/`, `venv/`, `.venv/`, `__pycache__/`, `uploads/*`
 
 ---
 
@@ -528,13 +814,13 @@ main                    # Branch production — selalu stabil
 |------|--------|-------|
 | Rifqi Aunur | [@rifqiaunur666](https://github.com/rifqiaunur666) | Lead Developer |
 
-> Ingin bergabung sebagai kolaborator? Buka **Issue** atau hubungi via WhatsApp bot kami! 😄
+> 💬 Ingin bergabung sebagai kolaborator? Buka **Issue** di GitHub atau hubungi langsung!
 
 ---
 
 ## 📄 Lisensi
 
-Project ini menggunakan lisensi **MIT**. Silakan gunakan, modifikasi, dan distribusikan dengan bebas dengan mencantumkan kredit.
+Project ini menggunakan lisensi **MIT** — bebas digunakan, dimodifikasi, dan didistribusikan dengan menyertakan kredit.
 
 ---
 
@@ -543,11 +829,13 @@ Project ini menggunakan lisensi **MIT**. Silakan gunakan, modifikasi, dan distri
 | Resource | URL |
 |----------|-----|
 | 🌐 Demo Live | _Coming soon_ |
-| 📚 API Docs | `http://localhost:8000/docs` (lokal) |
+| 📚 API Docs | http://localhost:8000/docs |
+| 🐙 GitHub Repo | https://github.com/rifqiaunur666/pharmashield-project |
 | 🤖 Fonnte Dashboard | https://fonnte.com |
 | 🧠 Gemini AI Studio | https://aistudio.google.com |
 | 🚂 Railway | https://railway.app |
 | ▲ Vercel | https://vercel.com |
+| 🔤 Tesseract OCR | https://github.com/UB-Mannheim/tesseract/wiki |
 
 ---
 
@@ -556,5 +844,7 @@ Project ini menggunakan lisensi **MIT**. Silakan gunakan, modifikasi, dan distri
 Dibuat dengan ❤️ untuk membantu lansia & keluarga Indonesia 🇮🇩
 
 **PharmaShield — Obat Aman, Keluarga Sehat**
+
+⭐ Jika project ini bermanfaat, jangan lupa beri **Star** di GitHub!
 
 </div>
