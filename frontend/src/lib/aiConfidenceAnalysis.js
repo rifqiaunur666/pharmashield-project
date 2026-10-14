@@ -13,9 +13,9 @@
 
 /** Tier constants */
 export const CONFIDENCE_TIER = {
-  HIGH:   { min: 85,  max: 100, id: 'high',   label: 'Tinggi',  colorClass: 'text-[#a3e635]',  borderClass: 'border-[#a3e635]/40',  bgClass: 'bg-[#a3e635]/8',   dotClass: 'bg-[#a3e635]',  icon: '✅' },
-  MEDIUM: { min: 60,  max: 84,  id: 'medium',  label: 'Sedang',  colorClass: 'text-amber-300',   borderClass: 'border-amber-400/40',  bgClass: 'bg-amber-400/8',   dotClass: 'bg-amber-400',  icon: '⚠️' },
-  LOW:    { min: 0,   max: 59,  id: 'low',     label: 'Rendah',  colorClass: 'text-rose-400',    borderClass: 'border-rose-500/40',   bgClass: 'bg-rose-500/8',    dotClass: 'bg-rose-500',   icon: '🔴' },
+  HIGH:   { min: 85,  max: 100, id: 'high',   label: 'Tinggi',  colorClass: 'text-emerald-700 dark:text-[#a3e635]',  borderClass: 'border-emerald-300 dark:border-[#a3e635]/40',  bgClass: 'bg-emerald-50/80 dark:bg-[#a3e635]/8',   dotClass: 'bg-emerald-600 dark:bg-[#a3e635]',  icon: '✅' },
+  MEDIUM: { min: 60,  max: 84,  id: 'medium',  label: 'Sedang',  colorClass: 'text-amber-800 dark:text-amber-300',   borderClass: 'border-amber-300 dark:border-amber-400/40',  bgClass: 'bg-amber-50/80 dark:bg-amber-400/8',   dotClass: 'bg-amber-500 dark:bg-amber-400',  icon: '⚠️' },
+  LOW:    { min: 0,   max: 59,  id: 'low',     label: 'Rendah',  colorClass: 'text-rose-700 dark:text-rose-400',    borderClass: 'border-rose-300 dark:border-rose-500/40',   bgClass: 'bg-rose-50/80 dark:bg-rose-500/8',    dotClass: 'bg-rose-600 dark:bg-rose-500',   icon: '🔴' },
 };
 
 /**

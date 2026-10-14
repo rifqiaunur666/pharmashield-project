@@ -192,12 +192,12 @@ export default function CameraScanner({
 
   // Determine current system status label
   const currentStatus = isLoading
-    ? { label: 'Memproses Gambar', color: 'bg-amber-400 text-black', dot: 'bg-black animate-ping' }
+    ? { label: 'Memproses Gambar', color: 'bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-400 dark:text-black', dot: 'bg-amber-600 dark:bg-black animate-ping' }
     : error
-    ? { label: 'Scan Gagal', color: 'bg-rose-500/20 text-rose-300 border border-rose-500/40', dot: 'bg-rose-400' }
+    ? { label: 'Scan Gagal', color: 'bg-rose-100 text-rose-800 border border-rose-300 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/40', dot: 'bg-rose-600 dark:bg-rose-400' }
     : selectedImage
-    ? { label: 'Pratinjau Foto', color: 'bg-[#c8f93a]/20 text-[#c8f93a] border border-[#c8f93a]/30', dot: 'bg-[#c8f93a]' }
-    : { label: 'Siap Scan', color: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30', dot: 'bg-emerald-400 animate-pulse' };
+    ? { label: 'Pratinjau Foto', color: 'bg-sky-100 text-sky-800 border border-sky-300 dark:bg-[#c8f93a]/20 dark:text-[#c8f93a] dark:border-[#c8f93a]/30', dot: 'bg-sky-600 dark:bg-[#c8f93a]' }
+    : { label: 'Siap Scan', color: 'bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30', dot: 'bg-emerald-600 dark:bg-emerald-400 animate-pulse' };
 
   return (
     <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-6 space-y-6 shadow-xl animate-fade-in">

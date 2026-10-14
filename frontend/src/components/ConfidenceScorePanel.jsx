@@ -203,8 +203,7 @@ export default function ConfidenceScorePanel({ result }) {
           {/* Tier badge */}
           <div className="flex flex-wrap items-center justify-center xs:justify-start gap-2">
             <span
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold border ${tier.borderClass} ${tier.colorClass}`}
-              style={{ background: 'rgba(255,255,255,0.04)' }}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold border ${tier.borderClass} ${tier.colorClass} bg-slate-100 dark:bg-white/5 shadow-xs`}
             >
               <span>{tier.icon}</span>
               <span>Akurasi {tier.label}</span>
@@ -323,9 +322,7 @@ export default function ConfidenceScorePanel({ result }) {
           </div>
 
           {/* Overall assessment summary */}
-          <div className={`rounded-xl border ${tier.borderClass} p-3.5 flex items-start gap-3 mt-2`}
-            style={{ background: 'rgba(255,255,255,0.02)' }}
-          >
+          <div className={`rounded-xl border ${tier.borderClass} bg-slate-50 dark:bg-white/[0.02] p-3.5 flex items-start gap-3 mt-2`}>
             <span className="text-lg shrink-0">{tier.icon}</span>
             <div>
               <p className={`text-xs font-bold mb-1 ${tier.colorClass}`}>

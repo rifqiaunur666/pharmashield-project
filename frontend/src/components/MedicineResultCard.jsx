@@ -61,7 +61,7 @@ export default function MedicineResultCard({
     green: {
       border: 'border-emerald-300 dark:border-[#c8f93a]/40',
       bg: 'bg-emerald-50 dark:bg-[#c8f93a]/10',
-      text: 'text-emerald-800 dark:text-[#c8f93a]',
+      text: 'text-emerald-900 dark:text-[#c8f93a]',
       badge: 'bg-emerald-600 text-white dark:bg-[#c8f93a] dark:text-black font-extrabold',
       title: 'Obat Terverifikasi — Layak Konsumsi Sesuai Aturan',
       sub: 'Kemasan terverifikasi valid dan tidak ditemukan konflik alergi, kontraindikasi, atau interaksi klinis berisiko pada profil Anda.',
@@ -69,15 +69,15 @@ export default function MedicineResultCard({
     yellow: {
       border: 'border-amber-300 dark:border-amber-500/40',
       bg: 'bg-amber-50 dark:bg-amber-500/10',
-      text: 'text-amber-900 dark:text-amber-300',
-      badge: 'bg-amber-500 text-black font-extrabold',
+      text: 'text-amber-950 dark:text-amber-300',
+      badge: 'bg-amber-500 text-slate-950 font-black',
       title: 'Perhatian Khusus / Evaluasi Lebih Lanjut Diperlukan',
       sub: 'Terdapat catatan perhatian: golongan obat keras/resep dokter, profil medis parsial, atau potensi interaksi ringan yang perlu diperhatikan.',
     },
     red: {
       border: 'border-rose-300 dark:border-rose-500/50',
       bg: 'bg-rose-50 dark:bg-rose-500/15',
-      text: 'text-rose-900 dark:text-rose-300',
+      text: 'text-rose-950 dark:text-rose-300',
       badge: 'bg-rose-600 text-white font-black',
       title: 'JANGAN KONSUMSI HINGGA RISIKO KESELAMATAN TERATASI',
       sub: 'Konflik keselamatan kritis terdeteksi: riwayat alergi obat, kontraindikasi penyakit yang Anda miliki, atau interaksi obat mayor.',
@@ -85,8 +85,8 @@ export default function MedicineResultCard({
     gray: {
       border: 'border-slate-300 dark:border-neutral-500/40',
       bg: 'bg-slate-100 dark:bg-neutral-800/40',
-      text: 'text-slate-800 dark:text-neutral-300',
-      badge: 'bg-slate-600 text-white font-bold',
+      text: 'text-slate-900 dark:text-neutral-300',
+      badge: 'bg-slate-700 text-white font-bold',
       title: 'Identitas Obat Belum Dapat Dipastikan Secara Aman',
       sub: 'Hasil pemindaian kemasan obat buram, kurang pencahayaan, atau tidak cocok dengan database resmi. Jangan mengonsumsi obat ini semata berdasarkan hasil scan.',
     },
@@ -126,30 +126,30 @@ export default function MedicineResultCard({
         </p>
 
         {statusKey === 'red' && (
-          <div className="rounded-xl bg-rose-950/60 border border-rose-500/30 p-3 text-xs text-rose-200 font-semibold">
+          <div className="rounded-xl bg-rose-100 border border-rose-300 text-rose-950 dark:bg-rose-950/60 dark:border-rose-500/30 dark:text-rose-200 p-3.5 text-xs font-bold leading-relaxed">
             🚨 Panduan Darurat: Jika Anda atau pasien telah mengonsumsi obat ini dan mengalami gejala sesak napas, ruam gatal berat, atau pusing mendadak, segera hubungi IGD / 119 atau kunjungi fasilitas kesehatan terdekat.
           </div>
         )}
 
         {statusKey === 'gray' && (
-          <div className="rounded-xl bg-neutral-900/90 border border-neutral-700 p-3 text-xs text-neutral-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="rounded-xl bg-slate-200/90 border border-slate-300 text-slate-800 dark:bg-neutral-900/90 dark:border-neutral-700 dark:text-neutral-300 p-3.5 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <p className="font-bold text-white">Butuh informasi obat sekarang?</p>
-              <p className="text-[11px] text-neutral-400 mt-0.5">
+              <p className="font-bold text-slate-900 dark:text-white">Butuh informasi obat sekarang?</p>
+              <p className="text-[11px] text-slate-600 dark:text-neutral-400 mt-0.5">
                 Anda dapat memindai ulang dengan pencahayaan lebih jelas atau memasukkan nama obat secara manual dari basis data kami.
               </p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={onRetryScan || onResetScan}
-                className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition-all"
+                className="px-3 py-1.5 rounded-lg bg-slate-300 hover:bg-slate-400 text-slate-900 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white text-xs font-bold transition-all"
               >
                 🔄 Scan Ulang
               </button>
               {onManualLookup && (
                 <button
                   onClick={onManualLookup}
-                  className="px-3 py-1.5 rounded-lg bg-[#c8f93a] text-black text-xs font-extrabold hover:bg-[#b5f524] transition-all"
+                  className="px-3 py-1.5 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#c8f93a] dark:text-black dark:hover:bg-[#b5f524] text-xs font-black transition-all"
                 >
                   🔍 Masukkan Nama Manual
                 </button>
@@ -244,9 +244,9 @@ export default function MedicineResultCard({
         {/* Side Effects & Contraindications */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           {result.sideEffects?.length > 0 && (
-            <div className="p-4 rounded-xl border border-white/5 bg-[#12151e] space-y-1.5">
-              <span className="font-bold text-neutral-300 uppercase tracking-wider text-[10px]">Efek Samping Umum</span>
-              <ul className="list-disc pl-4 space-y-1 text-neutral-300">
+            <div className="p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#12151e] space-y-1.5">
+              <span className="font-bold text-slate-700 dark:text-neutral-300 uppercase tracking-wider text-[10px]">Efek Samping Umum</span>
+              <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-neutral-300">
                 {result.sideEffects.map((ef, i) => (
                   <li key={i}>{ef}</li>
                 ))}
@@ -255,9 +255,9 @@ export default function MedicineResultCard({
           )}
 
           {result.contraindications?.length > 0 && (
-            <div className="p-4 rounded-xl border border-rose-500/20 bg-rose-500/5 space-y-1.5">
-              <span className="font-bold text-rose-300 uppercase tracking-wider text-[10px]">Kontraindikasi yang Diketahui</span>
-              <ul className="list-disc pl-4 space-y-1 text-rose-200">
+            <div className="p-4 rounded-xl border border-rose-200 dark:border-rose-500/20 bg-rose-50 dark:bg-rose-500/5 space-y-1.5">
+              <span className="font-bold text-rose-900 dark:text-rose-300 uppercase tracking-wider text-[10px]">Kontraindikasi yang Diketahui</span>
+              <ul className="list-disc pl-4 space-y-1 text-rose-900 dark:text-rose-200 font-medium">
                 {result.contraindications.map((ci, i) => (
                   <li key={i}>{ci}</li>
                 ))}
@@ -268,9 +268,9 @@ export default function MedicineResultCard({
 
         {/* Warnings */}
         {result.warnings?.length > 0 && (
-          <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 space-y-2 text-xs">
-            <span className="font-black text-amber-200">⚠️ Peringatan Keselamatan Penting:</span>
-            <ul className="list-disc pl-4 space-y-1 text-amber-300">
+          <div className="p-4 rounded-xl border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 space-y-2 text-xs">
+            <span className="font-black text-amber-950 dark:text-amber-200">⚠️ Peringatan Keselamatan Penting:</span>
+            <ul className="list-disc pl-4 space-y-1 text-amber-900 dark:text-amber-300 font-medium">
               {result.warnings.map((w, idx) => (
                 <li key={idx}>{w}</li>
               ))}
@@ -339,23 +339,23 @@ export default function MedicineResultCard({
 
         {/* Detailed Critical or Caution List */}
         {clinical.critical_risks?.length > 0 && (
-          <div className="p-4 rounded-xl border border-rose-500/30 bg-rose-500/10 space-y-2 text-xs">
-            <span className="font-black text-rose-800 dark:text-rose-200">Temuan Risiko Kritis:</span>
+          <div className="p-4 rounded-xl border border-rose-300 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-500/10 space-y-2 text-xs">
+            <span className="font-black text-rose-950 dark:text-rose-200">Temuan Risiko Kritis:</span>
             {clinical.critical_risks.map((risk, idx) => (
-              <div key={idx} className="border-t border-rose-500/20 pt-2 text-rose-700 dark:text-rose-300">
+              <div key={idx} className="border-t border-rose-200 dark:border-rose-500/20 pt-2 text-rose-900 dark:text-rose-300">
                 <p className="font-bold">{risk.title}</p>
                 <p className="mt-0.5">{risk.description}</p>
-                <p className="text-rose-900 dark:text-white font-semibold mt-1">Saran: {risk.action}</p>
+                <p className="text-rose-950 dark:text-white font-bold mt-1">Saran: {risk.action}</p>
               </div>
             ))}
           </div>
         )}
 
         {clinical.caution_warnings?.length > 0 && (
-          <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 space-y-2 text-xs">
-            <span className="font-black text-amber-800 dark:text-amber-200">Catatan Perhatian Khusus:</span>
+          <div className="p-4 rounded-xl border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 space-y-2 text-xs">
+            <span className="font-black text-amber-950 dark:text-amber-200">Catatan Perhatian Khusus:</span>
             {clinical.caution_warnings.map((warn, idx) => (
-              <div key={idx} className="border-t border-amber-500/20 pt-2 text-amber-800 dark:text-amber-300">
+              <div key={idx} className="border-t border-amber-200 dark:border-amber-500/20 pt-2 text-amber-950 dark:text-amber-300">
                 <p className="font-bold">{warn.title}</p>
                 <p className="mt-0.5">{warn.description}</p>
               </div>

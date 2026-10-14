@@ -179,9 +179,6 @@ html.light .sidebar .bg-\[\#c8f93a\] {
 }
 
 /* Light Mode Badges & Contrasts */
-html.light .text-white {
-  color: #0f172a !important;
-}
 html.light .text-neutral-300 {
   color: #334155 !important;
 }
@@ -192,14 +189,60 @@ html.light .bg-[#161922] {
   background-color: #f1f5f9 !important;
   color: #0f172a !important;
 }
-html.light .bg-[#11141b], html.light .bg-[#12151d] {
+html.light .bg-[#11141b],
+html.light .bg-[#12151d],
+html.light .bg-[#12151e],
+html.light .bg-[#101726],
+html.light .bg-[#0b1320] {
   background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html.light .bg-zinc-950,
+html.light .bg-zinc-900 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+html.light .bg-zinc-900\/50,
+html.light .bg-zinc-900\/40,
+html.light .bg-zinc-800 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+html.light .border-zinc-800,
+html.light .border-zinc-700 {
+  border-color: #e2e8f0 !important;
+}
+html.light .text-zinc-100,
+html.light .text-zinc-200 {
+  color: #0f172a !important;
+}
+html.light .text-zinc-300,
+html.light .text-zinc-400 {
+  color: #475569 !important;
+}
+html.light .text-zinc-500 {
+  color: #64748b !important;
 }
 html.light .bg-black\/40, html.light .bg-black\/30, html.light .bg-black\/20 {
   background-color: #f1f5f9 !important;
 }
 html.light .border-white\/5, html.light .border-white\/10 {
   border-color: #e2e8f0 !important;
+}
+
+/* Ensure buttons, badges, overlays with dark backgrounds always retain crisp white text */
+html.light .btn-primary-action,
+html.light button.bg-\[\#0284c7\],
+html.light .bg-\[\#0284c7\],
+html.light .bg-emerald-600,
+html.light .bg-rose-600,
+html.light .bg-slate-900,
+html.light .bg-neutral-900,
+html.light .bg-black,
+html.light .bg-black\/70,
+html.light .bg-black\/80,
+html.light .bg-black\/90 {
+  color: #ffffff !important;
 }
 
 /* Light Mode Status Badges: Clear WCAG AA Compliant Palettes */

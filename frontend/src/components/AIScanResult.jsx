@@ -15,25 +15,27 @@ import { useEffect, useRef } from 'react';
 const COLOR_CONFIG = {
   Hijau: {
     emoji: '🟢',
-    bg: 'bg-emerald-50',
-    border: 'border-emerald-300',
-    badge: 'bg-emerald-500 text-white',
-    headerBg: 'bg-emerald-500',
-    text: 'text-emerald-900',
-    accent: 'text-emerald-700',
+    bg: 'bg-emerald-50 dark:bg-emerald-950/20',
+    border: 'border-emerald-300 dark:border-emerald-500/30',
+    badge: 'bg-emerald-600 text-white',
+    headerBg: 'bg-emerald-600 dark:bg-emerald-700',
+    headerText: 'text-white',
+    text: 'text-emerald-950 dark:text-emerald-200',
+    accent: 'text-emerald-800 dark:text-emerald-300',
     ring: 'ring-emerald-200',
-    dot: 'bg-emerald-500',
+    dot: 'bg-emerald-600',
     pulseDot: 'bg-emerald-400',
     label: 'Aman',
   },
   Kuning: {
     emoji: '🟡',
-    bg: 'bg-amber-50',
-    border: 'border-amber-300',
-    badge: 'bg-amber-500 text-white',
-    headerBg: 'bg-amber-500',
-    text: 'text-amber-900',
-    accent: 'text-amber-700',
+    bg: 'bg-amber-50 dark:bg-amber-950/20',
+    border: 'border-amber-300 dark:border-amber-500/30',
+    badge: 'bg-amber-500 text-slate-950 font-black',
+    headerBg: 'bg-amber-500 dark:bg-amber-600',
+    headerText: 'text-slate-950',
+    text: 'text-amber-950 dark:text-amber-200',
+    accent: 'text-amber-900 dark:text-amber-300',
     ring: 'ring-amber-200',
     dot: 'bg-amber-500',
     pulseDot: 'bg-amber-400',
@@ -41,12 +43,13 @@ const COLOR_CONFIG = {
   },
   Merah: {
     emoji: '🔴',
-    bg: 'bg-rose-50',
-    border: 'border-rose-300',
-    badge: 'bg-rose-600 text-white',
-    headerBg: 'bg-rose-600',
-    text: 'text-rose-950',
-    accent: 'text-rose-700',
+    bg: 'bg-rose-50 dark:bg-rose-950/20',
+    border: 'border-rose-300 dark:border-rose-500/30',
+    badge: 'bg-rose-600 text-white font-black',
+    headerBg: 'bg-rose-600 dark:bg-rose-700',
+    headerText: 'text-white',
+    text: 'text-rose-950 dark:text-rose-200',
+    accent: 'text-rose-900 dark:text-rose-300',
     ring: 'ring-rose-200',
     dot: 'bg-rose-600',
     pulseDot: 'bg-rose-500',
@@ -117,7 +120,7 @@ export default function AIScanResult({ result, onAskQuestion }) {
       aria-label={`Hasil deteksi: ${d.drug_name}`}
     >
       {/* ── Color-coded Header Bar ── */}
-      <div className={`${cfg.headerBg} px-5 py-4 text-white`}>
+      <div className={`${cfg.headerBg} px-5 py-4 ${cfg.headerText || 'text-white'}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2 mb-1">
@@ -135,7 +138,7 @@ export default function AIScanResult({ result, onAskQuestion }) {
           </div>
           {/* Status pill */}
           <div className="shrink-0">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 border border-white/30 px-3 py-1.5 text-xs font-extrabold backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-black/10 dark:bg-white/20 border border-black/15 dark:border-white/30 px-3 py-1.5 text-xs font-black backdrop-blur-sm">
               {cfg.emoji} {cfg.label}
             </span>
           </div>

@@ -297,19 +297,19 @@ export default function AppHomePage() {
     <div className="space-y-8 animate-fade-in">
       {/* ── STAGE 1 BANNER / WELCOME SCREEN ── */}
       {!isAuthenticated && (
-        <div className="relative overflow-hidden rounded-2xl border border-[#c8f93a]/30 bg-[#c8f93a]/5 p-6 shadow-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-sky-200 bg-sky-50 text-slate-900 dark:border-[#c8f93a]/30 dark:bg-[#c8f93a]/5 p-6 shadow-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#c8f93a] animate-pulse" />
-                <span className="text-[11px] font-black tracking-wider uppercase text-[#c8f93a]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+                <span className="text-[11px] font-black tracking-wider uppercase text-[#0284c7] dark:text-[#c8f93a]">
                   Platform Keamanan Konsumsi Obat
                 </span>
               </div>
-              <h2 className="text-2xl font-black text-white">
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white">
                 Selamat Datang di MedikaGuard ID
               </h2>
-              <p className="text-xs text-neutral-300 leading-relaxed">
+              <p className="text-xs text-slate-700 dark:text-neutral-300 leading-relaxed">
                 Dapatkan informasi obat seketika hanya dengan satu kali pemindaian kemasan. Sistem memverifikasi nama obat, dosis, aturan pakai, peringatan BPOM, serta potensi alergi dan interaksi klinis secara otomatis.
               </p>
             </div>
@@ -317,7 +317,7 @@ export default function AppHomePage() {
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={openAuthModal}
-                className="px-5 py-2.5 rounded-xl bg-[#c8f93a] text-black font-black text-xs hover:bg-[#b5f524] transition-all shadow-md shadow-[#c8f93a]/20"
+                className="px-5 py-2.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#c8f93a] dark:text-black dark:hover:bg-[#b5f524] font-black text-xs transition-all shadow-md"
               >
                 Masuk / Buat Akun
               </button>
@@ -460,14 +460,14 @@ export default function AppHomePage() {
                 setError(null);
                 setCurrentStage('dashboard');
               }}
-              className="text-xs font-bold text-neutral-400 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="text-xs font-bold text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white flex items-center gap-1.5 transition-colors"
             >
               ← Kembali ke Dashboard
             </button>
 
             <button
               onClick={() => setShowManualLookup(!showManualLookup)}
-              className="text-xs font-bold text-[#c8f93a] hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-[#0284c7] hover:underline dark:text-[#c8f93a] flex items-center gap-1"
             >
               <span>{showManualLookup ? 'Tutup Pencarian Manual' : '🔍 Cari Manual di Katalog'}</span>
             </button>
@@ -475,16 +475,16 @@ export default function AppHomePage() {
 
           {showManualLookup ? (
             <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-6 space-y-4 shadow-xl animate-fade-in">
-              <div className="flex items-center justify-between border-b border-white/5 pb-3">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/5 pb-3">
                 <div>
-                  <h3 className="text-lg font-black text-white">Pilih Obat dari Basis Data Resmi</h3>
-                  <p className="text-xs text-neutral-400">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white">Pilih Obat dari Basis Data Resmi</h3>
+                  <p className="text-xs text-slate-600 dark:text-neutral-400">
                     Jika kemasan fisik tidak dapat dipindai dengan jelas, pilih obat langsung dari katalog resmi kami.
                   </p>
                 </div>
                 <button
                   onClick={() => setShowManualLookup(false)}
-                  className="text-xs font-bold text-neutral-400 hover:text-white"
+                  className="text-xs font-bold text-slate-500 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
                 >
                   ✕ Tutup
                 </button>
