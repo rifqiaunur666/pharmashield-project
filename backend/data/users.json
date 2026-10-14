@@ -608,5 +608,65 @@
       "profile_completed": true,
       "updated_at": "2026-10-10T14:30:53.912049+00:00"
     }
+  },
+  "dr.safetyscan_1791819885@pharmashield.id": {
+    "id": "ea17eefa-fb60-49c1-81d6-6de553253f60",
+    "full_name": "Dr. Safety Scanner",
+    "email": "dr.safetyscan_1791819885@pharmashield.id",
+    "hashed_password": "$pbkdf2-sha256$29000$dI6xVur9P2csxdhbC2Fs7Q$Bk4AEbXdCNgKAXhIhNZ1XywIQ9OVb4fEqZLCdkKkGHs",
+    "is_verified": true,
+    "created_at": "2026-10-12T15:44:45.856281+00:00",
+    "medical_profile": {
+      "allergies": [
+        "paracetamol"
+      ],
+      "adverse_reactions": [
+        "ruam kulit"
+      ],
+      "current_prescriptions": [
+        "amlodipine 5mg"
+      ],
+      "otc_medications": [],
+      "supplements": [
+        "vitamin c"
+      ],
+      "medical_conditions": [
+        "hipertensi"
+      ],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": true,
+      "updated_at": "2026-10-12T15:44:45.908800+00:00"
+    }
+  },
+  "dr.safetyscan_1791893991@pharmashield.id": {
+    "id": "cd22ddc9-1ee1-4ec5-8141-1e9461029c9c",
+    "full_name": "Dr. Safety Scanner",
+    "email": "dr.safetyscan_1791893991@pharmashield.id",
+    "hashed_password": "$pbkdf2-sha256$29000$sPb.H4NQyrmXMqb0XkvpHQ$GoXTRXWuee0BqhXQADP0lUEj07NBeVfhxnDmox14MSY",
+    "is_verified": true,
+    "created_at": "2026-10-13T12:19:51.731895+00:00",
+    "medical_profile": {
+      "allergies": [
+        "paracetamol"
+      ],
+      "adverse_reactions": [
+        "ruam kulit"
+      ],
+      "current_prescriptions": [
+        "amlodipine 5mg"
+      ],
+      "otc_medications": [],
+      "supplements": [
+        "vitamin c"
+      ],
+      "medical_conditions": [
+        "hipertensi"
+      ],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": true,
+      "updated_at": "2026-10-13T12:19:51.797359+00:00"
+    }
   }
 }

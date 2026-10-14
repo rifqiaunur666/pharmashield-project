@@ -16,7 +16,14 @@ load_dotenv(_BASE_DIR / ".env")
 
 
 class Settings:
-    # ── Fonnte / WhatsApp ────────────────────────────────────────────────────
+    # ── Meta WhatsApp Cloud API ──────────────────────────────────────────────
+    meta_wa_phone_number_id: str = os.getenv("META_WA_PHONE_NUMBER_ID", "")
+    meta_wa_access_token: str    = os.getenv("META_WA_ACCESS_TOKEN", "")
+    meta_wa_verify_token: str    = os.getenv("META_WA_VERIFY_TOKEN", "pharmashield_meta_verify_token")
+    meta_wa_app_secret: str      = os.getenv("META_WA_APP_SECRET", "")
+    meta_wa_api_version: str     = os.getenv("META_WA_API_VERSION", "v19.0")
+
+    # ── Fonnte / WhatsApp (Fallback / Legacy) ─────────────────────────────────
     fonnte_token: str        = os.getenv("FONNTE_TOKEN", "")
     wa_target_number: str   = os.getenv("WA_TARGET_NUMBER", "")
 

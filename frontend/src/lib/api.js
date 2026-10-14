@@ -400,3 +400,178 @@ export async function clearAllHistory() {
     return false;
   }
 }
+
+// ─── WhatsApp Reminders API ──────────────────────────────────────────────────
+
+export async function createReminderPatient(data) {
+  const res = await fetch(`${API_BASE}/reminders/patients`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error('Gagal mendaftarkan pasien');
+  return await res.json();
+}
+
+export async function fetchReminderPatients() {
+  const res = await fetch(`${API_BASE}/reminders/patients`, {
+    headers: getAuthHeaders(),
+    cache: 'no-store',
+  });
+  if (!res.ok) throw new Error('Gagal memuat data pasien');
+  return await res.json();
+}
+
+export async function createReminderMedication(data) {
+  const res = await fetch(`${API_BASE}/reminders/medications`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Gagal menambahkan jadwal obat');
+  }
+  return await res.json();
+}
+
+export async function fetchReminderMedications(patientId = null) {
+  const url = patientId
+    ? `${API_BASE}/reminders/medications?patient_id=${encodeURIComponent(patientId)}`
+    : `${API_BASE}/reminders/medications`;
+  const res = await fetch(url, { headers: getAuthHeaders(), cache: 'no-store' });
+  if (!res.ok) throw new Error('Gagal memuat jadwal obat');
+  return await res.json();
+}
+
+export async function fetchReminderLogs(patientId = null) {
+  const url = patientId
+    ? `${API_BASE}/reminders/logs?patient_id=${encodeURIComponent(patientId)}`
+    : `${API_BASE}/reminders/logs`;
+  const res = await fetch(url, { headers: getAuthHeaders(), cache: 'no-store' });
+  if (!res.ok) throw new Error('Gagal memuat log pengingat');
+  return await res.json();
+}
+
+export async function simulateReminderTick() {
+  const res = await fetch(`${API_BASE}/reminders/simulate-tick`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+  });
+  return await res.json();
+}
+
+export async function simulateButtonInteraction(buttonId) {
+  const res = await fetch(`${API_BASE}/reminders/simulate-interaction`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+    body: JSON.stringify({ button_id: buttonId }),
+  });
+  return await res.json();
+}
+
+export async function testSendWhatsApp(phone, text) {
+  const url = `${API_BASE}/reminders/test-send?phone=${encodeURIComponent(phone)}&text=${encodeURIComponent(text)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+  });
+  return await res.json();
+}
+
+export async function deleteReminderPatient(patientId) {
+  const res = await fetch(`${API_BASE}/reminders/patients/${encodeURIComponent(patientId)}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  });
+  return res.ok;
+}
+
+export async function deleteReminderMedication(medicationId) {
+  const res = await fetch(`${API_BASE}/reminders/medications/${encodeURIComponent(medicationId)}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  });
+  return res.ok;
+}
+
+export async function deleteReminderLog(logId) {
+  const res = await fetch(`${API_BASE}/reminders/logs/${encodeURIComponent(logId)}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  });
+  return res.ok;
+}
+
+export async function clearAllRemindersData() {
+  const res = await fetch(`${API_BASE}/reminders/clear-all`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  });
+  return res.ok;
+}
+
+export async function fetchGatewayStatus() {
+  const res = await fetch(`${API_BASE}/reminders/gateway-status`, {
+    headers: getAuthHeaders(),
+    cache: 'no-store',
+  });
+  return await res.json();
+}
+
+export async function updateGatewayCredentials(data) {
+  const res = await fetch(`${API_BASE}/reminders/update-gateway`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+    body: JSON.stringify(data),
+  });
+  return await res.json();
+}
+
+export async function triggerDueReminder(logId) {
+  const res = await fetch(`${API_BASE}/reminders/trigger-due/${encodeURIComponent(logId)}`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+  });
+  return await res.json();
+}
+
+export async function fetchActivityLogs() {
+  const res = await fetch(`${API_BASE}/reminders/activity-logs?limit=30`, {
+    headers: getAuthHeaders(),
+    cache: 'no-store',
+  });
+  return await res.json();
+}
+
+export async function sendWelcomeNotification(data) {
+  const res = await fetch(`${API_BASE}/reminders/send-welcome`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+    body: JSON.stringify(data),
+  });
+  return await res.json();
+}
+
+export async function scanWhatsAppQRCode(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  const res = await fetch(`${API_BASE}/reminders/scan-qr-contact`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: formData,
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || 'Gagal memindai Kode QR WhatsApp.');
+  }
+  return await res.json();
+}
+
+export async function triggerReminderStage(logId, stage = 'STAGE_3_DUE_0M') {
+  const res = await fetch(`${API_BASE}/reminders/trigger-stage/${encodeURIComponent(logId)}?stage=${encodeURIComponent(stage)}`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+  });
+  return await res.json();
+}

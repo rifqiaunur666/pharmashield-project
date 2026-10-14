@@ -60,6 +60,11 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
         .toUpperCase()
     : 'PS';
 
+  // Completely eliminate header overlap on Reminders page
+  if (pathname === '/reminders') {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-20 flex items-center gap-4 h-16 px-4 sm:px-6 bg-white/95 dark:bg-[#11141a]/95 backdrop-blur-md border-b border-slate-200 dark:border-[var(--color-border)] shadow-xs">
       {/* Mobile hamburger */}

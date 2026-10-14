@@ -55,8 +55,10 @@ def format_whatsapp_message(
             time_text = "❌ Berbahaya / Data Kritis Tidak Terbaca"
 
     lines = [
-        "🛡️ *PharmaShield — Laporan Keamanan Obat*",
+        "👋 *Halo, Selamat Datang di PharmaShield!*",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        "Data kemasan obat Anda berhasil dipindai dan dianalisis:",
+        "",
         f"💊 *Nama Obat:* {med_display}",
         f"📅 *Kedaluwarsa:* {exp_display}",
         f"{status_emoji} *Status Keamanan:* *{status_id}*",
@@ -70,7 +72,7 @@ def format_whatsapp_message(
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
         f"🕐 *Waktu Pemindaian:* {scan_time}",
         "",
-        "_Pesan otomatis oleh PharmaShield AI Safety Guard_",
+        "_Layanan Keamanan Obat PharmaShield_",
     ]
     return "\n".join(lines)
 
@@ -86,19 +88,25 @@ def send_whatsapp_alert(
     shelf_life_note: str,
     recommendation: str,
     scan_time: str,
+    target_phone: str | None = None,
 ) -> dict[str, Any]:
     """
-    Dispatch WhatsApp notification using Fonnte API.
+    Dispatch WhatsApp notification using Fonnte API or Meta WA service.
     Fails gracefully if credentials are not configured or network issues occur.
     """
     token = settings.fonnte_token.strip()
-    target = settings.wa_target_number.strip()
+    target = target_phone.strip() if target_phone else settings.wa_target_number.strip()
 
-    # Graceful check for unconfigured or placeholder token
-    if not token or token == "YOUR_FONNTE_TOKEN_HERE" or not target:
-        logger.info(
-            "[WA] FONNTE_TOKEN or WA_TARGET_NUMBER not configured. Skipping WhatsApp dispatch."
-        )
+    if not target or target == "628123456789":
+        # Check if there is a patient registered in reminder_engine
+        try:
+            from app.services.reminder_service import reminder_engine
+            patients = reminder_engine.list_patients()
+            if patients:
+                # Get the most recently registered patient
+                target = patients[-1].whatsapp_no
+        except Exception:
+            pass
         return {
             "success": False,
             "message": "Fonnte credentials not configured (token/target missing).",

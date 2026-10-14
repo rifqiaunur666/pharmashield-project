@@ -1,0 +1,175 @@
+{
+  "patients": {
+    "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa": {
+      "id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
+      "user_id": null,
+      "name": "Rifqi Aunur Rahman",
+      "whatsapp_no": "6285374497583",
+      "timezone": "Asia/Jakarta",
+      "created_at": "2026-10-13T04:10:53.267787+07:00"
+    },
+    "4f40a4da-dd21-48c8-bd2c-590a96f69fee": {
+      "id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
+      "user_id": null,
+      "name": "Rifqi Aunur Rahman",
+      "whatsapp_no": "6285374497583",
+      "qr_code_url": "https://wa.me/qr/S7RKLDEWBD7LK1",
+      "qr_contact_name": "qii",
+      "timezone": "Asia/Jakarta",
+      "created_at": "2026-10-13T19:57:06.059369+07:00"
+    },
+    "2fffaca4-6a0c-4bd9-8ab4-ab4fca1a8533": {
+      "id": "2fffaca4-6a0c-4bd9-8ab4-ab4fca1a8533",
+      "user_id": null,
+      "name": "Rifqi Aunur Rahman",
+      "whatsapp_no": "6285374497583",
+      "qr_code_url": null,
+      "qr_contact_name": null,
+      "timezone": "Asia/Jakarta",
+      "created_at": "2026-10-13T21:53:11.365504+07:00"
+    },
+    "de0a7849-5d57-444c-991e-eda9903d7e3c": {
+      "id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
+      "user_id": null,
+      "name": "Aunur Rahman",
+      "whatsapp_no": "6289520344305",
+      "qr_code_url": null,
+      "qr_contact_name": null,
+      "timezone": "Asia/Jakarta",
+      "created_at": "2026-10-13T21:58:59.008910+07:00"
+    },
+    "33d62c9c-6020-4855-b6fd-2d29d210aa62": {
+      "id": "33d62c9c-6020-4855-b6fd-2d29d210aa62",
+      "user_id": null,
+      "name": "Rifqi Aunur",
+      "whatsapp_no": "6285374497583",
+      "qr_code_url": "https://wa.me/qr/CK6UCSGDWXM7P1",
+      "qr_contact_name": "WhatsApp dan menambahkan Anda",
+      "timezone": "Asia/Jakarta",
+      "created_at": "2026-10-13T22:02:56.698981+07:00"
+    }
+  },
+  "medications": {
+    "12370940-1227-46e8-8726-26ffb368809d": {
+      "id": "12370940-1227-46e8-8726-26ffb368809d",
+      "patient_id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
+      "name": "ultralflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-13",
+      "duration_days": 1,
+      "is_active": true,
+      "created_at": "2026-10-13T04:11:26.394801+07:00",
+      "schedule": {
+        "id": "65eeb295-6b2b-4cd1-9ea2-61228f71e01d",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00",
+          "14:00",
+          "20:00"
+        ]
+      }
+    },
+    "e9fc0455-52f0-4b6b-8f54-8e3e5d7f4710": {
+      "id": "e9fc0455-52f0-4b6b-8f54-8e3e5d7f4710",
+      "patient_id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
+      "name": "Ultraflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-13",
+      "duration_days": 7,
+      "is_active": true,
+      "created_at": "2026-10-13T19:57:35.745849+07:00",
+      "schedule": {
+        "id": "e1238645-3f24-4aac-b9ef-97b70c8a63ee",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00",
+          "14:00",
+          "20:00"
+        ]
+      }
+    },
+    "963a5744-48a6-4002-aa46-1dff8567e72c": {
+      "id": "963a5744-48a6-4002-aa46-1dff8567e72c",
+      "patient_id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
+      "name": "Ultraflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-13",
+      "duration_days": 7,
+      "is_active": true,
+      "created_at": "2026-10-13T19:58:32.972460+07:00",
+      "schedule": {
+        "id": "8c096156-3893-4d5d-a1c8-1dc881b89b26",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00",
+          "14:00",
+          "20:00"
+        ]
+      }
+    },
+    "0633a420-f06a-458f-acab-db56036277cd": {
+      "id": "0633a420-f06a-458f-acab-db56036277cd",
+      "patient_id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
+      "name": "Ultraflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-13",
+      "duration_days": 1,
+      "is_active": true,
+      "created_at": "2026-10-13T20:33:17.342326+07:00",
+      "schedule": {
+        "id": "d04f292c-f0ae-49f7-9877-bb62b527f35a",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00"
+        ]
+      }
+    },
+    "131f031c-d3de-4f12-b387-3fde236f0e3d": {
+      "id": "131f031c-d3de-4f12-b387-3fde236f0e3d",
+      "patient_id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
+      "name": "ultraflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-13",
+      "duration_days": 1,
+      "is_active": true,
+      "created_at": "2026-10-13T22:03:36.854702+07:00",
+      "schedule": {
+        "id": "b1c0ce0d-5945-4b45-a144-6eff17ca768e",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00"
+        ]
+      }
+    },
+    "7cd67628-124b-452c-b450-785122524cee": {
+      "id": "7cd67628-124b-452c-b450-785122524cee",
+      "patient_id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
+      "name": "ultraflu",
+      "dosage": "1",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-14",
+      "duration_days": 1,
+      "is_active": true,
+      "created_at": "2026-10-14T08:05:04.589705+07:00",
+      "schedule": {
+        "id": "d359fec8-d848-4ae2-b528-9c1f45d742ec",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "08:00"
+        ]
+      }
+    }
+  },
+  "logs": {}
+}

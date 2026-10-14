@@ -64,12 +64,27 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
+from app.api.reminder_endpoints import router as reminder_router, webhook_router
+from app.services.scheduler_worker import scheduler_worker
+
+@app.on_event("startup")
+async def startup_event():
+    await scheduler_worker.start()
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await scheduler_worker.stop()
+
 # ─── Routers ──────────────────────────────────────────────────────────────────
 # Primary strict prefix: /api/scan-medicine, /api/history, /api/stats
 app.include_router(api_router, prefix="/api", tags=["PharmaShield API"])
 
 # AI Vision Scanner & Chatbot: /api/ai/scan-vision, /api/ai/chat, /api/ai/status
 app.include_router(ai_router, prefix="/api", tags=["AI Vision & Chatbot"])
+
+# Medicine Reminder & Meta WhatsApp Webhook: /api/reminders, /api/webhook
+app.include_router(reminder_router, prefix="/api", tags=["Medicine Reminder Engine"])
+app.include_router(webhook_router, prefix="/api", tags=["Meta WhatsApp Webhook"])
 
 # Direct fallback without /api prefix for maximum client resilience
 app.include_router(api_router, tags=["Direct Routes (Convenience)"])
