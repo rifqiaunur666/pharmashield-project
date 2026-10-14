@@ -202,14 +202,47 @@ html.light .bg-zinc-900 {
   background-color: #ffffff !important;
   color: #0f172a !important;
 }
+/* Opacity variants — named classes */
+html.light .bg-zinc-950\/90,
+html.light .bg-zinc-950\/80,
+html.light .bg-zinc-950\/70,
+html.light .bg-zinc-950\/60,
+html.light .bg-zinc-950\/50,
+html.light .bg-zinc-950\/40,
+html.light .bg-zinc-950\/30,
+html.light .bg-zinc-900\/90,
+html.light .bg-zinc-900\/80,
+html.light .bg-zinc-900\/70 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
 html.light .bg-zinc-900\/50,
 html.light .bg-zinc-900\/40,
+html.light .bg-zinc-900\/30,
+html.light .bg-zinc-900\/20,
+html.light .bg-zinc-800\/80,
+html.light .bg-zinc-800\/60,
+html.light .bg-zinc-800\/40,
 html.light .bg-zinc-800 {
   background-color: #f1f5f9 !important;
   color: #0f172a !important;
 }
+/* Broad attribute-selector sweep — catches bg-zinc-950/* and bg-zinc-900/* with any slash fraction */
+html.light [class*="bg-zinc-950\/"],
+html.light [class*="bg-zinc-900\/"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
 html.light .border-zinc-800,
-html.light .border-zinc-700 {
+html.light .border-zinc-800\/80,
+html.light .border-zinc-700,
+html.light .border-zinc-600 {
+  border-color: #e2e8f0 !important;
+}
+/* Divide (table rows) */
+html.light .divide-zinc-800\/80 > * + *,
+html.light .divide-zinc-800\/60 > * + *,
+html.light .divide-zinc-800 > * + * {
   border-color: #e2e8f0 !important;
 }
 html.light .text-zinc-100,
@@ -220,8 +253,17 @@ html.light .text-zinc-300,
 html.light .text-zinc-400 {
   color: #475569 !important;
 }
-html.light .text-zinc-500 {
+html.light .text-zinc-500,
+html.light .text-zinc-600 {
   color: #64748b !important;
+}
+/* Hover variants */
+html.light button:hover.hover\:bg-zinc-900,
+html.light .hover\:bg-zinc-900:hover,
+html.light .hover\:bg-zinc-800:hover,
+html.light .hover\:bg-zinc-700:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
 }
 html.light .bg-black\/40, html.light .bg-black\/30, html.light .bg-black\/20 {
   background-color: #f1f5f9 !important;
@@ -230,7 +272,47 @@ html.light .border-white\/5, html.light .border-white\/10 {
   border-color: #e2e8f0 !important;
 }
 
-/* Ensure buttons, badges, overlays with dark backgrounds always retain crisp white text */
+/* ─── Input fields in modals & reminders ─── */
+html.light input[class*="bg-zinc-900"],
+html.light textarea[class*="bg-zinc-900"],
+html.light select[class*="bg-zinc-900"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html.light input[class*="bg-\[#161922\]"],
+html.light textarea[class*="bg-\[#161922\]"],
+html.light select[class*="bg-\[#161922\]"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+html.light input:focus,
+html.light textarea:focus,
+html.light select:focus {
+  border-color: #0284c7 !important;
+}
+
+/* ─── Button text enforcement ─── */
+/* All lime buttons (converted to blue in light) MUST show white text */
+html.light button.bg-\[\#c8f93a\],
+html.light a.bg-\[\#c8f93a\],
+html.light .btn-primary-action {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.3) !important;
+}
+html.light button.bg-\[\#c8f93a\]:hover,
+html.light a.bg-\[\#c8f93a\]:hover,
+html.light .btn-primary-action:hover {
+  background-color: #075985 !important;
+  color: #ffffff !important;
+}
+/* Ensure all blue-bg / dark-bg elements keep white text */
 html.light .btn-primary-action,
 html.light button.bg-\[\#0284c7\],
 html.light .bg-\[\#0284c7\],
@@ -244,8 +326,146 @@ html.light .bg-black\/80,
 html.light .bg-black\/90 {
   color: #ffffff !important;
 }
+/* zinc-800 secondary buttons → light gray with dark text */
+html.light button.bg-zinc-800,
+html.light a.bg-zinc-800 {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+html.light button.bg-zinc-800:hover,
+html.light a.bg-zinc-800:hover {
+  background-color: #cbd5e1 !important;
+}
+/* Active/selected zinc-800 filter chips → blue */
+html.light button[class*="bg-zinc-800"][class*="text-white"],
+html.light button[class*="bg-zinc-800"][class*="text-\[#c8f93a\]"] {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+}
 
-/* Light Mode Status Badges: Clear WCAG AA Compliant Palettes */
+/* ─── Reminders Page: zinc-950 modals (Patient / Med / Token modals) ─── */
+/* Modal containers in reminders use rounded-3xl bg-zinc-950 */
+html.light .rounded-3xl.bg-zinc-950,
+html.light [class*="rounded-3xl"][class*="bg-zinc-950"],
+html.light [class*="rounded-3xl"][class*="bg-zinc-950\/"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+/* Metric cards in reminders */
+html.light [class*="rounded-3xl"][class*="bg-zinc-950\/80"],
+html.light [class*="rounded-2xl"][class*="bg-zinc-900\/70"],
+html.light [class*="rounded-2xl"][class*="bg-zinc-900\/"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+/* Neon lime text in reminders (time display #c8f93a) → sky blue */
+html.light [class*="text-\[#c8f93a\]"]:not(button):not(a) {
+  color: #0284c7 !important;
+}
+/* Neon lime border in reminders → sky blue */
+html.light [class*="border-\[#c8f93a\]"] {
+  border-color: #bae6fd !important;
+}
+html.light [class*="bg-\[#c8f93a\]\/"] {
+  background-color: rgba(2, 132, 199, 0.1) !important;
+}
+/* px badge inside neon bg */
+html.light [class*="bg-zinc-800"][class*="text-\[#c8f93a\]"] {
+  background-color: #eff6ff !important;
+  color: #0284c7 !important;
+  border-color: #bfdbfe !important;
+}
+/* Icon containers in metric cards */
+html.light [class*="bg-zinc-900"][class*="text-zinc-300"],
+html.light [class*="p-2"][class*="rounded-2xl"][class*="bg-zinc-900"] {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: #e2e8f0 !important;
+}
+/* Table rows in schedules */
+html.light [class*="hover:bg-zinc-900\/50"]:hover {
+  background-color: #f8fafc !important;
+}
+/* Table header row */
+html.light [class*="bg-zinc-900\/80"][class*="text-zinc-400"] {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+}
+/* Empty state box */
+html.light [class*="bg-zinc-900\/40"][class*="border-dashed"] {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+/* Instructions / info boxes */
+html.light [class*="bg-zinc-900\/80"][class*="text-zinc-400"],
+html.light [class*="bg-zinc-900\/80"][class*="text-zinc-300"],
+html.light .rounded-2xl[class*="bg-zinc-900\/80"] {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: #e2e8f0 !important;
+}
+/* Activity log list */
+html.light [class*="divide-y"][class*="divide-zinc-800"],
+html.light [class*="bg-zinc-900\/50"][class*="max-h"] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+html.light [class*="hover:bg-zinc-900"][class*="p-3"] {
+  background-color: #ffffff !important;
+}
+html.light [class*="hover:bg-zinc-900"][class*="p-3"]:hover {
+  background-color: #f8fafc !important;
+}
+/* Lime border overlay on QR drop zone */
+html.light [class*="border-\[#c8f93a\]\/"],
+html.light [class*="border-dashed"][class*="border-zinc-800"] {
+  border-color: #cbd5e1 !important;
+}
+
+/* ─── Light-mode: neon-lime accent → sky blue (non-interactive) ─── */
+html.light [class*="text-\[#c8f93a\]"]:not(button):not(a):not(span[class*="bg-"]) {
+  color: #0284c7 !important;
+}
+
+/* ─── Light-mode: standalone text-white → dark text (non-button/non-anchor) ─── */
+/* Prevents white text on white backgrounds */
+html.light h1.text-white,
+html.light h2.text-white,
+html.light h3.text-white,
+html.light h4.text-white,
+html.light p.text-white,
+html.light span.text-white:not([class*="bg-"]):not([class*="btn"]),
+html.light div.text-white:not([class*="bg-"]) {
+  color: #0f172a !important;
+}
+
+/* ─── Light-mode: gradient hero banners (from-zinc-950 / via-zinc-900) ─── */
+html.light [class*="from-zinc-950"],
+html.light [class*="via-zinc-900"][class*="to-zinc-950"],
+html.light [class*="from-zinc-900"],
+html.light [class*="via-zinc-950"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+/* ─── Light-mode: all bare inputs get light styling ─── */
+html.light input:not([type="checkbox"]):not([type="radio"]),
+html.light textarea,
+html.light select {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html.light input:not([type="checkbox"]):not([type="radio"]):focus,
+html.light textarea:focus,
+html.light select:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
 html.light .status-green,
 html.light [data-status="green"] {
   background-color: #dcfce7 !important;

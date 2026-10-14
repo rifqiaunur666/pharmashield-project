@@ -57,11 +57,11 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md rounded-2xl border border-[var(--color-border)] bg-[#11141b] p-6 shadow-2xl space-y-5">
-        <div className="flex items-center justify-between border-b border-white/5 pb-3">
+      <div className="relative w-full max-w-md rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-5">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#c8f93a] animate-pulse" />
-            <h3 className="text-lg font-black text-white">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+            <h3 className="text-lg font-black text-slate-900 dark:text-white">
               {mode === 'login' && 'Masuk ke MedikaGuard ID'}
               {mode === 'register' && 'Daftar Akun Baru'}
               {mode === 'forgot' && 'Pemulihan Kata Sandi'}
@@ -69,20 +69,20 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           </div>
           <button
             onClick={onClose}
-            className="p-1 text-neutral-400 hover:text-white rounded-lg hover:bg-white/5 text-lg"
+            className="p-1 text-slate-400 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-lg"
           >
             ✕
           </button>
         </div>
 
         {error && (
-          <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300">
+          <div className="rounded-xl border border-rose-200 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-500/10 p-3 text-xs text-rose-800 dark:text-rose-300">
             {error}
           </div>
         )}
 
         {successMsg && (
-          <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-300">
+          <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-3 text-xs text-emerald-800 dark:text-emerald-300">
             {successMsg}
           </div>
         )}
@@ -90,20 +90,20 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
         <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
           {mode === 'register' && (
             <div className="space-y-1">
-              <label className="font-bold text-neutral-300">Nama Lengkap</label>
+              <label className="font-bold text-slate-700 dark:text-neutral-300">Nama Lengkap</label>
               <input
                 type="text"
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Dr. Andi Pratama"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#161922] text-white focus:outline-none focus:border-[#c8f93a]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
               />
             </div>
           )}
 
           <div className="space-y-1">
-            <label className="font-bold text-neutral-300">Alamat Email</label>
+            <label className="font-bold text-slate-700 dark:text-neutral-300">Alamat Email</label>
             <input
               type="email"
               required
@@ -111,18 +111,18 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="nama@email.com"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#161922] text-white focus:outline-none focus:border-[#c8f93a]"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
             />
           </div>
 
           {mode !== 'forgot' && (
             <div className="space-y-1">
               <div className="flex justify-between items-center">
-                <label className="font-bold text-neutral-300">Kata Sandi</label>
+                <label className="font-bold text-slate-700 dark:text-neutral-300">Kata Sandi</label>
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-[10px] text-neutral-400 hover:text-neutral-200"
+                  className="text-[10px] text-slate-500 dark:text-neutral-400 hover:text-slate-800 dark:hover:text-neutral-200"
                 >
                   {showPassword ? 'Sembunyikan' : 'Tampilkan'}
                 </button>
@@ -133,7 +133,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimal 6 karakter"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#161922] text-white focus:outline-none focus:border-[#c8f93a]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
               />
             </div>
           )}
@@ -141,23 +141,23 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           {mode === 'register' && (
             <>
               <div className="space-y-1">
-                <label className="font-bold text-neutral-300">Konfirmasi Kata Sandi</label>
+                <label className="font-bold text-slate-700 dark:text-neutral-300">Konfirmasi Kata Sandi</label>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={passwordConfirm}
                   onChange={(e) => setPasswordConfirm(e.target.value)}
                   placeholder="Ulangi kata sandi"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#161922] text-white focus:outline-none focus:border-[#c8f93a]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
                 />
               </div>
 
-              <label className="flex items-center gap-2 cursor-pointer pt-1 text-neutral-400 text-[11px]">
+              <label className="flex items-center gap-2 cursor-pointer pt-1 text-slate-500 dark:text-neutral-400 text-[11px]">
                 <input
                   type="checkbox"
                   checked={acceptTerms}
                   onChange={(e) => setAcceptTerms(e.target.checked)}
-                  className="rounded border-white/20 text-[#c8f93a] focus:ring-0"
+                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#c8f93a] focus:ring-0"
                 />
                 <span>Saya menyetujui Kebijakan Privasi &amp; Syarat Layanan Medis.</span>
               </label>
@@ -169,7 +169,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('forgot')}
-                className="text-[11px] text-[#c8f93a] hover:underline"
+                className="text-[11px] text-[#0284c7] dark:text-[#c8f93a] hover:underline"
               >
                 Lupa kata sandi?
               </button>
@@ -179,20 +179,20 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-xl bg-[#c8f93a] text-black font-black hover:bg-[#b5f524] transition-all disabled:opacity-50 mt-2"
+            className="w-full py-2.5 rounded-xl bg-[#0284c7] dark:bg-[#c8f93a] text-white dark:text-black font-black hover:bg-[#0369a1] dark:hover:bg-[#b5f524] transition-all disabled:opacity-50 mt-2"
           >
             {loading ? 'Memproses...' : mode === 'login' ? 'Masuk' : mode === 'register' ? 'Daftar Akun' : 'Kirim Pemulihan'}
           </button>
         </form>
 
-        <div className="border-t border-white/5 pt-3 text-center text-xs text-neutral-400">
+        <div className="border-t border-slate-200 dark:border-white/5 pt-3 text-center text-xs text-slate-500 dark:text-neutral-400">
           {mode === 'login' && (
             <p>
               Belum memiliki akun?{' '}
               <button
                 type="button"
                 onClick={() => setMode('register')}
-                className="text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
               >
                 Daftar Sekarang
               </button>
@@ -204,7 +204,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('login')}
-                className="text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
               >
                 Masuk di Sini
               </button>
@@ -216,7 +216,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('login')}
-                className="text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
               >
                 Halaman Masuk
               </button>
