@@ -931,85 +931,379 @@ html.a11y-pause-animation *, html.a11y-pause-animation *::before, html.a11y-paus
 /* ── 6. Kursor Besar ─────────────────────────────────────────────────────── */
 html.a11y-large-cursor, html.a11y-large-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M8 5l24 15-12 3L16 36z' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E") 0 0, default !important; }
 
-/* ── 7a. Protanopia/Deuteranopia: Buta Warna Merah-Hijau ─────────────────────
-   Brand: Cobalt/Royal Blue (#2563EB / #1D4ED8)
-   Aman: Soft Sky Blue (#E0F2FE) / Deep Blue text (#0369A1) [✓]
-   Peringatan: Bright Amber/Orange (#FFEDD5) / Dark Orange text (#C2410C) [!]
-   Bahaya: High-Contrast Magenta-Pink (#FCE7F3) / Deep Purple text (#7E22CE) [X]
+/* ── 7a. Protanopia & Deuteranopia: Buta Warna Merah-Hijau (Dark & Light Optimized) ──
+   Red-Green Blindness Protocol (WCAG 2.1 AAA Compliant):
+   - Brand / Primary Accent: Royal Sky / Cyan (#38BDF8 / #0284C7)
+   - Safe / Normal State: Deep Royal Blue / Cyan (#2563EB / #0284C7) + [✓] icon
+   - Warning / Risk State: Bold Orange / Amber (#EA580C / #D97706) + [⚠] icon
+   - Zero Glare: Dark surfaces (#0F172A / #1E293B) preserved in Dark Mode (no bright pink/white card floods)
+   - High-Luminance Buttons: Text color forced to Solid Black (#000000) for maximum contrast (> 10:1)
+   - Dual Encoding: Explicit [✓], [!], [⚠] glyphs and labels
    ───────────────────────────────────────────────────────────────────────────── */
+
+/* CSS Variables for Protanopia & Deuteranopia */
 html.a11y-cb-protanopia,
-html[data-colorblind="protanopia"] {
-  --color-primary: #2563eb !important;
-  --color-primary-hover: #1d4ed8 !important;
-  --color-primary-text: #ffffff !important;
-  --color-primary-glow: rgba(37, 99, 235, 0.25) !important;
-  --color-success: #0369a1 !important;
-  --color-warning: #c2410c !important;
-  --color-danger:  #7e22ce !important;
+html[data-colorblind="protanopia"],
+html.a11y-cb-deuteranopia,
+html[data-colorblind="deuteranopia"] {
+  --color-primary: #0284c7 !important;
+  --color-primary-hover: #0369a1 !important;
+  --color-primary-text: #000000 !important;
+  --color-primary-glow: rgba(2, 132, 199, 0.25) !important;
+  --color-success: #0284c7 !important;
+  --color-warning: #ea580c !important;
+  --color-danger:  #ea580c !important;
 }
 
-/* Light mode specific mapping for Protanopia */
+/* Light Mode overrides */
 html.light.a11y-cb-protanopia,
-html.light[data-colorblind="protanopia"] {
-  --color-primary: #2563eb !important;
-  --color-primary-hover: #1d4ed8 !important;
+html.light[data-colorblind="protanopia"],
+html.light.a11y-cb-deuteranopia,
+html.light[data-colorblind="deuteranopia"] {
+  --color-primary: #0284c7 !important;
+  --color-primary-hover: #0369a1 !important;
   --color-primary-text: #ffffff !important;
 }
 
-/* Status safe badge & indicators */
-html.a11y-cb-protanopia .status-green,
-html[data-colorblind="protanopia"] .status-green,
-html.a11y-cb-protanopia [data-status="green"],
-html[data-colorblind="protanopia"] [data-status="green"] {
+/* ════ DARK MODE: PROTANOPIA & DEUTERANOPIA ══════════════════════════════════ */
+html.dark.a11y-cb-protanopia,
+html.dark[data-colorblind="protanopia"],
+html.dark.a11y-cb-deuteranopia,
+html.dark[data-colorblind="deuteranopia"] {
+  --color-primary: #38bdf8 !important;
+  --color-primary-hover: #0284c7 !important;
+  --color-primary-text: #000000 !important;
+  --color-primary-glow: rgba(56, 189, 248, 0.25) !important;
+  --color-success: #38bdf8 !important;
+  --color-warning: #ea580c !important;
+  --color-danger:  #ea580c !important;
+}
+
+/* ── 1. Button Typography Contrast: Solid Black (#000000) on High-Luminance Buttons ── */
+html.a11y-cb-protanopia .btn-primary-action,
+html.a11y-cb-protanopia .sidebar a[aria-current="page"],
+html.a11y-cb-protanopia button.bg-\[\#10b981\],
+html.a11y-cb-protanopia button.bg-\[\#0284c7\],
+html.a11y-cb-protanopia button.bg-\[\#c8f93a\],
+html.a11y-cb-protanopia button.bg-\[\#2563eb\],
+html.a11y-cb-protanopia .btn-neon,
+html.a11y-cb-protanopia .btn-profile-shortcut,
+html[data-colorblind="protanopia"] .btn-primary-action,
+html[data-colorblind="protanopia"] .sidebar a[aria-current="page"],
+html[data-colorblind="protanopia"] button.bg-\[\#10b981\],
+html[data-colorblind="protanopia"] button.bg-\[\#0284c7\],
+html[data-colorblind="protanopia"] button.bg-\[\#c8f93a\],
+html[data-colorblind="protanopia"] button.bg-\[\#2563eb\],
+html[data-colorblind="protanopia"] .btn-neon,
+html[data-colorblind="protanopia"] .btn-profile-shortcut,
+html.a11y-cb-deuteranopia .btn-primary-action,
+html.a11y-cb-deuteranopia .sidebar a[aria-current="page"],
+html.a11y-cb-deuteranopia button.bg-\[\#10b981\],
+html.a11y-cb-deuteranopia button.bg-\[\#0284c7\],
+html.a11y-cb-deuteranopia button.bg-\[\#c8f93a\],
+html.a11y-cb-deuteranopia button.bg-\[\#2563eb\],
+html.a11y-cb-deuteranopia .btn-neon,
+html.a11y-cb-deuteranopia .btn-profile-shortcut,
+html[data-colorblind="deuteranopia"] .btn-primary-action,
+html[data-colorblind="deuteranopia"] .sidebar a[aria-current="page"],
+html[data-colorblind="deuteranopia"] button.bg-\[\#10b981\],
+html[data-colorblind="deuteranopia"] button.bg-\[\#0284c7\],
+html[data-colorblind="deuteranopia"] button.bg-\[\#c8f93a\],
+html[data-colorblind="deuteranopia"] button.bg-\[\#2563eb\],
+html[data-colorblind="deuteranopia"] .btn-neon,
+html[data-colorblind="deuteranopia"] .btn-profile-shortcut {
+  background-color: #38bdf8 !important;
+  color: #000000 !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.35) !important;
+}
+
+html.a11y-cb-protanopia .btn-primary-action *,
+html.a11y-cb-protanopia .sidebar a[aria-current="page"] *,
+html.a11y-cb-protanopia button.bg-\[\#10b981\] *,
+html.a11y-cb-protanopia button.bg-\[\#0284c7\] *,
+html.a11y-cb-protanopia button.bg-\[\#c8f93a\] *,
+html.a11y-cb-protanopia button.bg-\[\#2563eb\] *,
+html.a11y-cb-protanopia .btn-profile-shortcut *,
+html[data-colorblind="protanopia"] .btn-primary-action *,
+html[data-colorblind="protanopia"] .sidebar a[aria-current="page"] *,
+html[data-colorblind="protanopia"] button.bg-\[\#10b981\] *,
+html[data-colorblind="protanopia"] button.bg-\[\#0284c7\] *,
+html[data-colorblind="protanopia"] button.bg-\[\#c8f93a\] *,
+html[data-colorblind="protanopia"] button.bg-\[\#2563eb\] *,
+html[data-colorblind="protanopia"] .btn-profile-shortcut *,
+html.a11y-cb-deuteranopia .btn-primary-action *,
+html.a11y-cb-deuteranopia .sidebar a[aria-current="page"] *,
+html.a11y-cb-deuteranopia button.bg-\[\#10b981\] *,
+html.a11y-cb-deuteranopia button.bg-\[\#0284c7\] *,
+html.a11y-cb-deuteranopia button.bg-\[\#c8f93a\] *,
+html.a11y-cb-deuteranopia button.bg-\[\#2563eb\] *,
+html.a11y-cb-deuteranopia .btn-profile-shortcut *,
+html[data-colorblind="deuteranopia"] .btn-primary-action *,
+html[data-colorblind="deuteranopia"] .sidebar a[aria-current="page"] *,
+html[data-colorblind="deuteranopia"] button.bg-\[\#10b981\] *,
+html[data-colorblind="deuteranopia"] button.bg-\[\#0284c7\] *,
+html[data-colorblind="deuteranopia"] button.bg-\[\#c8f93a\] *,
+html[data-colorblind="deuteranopia"] button.bg-\[\#2563eb\] *,
+html[data-colorblind="deuteranopia"] .btn-profile-shortcut * {
+  color: #000000 !important;
+}
+
+html.a11y-cb-protanopia .btn-primary-action:hover,
+html.a11y-cb-protanopia .sidebar a[aria-current="page"]:hover,
+html.a11y-cb-protanopia button.bg-\[\#10b981\]:hover,
+html.a11y-cb-protanopia button.bg-\[\#0284c7\]:hover,
+html.a11y-cb-protanopia .btn-profile-shortcut:hover,
+html[data-colorblind="protanopia"] .btn-primary-action:hover,
+html[data-colorblind="protanopia"] .sidebar a[aria-current="page"]:hover,
+html[data-colorblind="protanopia"] button.bg-\[\#10b981\]:hover,
+html[data-colorblind="protanopia"] button.bg-\[\#0284c7\]:hover,
+html[data-colorblind="protanopia"] .btn-profile-shortcut:hover,
+html.a11y-cb-deuteranopia .btn-primary-action:hover,
+html.a11y-cb-deuteranopia .sidebar a[aria-current="page"]:hover,
+html[data-colorblind="deuteranopia"] .btn-primary-action:hover,
+html[data-colorblind="deuteranopia"] .sidebar a[aria-current="page"]:hover {
+  background-color: #0ea5e9 !important;
+  color: #000000 !important;
+}
+
+/* ── 2. Fix High-Luminance Card Glare & Contrast (Dark Mode Risk Card) ────────
+   Keep card background dark (#0F172A / #1E293B), solid 2px Amber/Orange border (#EA580C)
+   No pure red outlines, no pure red text, no bright pink card fills! */
+html.dark.a11y-cb-protanopia .metric-card-risk,
+html.dark.a11y-cb-protanopia [data-status="red"].rounded-2xl,
+html.dark.a11y-cb-protanopia div[data-status="red"],
+html.dark.a11y-cb-protanopia .status-red.rounded-2xl,
+html.dark[data-colorblind="protanopia"] .metric-card-risk,
+html.dark[data-colorblind="protanopia"] [data-status="red"].rounded-2xl,
+html.dark[data-colorblind="protanopia"] div[data-status="red"],
+html.dark[data-colorblind="protanopia"] .status-red.rounded-2xl,
+html.dark.a11y-cb-deuteranopia .metric-card-risk,
+html.dark.a11y-cb-deuteranopia [data-status="red"].rounded-2xl,
+html.dark.a11y-cb-deuteranopia div[data-status="red"],
+html.dark.a11y-cb-deuteranopia .status-red.rounded-2xl,
+html.dark[data-colorblind="deuteranopia"] .metric-card-risk,
+html.dark[data-colorblind="deuteranopia"] [data-status="red"].rounded-2xl,
+html.dark[data-colorblind="deuteranopia"] div[data-status="red"],
+html.dark[data-colorblind="deuteranopia"] .status-red.rounded-2xl {
+  background-color: #0f172a !important;
+  border: 2px solid #ea580c !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.15) !important;
+}
+
+/* Hover state for risk card */
+html.dark.a11y-cb-protanopia .metric-card-risk:hover,
+html.dark.a11y-cb-protanopia div[data-status="red"]:hover,
+html.dark[data-colorblind="protanopia"] .metric-card-risk:hover,
+html.dark[data-colorblind="protanopia"] div[data-status="red"]:hover,
+html.dark.a11y-cb-deuteranopia .metric-card-risk:hover,
+html.dark.a11y-cb-deuteranopia div[data-status="red"]:hover,
+html.dark[data-colorblind="deuteranopia"] .metric-card-risk:hover,
+html.dark[data-colorblind="deuteranopia"] div[data-status="red"]:hover {
+  border-color: #f97316 !important;
+}
+
+/* Metric numbers inside risk card: Bold Amber/Orange (#FB923C / #EA580C) */
+html.dark.a11y-cb-protanopia .metric-card-risk .text-3xl,
+html.dark.a11y-cb-protanopia [data-status="red"] .text-3xl,
+html.dark.a11y-cb-protanopia [class*="text-\[\#ef4444\]"],
+html.dark.a11y-cb-protanopia [class*="text-red-"],
+html.dark.a11y-cb-protanopia [class*="text-rose-"],
+html.dark[data-colorblind="protanopia"] .metric-card-risk .text-3xl,
+html.dark[data-colorblind="protanopia"] [data-status="red"] .text-3xl,
+html.dark[data-colorblind="protanopia"] [class*="text-\[\#ef4444\]"],
+html.dark[data-colorblind="protanopia"] [class*="text-red-"],
+html.dark[data-colorblind="protanopia"] [class*="text-rose-"],
+html.dark.a11y-cb-deuteranopia .metric-card-risk .text-3xl,
+html.dark.a11y-cb-deuteranopia [data-status="red"] .text-3xl,
+html.dark.a11y-cb-deuteranopia [class*="text-\[\#ef4444\]"],
+html.dark.a11y-cb-deuteranopia [class*="text-red-"],
+html.dark.a11y-cb-deuteranopia [class*="text-rose-"],
+html.dark[data-colorblind="deuteranopia"] .metric-card-risk .text-3xl,
+html.dark[data-colorblind="deuteranopia"] [data-status="red"] .text-3xl,
+html.dark[data-colorblind="deuteranopia"] [class*="text-\[\#ef4444\]"],
+html.dark[data-colorblind="deuteranopia"] [class*="text-red-"],
+html.dark[data-colorblind="deuteranopia"] [class*="text-rose-"] {
+  color: #fb923c !important;
+}
+
+/* Amber-tinted badge pill inside risk card: [⚠] Risiko Terdeteksi */
+html.dark.a11y-cb-protanopia [data-status="red"] span[class*="rounded-md"],
+html.dark.a11y-cb-protanopia [data-status="red"] span[class*="rounded-full"],
+html.dark.a11y-cb-protanopia .metric-card-risk span[class*="rounded-md"],
+html.dark.a11y-cb-protanopia span[class*="bg-red-950"],
+html.dark.a11y-cb-protanopia span[class*="bg-rose-"],
+html.dark[data-colorblind="protanopia"] [data-status="red"] span[class*="rounded-md"],
+html.dark[data-colorblind="protanopia"] [data-status="red"] span[class*="rounded-full"],
+html.dark[data-colorblind="protanopia"] .metric-card-risk span[class*="rounded-md"],
+html.dark[data-colorblind="protanopia"] span[class*="bg-red-950"],
+html.dark[data-colorblind="protanopia"] span[class*="bg-rose-"],
+html.dark.a11y-cb-deuteranopia [data-status="red"] span[class*="rounded-md"],
+html.dark.a11y-cb-deuteranopia [data-status="red"] span[class*="rounded-full"],
+html.dark.a11y-cb-deuteranopia .metric-card-risk span[class*="rounded-md"],
+html.dark.a11y-cb-deuteranopia span[class*="bg-red-950"],
+html.dark.a11y-cb-deuteranopia span[class*="bg-rose-"],
+html.dark[data-colorblind="deuteranopia"] [data-status="red"] span[class*="rounded-md"],
+html.dark[data-colorblind="deuteranopia"] [data-status="red"] span[class*="rounded-full"],
+html.dark[data-colorblind="deuteranopia"] .metric-card-risk span[class*="rounded-md"],
+html.dark[data-colorblind="deuteranopia"] span[class*="bg-red-950"],
+html.dark[data-colorblind="deuteranopia"] span[class*="bg-rose-"] {
+  background-color: rgba(234, 88, 12, 0.25) !important;
+  border: 1px solid #ea580c !important;
+  color: #fed7aa !important;
+}
+
+/* Standalone Status Badges (Tables & Lists): Danger/Risk -> Amber/Orange (#EA580C) + [⚠] */
+html.dark.a11y-cb-protanopia span.status-red,
+html.dark[data-colorblind="protanopia"] span.status-red,
+html.dark.a11y-cb-deuteranopia span.status-red,
+html.dark[data-colorblind="deuteranopia"] span.status-red {
+  background-color: rgba(234, 88, 12, 0.25) !important;
+  border: 1px solid #ea580c !important;
+  color: #fdba74 !important;
+}
+html.dark.a11y-cb-protanopia span.status-red *,
+html.dark[data-colorblind="protanopia"] span.status-red *,
+html.dark.a11y-cb-deuteranopia span.status-red *,
+html.dark[data-colorblind="deuteranopia"] span.status-red * {
+  color: #fdba74 !important;
+}
+html.dark.a11y-cb-protanopia span.status-red [class*="bg-"],
+html.dark[data-colorblind="protanopia"] span.status-red [class*="bg-"],
+html.dark.a11y-cb-deuteranopia span.status-red [class*="bg-"],
+html.dark[data-colorblind="deuteranopia"] span.status-red [class*="bg-"] {
+  background-color: #ea580c !important;
+}
+
+/* ── 3. Safe / Normal State: Deep Royal Blue / Cyan (#2563EB / #0284C7) + [✓] ── */
+html.dark.a11y-cb-protanopia .status-green,
+html.dark.a11y-cb-protanopia [data-status="green"],
+html.dark[data-colorblind="protanopia"] .status-green,
+html.dark[data-colorblind="protanopia"] [data-status="green"],
+html.dark.a11y-cb-deuteranopia .status-green,
+html.dark.a11y-cb-deuteranopia [data-status="green"],
+html.dark[data-colorblind="deuteranopia"] .status-green,
+html.dark[data-colorblind="deuteranopia"] [data-status="green"] {
+  background-color: rgba(2, 132, 199, 0.2) !important;
+  border-color: #0284c7 !important;
+  color: #38bdf8 !important;
+}
+html.dark.a11y-cb-protanopia .status-green *,
+html.dark[data-colorblind="protanopia"] .status-green *,
+html.dark.a11y-cb-deuteranopia .status-green *,
+html.dark[data-colorblind="deuteranopia"] .status-green * {
+  color: #38bdf8 !important;
+}
+html.dark.a11y-cb-protanopia span.status-green [class*="bg-"],
+html.dark[data-colorblind="protanopia"] span.status-green [class*="bg-"],
+html.dark.a11y-cb-deuteranopia span.status-green [class*="bg-"],
+html.dark[data-colorblind="deuteranopia"] span.status-green [class*="bg-"] {
+  background-color: #0284c7 !important;
+}
+
+/* Safe metric number & text: Deep Royal Blue / Cyan (#38BDF8 / #0284C7) */
+html.dark.a11y-cb-protanopia [class*="text-emerald-"],
+html.dark.a11y-cb-protanopia [class*="text-\[\#10b981\]"],
+html.dark.a11y-cb-protanopia [class*="text-\[\#15803d\]"],
+html.dark[data-colorblind="protanopia"] [class*="text-emerald-"],
+html.dark[data-colorblind="protanopia"] [class*="text-\[\#10b981\]"],
+html.dark[data-colorblind="protanopia"] [class*="text-\[\#15803d\]"],
+html.dark.a11y-cb-deuteranopia [class*="text-emerald-"],
+html.dark.a11y-cb-deuteranopia [class*="text-\[\#10b981\]"],
+html.dark.a11y-cb-deuteranopia [class*="text-\[\#15803d\]"],
+html.dark[data-colorblind="deuteranopia"] [class*="text-emerald-"],
+html.dark[data-colorblind="deuteranopia"] [class*="text-\[\#10b981\]"],
+html.dark[data-colorblind="deuteranopia"] [class*="text-\[\#15803d\]"] {
+  color: #38bdf8 !important;
+}
+
+/* Safe badge pill inside safe metric card */
+html.dark.a11y-cb-protanopia span[class*="bg-emerald-"],
+html.dark.a11y-cb-protanopia span[class*="bg-\[\#dcfce7\]"],
+html.dark[data-colorblind="protanopia"] span[class*="bg-emerald-"],
+html.dark[data-colorblind="protanopia"] span[class*="bg-\[\#dcfce7\]"],
+html.dark.a11y-cb-deuteranopia span[class*="bg-emerald-"],
+html.dark.a11y-cb-deuteranopia span[class*="bg-\[\#dcfce7\]"],
+html.dark[data-colorblind="deuteranopia"] span[class*="bg-emerald-"],
+html.dark[data-colorblind="deuteranopia"] span[class*="bg-\[\#dcfce7\]"] {
+  background-color: rgba(2, 132, 199, 0.25) !important;
+  border-color: #0284c7 !important;
+  color: #7dd3fc !important;
+}
+
+/* Ring chart stroke in Protanopia/Deuteranopia */
+html.a11y-cb-protanopia circle.text-\[\#10b981\],
+html.a11y-cb-protanopia circle.text-\[\#0284c7\],
+html[data-colorblind="protanopia"] circle.text-\[\#10b981\],
+html[data-colorblind="protanopia"] circle.text-\[\#0284c7\],
+html.a11y-cb-deuteranopia circle.text-\[\#10b981\],
+html[data-colorblind="deuteranopia"] circle.text-\[\#10b981\] {
+  stroke: #38bdf8 !important;
+}
+
+/* ── 4. Warning / Moderate State: Amber / Orange (#D97706 / #EA580C) + [!] ── */
+html.dark.a11y-cb-protanopia .status-yellow,
+html.dark.a11y-cb-protanopia [data-status="yellow"],
+html.dark[data-colorblind="protanopia"] .status-yellow,
+html.dark[data-colorblind="protanopia"] [data-status="yellow"],
+html.dark.a11y-cb-deuteranopia .status-yellow,
+html.dark.a11y-cb-deuteranopia [data-status="yellow"],
+html.dark[data-colorblind="deuteranopia"] .status-yellow,
+html.dark[data-colorblind="deuteranopia"] [data-status="yellow"] {
+  background-color: rgba(217, 119, 6, 0.2) !important;
+  border: 1px solid #d97706 !important;
+  color: #fde047 !important;
+}
+
+/* ── 5. Light Mode Status Indicators ───────────────────────────────────────── */
+html.light.a11y-cb-protanopia .status-green,
+html.light.a11y-cb-protanopia [data-status="green"],
+html.light[data-colorblind="protanopia"] .status-green,
+html.light[data-colorblind="protanopia"] [data-status="green"],
+html.light.a11y-cb-deuteranopia .status-green,
+html.light.a11y-cb-deuteranopia [data-status="green"],
+html.light[data-colorblind="deuteranopia"] .status-green,
+html.light[data-colorblind="deuteranopia"] [data-status="green"] {
   background-color: #e0f2fe !important;
   color: #0369a1 !important;
   border-color: #38bdf8 !important;
 }
 
-/* Status warning badge & indicators */
-html.a11y-cb-protanopia .status-yellow,
-html[data-colorblind="protanopia"] .status-yellow,
-html.a11y-cb-protanopia [data-status="yellow"],
-html[data-colorblind="protanopia"] [data-status="yellow"] {
+html.light.a11y-cb-protanopia .status-yellow,
+html.light.a11y-cb-protanopia [data-status="yellow"],
+html.light[data-colorblind="protanopia"] .status-yellow,
+html.light[data-colorblind="protanopia"] [data-status="yellow"],
+html.light.a11y-cb-deuteranopia .status-yellow,
+html.light.a11y-cb-deuteranopia [data-status="yellow"],
+html.light[data-colorblind="deuteranopia"] .status-yellow,
+html.light[data-colorblind="deuteranopia"] [data-status="yellow"] {
   background-color: #ffedd5 !important;
   color: #c2410c !important;
   border-color: #fb923c !important;
 }
 
-/* Status danger badge & indicators */
-html.a11y-cb-protanopia .status-red,
-html[data-colorblind="protanopia"] .status-red,
-html.a11y-cb-protanopia [data-status="red"],
-html[data-colorblind="protanopia"] [data-status="red"] {
-  background-color: #fce7f3 !important;
-  color: #7e22ce !important;
-  border-color: #c084fc !important;
+html.light.a11y-cb-protanopia .status-red,
+html.light.a11y-cb-protanopia [data-status="red"],
+html.light[data-colorblind="protanopia"] .status-red,
+html.light[data-colorblind="protanopia"] [data-status="red"],
+html.light.a11y-cb-deuteranopia .status-red,
+html.light.a11y-cb-deuteranopia [data-status="red"],
+html.light[data-colorblind="deuteranopia"] .status-red,
+html.light[data-colorblind="deuteranopia"] [data-status="red"] {
+  background-color: #fff7ed !important;
+  color: #9a3412 !important;
+  border-color: #ea580c !important;
 }
-
-/* General component overrides for Protanopia */
-html.a11y-cb-protanopia button.bg-\[\#c8f93a\],
-html.a11y-cb-protanopia button.bg-\[\#a3e635\],
-html.a11y-cb-protanopia button.bg-\[\#10b981\],
-html.a11y-cb-protanopia .bg-\[\#c8f93a\],
-html.a11y-cb-protanopia .bg-\[\#a3e635\],
-html.a11y-cb-protanopia .bg-\[\#10b981\],
-html[data-colorblind="protanopia"] button.bg-\[\#c8f93a\],
-html[data-colorblind="protanopia"] button.bg-\[\#a3e635\],
-html[data-colorblind="protanopia"] button.bg-\[\#10b981\],
-html[data-colorblind="protanopia"] .bg-\[\#c8f93a\],
-html[data-colorblind="protanopia"] .bg-\[\#a3e635\],
-html[data-colorblind="protanopia"] .bg-\[\#10b981\] {
-  background-color: #2563eb !important;
-  color: #ffffff !important;
-}
-
-html.a11y-cb-protanopia [class*='text-\[\#c8f93a\]'],
-html.a11y-cb-protanopia [class*='text-\[\#a3e635\]'],
-html.a11y-cb-protanopia [class*='text-\[\#10b981\]'],
-html[data-colorblind="protanopia"] [class*='text-\[\#c8f93a\]'],
-html[data-colorblind="protanopia"] [class*='text-\[\#a3e635\]'],
-html[data-colorblind="protanopia"] [class*='text-\[\#10b981\]'] {
-  color: #2563eb !important;
+html.light.a11y-cb-protanopia [class*="text-red-"],
+html.light.a11y-cb-protanopia [class*="text-\[\#ef4444\]"],
+html.light[data-colorblind="protanopia"] [class*="text-red-"],
+html.light[data-colorblind="protanopia"] [class*="text-\[\#ef4444\]"],
+html.light.a11y-cb-deuteranopia [class*="text-red-"],
+html.light.a11y-cb-deuteranopia [class*="text-\[\#ef4444\]"],
+html.light[data-colorblind="deuteranopia"] [class*="text-red-"],
+html.light[data-colorblind="deuteranopia"] [class*="text-\[\#ef4444\]"] {
+  color: #c2410c !important;
 }
 
 /* ── 7b. Tritanopia: Buta Warna Biru-Kuning (Dark & Light Optimized) ──────────

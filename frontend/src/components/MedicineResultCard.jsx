@@ -101,7 +101,7 @@ export default function MedicineResultCard({
   return (
     <div className="space-y-6 animate-fade-in">
       {/* ── Status Banner (Stage 4 Classification) ── */}
-      <div className={`rounded-2xl border p-6 ${theme.border} ${theme.bg} shadow-md space-y-3`}>
+      <div data-status={statusKey} className={`rounded-2xl border p-6 ${theme.border} ${theme.bg} shadow-md space-y-3`}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <span className="text-3xl">{result.statusEmoji}</span>

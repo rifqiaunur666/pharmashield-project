@@ -96,15 +96,15 @@ function MetricCard({
   isAlert = false,
 }) {
   const cardClasses = isAlert
-    ? 'relative overflow-hidden rounded-2xl border border-rose-300 bg-rose-50/40 dark:border-red-900/60 dark:bg-red-950/20 p-5 shadow-sm hover:border-red-500/50 transition-all status-red'
-    : 'relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#10b981]/30 transition-all';
+    ? 'metric-card-risk relative overflow-hidden rounded-2xl border border-rose-300 bg-rose-50/40 dark:border-red-900/60 dark:bg-red-950/20 p-5 shadow-sm hover:border-red-500/50 transition-all status-red'
+    : 'metric-card-safe relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#10b981]/30 transition-all status-green';
 
   const badgeClasses = isAlert
     ? 'text-[10px] font-black px-2 py-0.5 rounded-md bg-rose-100 text-rose-800 border border-rose-300 dark:bg-red-950/80 dark:text-[#EF4444] dark:border-red-700/60'
     : 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[var(--color-text-secondary)] border border-[var(--color-border)]';
 
   return (
-    <div className={cardClasses} data-status={isAlert ? 'red' : undefined}>
+    <div className={cardClasses} data-status={isAlert ? 'red' : 'green'}>
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <p className="text-[11px] font-extrabold uppercase tracking-wider text-[var(--color-text-secondary)]">
@@ -388,11 +388,11 @@ export default function AppHomePage() {
                     Status Kelengkapan Profil Medis:
                   </span>
                   {user?.medical_profile?.profile_completed ? (
-                    <span className="inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/80 dark:text-[#10b981] dark:border-emerald-500/40">
+                    <span data-status="green" className="profile-status-badge inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/80 dark:text-[#10b981] dark:border-emerald-500/40">
                       [✓] Lengkap &amp; Terverifikasi
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-rose-100 text-rose-700 border border-rose-300 dark:bg-red-950/90 dark:text-[#ef4444] dark:border-red-500/60 shadow-xs">
+                    <span data-status="red" className="profile-status-badge inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-rose-100 text-rose-700 border border-rose-300 dark:bg-red-950/90 dark:text-[#ef4444] dark:border-red-500/60 shadow-xs">
                       [⚠] Belum Terisi Lengkap
                     </span>
                   )}
@@ -412,7 +412,7 @@ export default function AppHomePage() {
 
             <button
               onClick={openProfileModal}
-              className="px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 hover:border-[#0284c7] text-[#0284c7] hover:bg-sky-50 dark:border-[var(--color-border)] dark:hover:border-[#10b981]/50 dark:text-[#10b981] dark:hover:bg-[#10b981]/10 transition-all"
+              className="btn-profile-shortcut px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 hover:border-[#0284c7] text-[#0284c7] hover:bg-sky-50 dark:border-[var(--color-border)] dark:hover:border-[#10b981]/50 dark:text-[#10b981] dark:hover:bg-[#10b981]/10 transition-all"
             >
               ⚙️ Perbarui Riwayat &amp; Alergi
             </button>
