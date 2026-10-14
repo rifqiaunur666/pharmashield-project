@@ -428,6 +428,18 @@ async def scan_medicine(
         logger.error("[Scan] Failed to persist scan history: %s", exc)
 
     # 5. Background WhatsApp Alert
+    target_wa = None
+    if user_optional and user_optional.get("phone"):
+        target_wa = user_optional.get("phone")
+    else:
+        try:
+            from app.services.reminder_service import reminder_engine
+            pats = reminder_engine.list_patients()
+            if pats:
+                target_wa = pats[-1].whatsapp_no
+        except Exception:
+            pass
+
     wa_payload = {
         "medicine_name": medicine_name,
         "expiry_date": expiry_date,
@@ -438,8 +450,15 @@ async def scan_medicine(
         "shelf_life_note": clinical_assessment["headline"],
         "recommendation": safety["recommendation"],
         "scan_time": now_display,
+        "target_phone": target_wa,
     }
     background_tasks.add_task(send_whatsapp_alert, **wa_payload)
+
+    if target_wa:
+        import urllib.parse
+        from app.services.wa_service import format_whatsapp_message
+        msg_body = format_whatsapp_message(**{k: v for k, v in wa_payload.items() if k != "target_phone"})
+        response_data["wa_link"] = f"https://wa.me/{target_wa}?text={urllib.parse.quote(msg_body)}"
 
     return JSONResponse(content=response_data, status_code=200)
 
