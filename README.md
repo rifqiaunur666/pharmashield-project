@@ -22,6 +22,14 @@
 - [Tentang Project](#-tentang-project)
 - [Fitur Utama](#-fitur-utama)
 - [Arsitektur Sistem](#-arsitektur-sistem)
+- [User Flow](#-user-flow)
+  - [Flow 1 — Autentikasi (Login & Register)](#flow-1--autentikasi-login--register)
+  - [Flow 2 — Scan Kemasan Obat (AI Scanner)](#flow-2--scan-kemasan-obat-ai-scanner)
+  - [Flow 3 — Pengingat Minum Obat (WhatsApp Bot)](#flow-3--pengingat-minum-obat-whatsapp-bot)
+  - [Flow 4 — Cek Interaksi Obat](#flow-4--cek-interaksi-obat)
+  - [Flow 5 — Riwayat & Analitik](#flow-5--riwayat--analitik)
+  - [Flow 6 — AI Chatbot Farmasi](#flow-6--ai-chatbot-farmasi)
+  - [State Machine Reminder Engine](#state-machine-reminder-engine)
 - [Struktur Project](#-struktur-project)
 - [Tech Stack](#-tech-stack)
 - [Prasyarat](#-prasyarat)
@@ -106,6 +114,228 @@
    │  WhatsApp Pasien   │
    │  (nomor terdaftar) │
    └────────────────────┘
+```
+
+```
+
+---
+
+## 🗺️ User Flow
+
+Berikut adalah diagram alur pengguna untuk setiap fitur utama PharmaShield, dibuat berdasarkan kode sumber aktual.
+
+---
+
+### Flow 1 — Autentikasi (Login & Register)
+
+```mermaid
+flowchart TD
+    A([🌐 Buka Aplikasi]) --> B{Sudah login?}
+    B -- Ya --> C[🏠 Halaman Dashboard]
+    B -- Tidak --> D[Tampil Tombol Login / Daftar]
+    D --> E{Pilih aksi}
+    E -- Daftar --> F[Isi Nama, Email, Password]
+    F --> G[Konfirmasi Password]
+    G --> H{Password cocok?}
+    H -- Tidak --> F
+    H -- Ya --> I[POST /api/auth/register]
+    I --> J{Berhasil?}
+    J -- Tidak --> K[Tampil pesan error]
+    K --> F
+    J -- Ya --> L[✅ Akun dibuat, auto login]
+    L --> C
+    E -- Login --> M[Isi Email & Password]
+    M --> N[POST /api/auth/login]
+    N --> O{Token valid?}
+    O -- Tidak --> P[❌ Tampil error kredensial]
+    P --> M
+    O -- Ya --> Q[Simpan JWT Token]
+    Q --> C
+    E -- Lupa sandi --> R[Isi Email]
+    R --> S[POST /api/auth/forgot-password]
+    S --> T[✉️ Info tautan pemulihan dikirim]
+    C --> U[Fitur lengkap terbuka]
+```
+
+---
+
+### Flow 2 — Scan Kemasan Obat (AI Scanner)
+
+```mermaid
+flowchart TD
+    A([🏠 Dashboard / Halaman Utama]) --> B{Mode input}
+    B -- Upload foto --> C[Pilih file gambar kemasan]
+    B -- Kamera --> D[Buka kamera browser]
+    D --> E[Ambil foto kemasan]
+    E --> C
+    C --> F[Preview gambar]
+    F --> G{Gambar OK?}
+    G -- Retake --> B
+    G -- Ya --> H[POST /api/scan-medicine\nkirim file ke backend]
+    H --> I[OCR Engine\nTesseract + RapidOCR]
+    I --> J[Ekstrak teks dari kemasan]
+    J --> K[Fuzzy Matching\ncocokkan nama obat ke database]
+    K --> L[Safety Evaluator\nhitung sisa hari kedaluwarsa]
+    L --> M{Status keamanan}
+    M -- Aman --> N[🟢 AMAN\nSisa hari tertera]
+    M -- Hampir exp --> O[🟡 PERHATIAN\nSegera habiskan]
+    M -- Kedaluwarsa --> P[🔴 BERBAHAYA\nJangan dikonsumsi]
+    M -- Tidak terbaca --> Q[⚪ DATA TIDAK TERBACA]
+    N & O & P & Q --> R[Tampilkan MedicineResultCard\nnama obat, exp date, rekomendasi]
+    R --> S[Simpan ke riwayat /api/history]
+    S --> T{Kirim notif WA?}
+    T -- Ya --> U[POST /api/wa/send-alert\nFonnte API]
+    U --> V[📱 WhatsApp dikirim ke nomor target]
+    T -- Tidak --> W[✅ Selesai]
+    V --> W
+    R --> X{Gemini AI Vision tersedia?}
+    X -- Ya --> Y[POST /api/ai/scan-vision\nanalisis lebih dalam]
+    Y --> Z[Tampilkan AI Confidence Score Panel]
+```
+
+---
+
+### Flow 3 — Pengingat Minum Obat (WhatsApp Bot)
+
+```mermaid
+flowchart TD
+    A([⏰ Halaman Pengingat]) --> B{Token Fonnte terpasang?}
+    B -- Belum --> C[🔑 Klik Masukkan Token WA]
+    C --> D[Input Device Token dari fonnte.com]
+    D --> E[POST /api/reminders/update-credentials]
+    E --> F[✅ Token tersimpan]
+    F --> B
+    B -- Sudah --> G[Dashboard Pengingat Aktif]
+    G --> H{Aksi pengguna}
+
+    H -- Daftarkan pasien --> I[Isi Nama & Nomor WA\natau Scan QR Kontak]
+    I --> J[POST /api/reminders/patients]
+    J --> K[✅ Pasien terdaftar]
+
+    H -- Tambah jadwal obat --> L[Pilih pasien\nIsi nama obat, dosis, jam minum]
+    L --> M[POST /api/reminders/schedules]
+    M --> N[📤 Kirim WA konfirmasi jadwal\nke nomor pasien]
+    N --> O[✅ Jadwal aktif]
+
+    O --> P[[🔄 Scheduler berjalan setiap 30 detik]]
+    P --> Q{10 menit sebelum jadwal?}
+    Q -- Ya --> R[📱 Kirim WA Persiapan\nH-10 menit ke pasien]
+    Q --> S{Tepat waktu jadwal?}
+    S -- Ya --> T[📱 Kirim WA + Tombol Reply\nYa Sudah Minum / Belum]
+    T --> U{Respons pasien}
+    U -- Ya Sudah Minum --> V[✅ Log COMPLETED\nJadwal berikutnya dibuat]
+    U -- Belum --> W[⏳ Tunggu 10 menit]
+    W --> X[📱 Kirim Follow-up WA\nApakah sudah minum?]
+    X --> Y{Respons follow-up}
+    Y -- Ya Sudah --> V
+    Y -- Belum Lagi --> Z[🔄 DELAYED\nDynamic Rescheduling]
+    Z --> AA[Jadwal baru = waktu aktual + interval dokter]
+    U -- Timeout --> Z
+```
+
+---
+
+### Flow 4 — Cek Interaksi Obat
+
+```mermaid
+flowchart TD
+    A([💊 Halaman Interaksi Obat]) --> B[Ketik nama obat pertama]
+    B --> C[Autocomplete dari katalog\n1000+ obat Indonesia]
+    C --> D[Pilih / tambah obat ke daftar]
+    D --> E{Sudah 2+ obat?}
+    E -- Belum --> B
+    E -- Ya --> F[Klik Periksa Interaksi]
+    F --> G[POST /api/interactions/check\nkirim array nama obat]
+    G --> H[Drug Interaction Service\ncek database interaksi]
+    H --> I{Ada interaksi?}
+    I -- Tidak ada --> J[✅ Aman dikonsumsi bersamaan]
+    I -- Ada --> K{Tingkat keparahan}
+    K -- Minor --> L[🟡 Interaksi Ringan\nPerlu perhatian]
+    K -- Moderate --> M[🟠 Interaksi Sedang\nKonsultasi dokter]
+    K -- Severe --> N[🔴 Interaksi Berat\nJangan dikombinasikan]
+    J & L & M & N --> O[Tampilkan detail & rekomendasi]
+    O --> P{Hapus obat & coba lain?}
+    P -- Ya --> B
+    P -- Tidak --> Q[✅ Selesai]
+```
+
+---
+
+### Flow 5 — Riwayat & Analitik
+
+```mermaid
+flowchart TD
+    A([📋 Halaman Riwayat]) --> B{User login?}
+    B -- Tidak --> C[❌ Tampil pesan belum login]
+    B -- Ya --> D[GET /api/history\nambil semua riwayat scan]
+    D --> E[Tampil tabel riwayat\nnama obat, status, tanggal scan]
+    E --> F{Filter / Cari}
+    F -- Filter status --> G[Filter: Aman / Perhatian / Berbahaya]
+    F -- Cari nama --> H[Search by nama obat]
+    G & H --> E
+    E --> I{Aksi item}
+    I -- Hapus satu --> J[DELETE /api/history/id]
+    I -- Hapus semua --> K[Konfirmasi dialog\nHapus semua?]
+    K -- Ya --> L[DELETE /api/history/clear-all]
+    J & L --> D
+
+    M([📊 Halaman Analitik]) --> N[GET /api/history\nambil semua data]
+    N --> O[Hitung statistik:\nTotal scan, Aman, Perhatian, Berbahaya]
+    O --> P[Tampil Radial Chart\nDistribusi status keamanan]
+    P --> Q[Tampil Distribusi BPOM\nBebas / Bebas Terbatas / Keras]
+    Q --> R[Tampil Tren Penyakit Umum\nIndonesia dari katalog]
+```
+
+---
+
+### Flow 6 — AI Chatbot Farmasi
+
+```mermaid
+flowchart TD
+    A([🤖 Buka AI Chatbot]) --> B[Sidebar chatbot muncul]
+    B --> C[User ketik pertanyaan\ntentang obat / kesehatan]
+    C --> D[POST /api/ai/chat\nkirim pesan + history konteks]
+    D --> E[Gemini 1.5 Flash API]
+    E --> F{Response berhasil?}
+    F -- Tidak --> G[❌ Tampil pesan error koneksi]
+    G --> C
+    F -- Ya --> H[Tampilkan jawaban AI\ndi bubble chat]
+    H --> I{Pertanyaan lanjutan?}
+    I -- Ya --> C
+    I -- Tidak --> J[Riwayat chat tersimpan\ndi sesi browser]
+
+    K([📸 Scan via AI Vision]) --> L[Upload gambar kemasan obat]
+    L --> M[POST /api/ai/scan-vision\nkirim gambar ke Gemini Vision]
+    M --> N[Gemini analisis gambar]
+    N --> O[Tampilkan hasil analisis\nnama obat, komposisi, saran]
+    O --> P[Confidence Score Panel\ntingkat kepercayaan hasil]
+```
+
+---
+
+### State Machine Reminder Engine
+
+Diagram transisi status internal pada setiap log pengingat obat:
+
+```mermaid
+stateDiagram-v2
+    [*] --> PENDING : Jadwal dibuat
+
+    PENDING --> REMINDED_10M : H-10 menit\nKirim WA persiapan
+    REMINDED_10M --> DUE_0M : Tepat waktu jadwal\nKirim WA + tombol reply
+
+    DUE_0M --> COMPLETED : Pasien klik\nYa Sudah Minum
+    DUE_0M --> DELAYED : Pasien klik Belum\natau timeout 15 menit
+
+    DELAYED --> COMPLETED : Follow-up dibalas\nYa Sudah
+    DELAYED --> RESCHEDULED : Follow-up dibalas Belum\natau timeout lanjutan
+
+    RESCHEDULED --> PENDING : Jadwal baru dibuat\nwaktu aktual + interval dokter
+
+    COMPLETED --> [*] : Dosis tercatat ✅
+    SKIPPED --> [*] : Dosis dilewati ⚠️
+
+    PENDING --> SKIPPED : Melewati batas\nwaktu tanpa respons
 ```
 
 ---
