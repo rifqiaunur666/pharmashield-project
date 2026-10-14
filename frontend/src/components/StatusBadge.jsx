@@ -12,8 +12,8 @@ export const STATUS = {
     symbol: '[✓]',
     emoji: '🟢',
     note: 'Obat terverifikasi aman digunakan sesuai petunjuk pemakaian dan indikasi.',
-    className: 'bg-[#dcfce7] text-[#15803d] border-[#86efac] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 status-green',
-    dotClass: 'bg-[#15803d] dark:bg-[#c8f93a]',
+    className: 'bg-[#dcfce7] text-[#15803d] border-[#86efac] dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30 status-green',
+    dotClass: 'bg-[#15803d] dark:bg-[#10b981]',
   },
   yellow: {
     label: 'Perhatian Khusus',
@@ -29,11 +29,11 @@ export const STATUS = {
     label: 'Peringatan Ketat',
     shortLabel: 'Bahaya',
     fullLabel: 'Bahaya / Interaksi Buruk',
-    symbol: '[X]',
+    symbol: '[⚠]',
     emoji: '🔴',
     note: 'Kemasan/label tidak terbaca atau memiliki kontraindikasi risiko tinggi.',
-    className: 'bg-[#fee2e2] text-[#b91c1c] border-[#fca5a5] dark:bg-rose-500/15 dark:text-rose-300 dark:border-rose-500/30 status-red',
-    dotClass: 'bg-[#b91c1c] dark:bg-rose-500',
+    className: 'bg-[#fee2e2] text-[#b91c1c] border-[#fca5a5] dark:bg-red-500/20 dark:text-[#ef4444] dark:border-red-500/40 status-red',
+    dotClass: 'bg-[#b91c1c] dark:bg-[#ef4444]',
   },
 };
 

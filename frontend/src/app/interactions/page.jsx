@@ -109,8 +109,8 @@ export default function DrugInteractionsPage() {
             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-text-primary)]">
               Cek Interaksi Obat
             </h1>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 text-sky-800 border-sky-200 dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 px-2.5 py-0.5 text-xs font-bold border">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 text-sky-800 border-sky-200 dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30 px-2.5 py-0.5 text-xs font-bold border">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse" />
               Drug Interaction Safety
             </span>
           </div>
@@ -153,13 +153,13 @@ export default function DrugInteractionsPage() {
                 }}
                 onFocus={() => setShowSuggestions(true)}
                 placeholder="Ketik nama obat (misal: Paracetamol, Sanmol, Ibuprofen, Amlodipine, dll.)..."
-                className="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-[var(--color-border)] bg-neutral-50 dark:bg-[#11141b] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] focus:ring-1 focus:ring-[#0284c7] dark:focus:ring-[#c8f93a] transition-all"
+                className="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-[var(--color-border)] bg-neutral-50 dark:bg-[#11141b] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] focus:ring-1 focus:ring-[#0284c7] dark:focus:ring-[#10b981] transition-all"
               />
             </div>
             <button
               type="submit"
               disabled={!inputVal.trim()}
-              className="px-6 py-3 text-xs font-black rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-[#0c1004] dark:hover:bg-[#b5f524] disabled:opacity-50 transition-all flex items-center justify-center gap-1.5 shadow-sm"
+              className="px-6 py-3 text-xs font-black rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] disabled:opacity-50 transition-all flex items-center justify-center gap-1.5 shadow-sm"
             >
               <span>+</span>
               <span>Tambah Obat</span>
@@ -177,7 +177,7 @@ export default function DrugInteractionsPage() {
                   className="w-full text-left px-4 py-2.5 text-xs text-[var(--color-text-primary)] hover:bg-neutral-100 dark:hover:bg-white/5 flex items-center justify-between"
                 >
                   <span className="font-semibold">{item}</span>
-                  <span className="text-[10px] text-[#0284c7] dark:text-[#c8f93a] font-mono font-bold">Pilih</span>
+                  <span className="text-[10px] text-[#0284c7] dark:text-[#10b981] font-mono font-bold">Pilih</span>
                 </button>
               ))}
             </div>
@@ -222,7 +222,7 @@ export default function DrugInteractionsPage() {
             type="button"
             onClick={handleCheck}
             disabled={selectedDrugs.length < 2 || isLoading}
-            className="w-full sm:w-auto px-8 py-3 rounded-xl font-black text-xs bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-[#0c1004] dark:hover:bg-[#b5f524] disabled:opacity-50 transition-all flex items-center justify-center gap-2 shadow-md"
+            className="w-full sm:w-auto px-8 py-3 rounded-xl font-black text-xs bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] disabled:opacity-50 transition-all flex items-center justify-center gap-2 shadow-md"
           >
             {isLoading ? (
               <>

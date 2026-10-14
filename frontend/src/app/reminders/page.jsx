@@ -677,15 +677,15 @@ export default function RemindersPage() {
               }`}
               title="Atur token WhatsApp Gateway Fonnte agar pesan otomatis masuk ke HP"
             >
-              <Key className="w-4 h-4 text-amber-700 dark:text-[#c8f93a]" />
+              <Key className="w-4 h-4 text-amber-700 dark:text-[#10b981]" />
               <span>{gatewayStatus.fonnte_configured ? '🔑 Token Terpasang (Aktif)' : '🔑 Masukkan Token WhatsApp'}</span>
             </button>
             <button
               onClick={() => setShowQRScanModal(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:border-[#c8f93a]/50 transition shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:border-[#10b981]/50 transition shadow-sm"
               title="Unggah screenshot Kode QR WhatsApp untuk menghubungkan pasien"
             >
-              <QrCode className="w-4 h-4 text-[#0284c7] dark:text-[#c8f93a]" />
+              <QrCode className="w-4 h-4 text-[#0284c7] dark:text-[#10b981]" />
               <span>Pindai QR WhatsApp</span>
             </button>
 
@@ -713,7 +713,7 @@ export default function RemindersPage() {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-black transition shadow-md ${
                 patients.length === 0
                   ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300 dark:bg-zinc-800 dark:text-zinc-500 dark:border-zinc-700'
-                  : 'bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-zinc-950 dark:hover:bg-[#b5f524]'
+                  : 'bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669]'
               }`}
             >
               <Plus className="w-4 h-4" />
@@ -754,7 +754,7 @@ export default function RemindersPage() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2.5">
             <div className="p-2 rounded-xl bg-violet-50 text-violet-700 border border-violet-200 dark:bg-violet-950/80 dark:text-violet-300 dark:border-violet-800/50">
-              <Sparkles className="w-4 h-4 text-violet-600 dark:text-[#c8f93a]" />
+              <Sparkles className="w-4 h-4 text-violet-600 dark:text-[#10b981]" />
             </div>
             <div>
               <h2 className="text-sm font-bold text-slate-900 dark:text-white">Cara Kerja Pengingat WhatsApp Pasien</h2>
@@ -804,10 +804,10 @@ export default function RemindersPage() {
           {/* Stage 3 */}
           <div className="relative rounded-2xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 p-4 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-sky-100 text-[#0284c7] border border-sky-300 dark:bg-[#c8f93a]/20 dark:text-[#c8f93a] dark:border-[#c8f93a]/30">
+              <span className="px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-sky-100 text-[#0284c7] border border-sky-300 dark:bg-[#10b981]/20 dark:text-[#10b981] dark:border-[#10b981]/30">
                 Tahap 3 • Waktu Minum
               </span>
-              <Activity className="w-3.5 h-3.5 text-[#0284c7] dark:text-[#c8f93a]" />
+              <Activity className="w-3.5 h-3.5 text-[#0284c7] dark:text-[#10b981]" />
             </div>
             <h3 className="text-xs font-extrabold text-slate-900 dark:text-white">Konfirmasi Minum Obat</h3>
             <p className="text-[11px] text-slate-600 dark:text-zinc-400 leading-relaxed">
@@ -817,7 +817,7 @@ export default function RemindersPage() {
               <br />
               <strong className="text-rose-700 dark:text-rose-400">[Belum]</strong> ➔ Jadwal Diingatkan Kembali
             </p>
-            <div className="pt-2 text-[10px] text-[#0284c7] dark:text-[#c8f93a] font-mono font-bold flex items-center gap-1">
+            <div className="pt-2 text-[10px] text-[#0284c7] dark:text-[#10b981] font-mono font-bold flex items-center gap-1">
               <Zap className="w-3 h-3" /> Waktu: Tepat Jam Minum
             </div>
           </div>
@@ -831,7 +831,7 @@ export default function RemindersPage() {
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">JADWAL OBAT TERDAFTAR</span>
             <div className="p-2.5 rounded-2xl bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800 group-hover:scale-110 transition">
-              <Calendar className="w-4 h-4 text-[#0284c7] dark:text-[#c8f93a]" />
+              <Calendar className="w-4 h-4 text-[#0284c7] dark:text-[#10b981]" />
             </div>
           </div>
           <div className="mt-4 flex items-baseline gap-2">
@@ -904,7 +904,7 @@ export default function RemindersPage() {
           <div className="space-y-1">
             <div className="flex items-center gap-3">
               <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">Pantauan Pengingat Obat Pasien</h2>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-zinc-800 dark:text-[#c8f93a] dark:border-zinc-700 font-bold">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-zinc-800 dark:text-[#10b981] dark:border-zinc-700 font-bold">
                 {filteredLogs.length} Dosis ({timeHorizon === 'TODAY' ? 'Hari Ini' : 'Semua Hari'})
               </span>
             </div>
@@ -920,7 +920,7 @@ export default function RemindersPage() {
                 onClick={() => setActiveViewTab('SCHEDULES')}
                 className={`px-3.5 py-1.5 rounded-xl transition ${
                   activeViewTab === 'SCHEDULES'
-                    ? 'bg-white text-[#0284c7] shadow-sm font-extrabold dark:bg-zinc-800 dark:text-[#c8f93a]'
+                    ? 'bg-white text-[#0284c7] shadow-sm font-extrabold dark:bg-zinc-800 dark:text-[#10b981]'
                     : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                 }`}
               >
@@ -930,7 +930,7 @@ export default function RemindersPage() {
                 onClick={() => setActiveViewTab('WEBHOOK_LOGS')}
                 className={`px-3.5 py-1.5 rounded-xl transition ${
                   activeViewTab === 'WEBHOOK_LOGS'
-                    ? 'bg-white text-[#0284c7] shadow-sm font-extrabold dark:bg-zinc-800 dark:text-[#c8f93a]'
+                    ? 'bg-white text-[#0284c7] shadow-sm font-extrabold dark:bg-zinc-800 dark:text-[#10b981]'
                     : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                 }`}
               >
@@ -961,7 +961,7 @@ export default function RemindersPage() {
                   onClick={() => setTimeHorizon('TODAY')}
                   className={`px-3 py-1 rounded-lg transition ${
                     timeHorizon === 'TODAY'
-                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#c8f93a] dark:text-zinc-950'
+                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-zinc-950'
                       : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
@@ -971,7 +971,7 @@ export default function RemindersPage() {
                   onClick={() => setTimeHorizon('ALL')}
                   className={`px-3 py-1 rounded-lg transition ${
                     timeHorizon === 'ALL'
-                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#c8f93a] dark:text-zinc-950'
+                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-zinc-950'
                       : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
@@ -1036,12 +1036,12 @@ export default function RemindersPage() {
                     onClick={() => setShowQRScanModal(true)}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 transition"
                   >
-                    <QrCode className="w-3.5 h-3.5 text-[#c8f93a]" />
+                    <QrCode className="w-3.5 h-3.5 text-[#10b981]" />
                     <span>Pindai QR Kontak</span>
                   </button>
                   <button
                     onClick={() => setShowPatientModal(true)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#c8f93a] text-zinc-950 hover:bg-[#b5f524] transition shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#10b981] text-zinc-950 hover:bg-[#059669] transition shadow-md"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     <span>Daftarkan Pasien</span>
@@ -1101,7 +1101,7 @@ export default function RemindersPage() {
 
                           {/* Jadwal */}
                           <td className="py-3.5 px-4 whitespace-nowrap">
-                            <div className="font-extrabold text-[#0284c7] dark:text-[#c8f93a]">{timeStr}</div>
+                            <div className="font-extrabold text-[#0284c7] dark:text-[#10b981]">{timeStr}</div>
                             <div className="text-[11px] text-slate-500 dark:text-zinc-400">{dateStr}</div>
                           </td>
 
@@ -1249,7 +1249,7 @@ export default function RemindersPage() {
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-400 dark:border-emerald-800/50">
-                  <QrCode className="w-5 h-5 text-emerald-600 dark:text-[#c8f93a]" />
+                  <QrCode className="w-5 h-5 text-emerald-600 dark:text-[#10b981]" />
                 </div>
                 <div>
                   <h3 className="text-lg font-black text-slate-900 dark:text-white">Pindai Kode QR WhatsApp</h3>
@@ -1290,7 +1290,7 @@ export default function RemindersPage() {
                   />
                   {qrScanning && (
                     <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2">
-                      <RefreshCw className="w-8 h-8 text-[#0284c7] dark:text-[#c8f93a] animate-spin" />
+                      <RefreshCw className="w-8 h-8 text-[#0284c7] dark:text-[#10b981] animate-spin" />
                       <span className="text-xs font-bold text-white">Mengekstrak QR &amp; Kontak...</span>
                     </div>
                   )}
@@ -1298,7 +1298,7 @@ export default function RemindersPage() {
               ) : (
                 <>
                   <div className="w-14 h-14 rounded-2xl bg-sky-50 dark:bg-zinc-800 flex items-center justify-center text-slate-500 dark:text-zinc-400">
-                    <Upload className="w-6 h-6 text-[#0284c7] dark:text-[#c8f93a]" />
+                    <Upload className="w-6 h-6 text-[#0284c7] dark:text-[#10b981]" />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-900 dark:text-white">Unggah Gambar Kode QR WhatsApp</p>
@@ -1348,7 +1348,7 @@ export default function RemindersPage() {
                     setShowQRScanModal(false);
                     setShowPatientModal(true);
                   }}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-zinc-950 dark:hover:bg-[#b5f524] transition shadow-md"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md"
                 >
                   Lanjut Simpan Pasien ➔
                 </button>
@@ -1393,7 +1393,7 @@ export default function RemindersPage() {
             {patientForm.qr_code_url && (
               <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-500/30 dark:text-emerald-300 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <QrCode className="w-4 h-4 text-emerald-600 dark:text-[#c8f93a]" />
+                  <QrCode className="w-4 h-4 text-emerald-600 dark:text-[#10b981]" />
                   <span>Kode QR Terhubung ({patientForm.qr_contact_name || 'Aktif'})</span>
                 </div>
                 <button
@@ -1417,7 +1417,7 @@ export default function RemindersPage() {
                   placeholder="Contoh: Ibu Siti Rahayu"
                   value={patientForm.name}
                   onChange={(e) => setPatientForm({ ...patientForm, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                 />
               </div>
 
@@ -1432,7 +1432,7 @@ export default function RemindersPage() {
                       setShowPatientModal(false);
                       setShowQRScanModal(true);
                     }}
-                    className="text-[11px] text-[#0284c7] dark:text-[#c8f93a] hover:underline flex items-center gap-1 font-bold"
+                    className="text-[11px] text-[#0284c7] dark:text-[#10b981] hover:underline flex items-center gap-1 font-bold"
                   >
                     <QrCode className="w-3 h-3" /> Pindai Gambar QR
                   </button>
@@ -1447,7 +1447,7 @@ export default function RemindersPage() {
                       setPhoneError('');
                     }}
                     className={`w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition ${
-                      phoneError ? 'border-rose-500' : 'border-slate-200 dark:border-zinc-800 focus:border-[#0284c7] dark:focus:border-[#c8f93a]'
+                      phoneError ? 'border-rose-500' : 'border-slate-200 dark:border-zinc-800 focus:border-[#0284c7] dark:focus:border-[#10b981]'
                     }`}
                   />
                   <Phone className="w-4 h-4 text-slate-400 dark:text-zinc-500 absolute right-3.5 top-3" />
@@ -1459,7 +1459,7 @@ export default function RemindersPage() {
                 <button
                   type="button"
                   onClick={handleQuickFillPatientDemo}
-                  className="text-xs text-[#0284c7] dark:text-[#c8f93a] hover:underline font-bold"
+                  className="text-xs text-[#0284c7] dark:text-[#10b981] hover:underline font-bold"
                 >
                   ⚡ Contoh Data Demo
                 </button>
@@ -1500,7 +1500,7 @@ export default function RemindersPage() {
             
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-2xl bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-[#c8f93a]/10 dark:text-[#c8f93a] dark:border-[#c8f93a]/30">
+                <div className="p-2.5 rounded-2xl bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-[#10b981]/10 dark:text-[#10b981] dark:border-[#10b981]/30">
                   <Pill className="w-5 h-5" />
                 </div>
                 <div>
@@ -1525,7 +1525,7 @@ export default function RemindersPage() {
                   required
                   value={medForm.patient_id}
                   onChange={(e) => setMedForm({ ...medForm, patient_id: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                 >
                   <option value="">-- Pilih Pasien --</option>
                   {patients.map((p) => (
@@ -1547,7 +1547,7 @@ export default function RemindersPage() {
                     placeholder="Amlodipine"
                     value={medForm.name}
                     onChange={(e) => setMedForm({ ...medForm, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                   />
                 </div>
 
@@ -1561,7 +1561,7 @@ export default function RemindersPage() {
                     placeholder="5 mg (1 Tablet)"
                     value={medForm.dosage}
                     onChange={(e) => setMedForm({ ...medForm, dosage: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                   />
                 </div>
               </div>
@@ -1575,7 +1575,7 @@ export default function RemindersPage() {
                   placeholder="Sesudah makan, di pagi hari"
                   value={medForm.instructions}
                   onChange={(e) => setMedForm({ ...medForm, instructions: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                 />
               </div>
 
@@ -1606,7 +1606,7 @@ export default function RemindersPage() {
                         }}
                         className={`px-3 py-2 rounded-xl text-xs font-bold transition border ${
                           isSelected
-                            ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#c8f93a] dark:text-zinc-950 dark:border-[#c8f93a]'
+                            ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-zinc-950 dark:border-[#10b981]'
                             : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800'
                         }`}
                       >
@@ -1628,7 +1628,7 @@ export default function RemindersPage() {
                   placeholder="08:00"
                   value={medForm.target_times_str}
                   onChange={(e) => setMedForm({ ...medForm, target_times_str: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                 />
                 <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">
                   Contoh: 08:00 jika 1 kali sehari, atau 08:00, 20:00 jika 2 kali sehari
@@ -1653,7 +1653,7 @@ export default function RemindersPage() {
                       onClick={() => setMedForm((prev) => ({ ...prev, duration_days: dur.days }))}
                       className={`px-3 py-2 rounded-xl text-xs font-bold transition border ${
                         Number(medForm.duration_days) === dur.days
-                          ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#c8f93a] dark:text-zinc-950 dark:border-[#c8f93a]'
+                          ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-zinc-950 dark:border-[#10b981]'
                           : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800'
                       }`}
                     >
@@ -1670,7 +1670,7 @@ export default function RemindersPage() {
                 return (
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-zinc-900/80 dark:border-zinc-800 text-xs text-slate-700 dark:text-zinc-300 flex items-center justify-between">
                     <span>💡 <strong>Total Jadwal Dibuat:</strong></span>
-                    <span className="font-mono font-bold text-[#0284c7] dark:text-[#c8f93a]">
+                    <span className="font-mono font-bold text-[#0284c7] dark:text-[#10b981]">
                       {timesCount}x sehari × {medForm.duration_days} hari = {totalDoses} dosis
                     </span>
                   </div>
@@ -1681,7 +1681,7 @@ export default function RemindersPage() {
                 <button
                   type="button"
                   onClick={handleQuickFillMedDemo}
-                  className="text-xs text-[#0284c7] dark:text-[#c8f93a] hover:underline font-bold"
+                  className="text-xs text-[#0284c7] dark:text-[#10b981] hover:underline font-bold"
                 >
                   ⚡ Contoh Jadwal Demo
                 </button>
@@ -1696,7 +1696,7 @@ export default function RemindersPage() {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-zinc-950 dark:hover:bg-[#b5f524] transition shadow-md"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md"
                   >
                     Simpan &amp; Kirim ke WhatsApp
                   </button>
@@ -1723,7 +1723,7 @@ export default function RemindersPage() {
             <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-500/20 dark:text-amber-400 dark:border-amber-500/30 flex items-center justify-center">
-                  <Key className="w-6 h-6 text-amber-600 dark:text-[#c8f93a]" />
+                  <Key className="w-6 h-6 text-amber-600 dark:text-[#10b981]" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">
@@ -1776,7 +1776,7 @@ export default function RemindersPage() {
                 <div className="p-3 rounded-xl bg-amber-100 border border-amber-300 text-[11px] text-amber-900 leading-relaxed dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-200">
                   <strong>Penyebab Pesan Belum Masuk:</strong> Token akun Anda sudah terdeteksi di server, tetapi nomor pengirim (<strong>+{gatewayStatus.device_phone}</strong>) statusnya masih <em>Disconnect</em>.
                   <br />
-                  👉 Silakan buka menu <strong>Device</strong> di <a href="https://fonnte.com" target="_blank" rel="noreferrer" className="text-[#0284c7] dark:text-[#c8f93a] underline font-bold">fonnte.com</a>, lalu klik tombol <strong>Scan QR / Connect</strong> pada nomor tersebut. Begitu terhubung, pesan pengingat langsung masuk otomatis ke HP Anda!
+                  👉 Silakan buka menu <strong>Device</strong> di <a href="https://fonnte.com" target="_blank" rel="noreferrer" className="text-[#0284c7] dark:text-[#10b981] underline font-bold">fonnte.com</a>, lalu klik tombol <strong>Scan QR / Connect</strong> pada nomor tersebut. Begitu terhubung, pesan pengingat langsung masuk otomatis ke HP Anda!
                 </div>
               )}
             </div>
@@ -1785,7 +1785,7 @@ export default function RemindersPage() {
             <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-zinc-900/80 dark:border-zinc-800 text-[11px] text-slate-600 dark:text-zinc-400 space-y-1.5 leading-relaxed">
               <span className="font-bold text-slate-800 dark:text-zinc-200">Cara Mendapatkan Token Gratis (1 Menit):</span>
               <ol className="list-decimal list-inside space-y-0.5 text-slate-600 dark:text-zinc-400">
-                <li>Buka <a href="https://fonnte.com" target="_blank" rel="noreferrer" className="text-[#0284c7] dark:text-[#c8f93a] underline font-bold">fonnte.com</a> &amp; daftar akun gratis.</li>
+                <li>Buka <a href="https://fonnte.com" target="_blank" rel="noreferrer" className="text-[#0284c7] dark:text-[#10b981] underline font-bold">fonnte.com</a> &amp; daftar akun gratis.</li>
                 <li>Di menu <strong>Device</strong>, hubungkan nomor WhatsApp pengirim dengan scan QR.</li>
                 <li>Salin <strong>Token</strong> yang tertera, lalu tempel pada kolom di bawah.</li>
               </ol>
@@ -1803,7 +1803,7 @@ export default function RemindersPage() {
                   placeholder="Tempel token Anda di sini, contoh: 9x8y7z6w5v4u3t2s1..."
                   value={tokenInput}
                   onChange={(e) => setTokenInput(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white font-mono placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] transition"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm text-slate-900 dark:text-white font-mono placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] transition"
                 />
               </div>
 
@@ -1834,7 +1834,7 @@ export default function RemindersPage() {
                   <button
                     type="submit"
                     disabled={savingToken}
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-zinc-950 dark:hover:bg-[#b5f524] transition shadow-md cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md cursor-pointer"
                   >
                     {savingToken ? 'Menyimpan...' : 'Simpan Token'}
                   </button>

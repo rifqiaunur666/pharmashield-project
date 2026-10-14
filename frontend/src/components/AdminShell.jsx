@@ -76,7 +76,7 @@ function AdminShellInner({ children }) {
           </main>
 
           <footer className="text-center text-xs text-[var(--color-text-secondary)] py-5 px-6 border-t border-[var(--color-border)] bg-[var(--color-sidebar-bg)]">
-            © 2026 <span className="font-extrabold text-[#0f172a] dark:text-[#c8f93a]">MedikaGuard ID</span> — Sistem Keamanan Konsumsi Obat &amp; Datasheet Penyakit Umum Indonesia
+            © 2026 <span className="font-extrabold text-[#0f172a] dark:text-[#10b981]">MedikaGuard ID</span> — Sistem Keamanan Konsumsi Obat &amp; Datasheet Penyakit Umum Indonesia
           </footer>
         </div>
 

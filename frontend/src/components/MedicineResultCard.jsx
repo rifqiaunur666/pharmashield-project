@@ -154,7 +154,7 @@ export default function MedicineResultCard({
               {onManualLookup && (
                 <button
                   onClick={onManualLookup}
-                  className="px-3 py-1.5 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#c8f93a] dark:text-black dark:hover:bg-[#b5f524] text-xs font-black transition-all"
+                  className="px-3 py-1.5 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] text-xs font-black transition-all"
                 >
                   🔍 Masukkan Nama Manual
                 </button>
@@ -175,7 +175,7 @@ export default function MedicineResultCard({
               {result.name || 'Kemasan Tidak Teridentifikasi'}
             </h3>
             <p className="text-xs text-[var(--color-text-secondary)] mt-1 leading-relaxed">
-              Nama Generik: <span className="text-[var(--color-text-primary)] font-bold">{result.genericName || result.name}</span> <span className="hidden xs:inline">|</span><br className="xs:hidden" /> Golongan BPOM: <span className="text-[#0284c7] dark:text-[#c8f93a] font-bold">{result.bpomClass}</span>
+              Nama Generik: <span className="text-[var(--color-text-primary)] font-bold">{result.genericName || result.name}</span> <span className="hidden xs:inline">|</span><br className="xs:hidden" /> Golongan BPOM: <span className="text-[#0284c7] dark:text-[#10b981] font-bold">{result.bpomClass}</span>
             </p>
             {result.brandNames?.length > 0 && (
               <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-0.5 break-words">
@@ -200,7 +200,7 @@ export default function MedicineResultCard({
           </div>
           <div className="p-3.5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#12151e] space-y-1">
             <span className="text-[10px] text-slate-500 dark:text-neutral-400 uppercase font-bold">Nomor Registrasi BPOM</span>
-            <p className="text-sm font-bold text-[#0284c7] dark:text-[#c8f93a] font-mono">{result.bpomRegistration || 'Pemeriksaan Fisik Diperlukan'}</p>
+            <p className="text-sm font-bold text-[#0284c7] dark:text-[#10b981] font-mono">{result.bpomRegistration || 'Pemeriksaan Fisik Diperlukan'}</p>
           </div>
           <div className="p-3.5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#12151e] space-y-1">
             <span className="text-[10px] text-slate-500 dark:text-neutral-400 uppercase font-bold">Status Registrasi</span>

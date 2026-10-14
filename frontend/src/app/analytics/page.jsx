@@ -43,7 +43,7 @@ export default function AnalyticsPage() {
           <h1 className="text-3xl font-black tracking-tight text-[var(--color-text-primary)]">
             Analitik &amp; Grafik
           </h1>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 text-sky-800 border-sky-200 dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 px-2.5 py-0.5 text-xs font-bold border">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 text-sky-800 border-sky-200 dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30 px-2.5 py-0.5 text-xs font-bold border">
             AI Analytics
           </span>
         </div>
@@ -67,7 +67,7 @@ export default function AnalyticsPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-8 justify-around pt-2">
-            {/* SVG Donut Ring: Ocean Blue in Light, Neon Green in Dark */}
+            {/* SVG Donut Ring: Ocean Blue in Light, Emerald in Dark */}
             <div className="relative w-44 h-44 flex items-center justify-center">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
                 {/* Background Ring */}
@@ -83,12 +83,12 @@ export default function AnalyticsPage() {
                   strokeDashoffset="0"
                   strokeLinecap="round"
                   fill="transparent"
-                  className="text-[#0284c7] dark:text-[#c8f93a] transition-all duration-1000"
+                  className="text-[#0284c7] dark:text-[#10b981] transition-all duration-1000"
                 />
               </svg>
               <div className="absolute flex flex-col items-center justify-center text-center">
                 <span className="text-2xl font-black text-[var(--color-text-primary)]">{safePct}%</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0284c7] dark:text-[#c8f93a]">Layak Konsumsi</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0284c7] dark:text-[#10b981]">Layak Konsumsi</span>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-2 gap-4 w-full sm:w-auto">
               <div className="rounded-xl p-3 bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/5">
                 <div className="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-neutral-400">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] dark:bg-[#10b981]" />
                   <span>Aman (🟢)</span>
                 </div>
                 <p className="text-xl font-black text-[var(--color-text-primary)] mt-1">{safeCount} <span className="text-[10px] font-medium text-slate-500 dark:text-neutral-500">kemasan</span></p>
@@ -144,7 +144,7 @@ export default function AnalyticsPage() {
               <span className="text-3xl font-black text-[var(--color-text-primary)]">{totalScans > 0 ? totalScans : '128'}</span>
               <span className="text-xs text-slate-500 dark:text-neutral-500 ml-1.5 font-medium">total pemindaian</span>
             </div>
-            <p className="text-xs text-[#0284c7] dark:text-[#c8f93a] mt-1 font-semibold flex items-center gap-1">
+            <p className="text-xs text-[#0284c7] dark:text-[#10b981] mt-1 font-semibold flex items-center gap-1">
               <span>↑ +28.4%</span>
               <span className="text-slate-500 dark:text-neutral-400 font-normal">pertumbuhan akurasi AI</span>
             </p>
@@ -152,7 +152,7 @@ export default function AnalyticsPage() {
 
           {/* SVG Glowing Curve */}
           <div className="relative pt-6">
-            <svg viewBox="0 0 200 60" className="w-full h-24 overflow-visible text-[#0284c7] dark:text-[#c8f93a]">
+            <svg viewBox="0 0 200 60" className="w-full h-24 overflow-visible text-[#0284c7] dark:text-[#10b981]">
               <defs>
                 <linearGradient id="neonGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" />

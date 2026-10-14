@@ -45,7 +45,7 @@ export default function SettingsPage() {
         <div>
           <h2 className="text-base font-bold text-[var(--color-text-primary)]">Koneksi Backend FastAPI</h2>
           <p className="text-xs text-[var(--color-text-secondary)] mt-0.5">
-            Endpoint API utama yang digunakan frontend (dikonfigurasi melalui <code className="font-mono text-[#0284c7] dark:text-[#c8f93a] bg-slate-100 dark:bg-black/40 px-1 py-0.5 rounded border border-slate-200 dark:border-white/5">NEXT_PUBLIC_API_URL</code>).
+            Endpoint API utama yang digunakan frontend (dikonfigurasi melalui <code className="font-mono text-[#0284c7] dark:text-[#10b981] bg-slate-100 dark:bg-black/40 px-1 py-0.5 rounded border border-slate-200 dark:border-white/5">NEXT_PUBLIC_API_URL</code>).
           </p>
           <div className="mt-3 flex flex-col sm:flex-row gap-3">
             <input
@@ -57,13 +57,13 @@ export default function SettingsPage() {
             <button
               onClick={testConnection}
               disabled={isTesting}
-              className="px-5 py-2.5 text-xs font-black rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-[#0c1004] dark:hover:bg-[#b5f524] transition-all shadow-sm"
+              className="px-5 py-2.5 text-xs font-black rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] transition-all shadow-sm"
             >
               {isTesting ? 'Menguji…' : 'Uji Koneksi Backend'}
             </button>
           </div>
           {statusMsg && (
-            <p className={`mt-2 text-xs font-semibold ${statusMsg.type === 'success' ? 'text-emerald-700 dark:text-[#c8f93a]' : 'text-rose-600 dark:text-rose-400'}`}>
+            <p className={`mt-2 text-xs font-semibold ${statusMsg.type === 'success' ? 'text-emerald-700 dark:text-[#10b981]' : 'text-rose-600 dark:text-rose-400'}`}>
               {statusMsg.text}
             </p>
           )}

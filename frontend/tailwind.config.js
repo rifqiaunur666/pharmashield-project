@@ -12,12 +12,12 @@ module.exports = {
       },
       colors: {
         neon: {
-          DEFAULT: '#c8f93a',
-          400: '#d7fa65',
-          500: '#c8f93a',
-          600: '#b1e523',
-          dark: '#0c1004',
-          glow: 'rgba(200, 249, 58, 0.25)',
+          DEFAULT: '#10b981',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          dark: '#0f172a',
+          glow: 'rgba(16, 185, 129, 0.2)',
         },
         dark: {
           bg: '#0c0e12',
@@ -26,8 +26,8 @@ module.exports = {
           cardHover: '#1c202c',
           border: '#242835',
           borderLight: 'rgba(255, 255, 255, 0.08)',
-          muted: '#8e96a4',
-          subtle: '#555b6a',
+          muted: '#cbd5e1',
+          subtle: '#94a3b8',
         },
         pharma: {
           black:  '#0c0e12',

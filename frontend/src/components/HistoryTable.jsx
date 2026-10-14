@@ -53,7 +53,7 @@ function HistoryRow({ item, onRemove, onSelect }) {
       {/* Medicine Name */}
       <td className="py-3.5 px-4">
         <div className="flex flex-col">
-          <span className="font-extrabold text-sm text-[var(--color-text-primary)] group-hover:text-[#0284c7] dark:group-hover:text-[#c8f93a] transition-colors line-clamp-1">
+          <span className="font-extrabold text-sm text-[var(--color-text-primary)] group-hover:text-[#0284c7] dark:group-hover:text-[#10b981] transition-colors line-clamp-1">
             {item.name || item.medicine_name || (
               <span className="italic text-[var(--color-text-muted)]">Tidak Teridentifikasi</span>
             )}
@@ -90,7 +90,7 @@ function HistoryRow({ item, onRemove, onSelect }) {
             <button
               onClick={() => onSelect(item)}
               aria-label="Lihat detail"
-              className="text-xs font-bold px-3 py-1.5 rounded-xl text-sky-700 bg-sky-50 hover:bg-[#0284c7] hover:text-white dark:text-[#c8f93a] dark:bg-[#c8f93a]/10 dark:hover:bg-[#c8f93a] dark:hover:text-[#0c1004] transition-all"
+              className="text-xs font-bold px-3 py-1.5 rounded-xl text-sky-700 bg-sky-50 hover:bg-[#0284c7] hover:text-white dark:text-[#10b981] dark:bg-[#10b981]/10 dark:hover:bg-[#10b981] dark:hover:text-[#0f172a] transition-all"
             >
               Lihat
             </button>

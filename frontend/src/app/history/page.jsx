@@ -93,7 +93,7 @@ export default function HistoryPage() {
           <button
             onClick={loadHistory}
             disabled={isLoading}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-[var(--color-border)] bg-white dark:bg-[#161922] text-slate-700 dark:text-neutral-300 hover:text-[#0284c7] dark:hover:text-white hover:border-[#0284c7]/40 dark:hover:border-[#c8f93a]/30 transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-[var(--color-border)] bg-white dark:bg-[#161922] text-slate-700 dark:text-neutral-300 hover:text-[#0284c7] dark:hover:text-white hover:border-[#0284c7]/40 dark:hover:border-[#10b981]/30 transition-all shadow-sm"
           >
             <span className={isLoading ? 'animate-spin' : ''}>↻</span>
             <span>Segarkan</span>
@@ -118,7 +118,7 @@ export default function HistoryPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari nama obat, indikasi..."
-            className="w-full px-4 py-2.5 text-xs rounded-xl border border-[var(--color-border)] bg-white dark:bg-[#161922] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] focus:ring-1 focus:ring-[#0284c7] dark:focus:ring-[#c8f93a] transition-all"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-[var(--color-border)] bg-white dark:bg-[#161922] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] focus:ring-1 focus:ring-[#0284c7] dark:focus:ring-[#10b981] transition-all"
           />
         </div>
 
@@ -134,7 +134,7 @@ export default function HistoryPage() {
               onClick={() => setStatusFilter(id)}
               className={`px-3 py-2 text-xs font-bold rounded-xl border whitespace-nowrap transition-all ${
                 statusFilter === id
-                  ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-md shadow-[#0284c7]/20 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:border-[#c8f93a] dark:shadow-[#c8f93a]/20 font-extrabold'
+                  ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-md shadow-[#0284c7]/20 dark:bg-[#10b981] dark:text-[#0f172a] dark:border-[#10b981] dark:shadow-[#10b981]/20 font-extrabold'
                   : 'bg-white dark:bg-[#161922] text-slate-600 dark:text-neutral-400 border-[var(--color-border)] hover:text-slate-900 dark:hover:text-white'
               }`}
             >

@@ -8,16 +8,16 @@
   --sidebar-collapsed-width: 72px;
   --header-height: 64px;
   
-  /* Primary Neon Accent */
-  --color-primary: #c8f93a;
-  --color-primary-hover: #b5f524;
-  --color-primary-text: #0c1004;
-  --color-primary-glow: rgba(200, 249, 58, 0.25);
+  /* Primary Accent (Softened Emerald — WCAG AAA on dark surfaces) */
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-primary-text: #0f172a;
+  --color-primary-glow: rgba(16, 185, 129, 0.2);
   
-  /* Status Colors */
-  --color-success: #c8f93a;
-  --color-warning: #facc15;
-  --color-danger: #fb7185;
+  /* Status Colors (Dark Mode Defaults) */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
   --color-info: #38bdf8;
   
   /* Dark Surfaces (Default / Hitam) */
@@ -29,10 +29,10 @@
   --color-border: #232735;
   --color-border-subtle: rgba(255, 255, 255, 0.07);
   
-  /* Text */
+  /* Text (High-Contrast for Dark Surfaces) */
   --color-text-primary: #f8fafc;
-  --color-text-secondary: #8e96a4;
-  --color-text-muted: #5e6575;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
   
   --font-main: var(--font-manrope, 'Manrope', system-ui, sans-serif);
 }
@@ -750,10 +750,10 @@ html.light [data-status="red"] {
 }
 @keyframes neon-pulse {
   0%, 100% {
-    box-shadow: 0 0 16px rgba(200, 249, 58, 0.35);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
   }
   50% {
-    box-shadow: 0 0 6px rgba(200, 249, 58, 0.15);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.12);
   }
 }
 
@@ -823,7 +823,7 @@ html.light [data-status="red"] {
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 .admin-card:hover {
-  border-color: rgba(200, 249, 58, 0.2);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 /* ─── Neon Accent Button ─────────────────────────────────────────────────── */
@@ -837,7 +837,7 @@ html.light [data-status="red"] {
 }
 .btn-neon:hover {
   background-color: var(--color-primary-hover);
-  box-shadow: 0 4px 20px rgba(200, 249, 58, 0.4);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
   transform: translateY(-1px);
 }
 .btn-neon:active {
@@ -846,19 +846,19 @@ html.light [data-status="red"] {
 
 /* ─── Status Pills ───────────────────────────────────────────────────────── */
 .pill-neon {
-  background: rgba(200, 249, 58, 0.12);
-  color: #c8f93a;
-  border: 1px solid rgba(200, 249, 58, 0.3);
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .pill-yellow {
-  background: rgba(250, 204, 21, 0.12);
-  color: #fde047;
-  border: 1px solid rgba(250, 204, 21, 0.25);
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 .pill-red {
-  background: rgba(251, 113, 133, 0.12);
-  color: #fda4af;
-  border: 1px solid rgba(251, 113, 133, 0.25);
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.25);
 }
 .pill-blue {
   background: rgba(56, 189, 248, 0.12);
@@ -873,7 +873,7 @@ html.light [data-status="red"] {
   position: absolute;
   width: 22px;
   height: 22px;
-  border-color: #c8f93a;
+  border-color: #10b981;
   border-style: solid;
 }
 
@@ -882,7 +882,7 @@ table { border-collapse: collapse; }
 
 .admin-table thead th {
   background: #11141b;
-  color: #8e96a4;
+  color: #cbd5e1;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -909,7 +909,7 @@ table { border-collapse: collapse; }
 
 /* ─── Glowing Curve & Chart Utilities ────────────────────────────────────── */
 .chart-glow {
-  filter: drop-shadow(0 0 8px rgba(200, 249, 58, 0.4));
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.35));
 }
 
 
@@ -989,20 +989,26 @@ html[data-colorblind="protanopia"] [data-status="red"] {
 /* General component overrides for Protanopia */
 html.a11y-cb-protanopia button.bg-\[\#c8f93a\],
 html.a11y-cb-protanopia button.bg-\[\#a3e635\],
+html.a11y-cb-protanopia button.bg-\[\#10b981\],
 html.a11y-cb-protanopia .bg-\[\#c8f93a\],
 html.a11y-cb-protanopia .bg-\[\#a3e635\],
+html.a11y-cb-protanopia .bg-\[\#10b981\],
 html[data-colorblind="protanopia"] button.bg-\[\#c8f93a\],
 html[data-colorblind="protanopia"] button.bg-\[\#a3e635\],
+html[data-colorblind="protanopia"] button.bg-\[\#10b981\],
 html[data-colorblind="protanopia"] .bg-\[\#c8f93a\],
-html[data-colorblind="protanopia"] .bg-\[\#a3e635\] {
+html[data-colorblind="protanopia"] .bg-\[\#a3e635\],
+html[data-colorblind="protanopia"] .bg-\[\#10b981\] {
   background-color: #2563eb !important;
   color: #ffffff !important;
 }
 
 html.a11y-cb-protanopia [class*='text-\[\#c8f93a\]'],
 html.a11y-cb-protanopia [class*='text-\[\#a3e635\]'],
+html.a11y-cb-protanopia [class*='text-\[\#10b981\]'],
 html[data-colorblind="protanopia"] [class*='text-\[\#c8f93a\]'],
-html[data-colorblind="protanopia"] [class*='text-\[\#a3e635\]'] {
+html[data-colorblind="protanopia"] [class*='text-\[\#a3e635\]'],
+html[data-colorblind="protanopia"] [class*='text-\[\#10b981\]'] {
   color: #2563eb !important;
 }
 
@@ -1118,16 +1124,61 @@ html[data-colorblind="tritanopia"] [class*='text-\[\#10b981\]'] {
 }
 
 /* ── 7c. Low Vision / Mata Minus: Kontras Ekstrem WCAG AAA ─────────────────
-   Semua kartu/container: border-2 border-slate-900 (atau border-yellow-400 pada dark)
-   Teks: Hitam Pekat #000000 (pada light mode) atau Putih Pekat #FFFFFF (pada dark)
-   Focus Ring: focus:ring-4 focus:ring-yellow-400 pada seluruh elemen interaktif
+   Function-Based High-Contrast Outlines:
+   - Default Cards & Nav: Pure White (#FFFFFF) on true black (#000000)
+   - Safe Status Cards: Solid Green (#22C55E)
+   - Risk & Warning Cards: Solid Crimson Red (#EF4444)
+   Typography: All text boosted to font-semibold (600) minimum
+   Focus Ring: 4px solid yellow on all interactive elements
    ───────────────────────────────────────────────────────────────────────────── */
-html.a11y-cb-low-vision,
-html[data-colorblind="low-vision"] {
-  --color-border: #000000 !important;
+
+/* -- Common: Typography Weight Boost -- */
+html.a11y-cb-low-vision p,
+html.a11y-cb-low-vision span,
+html.a11y-cb-low-vision label,
+html.a11y-cb-low-vision h1,
+html.a11y-cb-low-vision h2,
+html.a11y-cb-low-vision h3,
+html.a11y-cb-low-vision h4,
+html.a11y-cb-low-vision td,
+html.a11y-cb-low-vision th,
+html.a11y-cb-low-vision a,
+html.a11y-cb-low-vision button,
+html.a11y-cb-low-vision li,
+html[data-colorblind="low-vision"] p,
+html[data-colorblind="low-vision"] span,
+html[data-colorblind="low-vision"] label,
+html[data-colorblind="low-vision"] h1,
+html[data-colorblind="low-vision"] h2,
+html[data-colorblind="low-vision"] h3,
+html[data-colorblind="low-vision"] h4,
+html[data-colorblind="low-vision"] td,
+html[data-colorblind="low-vision"] th,
+html[data-colorblind="low-vision"] a,
+html[data-colorblind="low-vision"] button,
+html[data-colorblind="low-vision"] li {
+  font-weight: 600 !important;
 }
 
-/* Light mode specific for Low Vision */
+/* -- Common: Focus Ring 4px solid yellow -- */
+html.a11y-cb-low-vision button:focus,
+html.a11y-cb-low-vision a:focus,
+html.a11y-cb-low-vision input:focus,
+html.a11y-cb-low-vision select:focus,
+html.a11y-cb-low-vision textarea:focus,
+html.a11y-cb-low-vision [tabindex]:focus,
+html[data-colorblind="low-vision"] button:focus,
+html[data-colorblind="low-vision"] a:focus,
+html[data-colorblind="low-vision"] input:focus,
+html[data-colorblind="low-vision"] select:focus,
+html[data-colorblind="low-vision"] textarea:focus,
+html[data-colorblind="low-vision"] [tabindex]:focus {
+  outline: 4px solid #facc15 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.45) !important;
+}
+
+/* ═══ LIGHT MODE — LOW VISION ═══════════════════════════════════════════════ */
 html.light.a11y-cb-low-vision,
 html.light[data-colorblind="low-vision"] {
   --color-body-bg: #ffffff !important;
@@ -1145,7 +1196,7 @@ html.light[data-colorblind="low-vision"] body {
   color: #000000 !important;
 }
 
-/* Enforce 2px solid border on all cards, tables, inputs, buttons */
+/* Light: 2px solid dark borders on all cards */
 html.light.a11y-cb-low-vision .admin-card,
 html.light.a11y-cb-low-vision table,
 html.light.a11y-cb-low-vision th,
@@ -1159,43 +1210,11 @@ html.light[data-colorblind="low-vision"] td,
 html.light[data-colorblind="low-vision"] [class*='rounded-2xl'],
 html.light[data-colorblind="low-vision"] [class*='rounded-xl'] {
   border: 2px solid #0f172a !important;
-  font-weight: 600 !important;
 }
 
-/* Text boldness and contrast */
-html.a11y-cb-low-vision p,
-html.a11y-cb-low-vision span,
-html.a11y-cb-low-vision h1,
-html.a11y-cb-low-vision h2,
-html.a11y-cb-low-vision h3,
-html.a11y-cb-low-vision td,
-html[data-colorblind="low-vision"] p,
-html[data-colorblind="low-vision"] span,
-html[data-colorblind="low-vision"] h1,
-html[data-colorblind="low-vision"] h2,
-html[data-colorblind="low-vision"] h3,
-html[data-colorblind="low-vision"] td {
-  font-weight: 600 !important;
-}
-
-/* Focus ring: 4px solid yellow-400 */
-html.a11y-cb-low-vision button:focus,
-html.a11y-cb-low-vision a:focus,
-html.a11y-cb-low-vision input:focus,
-html.a11y-cb-low-vision select:focus,
-html.a11y-cb-low-vision *:focus,
-html[data-colorblind="low-vision"] button:focus,
-html[data-colorblind="low-vision"] a:focus,
-html[data-colorblind="low-vision"] input:focus,
-html[data-colorblind="low-vision"] select:focus,
-html[data-colorblind="low-vision"] *:focus {
-  outline: 4px solid #facc15 !important;
-  outline-offset: 3px !important;
-  box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.45) !important;
-}
-
-/* Dark mode low vision fallback */
-html.dark.a11y-cb-low-vision {
+/* ═══ DARK MODE — LOW VISION (Function-Based Outlines) ═════════════════════ */
+html.dark.a11y-cb-low-vision,
+html.dark[data-colorblind="low-vision"] {
   --color-body-bg: #000000 !important;
   --color-card-bg: #000000 !important;
   --color-sidebar-bg: #000000 !important;
@@ -1203,11 +1222,95 @@ html.dark.a11y-cb-low-vision {
   --color-text-primary: #ffffff !important;
   --color-text-secondary: #ffffff !important;
   --color-text-muted: #e5e5e5 !important;
-  --color-border: #ffff00 !important;
+  --color-border: #ffffff !important;
 }
-html.dark.a11y-cb-low-vision *:not(img):not(svg):not(path):not(circle):not(rect):not(video):not([data-a11y-modal]):not(.a11y-modal-panel):not(.a11y-modal-panel *) {
-  border-color: #ffff00 !important;
+
+html.dark.a11y-cb-low-vision body,
+html.dark[data-colorblind="low-vision"] body {
   color: #ffffff !important;
+}
+
+/* Dark Low Vision: Default cards & nav — 3px solid white on true black */
+html.dark.a11y-cb-low-vision .admin-card,
+html.dark.a11y-cb-low-vision .sidebar,
+html.dark.a11y-cb-low-vision .sidebar a,
+html.dark.a11y-cb-low-vision header,
+html.dark.a11y-cb-low-vision table,
+html.dark.a11y-cb-low-vision th,
+html.dark.a11y-cb-low-vision td,
+html.dark.a11y-cb-low-vision [class*='rounded-2xl'],
+html.dark.a11y-cb-low-vision [class*='rounded-xl'],
+html.dark[data-colorblind="low-vision"] .admin-card,
+html.dark[data-colorblind="low-vision"] .sidebar,
+html.dark[data-colorblind="low-vision"] .sidebar a,
+html.dark[data-colorblind="low-vision"] header,
+html.dark[data-colorblind="low-vision"] table,
+html.dark[data-colorblind="low-vision"] th,
+html.dark[data-colorblind="low-vision"] td,
+html.dark[data-colorblind="low-vision"] [class*='rounded-2xl'],
+html.dark[data-colorblind="low-vision"] [class*='rounded-xl'] {
+  border: 3px solid #ffffff !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Dark Low Vision: Safe status cards — solid green (#22C55E) outline */
+html.dark.a11y-cb-low-vision .status-green,
+html.dark.a11y-cb-low-vision [data-status="green"],
+html.dark[data-colorblind="low-vision"] .status-green,
+html.dark[data-colorblind="low-vision"] [data-status="green"] {
+  border: 3px solid #22c55e !important;
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  color: #4ade80 !important;
+}
+
+/* Dark Low Vision: Warning status cards — solid amber (#F59E0B) outline */
+html.dark.a11y-cb-low-vision .status-yellow,
+html.dark.a11y-cb-low-vision [data-status="yellow"],
+html.dark[data-colorblind="low-vision"] .status-yellow,
+html.dark[data-colorblind="low-vision"] [data-status="yellow"] {
+  border: 3px solid #f59e0b !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  color: #fbbf24 !important;
+}
+
+/* Dark Low Vision: Danger status cards — solid crimson (#EF4444) outline */
+html.dark.a11y-cb-low-vision .status-red,
+html.dark.a11y-cb-low-vision [data-status="red"],
+html.dark[data-colorblind="low-vision"] .status-red,
+html.dark[data-colorblind="low-vision"] [data-status="red"] {
+  border: 3px solid #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  color: #fca5a5 !important;
+}
+
+/* Dark Low Vision: Accessibility modal overlay — high-contrast border */
+html.dark.a11y-cb-low-vision .a11y-modal-panel,
+html.dark[data-colorblind="low-vision"] .a11y-modal-panel {
+  border: 2px solid #ffffff !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Dark Low Vision: Buttons — white border + white text */
+html.dark.a11y-cb-low-vision button,
+html.dark.a11y-cb-low-vision a[class*="rounded"],
+html.dark[data-colorblind="low-vision"] button,
+html.dark[data-colorblind="low-vision"] a[class*="rounded"] {
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Dark Low Vision: Active sidebar link — keep green highlight visible */
+html.dark.a11y-cb-low-vision .sidebar a[aria-current="page"],
+html.dark[data-colorblind="low-vision"] .sidebar a[aria-current="page"] {
+  border: 3px solid #22c55e !important;
+  background-color: #10b981 !important;
+  color: #000000 !important;
+}
+html.dark.a11y-cb-low-vision .sidebar a[aria-current="page"] *,
+html.dark[data-colorblind="low-vision"] .sidebar a[aria-current="page"] * {
+  color: #000000 !important;
 }
 
 /* ── 8. Saturation filter (applied via body CSS var set by JS) ─────────────── */

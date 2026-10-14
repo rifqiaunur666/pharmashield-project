@@ -196,7 +196,7 @@ export default function CameraScanner({
     : error
     ? { label: 'Scan Gagal', color: 'bg-rose-100 text-rose-800 border border-rose-300 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/40', dot: 'bg-rose-600 dark:bg-rose-400' }
     : selectedImage
-    ? { label: 'Pratinjau Foto', color: 'bg-sky-100 text-sky-800 border border-sky-300 dark:bg-[#c8f93a]/20 dark:text-[#c8f93a] dark:border-[#c8f93a]/30', dot: 'bg-sky-600 dark:bg-[#c8f93a]' }
+    ? { label: 'Pratinjau Foto', color: 'bg-sky-100 text-sky-800 border border-sky-300 dark:bg-[#10b981]/20 dark:text-[#10b981] dark:border-[#10b981]/30', dot: 'bg-sky-600 dark:bg-[#10b981]' }
     : { label: 'Siap Scan', color: 'bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30', dot: 'bg-emerald-600 dark:bg-emerald-400 animate-pulse' };
 
   return (
@@ -226,7 +226,7 @@ export default function CameraScanner({
               }}
               className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                 mode === 'camera'
-                  ? 'bg-[#0284c7] text-white dark:bg-[#c8f93a] dark:text-black font-extrabold shadow-sm'
+                  ? 'bg-[#0284c7] text-white dark:bg-[#10b981] dark:text-[#0f172a] font-extrabold shadow-sm'
                   : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -239,7 +239,7 @@ export default function CameraScanner({
               }}
               className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                 mode === 'upload'
-                  ? 'bg-[#0284c7] text-white dark:bg-[#c8f93a] dark:text-black font-extrabold shadow-sm'
+                  ? 'bg-[#0284c7] text-white dark:bg-[#10b981] dark:text-[#0f172a] font-extrabold shadow-sm'
                   : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -268,7 +268,7 @@ export default function CameraScanner({
             {onManualLookup && (
               <button
                 onClick={onManualLookup}
-                className="text-[11px] underline font-bold text-[#0284c7] dark:text-[#c8f93a] hover:underline"
+                className="text-[11px] underline font-bold text-[#0284c7] dark:text-[#10b981] hover:underline"
               >
                 Cari Manual di Katalog
               </button>
@@ -374,7 +374,7 @@ export default function CameraScanner({
         /* File Upload Drop Area */
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="border-2 border-dashed border-slate-300 dark:border-white/10 hover:border-[#0284c7]/50 dark:hover:border-[#c8f93a]/50 rounded-2xl p-10 text-center bg-slate-50 dark:bg-[#11141b] transition-all cursor-pointer flex flex-col items-center justify-center gap-3"
+          className="border-2 border-dashed border-slate-300 dark:border-white/10 hover:border-[#0284c7]/50 dark:hover:border-[#10b981]/50 rounded-2xl p-10 text-center bg-slate-50 dark:bg-[#11141b] transition-all cursor-pointer flex flex-col items-center justify-center gap-3"
         >
           <span className="text-4xl">📸</span>
           <p className="text-sm font-bold text-slate-800 dark:text-white">
@@ -408,7 +408,7 @@ export default function CameraScanner({
             <button
               type="button"
               onClick={onManualLookup}
-              className="text-xs font-bold text-slate-600 dark:text-neutral-400 hover:text-[#0284c7] dark:hover:text-[#c8f93a] transition-colors flex items-center gap-1.5"
+              className="text-xs font-bold text-slate-600 dark:text-neutral-400 hover:text-[#0284c7] dark:hover:text-[#10b981] transition-colors flex items-center gap-1.5"
             >
               <span>🔍</span>
               <span>Masukkan Nama Obat Manual</span>

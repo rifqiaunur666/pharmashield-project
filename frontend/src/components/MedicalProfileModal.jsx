@@ -99,7 +99,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
       <div className="relative w-full max-w-2xl my-auto max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-6">
         <div className="flex items-start justify-between border-b border-slate-200 dark:border-white/5 pb-4">
           <div>
-            <span className="text-[11px] font-black uppercase tracking-wider text-[#0284c7] dark:text-[#c8f93a]">
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#0284c7] dark:text-[#10b981]">
               Stage 1 &amp; Profil Klinis Pribadi
             </span>
             <h2 className="text-xl font-black text-slate-900 dark:text-white mt-1">
@@ -128,7 +128,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
               value={allergies}
               onChange={(e) => setAllergies(e.target.value)}
               placeholder="Contoh: Paracetamol, Penisilin, Amoksisilin, Aspirin"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
             />
           </div>
 
@@ -142,7 +142,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
               value={prescriptions}
               onChange={(e) => setPrescriptions(e.target.value)}
               placeholder="Contoh: Amlodipine 5mg, Metformin 500mg, Atorvastatin"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
             />
           </div>
 
@@ -156,7 +156,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
               value={conditions}
               onChange={(e) => setConditions(e.target.value)}
               placeholder="Contoh: Maag / Gastritis, GERD, Asma, Hipertensi, Gangguan Ginjal"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
             />
           </div>
 
@@ -171,7 +171,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
                 value={otcMeds}
                 onChange={(e) => setOtcMeds(e.target.value)}
                 placeholder="Contoh: Promag, Antasida, Tolak Angin"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
                 value={supplements}
                 onChange={(e) => setSupplements(e.target.value)}
                 placeholder="Contoh: Vitamin C, Zinc, Minyak Ikan"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
               />
             </div>
           </div>
@@ -199,7 +199,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
                   type="checkbox"
                   checked={pregnant}
                   onChange={(e) => setPregnant(e.target.checked)}
-                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#c8f93a] focus:ring-0"
+                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#10b981] focus:ring-0"
                 />
                 <span>Sedang Hamil / Program Hamil</span>
               </label>
@@ -208,7 +208,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
                   type="checkbox"
                   checked={breastfeeding}
                   onChange={(e) => setBreastfeeding(e.target.checked)}
-                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#c8f93a] focus:ring-0"
+                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#10b981] focus:ring-0"
                 />
                 <span>Sedang Menyusui</span>
               </label>
@@ -226,7 +226,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
             <button
               type="submit"
               disabled={isSaving}
-              className="px-6 py-2.5 rounded-xl bg-[#0284c7] dark:bg-[#c8f93a] text-white dark:text-black font-black hover:bg-[#0369a1] dark:hover:bg-[#b5f524] transition-all"
+              className="px-6 py-2.5 rounded-xl bg-[#0284c7] dark:bg-[#10b981] text-white dark:text-[#0f172a] font-black hover:bg-[#0369a1] dark:hover:bg-[#059669] transition-all"
             >
               {isSaving ? 'Menyimpan...' : 'Simpan Profil Medis'}
             </button>

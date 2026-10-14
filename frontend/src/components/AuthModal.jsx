@@ -84,7 +84,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
       <div className="relative w-full max-w-md my-auto max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-5">
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse" />
             <h3 className="text-lg font-black text-slate-900 dark:text-white">
               {mode === 'login' && 'Masuk ke MedikaGuard ID'}
               {mode === 'register' && 'Daftar Akun Baru'}
@@ -121,7 +121,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Dr. Andi Pratama"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
               />
             </div>
           )}
@@ -135,7 +135,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="nama@email.com"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
             />
           </div>
 
@@ -157,7 +157,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimal 6 karakter"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
               />
             </div>
           )}
@@ -172,7 +172,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                   value={passwordConfirm}
                   onChange={(e) => setPasswordConfirm(e.target.value)}
                   placeholder="Ulangi kata sandi"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#c8f93a] placeholder-slate-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
                 />
               </div>
 
@@ -181,7 +181,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                   type="checkbox"
                   checked={acceptTerms}
                   onChange={(e) => setAcceptTerms(e.target.checked)}
-                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#c8f93a] focus:ring-0"
+                  className="rounded border-slate-300 dark:border-white/20 text-[#0284c7] dark:text-[#10b981] focus:ring-0"
                 />
                 <span>Saya menyetujui Kebijakan Privasi &amp; Syarat Layanan Medis.</span>
               </label>
@@ -193,7 +193,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('forgot')}
-                className="text-[11px] text-[#0284c7] dark:text-[#c8f93a] hover:underline"
+                className="text-[11px] text-[#0284c7] dark:text-[#10b981] hover:underline"
               >
                 Lupa kata sandi?
               </button>
@@ -203,7 +203,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-xl bg-[#0284c7] dark:bg-[#c8f93a] text-white dark:text-black font-black hover:bg-[#0369a1] dark:hover:bg-[#b5f524] transition-all disabled:opacity-50 mt-2"
+            className="w-full py-2.5 rounded-xl bg-[#0284c7] dark:bg-[#10b981] text-white dark:text-[#0f172a] font-black hover:bg-[#0369a1] dark:hover:bg-[#059669] transition-all disabled:opacity-50 mt-2"
           >
             {loading ? 'Memproses...' : mode === 'login' ? 'Masuk' : mode === 'register' ? 'Daftar Akun' : 'Kirim Pemulihan'}
           </button>
@@ -216,7 +216,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('register')}
-                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#10b981] font-bold hover:underline"
               >
                 Daftar Sekarang
               </button>
@@ -228,7 +228,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('login')}
-                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#10b981] font-bold hover:underline"
               >
                 Masuk di Sini
               </button>
@@ -240,7 +240,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
               <button
                 type="button"
                 onClick={() => setMode('login')}
-                className="text-[#0284c7] dark:text-[#c8f93a] font-bold hover:underline"
+                className="text-[#0284c7] dark:text-[#10b981] font-bold hover:underline"
               >
                 Halaman Masuk
               </button>

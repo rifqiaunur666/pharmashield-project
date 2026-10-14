@@ -244,7 +244,7 @@ export default function Sidebar() {
               value={sidebarSearch}
               onChange={(e) => setSidebarSearch(e.target.value)}
               placeholder="Cari obat... (Enter)"
-              className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] focus:ring-1 focus:ring-[#0284c7] dark:bg-black/40 dark:border-[var(--color-border)] dark:text-[var(--color-text-primary)] dark:placeholder-[var(--color-text-muted)] dark:focus:border-[#c8f93a] dark:focus:ring-[#c8f93a] transition-all"
+              className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] focus:ring-1 focus:ring-[#0284c7] dark:bg-black/40 dark:border-[var(--color-border)] dark:text-[var(--color-text-primary)] dark:placeholder-[var(--color-text-muted)] dark:focus:border-[#10b981] dark:focus:ring-[#10b981] transition-all"
             />
           </div>
         </form>
@@ -305,10 +305,10 @@ export default function Sidebar() {
         <div className="mx-3 mb-4 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-[#161922] dark:border-[var(--color-border)] shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse-dot" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse-dot" aria-hidden="true" />
               <span className="text-[11px] font-bold text-slate-800 dark:text-neutral-200">AI Guard &amp; OCR</span>
             </div>
-            <span className="text-[9px] font-bold text-[#0284c7] dark:text-[#c8f93a] uppercase">Siap</span>
+            <span className="text-[9px] font-bold text-[#0284c7] dark:text-[#10b981] uppercase">Siap</span>
           </div>
           <p className="text-[10px] text-slate-500 dark:text-neutral-500 mt-1 leading-tight">
             Database obat umum Indonesia tersinkronisasi.

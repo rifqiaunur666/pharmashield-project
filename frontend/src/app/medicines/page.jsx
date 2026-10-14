@@ -20,8 +20,8 @@ export default function MedicinesPage({ searchParams }) {
             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-text-primary)]">
               Datasheet Obat Penyakit Umum Indonesia
             </h1>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 px-2.5 py-0.5 text-xs font-bold shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30 px-2.5 py-0.5 text-xs font-bold shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse" />
               BPOM &amp; Apotek ID
             </span>
           </div>

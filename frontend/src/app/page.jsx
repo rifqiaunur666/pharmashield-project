@@ -96,7 +96,7 @@ function MetricCard({
   isAlert = false,
 }) {
   const cardClasses = isAlert
-    ? 'relative overflow-hidden rounded-2xl border border-rose-300 bg-rose-50/40 dark:border-red-900/60 dark:bg-red-950/20 p-5 shadow-sm hover:border-red-500/50 transition-all'
+    ? 'relative overflow-hidden rounded-2xl border border-rose-300 bg-rose-50/40 dark:border-red-900/60 dark:bg-red-950/20 p-5 shadow-sm hover:border-red-500/50 transition-all status-red'
     : 'relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#10b981]/30 transition-all';
 
   const badgeClasses = isAlert
@@ -104,7 +104,7 @@ function MetricCard({
     : 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[var(--color-text-secondary)] border border-[var(--color-border)]';
 
   return (
-    <div className={cardClasses}>
+    <div className={cardClasses} data-status={isAlert ? 'red' : undefined}>
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <p className="text-[11px] font-extrabold uppercase tracking-wider text-[var(--color-text-secondary)]">
@@ -314,12 +314,12 @@ export default function AppHomePage() {
     <div className="space-y-8 animate-fade-in">
       {/* ── STAGE 1 BANNER / WELCOME SCREEN ── */}
       {!isAuthenticated && (
-        <div className="relative overflow-hidden rounded-2xl border border-sky-200 bg-sky-50 text-slate-900 dark:border-[#c8f93a]/30 dark:bg-[#c8f93a]/5 p-6 shadow-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-sky-200 bg-sky-50 text-slate-900 dark:border-[#10b981]/30 dark:bg-[#10b981]/5 p-6 shadow-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
-                <span className="text-[11px] font-black tracking-wider uppercase text-[#0284c7] dark:text-[#c8f93a]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse" />
+                <span className="text-[11px] font-black tracking-wider uppercase text-[#0284c7] dark:text-[#10b981]">
                   Platform Keamanan Konsumsi Obat
                 </span>
               </div>
@@ -493,7 +493,7 @@ export default function AppHomePage() {
 
             <button
               onClick={() => setShowManualLookup(!showManualLookup)}
-              className="text-xs font-bold text-[#0284c7] hover:underline dark:text-[#c8f93a] flex items-center gap-1"
+              className="text-xs font-bold text-[#0284c7] hover:underline dark:text-[#10b981] flex items-center gap-1"
             >
               <span>{showManualLookup ? 'Tutup Pencarian Manual' : '🔍 Cari Manual di Katalog'}</span>
             </button>

@@ -75,7 +75,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
       {/* Breadcrumb */}
       <div className="hidden sm:flex flex-col leading-none mr-2">
         <span className="text-[11px] text-[var(--color-text-muted)] font-semibold tracking-wide uppercase">
-          MedikaGuard / <span className="text-[#0284c7] dark:text-[#c8f93a]">{page.label}</span>
+          MedikaGuard / <span className="text-[#0284c7] dark:text-[#10b981]">{page.label}</span>
         </span>
         <span className="text-sm font-extrabold text-[var(--color-text-primary)] mt-1">{page.sub}</span>
       </div>
@@ -95,7 +95,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
           <span className="text-[10px] opacity-80">Aman</span>
         </div>
 
-        <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-sky-50 dark:bg-[#c8f93a]/10 border border-sky-200 dark:border-[#c8f93a]/30 text-sky-700 dark:text-[#c8f93a]">
+        <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-sky-50 dark:bg-[#10b981]/10 border border-sky-200 dark:border-[#10b981]/30 text-sky-700 dark:text-[#10b981]">
           <span>💊</span>
           <span>{INDONESIA_MEDICINES.length}</span>
           <span className="text-[10px] opacity-80">Datasheet ID</span>
@@ -105,7 +105,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
         {isAuthenticated && (
           <button
             onClick={onOpenProfile}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold border border-sky-200 bg-sky-50 text-[#0284c7] hover:bg-sky-100 dark:border-[#c8f93a]/30 dark:bg-[#c8f93a]/10 dark:text-[#c8f93a] dark:hover:bg-[#c8f93a]/20 transition-all"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold border border-sky-200 bg-sky-50 text-[#0284c7] hover:bg-sky-100 dark:border-[#10b981]/30 dark:bg-[#10b981]/10 dark:text-[#10b981] dark:hover:bg-[#10b981]/20 transition-all"
           >
             <span>🩺</span>
             <span className="hidden sm:inline">Profil Medis</span>
@@ -117,7 +117,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
           onClick={toggleTheme}
           title={theme === 'dark' ? 'Ganti ke Mode Putih (Light)' : 'Ganti ke Mode Hitam (Dark)'}
           aria-label="Toggle tema putih / hitam"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-800 hover:bg-slate-100 hover:border-slate-300 dark:border-[var(--color-border)] dark:bg-[var(--color-card-bg)] dark:text-[var(--color-text-primary)] dark:hover:border-[#c8f93a]/50 dark:hover:bg-white/10 transition-all shadow-xs"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-800 hover:bg-slate-100 hover:border-slate-300 dark:border-[var(--color-border)] dark:bg-[var(--color-card-bg)] dark:text-[var(--color-text-primary)] dark:hover:border-[#10b981]/50 dark:hover:bg-white/10 transition-all shadow-xs"
         >
           <span>{theme === 'dark' ? '☀️' : '🌙'}</span>
           <span className="hidden sm:inline font-bold">
@@ -135,7 +135,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
               onClick={() => setShowUserDropdown(!showUserDropdown)}
               className="flex items-center gap-2.5 pl-1 focus:outline-none"
             >
-              <div className="w-9 h-9 rounded-xl bg-[#0284c7] text-white shadow-md shadow-sky-500/25 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/25 flex items-center justify-center font-black text-xs shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-[#0284c7] text-white shadow-md shadow-sky-500/25 dark:bg-[#10b981] dark:text-[#0f172a] dark:shadow-[#10b981]/25 flex items-center justify-center font-black text-xs shrink-0">
                 {initials}
               </div>
               <div className="hidden md:flex flex-col text-left leading-none">
@@ -179,7 +179,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
           <div className="flex items-center gap-2">
             <button
               onClick={onOpenAuth}
-              className="px-3.5 py-1.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#075985] shadow-sky-500/20 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:hover:bg-[#b5f524] text-xs font-black transition-all shadow-xs"
+              className="px-3.5 py-1.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#075985] shadow-sky-500/20 dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] text-xs font-black transition-all shadow-xs"
             >
               Masuk / Daftar
             </button>
