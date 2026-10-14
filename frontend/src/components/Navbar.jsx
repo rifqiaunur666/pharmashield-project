@@ -39,19 +39,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-black text-white border-b border-white/10 backdrop-blur-sm">
       <nav
         className="max-w-5xl mx-auto h-16 px-4 md:px-6 flex items-center justify-between"
-        aria-label="Navigasi utama PharmaShield"
+        aria-label="Navigasi utama MedikaGuard"
       >
         {/* ── Logo ── */}
         <Link
           href="/"
           className="flex items-center gap-2.5 group"
-          aria-label="PharmaShield – Beranda"
+          aria-label="MedikaGuard – Beranda"
         >
           <span className="grid place-items-center w-9 h-9 rounded-lg bg-white text-black shadow-sm transition-transform group-hover:scale-105">
             <ShieldIcon />
           </span>
           <span className="text-[1.05rem] font-extrabold tracking-tight leading-none">
-            PharmaShield
+            MedikaGuard
           </span>
         </Link>
 

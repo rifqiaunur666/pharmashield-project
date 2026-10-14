@@ -198,7 +198,7 @@ export default function Sidebar() {
         collapsed  ? 'collapsed'   : '',
         mobileOpen ? 'mobile-open' : '',
       ].join(' ')}
-      aria-label="Navigasi sidebar PharmaShield"
+      aria-label="Navigasi sidebar MedikaGuard"
     >
       {/* ── Brand logo ── */}
       <div className={[
@@ -211,7 +211,7 @@ export default function Sidebar() {
         {!collapsed && (
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-[var(--color-text-primary)] font-black text-base tracking-tight truncate">PharmaShield</span>
+              <span className="text-[var(--color-text-primary)] font-black text-base tracking-tight truncate">MedikaGuard</span>
               <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30">ID</span>
             </div>
             <p className="text-[var(--color-text-muted)] text-[10px] font-medium tracking-wide">Healthcare Dashboard</p>

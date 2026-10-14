@@ -55,7 +55,7 @@ def format_whatsapp_message(
             time_text = "❌ Berbahaya / Data Kritis Tidak Terbaca"
 
     lines = [
-        "👋 *Halo, Selamat Datang di PharmaShield!*",
+        "👋 *Halo, Selamat Datang di MedikaGuard!*",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
         "Data kemasan obat Anda berhasil dipindai dan dianalisis:",
         "",
@@ -72,7 +72,7 @@ def format_whatsapp_message(
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
         f"🕐 *Waktu Pemindaian:* {scan_time}",
         "",
-        "_Layanan Keamanan Obat PharmaShield_",
+        "_Layanan Keamanan Obat MedikaGuard_",
     ]
     return "\n".join(lines)
 

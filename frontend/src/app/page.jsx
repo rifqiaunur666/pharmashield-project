@@ -307,7 +307,7 @@ export default function AppHomePage() {
                 </span>
               </div>
               <h2 className="text-2xl font-black text-white">
-                Selamat Datang di PharmaShield ID
+                Selamat Datang di MedikaGuard ID
               </h2>
               <p className="text-xs text-neutral-300 leading-relaxed">
                 Dapatkan informasi obat seketika hanya dengan satu kali pemindaian kemasan. Sistem memverifikasi nama obat, dosis, aturan pakai, peringatan BPOM, serta potensi alergi dan interaksi klinis secara otomatis.

@@ -34,7 +34,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
   const { user, isAuthenticated, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
-  const page = PAGE_TITLES[pathname] ?? { label: 'PharmaShield', sub: 'Dashboard' };
+  const page = PAGE_TITLES[pathname] ?? { label: 'MedikaGuard', sub: 'Dashboard' };
 
   const [stats, setStats] = useState({ total: 0, safe: 0, warning: 0 });
   const [showUserDropdown, setShowUserDropdown] = useState(false);
@@ -58,7 +58,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
         .slice(0, 2)
         .join('')
         .toUpperCase()
-    : 'PS';
+    : 'MG';
 
   // Completely eliminate header overlap on Reminders page
   if (pathname === '/reminders') {
@@ -79,7 +79,7 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
       {/* Breadcrumb */}
       <div className="hidden sm:flex flex-col leading-none mr-2">
         <span className="text-[11px] text-[var(--color-text-muted)] font-semibold tracking-wide uppercase">
-          PharmaShield / <span className="text-[#0284c7] dark:text-[#c8f93a]">{page.label}</span>
+          MedikaGuard / <span className="text-[#0284c7] dark:text-[#c8f93a]">{page.label}</span>
         </span>
         <span className="text-sm font-extrabold text-[var(--color-text-primary)] mt-1">{page.sub}</span>
       </div>

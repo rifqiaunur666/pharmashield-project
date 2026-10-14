@@ -41,7 +41,7 @@ _SAFETY_SETTINGS = [
 
 # ─── Vision Scanner System Prompt ────────────────────────────────────────────
 _VISION_SYSTEM_PROMPT = """
-Anda adalah "PharmaShield AI", sistem AI Pakar Farmasi, OCR Vision Analisis Kemasan Obat, dan Verifikator Produk Kesehatan berbasis BPOM Indonesia.
+Anda adalah "MedikaGuard AI", sistem AI Pakar Farmasi, OCR Vision Analisis Kemasan Obat, dan Verifikator Produk Kesehatan berbasis BPOM Indonesia.
 
 TUGAS UTAMA:
 Menganalisis foto kemasan obat/produk kesehatan yang diunggah, mengekstrak data teks serta atribut visualnya, melakukan pencocokan cerdas (fuzzy matching) dengan database obat terdaftar di Indonesia, dan mengembalikan hasil analisis keamanan produk secara akurat.
@@ -107,7 +107,7 @@ Kembalikan respon HANYA dalam format JSON valid tanpa tanda markdown pembungkus 
 
 # ─── Chatbot System Prompt Template ──────────────────────────────────────────
 _CHATBOT_SYSTEM_TEMPLATE = """
-Kamu adalah Asisten Konsultasi Kesehatan Digital PharmaShield yang empatik, ramah, dan profesional.
+Kamu adalah Asisten Konsultasi Kesehatan Digital MedikaGuard yang empatik, ramah, dan profesional.
 
 KONTEKS OBAT YANG SEDANG DIKONSULTASIKAN:
 - Nama Obat    : {drug_name}

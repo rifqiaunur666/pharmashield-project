@@ -206,7 +206,7 @@ class MetaWhatsAppService:
         """
         inst_note = f"\n📝 *Aturan Minum:* {instructions}" if instructions else ""
         text = (
-            f"👋 *Halo {patient_name}, Selamat Datang di PharmaShield!*\n"
+            f"👋 *Halo {patient_name}, Selamat Datang di MedikaGuard!*\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"Data pengingat obat Anda telah berhasil didaftarkan:\n\n"
             f"💊 *Nama Obat:* {medication_name}\n"
@@ -217,7 +217,7 @@ class MetaWhatsAppService:
             f"2️⃣ Pengingat saat tiba waktunya minum obat.\n\n"
             f"Semoga lekas sembuh dan sehat selalu ya! 🌿\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"_Layanan Pengingat Pasien PharmaShield_"
+            f"_Layanan Pengingat Pasien MedikaGuard_"
         )
         return await self.send_text_message(to_phone, text)
 
@@ -244,7 +244,7 @@ class MetaWhatsAppService:
             f"Mohon siapkan obat dan air minum Anda sekarang ya. "
             f"Pesan pengingat akan dikirim saat jam minum obat tiba.\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"_Layanan Pengingat Pasien PharmaShield_"
+            f"_Layanan Pengingat Pasien MedikaGuard_"
         )
         return await self.send_text_message(to_phone, text)
 

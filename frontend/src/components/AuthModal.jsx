@@ -62,7 +62,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#c8f93a] animate-pulse" />
             <h3 className="text-lg font-black text-white">
-              {mode === 'login' && 'Masuk ke PharmaShield ID'}
+              {mode === 'login' && 'Masuk ke MedikaGuard ID'}
               {mode === 'register' && 'Daftar Akun Baru'}
               {mode === 'forgot' && 'Pemulihan Kata Sandi'}
             </h3>

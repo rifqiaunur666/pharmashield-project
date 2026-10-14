@@ -16,10 +16,9 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title:       'PharmaShield ID — AI Drug Recognition & Safety Scanner',
+  title:       'MedikaGuard ID — AI Drug Recognition & Safety Scanner',
   description: 'Sistem pemantauan dan analisis keamanan obat berbasis pemindaian kemasan AI satu kali, skrining alergi & interaksi klinis, serta datasheet obat Indonesia.',
   keywords:    ['obat', 'farmasi', 'OCR', 'AI safety scan', 'interaksi obat', 'alergi obat', 'BPOM'],
-
 };
 
 export const viewport = {

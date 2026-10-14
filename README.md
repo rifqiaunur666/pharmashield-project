@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="frontend/public/logo.png" alt="PharmaShield Logo" width="120" />
+<img src="frontend/public/logo.png" alt="MedikaGuard Logo" width="120" />
 
-# 🛡️ PharmaShield
+# 🛡️ MedikaGuard
 
 **Sistem Keamanan & Pengingat Obat Berbasis AI untuk Pasien & Lansia**
 
@@ -52,7 +52,7 @@
 
 ## 🎯 Tentang Project
 
-**PharmaShield** adalah platform kesehatan digital yang dirancang khusus untuk membantu pasien dan keluarga lansia dalam:
+**MedikaGuard** adalah platform kesehatan digital yang dirancang khusus untuk membantu pasien dan keluarga lansia dalam:
 
 1. **📸 Memindai kemasan obat** — AI Vision + OCR mengekstrak nama obat, tanggal kedaluwarsa, dan status keamanan secara otomatis.
 2. **⏰ Pengingat minum obat otomatis** — Bot WhatsApp mengirimkan notifikasi ke nomor pasien sesuai jadwal yang didaftarkan, dari nomor bot **+6289520344305**.
@@ -122,7 +122,7 @@
 
 ## 🗺️ User Flow
 
-Berikut adalah diagram alur pengguna untuk setiap fitur utama PharmaShield, dibuat berdasarkan kode sumber aktual.
+Berikut adalah diagram alur pengguna untuk setiap fitur utama MedikaGuard, dibuat berdasarkan kode sumber aktual.
 
 ---
 
@@ -682,7 +682,7 @@ Buka browser dan akses URL berikut:
 
 | URL | Keterangan |
 |-----|-----------|
-| http://localhost:3000 | ✅ Aplikasi PharmaShield (Frontend) |
+| http://localhost:3000 | ✅ Aplikasi MedikaGuard (Frontend) |
 | http://localhost:8000 | ✅ Backend API Health Check |
 | http://localhost:8000/docs | ✅ Swagger UI — Dokumentasi API Interaktif |
 | http://localhost:8000/redoc | ✅ ReDoc — Dokumentasi API Alternatif |
@@ -693,7 +693,7 @@ Buka browser dan akses URL berikut:
 curl http://localhost:8000/health
 
 # Response yang diharapkan:
-# {"status":"ok","service":"PharmaShield API","version":"2.0.0",...}
+# {"status":"ok","service":"MedikaGuard API","version":"2.0.0",...}
 ```
 
 ---
@@ -804,7 +804,7 @@ Akses aplikasi di http://localhost:3000
 
 ## 📱 WhatsApp Bot & Notifikasi
 
-PharmaShield menggunakan **[Fonnte](https://fonnte.com)** sebagai gateway WhatsApp.
+MedikaGuard menggunakan **[Fonnte](https://fonnte.com)** sebagai gateway WhatsApp.
 
 ### Cara Kerja Otomatis
 
@@ -831,7 +831,7 @@ Jika pasien membalas [Ya, Sudah] / melewati batas waktu
 1. Daftar di **[fonnte.com](https://fonnte.com)**
 2. Klik **"Tambah Device"** → sambungkan nomor WhatsApp dengan scan QR
 3. Salin **Device Token** dari dashboard Fonnte
-4. Di aplikasi PharmaShield → halaman **Pengingat** → klik **"🔑 Masukkan Token WhatsApp"**
+4. Di aplikasi MedikaGuard → halaman **Pengingat** → klik **"🔑 Masukkan Token WhatsApp"**
 5. Paste token → Simpan
 
 > **Bot Pengirim:** `+6289520344305` — Semua notifikasi dikirim dari nomor ini.
@@ -1073,7 +1073,7 @@ Project ini menggunakan lisensi **MIT** — bebas digunakan, dimodifikasi, dan d
 
 Dibuat dengan ❤️ untuk membantu lansia & keluarga Indonesia 🇮🇩
 
-**PharmaShield — Obat Aman, Keluarga Sehat**
+**MedikaGuard — Obat Aman, Keluarga Sehat**
 
 ⭐ Jika project ini bermanfaat, jangan lupa beri **Star** di GitHub!
 

@@ -37,7 +37,7 @@ logger = logging.getLogger("pharmashield")
 
 # ─── FastAPI Application ──────────────────────────────────────────────────────
 app = FastAPI(
-    title="PharmaShield API",
+    title="MedikaGuard API",
     description="Medicine Packaging OCR Date Extraction, 3-Level Safety Evaluation, and WhatsApp Alerts.",
     version="2.0.0",
     docs_url="/docs",
@@ -100,7 +100,7 @@ app.include_router(api_router, tags=["Direct Routes (Convenience)"])
 async def root_health():
     return {
         "status": "ok",
-        "service": "PharmaShield API",
+        "service": "MedikaGuard API",
         "version": "2.0.0",
         "env": settings.app_env,
         "endpoints": {

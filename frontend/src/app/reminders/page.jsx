@@ -196,7 +196,7 @@ export default function RemindersPage() {
       setTestSending(true);
       const res = await testSendWhatsApp(
         targetPhone,
-        `👋 *Halo dari Bot PharmaShield!*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nIni adalah pesan uji coba bot pengingat obat.\nKoneksi WhatsApp Gateway Anda telah berhasil aktif dan terhubung secara otomatis ke HP Anda! 🌿`
+        `👋 *Halo dari Bot MedikaGuard!*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nIni adalah pesan uji coba bot pengingat obat.\nKoneksi WhatsApp Gateway Anda telah berhasil aktif dan terhubung secara otomatis ke HP Anda! 🌿`
       );
       if (res.success) {
         setFeedback({
@@ -346,7 +346,7 @@ export default function RemindersPage() {
       const instNote = medForm.instructions ? `\n📝 *Aturan Minum:* ${medForm.instructions}` : '';
 
       const welcomeText = 
-        `👋 *Halo ${patientName}, Selamat Datang di PharmaShield!*\n` +
+        `👋 *Halo ${patientName}, Selamat Datang di MedikaGuard!*\n` +
         `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
         `Data pengingat obat Anda telah berhasil didaftarkan:\n\n` +
         `💊 *Nama Obat:* ${medForm.name.trim()}\n` +
@@ -357,7 +357,7 @@ export default function RemindersPage() {
         `2️⃣ Pengingat saat tiba waktunya minum obat.\n\n` +
         `Semoga lekas sembuh dan sehat selalu ya! 🌿\n` +
         `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `_Layanan Pengingat Pasien PharmaShield_`;
+        `_Layanan Pengingat Pasien MedikaGuard_`;
 
       setShowMedModal(false);
       setMedForm({

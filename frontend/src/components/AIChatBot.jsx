@@ -75,7 +75,7 @@ export default function AIChatBot({ scanContext, initialQuestion = null }) {
       content:
         scanContext?.data
           ? `Halo! 👋 Saya siap membantu Anda berkonsultasi tentang **${scanContext.data.drug_name}**.\n\nSilakan tanyakan apa saja — dosis, efek samping, interaksi obat, pantangan, atau hal lain yang ingin Anda ketahui! 💊`
-          : `Halo! 👋 Saya **${BOT_NAME}**, asisten konsultasi kesehatan digital PharmaShield.\n\nSilakan scan kemasan obat terlebih dahulu, lalu tanyakan apa saja tentang obat yang Anda temukan! 💊`,
+          : `Halo! 👋 Saya **${BOT_NAME}**, asisten konsultasi kesehatan digital MedikaGuard.\n\nSilakan scan kemasan obat terlebih dahulu, lalu tanyakan apa saja tentang obat yang Anda temukan! 💊`,
     },
   ]);
   const [input, setInput] = useState('');

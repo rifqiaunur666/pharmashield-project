@@ -87,7 +87,7 @@ if __name__ == "__main__":
             start_tcp_forwarder(aux, primary_port)
 
     print("==================================================")
-    print(f"  PharmaShield API launching on 0.0.0.0:{primary_port}")
+    print(f"  MedikaGuard API launching on 0.0.0.0:{primary_port}")
     print(f"  Multi-port resilience enabled for ports: {aux_ports}")
     print("==================================================", flush=True)
 
