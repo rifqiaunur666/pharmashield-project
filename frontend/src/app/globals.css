@@ -368,37 +368,37 @@ html.light [class*="rounded-3xl"][class*="border"] {
 /* Primary action buttons in Dark Mode:
    Softened emerald (#10B981) background with Dark Slate (#0F172A) text
    Eliminates glare, passing WCAG AAA > 7:1 contrast ratio */
-html.dark .btn-primary-action,
-html.dark button.bg-\[\#c8f93a\],
-html.dark a.bg-\[\#c8f93a\],
-html.dark button.bg-\[\#10b981\],
-html.dark a.bg-\[\#10b981\],
-html.dark button[class*="bg-[#10b981]"],
-html.dark a[class*="bg-[#10b981]"],
-html.dark button[class*="bg-[#c8f93a]"],
-html.dark a[class*="bg-[#c8f93a]"] {
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) .btn-primary-action,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#c8f93a\],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#c8f93a\],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#10b981\],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#10b981\],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button[class*="bg-[#10b981]"],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a[class*="bg-[#10b981]"],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button[class*="bg-[#c8f93a]"],
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a[class*="bg-[#c8f93a]"] {
   background-color: #10B981 !important;
   color: #0F172A !important;
   box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25) !important;
 }
 
-html.dark .btn-primary-action *,
-html.dark button.bg-\[\#c8f93a\] *,
-html.dark a.bg-\[\#c8f93a\] *,
-html.dark button.bg-\[\#10b981\] *,
-html.dark a.bg-\[\#10b981\] *,
-html.dark button[class*="bg-[#10b981]"] *,
-html.dark a[class*="bg-[#10b981]"] *,
-html.dark button[class*="bg-[#c8f93a]"] *,
-html.dark a[class*="bg-[#c8f93a]"] * {
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) .btn-primary-action *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#c8f93a\] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#c8f93a\] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#10b981\] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#10b981\] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button[class*="bg-[#10b981]"] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a[class*="bg-[#10b981]"] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button[class*="bg-[#c8f93a]"] *,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a[class*="bg-[#c8f93a]"] * {
   color: #0F172A !important;
 }
 
-html.dark .btn-primary-action:hover,
-html.dark button.bg-\[\#c8f93a\]:hover,
-html.dark a.bg-\[\#c8f93a\]:hover,
-html.dark button.bg-\[\#10b981\]:hover,
-html.dark a.bg-\[\#10b981\]:hover {
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) .btn-primary-action:hover,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#c8f93a\]:hover,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#c8f93a\]:hover,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) button.bg-\[\#10b981\]:hover,
+html.dark:not(.a11y-cb-low-vision):not([data-colorblind="low-vision"]) a.bg-\[\#10b981\]:hover {
   background-color: #059669 !important;
   color: #0F172A !important;
 }
@@ -1495,14 +1495,16 @@ html.light.a11y-cb-low-vision .admin-card,
 html.light.a11y-cb-low-vision table,
 html.light.a11y-cb-low-vision th,
 html.light.a11y-cb-low-vision td,
-html.light.a11y-cb-low-vision [class*='rounded-2xl'],
-html.light.a11y-cb-low-vision [class*='rounded-xl'],
+html.light.a11y-cb-low-vision [class*='rounded-3xl']:not(button):not(a),
+html.light.a11y-cb-low-vision [class*='rounded-2xl']:not(button):not(a),
+html.light.a11y-cb-low-vision [class*='rounded-xl']:not(button):not(a),
 html.light[data-colorblind="low-vision"] .admin-card,
 html.light[data-colorblind="low-vision"] table,
 html.light[data-colorblind="low-vision"] th,
 html.light[data-colorblind="low-vision"] td,
-html.light[data-colorblind="low-vision"] [class*='rounded-2xl'],
-html.light[data-colorblind="low-vision"] [class*='rounded-xl'] {
+html.light[data-colorblind="low-vision"] [class*='rounded-3xl']:not(button):not(a),
+html.light[data-colorblind="low-vision"] [class*='rounded-2xl']:not(button):not(a),
+html.light[data-colorblind="low-vision"] [class*='rounded-xl']:not(button):not(a) {
   border: 2px solid #0f172a !important;
 }
 
@@ -1532,8 +1534,9 @@ html.dark.a11y-cb-low-vision header,
 html.dark.a11y-cb-low-vision table,
 html.dark.a11y-cb-low-vision th,
 html.dark.a11y-cb-low-vision td,
-html.dark.a11y-cb-low-vision [class*='rounded-2xl'],
-html.dark.a11y-cb-low-vision [class*='rounded-xl'],
+html.dark.a11y-cb-low-vision [class*='rounded-3xl']:not(button):not(a),
+html.dark.a11y-cb-low-vision [class*='rounded-2xl']:not(button):not(a),
+html.dark.a11y-cb-low-vision [class*='rounded-xl']:not(button):not(a),
 html.dark[data-colorblind="low-vision"] .admin-card,
 html.dark[data-colorblind="low-vision"] .sidebar,
 html.dark[data-colorblind="low-vision"] .sidebar a,
@@ -1541,8 +1544,9 @@ html.dark[data-colorblind="low-vision"] header,
 html.dark[data-colorblind="low-vision"] table,
 html.dark[data-colorblind="low-vision"] th,
 html.dark[data-colorblind="low-vision"] td,
-html.dark[data-colorblind="low-vision"] [class*='rounded-2xl'],
-html.dark[data-colorblind="low-vision"] [class*='rounded-xl'] {
+html.dark[data-colorblind="low-vision"] [class*='rounded-3xl']:not(button):not(a),
+html.dark[data-colorblind="low-vision"] [class*='rounded-2xl']:not(button):not(a),
+html.dark[data-colorblind="low-vision"] [class*='rounded-xl']:not(button):not(a) {
   border: 3px solid #ffffff !important;
   background-color: #000000 !important;
   color: #ffffff !important;
@@ -1586,13 +1590,64 @@ html.dark[data-colorblind="low-vision"] .a11y-modal-panel {
   color: #ffffff !important;
 }
 
-/* Dark Low Vision: Buttons — white border + white text */
+/* Dark Low Vision: Buttons — 2px solid white border + true black bg + pure white text */
 html.dark.a11y-cb-low-vision button,
+html.dark.a11y-cb-low-vision a[role="button"],
 html.dark.a11y-cb-low-vision a[class*="rounded"],
 html.dark[data-colorblind="low-vision"] button,
+html.dark[data-colorblind="low-vision"] a[role="button"],
 html.dark[data-colorblind="low-vision"] a[class*="rounded"] {
   border: 2px solid #ffffff !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
+}
+
+/* Enforce pure white text and stroke/fill on ALL button children in Low Vision mode */
+html.dark.a11y-cb-low-vision button *,
+html.dark.a11y-cb-low-vision button span,
+html.dark.a11y-cb-low-vision button svg,
+html.dark.a11y-cb-low-vision button p,
+html.dark.a11y-cb-low-vision button div,
+html.dark.a11y-cb-low-vision a[role="button"] *,
+html.dark.a11y-cb-low-vision a[class*="rounded"] *,
+html.dark[data-colorblind="low-vision"] button *,
+html.dark[data-colorblind="low-vision"] button span,
+html.dark[data-colorblind="low-vision"] button svg,
+html.dark[data-colorblind="low-vision"] button p,
+html.dark[data-colorblind="low-vision"] button div,
+html.dark[data-colorblind="low-vision"] a[role="button"] *,
+html.dark[data-colorblind="low-vision"] a[class*="rounded"] * {
+  color: #ffffff !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Disabled buttons in Low Vision mode: prominent outline and clearly legible white text */
+html.dark.a11y-cb-low-vision button:disabled,
+html.dark.a11y-cb-low-vision button[disabled],
+html.dark[data-colorblind="low-vision"] button:disabled,
+html.dark[data-colorblind="low-vision"] button[disabled] {
+  border: 2px dashed #ffffff !important;
+  background-color: #18181b !important;
+  color: #ffffff !important;
+  opacity: 0.95 !important;
+  cursor: not-allowed !important;
+}
+html.dark.a11y-cb-low-vision button:disabled *,
+html.dark.a11y-cb-low-vision button[disabled] *,
+html.dark.a11y-cb-low-vision button:disabled span,
+html.dark.a11y-cb-low-vision button[disabled] span,
+html.dark.a11y-cb-low-vision button:disabled svg,
+html.dark.a11y-cb-low-vision button[disabled] svg,
+html.dark[data-colorblind="low-vision"] button:disabled *,
+html.dark[data-colorblind="low-vision"] button[disabled] *,
+html.dark[data-colorblind="low-vision"] button:disabled span,
+html.dark[data-colorblind="low-vision"] button[disabled] span,
+html.dark[data-colorblind="low-vision"] button:disabled svg,
+html.dark[data-colorblind="low-vision"] button[disabled] svg {
+  color: #ffffff !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
 }
 
 /* Dark Low Vision: Active sidebar link — keep green highlight visible */

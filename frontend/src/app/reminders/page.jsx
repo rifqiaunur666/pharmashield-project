@@ -712,8 +712,8 @@ export default function RemindersPage() {
               disabled={patients.length === 0}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-black transition shadow-md ${
                 patients.length === 0
-                  ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300 dark:bg-zinc-800 dark:text-zinc-500 dark:border-zinc-700'
-                  : 'bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669]'
+                  ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300 dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-600'
+                  : 'bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669]'
               }`}
             >
               <Plus className="w-4 h-4" />
@@ -827,7 +827,7 @@ export default function RemindersPage() {
       {/* ── 3. High-Impact Metric Cards (Responsive Grid) ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
         {/* Metric 1 */}
-        <div className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-slate-300 dark:hover:border-zinc-700 transition">
+        <div data-status="default" className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-slate-300 dark:hover:border-zinc-700 transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">JADWAL OBAT TERDAFTAR</span>
             <div className="p-2.5 rounded-2xl bg-sky-50 text-[#0284c7] border border-sky-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800 group-hover:scale-110 transition">
@@ -845,7 +845,7 @@ export default function RemindersPage() {
         </div>
 
         {/* Metric 2 */}
-        <div className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-500/40 transition">
+        <div data-status="green" className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-500/40 transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">SUDAH DIMINUM</span>
             <div className="p-2.5 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 group-hover:scale-110 transition">
@@ -862,7 +862,7 @@ export default function RemindersPage() {
         </div>
 
         {/* Metric 3 */}
-        <div className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-rose-300 dark:hover:border-rose-500/40 transition">
+        <div data-status="red" className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-rose-300 dark:hover:border-rose-500/40 transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">BELUM DIMINUM</span>
             <div className="p-2.5 rounded-2xl bg-rose-50 text-rose-600 border border-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:border-rose-500/30 group-hover:scale-110 transition">
@@ -879,7 +879,7 @@ export default function RemindersPage() {
         </div>
 
         {/* Metric 4 */}
-        <div className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-violet-300 dark:hover:border-violet-500/40 transition">
+        <div data-status="yellow" className="rounded-3xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 p-5 sm:p-6 shadow-sm dark:shadow-xl relative overflow-hidden group hover:border-violet-300 dark:hover:border-violet-500/40 transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">JADWAL DISESUAIKAN</span>
             <div className="p-2.5 rounded-2xl bg-violet-50 text-violet-600 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/30 group-hover:scale-110 transition">
@@ -961,7 +961,7 @@ export default function RemindersPage() {
                   onClick={() => setTimeHorizon('TODAY')}
                   className={`px-3 py-1 rounded-lg transition ${
                     timeHorizon === 'TODAY'
-                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-zinc-950'
+                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-[#0f172a]'
                       : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
@@ -971,7 +971,7 @@ export default function RemindersPage() {
                   onClick={() => setTimeHorizon('ALL')}
                   className={`px-3 py-1 rounded-lg transition ${
                     timeHorizon === 'ALL'
-                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-zinc-950'
+                      ? 'bg-[#0284c7] text-white shadow-xs font-extrabold dark:bg-[#10b981] dark:text-[#0f172a]'
                       : 'text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
@@ -1041,7 +1041,7 @@ export default function RemindersPage() {
                   </button>
                   <button
                     onClick={() => setShowPatientModal(true)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#10b981] text-zinc-950 hover:bg-[#059669] transition shadow-md"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#10b981] text-[#0f172a] hover:bg-[#059669] transition shadow-md"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     <span>Daftarkan Pasien</span>
@@ -1348,7 +1348,7 @@ export default function RemindersPage() {
                     setShowQRScanModal(false);
                     setShowPatientModal(true);
                   }}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] transition shadow-md"
                 >
                   Lanjut Simpan Pasien ➔
                 </button>
@@ -1606,7 +1606,7 @@ export default function RemindersPage() {
                         }}
                         className={`px-3 py-2 rounded-xl text-xs font-bold transition border ${
                           isSelected
-                            ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-zinc-950 dark:border-[#10b981]'
+                            ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-[#0f172a] dark:border-[#10b981]'
                             : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800'
                         }`}
                       >
@@ -1653,7 +1653,7 @@ export default function RemindersPage() {
                       onClick={() => setMedForm((prev) => ({ ...prev, duration_days: dur.days }))}
                       className={`px-3 py-2 rounded-xl text-xs font-bold transition border ${
                         Number(medForm.duration_days) === dur.days
-                          ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-zinc-950 dark:border-[#10b981]'
+                          ? 'bg-[#0284c7] text-white border-[#0284c7] shadow-xs dark:bg-[#10b981] dark:text-[#0f172a] dark:border-[#10b981]'
                           : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200 dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-800'
                       }`}
                     >
@@ -1696,7 +1696,7 @@ export default function RemindersPage() {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] transition shadow-md"
                   >
                     Simpan &amp; Kirim ke WhatsApp
                   </button>
@@ -1834,7 +1834,7 @@ export default function RemindersPage() {
                   <button
                     type="submit"
                     disabled={savingToken}
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-zinc-950 dark:hover:bg-[#059669] transition shadow-md cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] transition shadow-md cursor-pointer"
                   >
                     {savingToken ? 'Menyimpan...' : 'Simpan Token'}
                   </button>
