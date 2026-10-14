@@ -7,13 +7,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext({
-  theme: 'dark',
+  theme: 'light',
   toggleTheme: () => {},
   setTheme: () => {},
 });
 
 export function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState('dark');
+  const [theme, setThemeState] = useState('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,10 +23,12 @@ export function ThemeProvider({ children }) {
         setThemeState(saved);
         applyTheme(saved);
       } else {
-        applyTheme('dark');
+        setThemeState('light');
+        applyTheme('light');
       }
     } catch {
-      applyTheme('dark');
+      setThemeState('light');
+      applyTheme('light');
     }
     setMounted(true);
   }, []);

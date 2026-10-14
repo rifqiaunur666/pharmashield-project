@@ -13,8 +13,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function MedicalProfileModal({ isOpen, onClose, initialProfile, onSave }) {
+  const [mounted, setMounted] = useState(false);
   const [allergies, setAllergies] = useState('');
   const [adverseReactions, setAdverseReactions] = useState('');
   const [prescriptions, setPrescriptions] = useState('');
@@ -24,6 +26,21 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
   const [pregnant, setPregnant] = useState(false);
   const [breastfeeding, setBreastfeeding] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (initialProfile) {
@@ -38,7 +55,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
     }
   }, [initialProfile]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,9 +87,16 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-6">
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="relative w-full max-w-2xl my-auto max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-6">
         <div className="flex items-start justify-between border-b border-slate-200 dark:border-white/5 pb-4">
           <div>
             <span className="text-[11px] font-black uppercase tracking-wider text-[#0284c7] dark:text-[#c8f93a]">
@@ -209,6 +233,7 @@ export default function MedicalProfileModal({ isOpen, onClose, initialProfile, o
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -173,19 +173,60 @@ html.light [class*="shadow-xl"] {
   box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 1px 4px -1px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* ─── Text color overrides for full readability on white ─── */
-html.light .text-white {
-  color: #0f172a !important;
-}
-/* But preserve white text on colored backgrounds */
-html.light [class*="bg-[#0284c7]"] .text-white,
-html.light [class*="bg-sky-"] .text-white,
-html.light [class*="bg-blue-"] .text-white,
-html.light [class*="bg-emerald-"] .text-white,
-html.light [class*="bg-rose-"] .text-white,
-html.light button .text-white,
-html.light a .text-white {
+/* ─── High-Contrast White Text Enforcement on All Primary / Blue Buttons ─── */
+html.light button.text-white,
+html.light a.text-white,
+html.light button[class*="text-white"],
+html.light a[class*="text-white"],
+html.light button.bg-\[\#0284c7\],
+html.light a.bg-\[\#0284c7\],
+html.light button[class*="bg-[#0284c7]"],
+html.light a[class*="bg-[#0284c7]"],
+html.light button[class*="bg-sky-600"],
+html.light a[class*="bg-sky-600"],
+html.light button[class*="bg-blue-600"],
+html.light a[class*="bg-blue-600"],
+html.light button[class*="bg-emerald-600"],
+html.light a[class*="bg-emerald-600"],
+html.light button[class*="bg-rose-600"],
+html.light a[class*="bg-rose-600"],
+html.light button.bg-\[\#c8f93a\],
+html.light a.bg-\[\#c8f93a\],
+html.light .btn-primary,
+html.light .btn-primary-action,
+html.light button.text-white *,
+html.light a.text-white *,
+html.light button[class*="text-white"] *,
+html.light a[class*="text-white"] *,
+html.light button.bg-\[\#0284c7\] *,
+html.light a.bg-\[\#0284c7\] *,
+html.light button[class*="bg-[#0284c7]"] *,
+html.light a[class*="bg-[#0284c7]"] *,
+html.light button[class*="bg-sky-600"] *,
+html.light a[class*="bg-sky-600"] *,
+html.light button[class*="bg-blue-600"] *,
+html.light a[class*="bg-blue-600"] *,
+html.light button[class*="bg-emerald-600"] *,
+html.light a[class*="bg-emerald-600"] *,
+html.light button.bg-\[\#c8f93a\] *,
+html.light a.bg-\[\#c8f93a\] *,
+html.light .btn-primary *,
+html.light .btn-primary-action * {
   color: #ffffff !important;
+}
+
+/* Standalone headings/paragraphs with text-white on light mode become dark slate */
+html.light h1.text-white,
+html.light h2.text-white,
+html.light h3.text-white,
+html.light h4.text-white,
+html.light p.text-white,
+html.light label.text-white,
+html.light table.text-white,
+html.light th.text-white,
+html.light span.text-white:not([class*="bg-"]):not(button *):not(a *):not([class*="badge"]),
+html.light div.text-white:not([class*="bg-"]):not(button *):not(a *) {
+  color: #0f172a !important;
 }
 
 /* ─── Font-mono numbers in metric cards ─── */
@@ -531,8 +572,8 @@ html.light h2.text-white,
 html.light h3.text-white,
 html.light h4.text-white,
 html.light p.text-white,
-html.light span.text-white:not([class*="bg-"]):not([class*="btn"]),
-html.light div.text-white:not([class*="bg-"]) {
+html.light span.text-white:not([class*="bg-"]):not([class*="btn"]):not(button *):not(a *),
+html.light div.text-white:not([class*="bg-"]):not(button *):not(a *) {
   color: #0f172a !important;
 }
 

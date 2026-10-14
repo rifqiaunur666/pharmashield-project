@@ -22,12 +22,12 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#0c0e12',
+  themeColor: '#f8fafc',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${manrope.variable} dark`} suppressHydrationWarning>
+    <html lang="id" className={`${manrope.variable} light`} suppressHydrationWarning>
       <body className={`${manrope.className} antialiased`}>
         <ThemeProvider>
           <AuthProvider>

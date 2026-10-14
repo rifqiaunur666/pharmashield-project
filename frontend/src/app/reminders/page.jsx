@@ -17,6 +17,7 @@
 'use client';
 
 import { useState, useEffect, useTransition, useMemo, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   createReminderPatient,
   fetchReminderPatients,
@@ -74,6 +75,7 @@ export default function RemindersPage() {
   const [isPending, startTransition] = useTransition();
 
   // Modals
+  const [mounted, setMounted] = useState(false);
   const [showPatientModal, setShowPatientModal] = useState(false);
   const [showMedModal, setShowMedModal] = useState(false);
   const [showQRScanModal, setShowQRScanModal] = useState(false);
@@ -217,10 +219,24 @@ export default function RemindersPage() {
   };
 
   useEffect(() => {
+    setMounted(true);
     loadData();
     const interval = setInterval(loadData, 5000); // 5s auto refresh for live activity
     return () => clearInterval(interval);
   }, []);
+
+  // Lock body scroll when any modal is open
+  useEffect(() => {
+    const isAnyModalOpen = showQRScanModal || showPatientModal || showMedModal || showTokenModal;
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showQRScanModal, showPatientModal, showMedModal, showTokenModal]);
 
   // Validation
   const validateWhatsAppNumber = (num) => {
@@ -711,12 +727,12 @@ export default function RemindersPage() {
       {feedback && (
         <div className={`p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-medium border backdrop-blur-md animate-fade-in ${
           feedback.type === 'success'
-            ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+            ? 'bg-emerald-50 border-emerald-300 text-emerald-800 dark:bg-emerald-950/80 dark:border-emerald-500/50 dark:text-emerald-300'
             : feedback.type === 'error'
-            ? 'bg-rose-950/80 border-rose-500/50 text-rose-300'
+            ? 'bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-950/80 dark:border-rose-500/50 dark:text-rose-300'
             : feedback.type === 'warning'
-            ? 'bg-amber-950/80 border-amber-500/50 text-amber-300'
-            : 'bg-violet-950/80 border-violet-500/50 text-violet-300'
+            ? 'bg-amber-50 border-amber-300 text-amber-800 dark:bg-amber-950/80 dark:border-amber-500/50 dark:text-amber-300'
+            : 'bg-sky-50 border-sky-300 text-sky-800 dark:bg-violet-950/80 dark:border-violet-500/50 dark:text-violet-300'
         }`}>
           <div className="flex items-center gap-2.5">
             <Info className="w-4 h-4 flex-shrink-0" />
@@ -725,7 +741,7 @@ export default function RemindersPage() {
           <div className="flex items-center gap-2 self-end sm:self-auto">
             <button
               onClick={() => setFeedback(null)}
-              className="p-1 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white cursor-pointer"
+              className="p-1 rounded-lg hover:bg-slate-200 text-slate-500 hover:text-slate-800 dark:hover:bg-white/10 dark:text-zinc-400 dark:hover:text-white cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1219,9 +1235,16 @@ export default function RemindersPage() {
       </div>
 
       {/* ── MODAL 1: Pindai / Unggah Kode QR WhatsApp (Autentikasi Tanpa Token) ── */}
-      {showQRScanModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
+      {mounted && showQRScanModal && createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowQRScanModal(false);
+          }}
+        >
+          <div className="relative w-full max-w-lg my-auto max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
             
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
@@ -1332,13 +1355,21 @@ export default function RemindersPage() {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ── MODAL 2: Tambah Pasien Baru ── */}
-      {showPatientModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-md rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
+      {mounted && showPatientModal && createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowPatientModal(false);
+          }}
+        >
+          <div className="relative w-full max-w-md my-auto max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
             
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
@@ -1451,13 +1482,21 @@ export default function RemindersPage() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ── MODAL 3: Buat Jadwal Obat Baru ── */}
-      {showMedModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
+      {mounted && showMedModal && createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowMedModal(false);
+          }}
+        >
+          <div className="relative w-full max-w-lg my-auto max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl space-y-6">
             
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
@@ -1665,13 +1704,21 @@ export default function RemindersPage() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ── MODAL PENGATURAN TOKEN WHATSAPP GATEWAY (FONNTE) ── */}
-      {showTokenModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-7 shadow-2xl space-y-5">
+      {mounted && showTokenModal && createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowTokenModal(false);
+          }}
+        >
+          <div className="relative w-full max-w-lg my-auto max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-6 sm:p-7 shadow-2xl space-y-5">
             {/* Header */}
             <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-3">
@@ -1795,7 +1842,8 @@ export default function RemindersPage() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </div>

@@ -5,7 +5,8 @@
  */
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   INDONESIA_MEDICINES,
   MEDICINE_CATEGORIES,
@@ -15,12 +16,28 @@ import {
 const ITEMS_PER_PAGE = 24;
 
 export default function MedicineCatalog({ initialSearch = '', onSelectMedicine }) {
+  const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedBpom, setSelectedBpom] = useState('all');
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [activeDetail, setActiveDetail] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (activeDetail) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeDetail]);
 
   // Filter logic across 1,000+ medicines
   const filteredMedicines = useMemo(() => {
@@ -346,15 +363,15 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
       )}
 
       {/* ── Modal Detail Datasheet Obat Komprehensif ── */}
-      {activeDetail && (
+      {mounted && activeDetail && createPortal(
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
           onClick={() => setActiveDetail(null)}
         >
           <div
-            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-2xl space-y-6 relative text-slate-800 dark:border-slate-800 dark:bg-[#101726] dark:text-slate-100"
+            className="w-full max-w-2xl my-auto max-h-[90vh] overflow-y-auto rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-2xl space-y-6 relative text-slate-800 dark:border-slate-800 dark:bg-[#101726] dark:text-slate-100"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -523,7 +540,8 @@ No. Registrasi BPOM: ${med.detail_lengkap?.nomor_bpom || med.bpomRegistrationExa
             </div>
 
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

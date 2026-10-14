@@ -4,11 +4,13 @@
  */
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '@/lib/AuthContext';
 import { requestPasswordReset } from '@/lib/api';
 
 export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSuccess }) {
+  const [mounted, setMounted] = useState(false);
   const { login, register } = useAuth();
   const [mode, setMode] = useState(initialMode); // 'login' | 'register' | 'forgot'
   const [fullName, setFullName] = useState('');
@@ -21,7 +23,22 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  if (!isOpen || !mounted) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,9 +72,16 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-5">
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto animate-fade-in"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="relative w-full max-w-md my-auto max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-[var(--color-border)] bg-white dark:bg-[#11141b] p-6 shadow-2xl space-y-5">
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/5 pb-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
@@ -224,6 +248,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
