@@ -21,12 +21,13 @@ function HamburgerIcon() {
 }
 
 const PAGE_TITLES = {
-  '/':             { label: 'Dashboard',       sub: 'Scanner Obat & AI Guard' },
-  '/interactions': { label: 'Interaksi Obat',  sub: 'Drug Interaction Safety Checker' },
-  '/medicines':    { label: 'Datasheet ID',    sub: 'Katalog Obat Penyakit Umum' },
-  '/history':      { label: 'Riwayat',         sub: 'Log Pemindaian Sistem' },
-  '/analytics':    { label: 'Analitik',        sub: 'Statistik & Metrik Evaluasi' },
-  '/settings':     { label: 'Pengaturan',      sub: 'Konfigurasi Endpoint & OCR' },
+  '/':             { label: 'Dashboard',              sub: 'Scanner Obat & AI Guard' },
+  '/reminders':    { label: 'Pengingat WhatsApp',     sub: 'Pengingat Obat Pasien & Lansia' },
+  '/interactions': { label: 'Interaksi Obat',         sub: 'Drug Interaction Safety Checker' },
+  '/medicines':    { label: 'Datasheet ID',            sub: 'Katalog Obat Penyakit Umum' },
+  '/history':      { label: 'Riwayat',                sub: 'Log Pemindaian Sistem' },
+  '/analytics':    { label: 'Analitik & Grafik',      sub: 'Analitik & Visualisasi Metrik' },
+  '/settings':     { label: 'Pengaturan',             sub: 'Konfigurasi Endpoint & OCR' },
 };
 
 export default function TopHeader({ onOpenAuth, onOpenProfile }) {
@@ -59,11 +60,6 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
         .join('')
         .toUpperCase()
     : 'MG';
-
-  // Completely eliminate header overlap on Reminders page
-  if (pathname === '/reminders') {
-    return null;
-  }
 
   return (
     <header className="sticky top-0 z-20 flex items-center gap-4 h-16 px-4 sm:px-6 bg-white/95 dark:bg-[#11141a]/95 backdrop-blur-md border-b border-slate-200 dark:border-[var(--color-border)] shadow-xs">

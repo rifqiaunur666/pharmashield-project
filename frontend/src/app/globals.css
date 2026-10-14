@@ -146,6 +146,100 @@ html.light ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   WHITE-DOMINANT THEME ENFORCEMENT
+   Ensures every page is predominantly white/light — no dark card leakage.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* All pages: white bg as universal base */
+html.light main,
+html.light section,
+html.light article {
+  background-color: transparent;
+  color: #0f172a;
+}
+
+/* Backdrop blur dark overlays → transparent/white in light mode */
+html.light .backdrop-blur-xl,
+html.light .backdrop-blur-md,
+html.light .backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Shadow-2xl on dark cards → clean box-shadow in light */
+html.light [class*="shadow-2xl"],
+html.light [class*="shadow-xl"] {
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 1px 4px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* ─── Text color overrides for full readability on white ─── */
+html.light .text-white {
+  color: #0f172a !important;
+}
+/* But preserve white text on colored backgrounds */
+html.light [class*="bg-[#0284c7]"] .text-white,
+html.light [class*="bg-sky-"] .text-white,
+html.light [class*="bg-blue-"] .text-white,
+html.light [class*="bg-emerald-"] .text-white,
+html.light [class*="bg-rose-"] .text-white,
+html.light button .text-white,
+html.light a .text-white {
+  color: #ffffff !important;
+}
+
+/* ─── Font-mono numbers in metric cards ─── */
+html.light .font-black.text-white,
+html.light .text-3xl.text-white,
+html.light .text-4xl.text-white,
+html.light .text-2xl.text-white,
+html.light .text-xl.text-white {
+  color: #0f172a !important;
+}
+
+/* ─── Colored border reminders "step" cards → soft colors ─── */
+html.light [class*="bg-emerald-500\/15"],
+html.light [class*="bg-emerald-500\/10"],
+html.light [class*="bg-emerald-500\/5"] {
+  background-color: #f0fdf4 !important;
+}
+html.light [class*="bg-sky-500\/15"],
+html.light [class*="bg-sky-500\/10"],
+html.light [class*="bg-sky-500\/5"] {
+  background-color: #f0f9ff !important;
+}
+html.light [class*="bg-violet-500\/15"],
+html.light [class*="bg-violet-500\/10"],
+html.light [class*="bg-violet-500\/5"] {
+  background-color: #faf5ff !important;
+}
+html.light [class*="bg-amber-500\/15"],
+html.light [class*="bg-amber-500\/10"],
+html.light [class*="bg-amber-500\/5"] {
+  background-color: #fffbeb !important;
+}
+html.light [class*="bg-rose-500\/15"],
+html.light [class*="bg-rose-500\/10"],
+html.light [class*="bg-rose-500\/5"] {
+  background-color: #fff1f2 !important;
+}
+
+/* ─── bg-white/5, bg-white/10 dark overlays → transparent ─── */
+html.light [class*="bg-white\/"] {
+  background-color: transparent !important;
+}
+/* Exception: keep clearly visible bg-white elements white */
+html.light .bg-white {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* ─── Ring/glow effects: remove neon glows in light mode ─── */
+html.light [class*="shadow-\[#c8f93a\]"],
+html.light [class*="shadow-lime"] {
+  box-shadow: none !important;
+}
+
 /* Light Mode Primary Action & Button Overrides (Ocean Blue) */
 html.light button.bg-\[\#c8f93a\],
 html.light a.bg-\[\#c8f93a\],

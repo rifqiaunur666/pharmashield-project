@@ -41,14 +41,14 @@ export default function AnalyticsPage() {
       <div>
         <div className="flex items-center gap-2.5">
           <h1 className="text-3xl font-black tracking-tight text-[var(--color-text-primary)]">
-            Analitik &amp; Visualisasi Metrik
+            Analitik &amp; Grafik
           </h1>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 text-sky-800 border-sky-200 dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 px-2.5 py-0.5 text-xs font-bold border">
             AI Analytics
           </span>
         </div>
         <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
-          Metrik evaluasi kelayakan obat, distribusi golongan BPOM, dan tren penyakit umum Indonesia.
+          Analitik &amp; visualisasi metrik evaluasi kelayakan obat, distribusi golongan BPOM, dan tren penyakit umum Indonesia.
         </p>
       </div>
 
