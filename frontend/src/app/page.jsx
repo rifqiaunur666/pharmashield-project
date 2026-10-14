@@ -30,7 +30,7 @@ function RingMetricCard({ title, percentage, label, targetText }) {
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#c8f93a]/30 transition-all">
+    <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#10b981]/30 transition-all">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <p className="text-[11px] font-extrabold uppercase tracking-wider text-[var(--color-text-secondary)]">
@@ -65,7 +65,7 @@ function RingMetricCard({ title, percentage, label, targetText }) {
               strokeDashoffset={strokeDashoffset}
               strokeLinecap="round"
               fill="transparent"
-              className="text-[#0284c7] dark:text-[#c8f93a] transition-all duration-700 ease-out"
+              className="text-[#0284c7] dark:text-[#10b981] transition-all duration-700 ease-out"
             />
           </svg>
           <span className="absolute text-[11px] font-black text-[var(--color-text-primary)]">
@@ -76,7 +76,7 @@ function RingMetricCard({ title, percentage, label, targetText }) {
 
       <div className="mt-4 flex items-center justify-between border-t border-[var(--color-border)] pt-3 text-xs">
         <span className="text-[var(--color-text-secondary)] text-[11px]">{label}</span>
-        <span className="font-extrabold text-[#0284c7] bg-sky-50 border border-sky-200 dark:text-[#c8f93a] dark:bg-[#c8f93a]/10 dark:border-[#c8f93a]/20 px-2 py-0.5 rounded-full text-[10px]">
+        <span className="font-extrabold text-[#0284c7] bg-sky-50 border border-sky-200 dark:text-[#10b981] dark:bg-[#10b981]/15 dark:border-[#10b981]/30 px-2 py-0.5 rounded-full text-[10px]">
           Optimal
         </span>
       </div>
@@ -85,9 +85,26 @@ function RingMetricCard({ title, percentage, label, targetText }) {
 }
 
 // ─── Top Metric Stat Card ────────────────────────────────────────────────────
-function MetricCard({ title, value, unit = 'item', label, badge, trend, accentColor = 'text-[var(--color-text-primary)]' }) {
+function MetricCard({
+  title,
+  value,
+  unit = 'item',
+  label,
+  badge,
+  trend,
+  accentColor = 'text-[var(--color-text-primary)]',
+  isAlert = false,
+}) {
+  const cardClasses = isAlert
+    ? 'relative overflow-hidden rounded-2xl border border-rose-300 bg-rose-50/40 dark:border-red-900/60 dark:bg-red-950/20 p-5 shadow-sm hover:border-red-500/50 transition-all'
+    : 'relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#10b981]/30 transition-all';
+
+  const badgeClasses = isAlert
+    ? 'text-[10px] font-black px-2 py-0.5 rounded-md bg-rose-100 text-rose-800 border border-rose-300 dark:bg-red-950/80 dark:text-[#EF4444] dark:border-red-700/60'
+    : 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[var(--color-text-secondary)] border border-[var(--color-border)]';
+
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm hover:border-[#c8f93a]/30 transition-all">
+    <div className={cardClasses}>
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <p className="text-[11px] font-extrabold uppercase tracking-wider text-[var(--color-text-secondary)]">
@@ -101,7 +118,7 @@ function MetricCard({ title, value, unit = 'item', label, badge, trend, accentCo
           </div>
         </div>
         {badge && (
-          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/5 text-[var(--color-text-secondary)] border border-[var(--color-border)]">
+          <span className={badgeClasses}>
             {badge}
           </span>
         )}
@@ -110,7 +127,7 @@ function MetricCard({ title, value, unit = 'item', label, badge, trend, accentCo
       <div className="mt-4 flex items-center justify-between border-t border-[var(--color-border)] pt-3 text-xs">
         <span className="text-[var(--color-text-secondary)] text-[11px]">{label}</span>
         {trend && (
-          <span className="font-bold text-[#15803d] bg-[#dcfce7] border border-[#86efac] dark:text-[#c8f93a] dark:bg-[#c8f93a]/15 dark:border-[#c8f93a]/30 px-2 py-0.5 rounded-full text-[10px] flex items-center gap-0.5 shadow-xs">
+          <span className="font-bold text-[#15803d] bg-[#dcfce7] border border-[#86efac] dark:text-[#10b981] dark:bg-[#10b981]/15 dark:border-[#10b981]/30 px-2 py-0.5 rounded-full text-[10px] flex items-center gap-0.5 shadow-xs">
             <span>↗</span> {trend}
           </span>
         )}
@@ -317,7 +334,7 @@ export default function AppHomePage() {
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={openAuthModal}
-                className="px-5 py-2.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#c8f93a] dark:text-black dark:hover:bg-[#b5f524] font-black text-xs transition-all shadow-md"
+                className="px-5 py-2.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#0369a1] dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] font-black text-xs transition-all shadow-md"
               >
                 Masuk / Buat Akun
               </button>
@@ -336,8 +353,8 @@ export default function AppHomePage() {
                 <h1 className="text-3xl font-black tracking-tight text-[var(--color-text-primary)]">
                   {isAuthenticated ? `Halo, ${user?.full_name || 'Pengguna'}` : 'Dashboard Keamanan Obat'}
                 </h1>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30 px-2.5 py-0.5 text-xs font-bold shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#c8f93a] animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30 px-2.5 py-0.5 text-xs font-bold shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] dark:bg-[#10b981] animate-pulse" />
                   Hub Utama
                 </span>
               </div>
@@ -353,7 +370,7 @@ export default function AppHomePage() {
                   setError(null);
                   setCurrentStage('scanner');
                 }}
-                className="btn-primary-action px-6 py-3 rounded-2xl bg-[#0284c7] text-white dark:bg-[#c8f93a] dark:text-black font-black text-xs hover:bg-[#075985] dark:hover:bg-[#b5f524] hover:scale-105 active:scale-95 transition-all shadow-lg shadow-sky-500/25 dark:shadow-[#c8f93a]/25 flex items-center gap-2 focus-visible:ring-4 focus-visible:ring-sky-400"
+                className="btn-primary-action px-6 py-3 rounded-2xl bg-[#0284c7] text-white dark:bg-[#10b981] dark:text-[#0f172a] font-black text-xs hover:bg-[#075985] dark:hover:bg-[#059669] hover:scale-105 active:scale-95 transition-all shadow-lg shadow-sky-500/25 dark:shadow-[#10b981]/25 flex items-center gap-2 focus-visible:ring-4 focus-visible:ring-sky-400"
               >
                 <span className="text-base">📸</span>
                 <span>Pindai Kemasan Obat (1x Scan)</span>
@@ -366,13 +383,21 @@ export default function AppHomePage() {
             <div className="flex items-center gap-3">
               <span className="text-2xl">📋</span>
               <div>
-                <p className="text-xs font-bold text-[var(--color-text-primary)]">
-                  Status Kelengkapan Profil Medis:{' '}
-                  <span className={user?.medical_profile?.profile_completed ? 'text-emerald-600 dark:text-[#c8f93a]' : 'text-amber-500'}>
-                    {user?.medical_profile?.profile_completed ? 'Lengkap & Terverifikasi' : 'Belum Terisi Lengkap'}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-bold text-[var(--color-text-primary)]">
+                    Status Kelengkapan Profil Medis:
                   </span>
-                </p>
-                <p className="text-[11px] text-[var(--color-text-secondary)]">
+                  {user?.medical_profile?.profile_completed ? (
+                    <span className="inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/80 dark:text-[#10b981] dark:border-emerald-500/40">
+                      [✓] Lengkap &amp; Terverifikasi
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 font-black px-2.5 py-0.5 rounded-full text-[11px] bg-rose-100 text-rose-700 border border-rose-300 dark:bg-red-950/90 dark:text-[#ef4444] dark:border-red-500/60 shadow-xs">
+                      [⚠] Belum Terisi Lengkap
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-[var(--color-text-secondary)] mt-1">
                   Alergi:{' '}
                   <span className="text-[var(--color-text-primary)] font-medium">
                     {user?.medical_profile?.allergies?.join(', ') || 'Belum ada alergi terdaftar'}
@@ -387,7 +412,7 @@ export default function AppHomePage() {
 
             <button
               onClick={openProfileModal}
-              className="px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 hover:border-[#0284c7] text-[#0284c7] hover:bg-sky-50 dark:border-[var(--color-border)] dark:hover:border-[#c8f93a]/50 dark:text-[#c8f93a] dark:hover:bg-[#c8f93a]/10 transition-all"
+              className="px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 hover:border-[#0284c7] text-[#0284c7] hover:bg-sky-50 dark:border-[var(--color-border)] dark:hover:border-[#10b981]/50 dark:text-[#10b981] dark:hover:bg-[#10b981]/10 transition-all"
             >
               ⚙️ Perbarui Riwayat &amp; Alergi
             </button>
@@ -414,16 +439,17 @@ export default function AppHomePage() {
               value={metrics.safe}
               unit="produk"
               label="Kategori Hijau"
-              badge="[✓] 🟢 Bebas Risiko"
-              accentColor="text-emerald-600 dark:text-[#c8f93a]"
+              badge="[✓] Bebas Risiko"
+              accentColor="text-emerald-700 dark:text-[#10b981]"
             />
             <MetricCard
               title="Perhatian & Risiko"
               value={metrics.warning + metrics.danger}
               unit="produk"
-              label="Perlu Evaluasi"
-              badge="[!] ⚠️ Peringatan"
-              accentColor="text-amber-600 dark:text-amber-400"
+              label="Perlu Evaluasi Khusus"
+              badge="[⚠] Risiko Terdeteksi"
+              accentColor="text-red-600 dark:text-[#ef4444]"
+              isAlert={true}
             />
           </div>
 

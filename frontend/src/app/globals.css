@@ -333,12 +333,88 @@ html.light .sidebar a:not([aria-current="page"]):hover svg {
   stroke: #0f172a !important;
 }
 
-/* Light Mode Badges & Contrasts */
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE CONTRAST & ACCESSIBILITY ENHANCEMENTS (WCAG 2.1 AAA)
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Secondary Typography Boost: Elevate faint gray text to dark charcoal */
+html.light .text-slate-400,
+html.light .text-slate-500,
+html.light .text-gray-400,
+html.light .text-gray-500,
+html.light .text-neutral-400 {
+  color: #334155 !important;
+}
+html.light .text-slate-600,
+html.light .text-gray-600,
+html.light .text-neutral-500 {
+  color: #1e293b !important;
+}
 html.light .text-neutral-300 {
   color: #334155 !important;
 }
-html.light .text-neutral-400 {
-  color: #64748b !important;
+
+/* Card Separation & Borders: crisp light borders & subtle drop-shadows */
+html.light .admin-card,
+html.light [class*="rounded-2xl"][class*="border"],
+html.light [class*="rounded-xl"][class*="border"],
+html.light [class*="rounded-3xl"][class*="border"] {
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE CONTRAST & ACCESSIBILITY ENHANCEMENTS (WCAG 2.1 AAA)
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Primary action buttons in Dark Mode:
+   Softened emerald (#10B981) background with Dark Slate (#0F172A) text
+   Eliminates glare, passing WCAG AAA > 7:1 contrast ratio */
+html.dark .btn-primary-action,
+html.dark button.bg-\[\#c8f93a\],
+html.dark a.bg-\[\#c8f93a\],
+html.dark button.bg-\[\#10b981\],
+html.dark a.bg-\[\#10b981\],
+html.dark button[class*="bg-[#10b981]"],
+html.dark a[class*="bg-[#10b981]"],
+html.dark button[class*="bg-[#c8f93a]"],
+html.dark a[class*="bg-[#c8f93a]"] {
+  background-color: #10B981 !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25) !important;
+}
+
+html.dark .btn-primary-action *,
+html.dark button.bg-\[\#c8f93a\] *,
+html.dark a.bg-\[\#c8f93a\] *,
+html.dark button.bg-\[\#10b981\] *,
+html.dark a.bg-\[\#10b981\] *,
+html.dark button[class*="bg-[#10b981]"] *,
+html.dark a[class*="bg-[#10b981]"] *,
+html.dark button[class*="bg-[#c8f93a]"] *,
+html.dark a[class*="bg-[#c8f93a]"] * {
+  color: #0F172A !important;
+}
+
+html.dark .btn-primary-action:hover,
+html.dark button.bg-\[\#c8f93a\]:hover,
+html.dark a.bg-\[\#c8f93a\]:hover,
+html.dark button.bg-\[\#10b981\]:hover,
+html.dark a.bg-\[\#10b981\]:hover {
+  background-color: #059669 !important;
+  color: #0F172A !important;
+}
+
+/* Sidebar active link in dark mode */
+html.dark .sidebar a[aria-current="page"] {
+  background-color: #10B981 !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25) !important;
+}
+html.dark .sidebar a[aria-current="page"] * {
+  color: #0F172A !important;
+}
+html.dark .sidebar a[aria-current="page"] svg {
+  color: #0F172A !important;
+  stroke: #0F172A !important;
 }
 html.light .bg-[#161922] {
   background-color: #f1f5f9 !important;
@@ -930,78 +1006,115 @@ html[data-colorblind="protanopia"] [class*='text-\[\#a3e635\]'] {
   color: #2563eb !important;
 }
 
-/* ── 7b. Tritanopia: Buta Warna Biru-Kuning ──────────────────────────────────
-   Brand: Coral Red / Vivid Crimson (#E11D48)
-   Aman: Light Teal / Cyan (#CCFBF1) / Dark Cyan text (#0F766E) [✓]
-   Peringatan: Soft Lavender / Purple (#F3E8FF) / Dark Purple text (#6B21A8) [!]
-   Bahaya: Light Rose / Coral (#FFE4E6) / Deep Red text (#9F1239) [X]
+/* ── 7b. Tritanopia: Buta Warna Biru-Kuning (Dark & Light Optimized) ──────────
+   Brand & Active Nav Tabs: Deep Sharp Teal / Dark Cyan (#0F766E / #115E59)
+   Aman / Normal State: Deep Teal / Emerald (#0F766E + [✓] symbol)
+   Peringatan / Moderate State: Vivid Violet / Magenta (#7E22CE / #9333EA + [!] symbol)
+   Bahaya / High Risk State: Deep Crimson Red (#B91C1C / #DC2626 + [⚠] symbol)
+   Dual Encoding: explicit symbols [✓], [!], [⚠] alongside high-contrast badges
    ───────────────────────────────────────────────────────────────────────────── */
 html.a11y-cb-tritanopia,
 html[data-colorblind="tritanopia"] {
-  --color-primary: #e11d48 !important;
-  --color-primary-hover: #be123c !important;
+  --color-primary: #0f766e !important;
+  --color-primary-hover: #115e59 !important;
   --color-primary-text: #ffffff !important;
-  --color-primary-glow: rgba(225, 29, 72, 0.25) !important;
+  --color-primary-glow: rgba(15, 118, 110, 0.25) !important;
   --color-success: #0f766e !important;
-  --color-warning: #6b21a8 !important;
-  --color-danger:  #9f1239 !important;
+  --color-warning: #7e22ce !important;
+  --color-danger:  #b91c1c !important;
 }
 
 html.light.a11y-cb-tritanopia,
 html.light[data-colorblind="tritanopia"] {
-  --color-primary: #e11d48 !important;
-  --color-primary-hover: #be123c !important;
+  --color-primary: #0f766e !important;
+  --color-primary-hover: #115e59 !important;
   --color-primary-text: #ffffff !important;
 }
 
-/* Status safe badge & indicators (Tritanopia) */
+/* Eliminate cyan glare: deep sharp teal on active navigation tabs & action buttons */
+html.a11y-cb-tritanopia .sidebar a[aria-current="page"],
+html[data-colorblind="tritanopia"] .sidebar a[aria-current="page"],
+html.a11y-cb-tritanopia .btn-primary-action,
+html[data-colorblind="tritanopia"] .btn-primary-action {
+  background-color: #0f766e !important;
+  color: #ffffff !important;
+  border-color: #115e59 !important;
+  box-shadow: 0 4px 14px 0 rgba(15, 118, 110, 0.35) !important;
+}
+
+html.a11y-cb-tritanopia .sidebar a[aria-current="page"] *,
+html[data-colorblind="tritanopia"] .sidebar a[aria-current="page"] * {
+  color: #ffffff !important;
+}
+
+/* Status Safe / Normal: Deep Teal / Emerald (#0F766E) with [✓] */
 html.a11y-cb-tritanopia .status-green,
 html[data-colorblind="tritanopia"] .status-green,
 html.a11y-cb-tritanopia [data-status="green"],
 html[data-colorblind="tritanopia"] [data-status="green"] {
   background-color: #ccfbf1 !important;
   color: #0f766e !important;
-  border-color: #2dd4bf !important;
+  border-color: #0f766e !important;
+}
+html.dark.a11y-cb-tritanopia .status-green,
+html.dark[data-colorblind="tritanopia"] .status-green {
+  background-color: rgba(15, 118, 110, 0.25) !important;
+  color: #2dd4bf !important;
+  border-color: #0f766e !important;
 }
 
-/* Status warning badge & indicators (Tritanopia) */
+/* Status Warning / Moderate: Vivid Violet / Magenta (#7E22CE) with [!] */
 html.a11y-cb-tritanopia .status-yellow,
 html[data-colorblind="tritanopia"] .status-yellow,
 html.a11y-cb-tritanopia [data-status="yellow"],
 html[data-colorblind="tritanopia"] [data-status="yellow"] {
   background-color: #f3e8ff !important;
-  color: #6b21a8 !important;
-  border-color: #c084fc !important;
+  color: #7e22ce !important;
+  border-color: #9333ea !important;
+}
+html.dark.a11y-cb-tritanopia .status-yellow,
+html.dark[data-colorblind="tritanopia"] .status-yellow {
+  background-color: rgba(126, 34, 206, 0.25) !important;
+  color: #d8b4fe !important;
+  border-color: #7e22ce !important;
 }
 
-/* Status danger badge & indicators (Tritanopia) */
+/* Status High Risk / Danger: Deep Crimson Red (#B91C1C) with [⚠] */
 html.a11y-cb-tritanopia .status-red,
 html[data-colorblind="tritanopia"] .status-red,
 html.a11y-cb-tritanopia [data-status="red"],
 html[data-colorblind="tritanopia"] [data-status="red"] {
-  background-color: #ffe4e6 !important;
-  color: #9f1239 !important;
-  border-color: #fb7185 !important;
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #dc2626 !important;
+}
+html.dark.a11y-cb-tritanopia .status-red,
+html.dark[data-colorblind="tritanopia"] .status-red {
+  background-color: rgba(185, 28, 28, 0.3) !important;
+  color: #fca5a5 !important;
+  border-color: #b91c1c !important;
 }
 
-/* General component overrides for Tritanopia */
+/* General button & text overrides for Tritanopia */
 html.a11y-cb-tritanopia button.bg-\[\#c8f93a\],
-html.a11y-cb-tritanopia button.bg-\[\#a3e635\],
+html.a11y-cb-tritanopia button.bg-\[\#10b981\],
+html.a11y-cb-tritanopia button.bg-\[\#0284c7\],
 html.a11y-cb-tritanopia .bg-\[\#c8f93a\],
-html.a11y-cb-tritanopia .bg-\[\#a3e635\],
+html.a11y-cb-tritanopia .bg-\[\#10b981\],
 html[data-colorblind="tritanopia"] button.bg-\[\#c8f93a\],
-html[data-colorblind="tritanopia"] button.bg-\[\#a3e635\],
+html[data-colorblind="tritanopia"] button.bg-\[\#10b981\],
+html[data-colorblind="tritanopia"] button.bg-\[\#0284c7\],
 html[data-colorblind="tritanopia"] .bg-\[\#c8f93a\],
-html[data-colorblind="tritanopia"] .bg-\[\#a3e635\] {
-  background-color: #e11d48 !important;
+html[data-colorblind="tritanopia"] .bg-\[\#10b981\] {
+  background-color: #0f766e !important;
   color: #ffffff !important;
 }
 
 html.a11y-cb-tritanopia [class*='text-\[\#c8f93a\]'],
-html.a11y-cb-tritanopia [class*='text-\[\#a3e635\]'],
+html.a11y-cb-tritanopia [class*='text-\[\#10b981\]'],
 html[data-colorblind="tritanopia"] [class*='text-\[\#c8f93a\]'],
-html[data-colorblind="tritanopia"] [class*='text-\[\#a3e635\]'] {
-  color: #e11d48 !important;
+html[data-colorblind="tritanopia"] [class*='text-\[\#10b981\]'] {
+  color: #0f766e !important;
 }
 
 /* ── 7c. Low Vision / Mata Minus: Kontras Ekstrem WCAG AAA ─────────────────

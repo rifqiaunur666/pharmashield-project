@@ -1,5 +1,278 @@
 [
   {
+    "scan_id": "b47de05c-6953-41e4-908f-86a1a4298ef4",
+    "user_id": null,
+    "user_name": null,
+    "scanned_at": "2026-10-14T16:36:45.812386+00:00",
+    "scanned_at_formatted": "14 October 2026 23:36 WIB",
+    "identified": true,
+    "name": "CTM (Chlorpheniramine Maleate) 4mg",
+    "medicine_name": "CTM (Chlorpheniramine Maleate) 4mg",
+    "generic_name": "Chlorpheniramine Maleate",
+    "brand_names": [
+      "CTM (Chlorpheniramine Maleate) 4mg",
+      "CTM Generik",
+      "Pehachlor"
+    ],
+    "category": "Alergi & Gatal",
+    "bpom_class": "Obat Bebas Terbatas (Biru)",
+    "dosage_strength": "4 mg per tablet",
+    "dosage_form": "Tablet",
+    "purpose": "Meredakan alergi, bersin, hidung berair, biduran, dan gatal kulit.",
+    "usage": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Maksimal 24mg/hari.",
+    "ingredients": [
+      "Chlorpheniramine Maleate"
+    ],
+    "side_effects": [
+      "Sangat mengantuk",
+      "Mulut kering"
+    ],
+    "warnings": [
+      "Efek kantuk kuat. Hindari mengoperasikan mesin atau menyetir."
+    ],
+    "contraindications": [
+      "Glaukoma sudut tertutup"
+    ],
+    "storage_info": "Simpan di tempat sejuk di bawah 30°C.",
+    "bpom_registration": "DTL7204501910A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "kurang_jelas",
+    "readability_label": "Label Kurang Jelas / Perlu Verifikasi",
+    "is_safe_to_consume": false,
+    "risk_level": "Sedang",
+    "confidence_percentage": 76,
+    "status": "yellow",
+    "status_id": "Perhatian Khusus",
+    "status_emoji": "🟡",
+    "status_keamanan": "PERLU HATI-HATI",
+    "confidence_score": 75.5,
+    "nama_produk": "CTM (Chlorpheniramine Maleate) 4mg",
+    "golongan_bpom": "Obat Bebas Terbatas (Biru)",
+    "kekuatan_dosis": "4 mg per tablet",
+    "bentuk_sediaan": "Tablet",
+    "nomor_registrasi_bpom": "DTL7204501910A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Meredakan alergi, bersin, hidung berair, biduran, dan gatal kulit.",
+    "aturan_penggunaan": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Maksimal 24mg/hari.",
+    "kandungan_zat_aktif": "Chlorpheniramine Maleate",
+    "informasi_penyimpanan": "Simpan di tempat sejuk di bawah 30°C.",
+    "peringatan_keselamatan": "Efek kantuk kuat. Hindari mengoperasikan mesin atau menyetir.",
+    "shelf_life_note": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+    "recommendation": "Perhatikan petunjuk penggunaan pada brosur kemasan atau konsultasikan ke apoteker/dokter untuk memastikan takaran dosis yang tepat bagi kondisi Anda.",
+    "ocr_confidence": 0.92,
+    "match_confidence": 0.76,
+    "overall_confidence": 0.76,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "ctm",
+      "nama_obat": "CTM (Chlorpheniramine Maleate) 4mg",
+      "kategori_penyakit": "Alergi & Kulit",
+      "status_bpom": "Obat Bebas Terbatas",
+      "merk": "CTM (Chlorpheniramine Maleate) 4mg, CTM Generik, Pehachlor",
+      "sediaan": "Tablet",
+      "zat_aktif": "Chlorpheniramine Maleate",
+      "indikasi_kegunaan": "Meredakan alergi, bersin, hidung berair, biduran, dan gatal kulit.",
+      "detail_lengkap": {
+        "dosis": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Maksimal 24mg/hari.",
+        "aturan_pakai": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Maksimal 24mg/hari.",
+        "efek_samping": [
+          "Sangat mengantuk",
+          "Mulut kering"
+        ],
+        "kontraindikasi": [
+          "Glaukoma sudut tertutup"
+        ],
+        "peringatan": [
+          "Efek kantuk kuat. Hindari mengoperasikan mesin atau menyetir."
+        ],
+        "cara_penyimpanan": "Simpan di tempat sejuk di bawah 30°C.",
+        "nomor_bpom": "DTL7204501910A1"
+      },
+      "name": "CTM (Chlorpheniramine Maleate) 4mg",
+      "medicine_name": "CTM (Chlorpheniramine Maleate) 4mg",
+      "generic_name": "Chlorpheniramine Maleate",
+      "category": "Alergi & Gatal",
+      "categoryLabel": "Alergi & Kulit",
+      "category_icon": "🌿",
+      "bpom_class": "Obat Bebas Terbatas (Biru)",
+      "brand_names": [
+        "CTM (Chlorpheniramine Maleate) 4mg",
+        "CTM Generik",
+        "Pehachlor"
+      ],
+      "dosage_strength": "4 mg per tablet",
+      "dosage_form": "Tablet",
+      "dosage_and_forms": "Tablet",
+      "indications": "Meredakan alergi, bersin, hidung berair, biduran, dan gatal kulit.",
+      "purpose": "Meredakan alergi, bersin, hidung berair, biduran, dan gatal kulit.",
+      "usage": "Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Maksimal 24mg/hari.",
+      "ingredients": [
+        "Chlorpheniramine Maleate"
+      ],
+      "side_effects": [
+        "Sangat mengantuk",
+        "Mulut kering"
+      ],
+      "warnings": [
+        "Efek kantuk kuat. Hindari mengoperasikan mesin atau menyetir."
+      ],
+      "contraindications": [
+        "Glaukoma sudut tertutup"
+      ],
+      "storage_info": "Simpan di tempat sejuk di bawah 30°C.",
+      "bpom_registration": "DTL7204501910A1",
+      "aliases": [
+        "ctm",
+        "chlorpheniramine",
+        "chlorpheniramine maleate",
+        "pehachlor"
+      ],
+      "common_misspellings": [],
+      "normalized_name": "ctmchlorpheniraminemaleate4mg",
+      "normalized_generic": "chlorpheniraminemaleate"
+    },
+    "extracted_text": "uitraf\nAcrtaminophen\nPF\nPhrnyiephrine Hydrochiorida\nChiorphaniramine Maleate",
+    "alternative_suggestions": [
+      {
+        "medicine_name": "Alermax",
+        "generic_name": "Chlorpheniramine maleate",
+        "category": "Antihistamin",
+        "confidence_score": 74.1,
+        "dosage_and_forms": "Tablet",
+        "indications": "Meredakan gejala alergi"
+      },
+      {
+        "medicine_name": "Ultraflu",
+        "generic_name": "Ultraflu",
+        "category": "Obat demam dan flu",
+        "confidence_score": 72.6,
+        "dosage_and_forms": "Kaplet",
+        "indications": "Meringankan gejala flu"
+      },
+      {
+        "medicine_name": "Paracetamol 500mg",
+        "generic_name": "Paracetamol (Asetaminofen)",
+        "category": "Demam & Nyeri",
+        "confidence_score": 71.5,
+        "dosage_and_forms": "Tablet / Kaplet / Sirup",
+        "indications": "Meredakan demam, sakit kepala, sakit gigi, dan nyeri ringan hingga sedang."
+      }
+    ],
+    "retake_prompt": "Hasil pemindaian teridentifikasi sebagai 'CTM (Chlorpheniramine Maleate) 4mg' dengan tingkat keyakinan 75.5%. Jika nama tersebut kurang tepat, periksa 3 saran obat alternatif di bawah atau ambil foto ulang kemasan dengan posisi lebih jelas.",
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "Phrnyiephrine Hydrochiorida",
+        "confidence": 0.83,
+        "bbox": [
+          818,
+          317,
+          390,
+          51
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "Chiorphaniramine Maleate",
+        "confidence": 0.84,
+        "bbox": [
+          832,
+          340,
+          359,
+          50
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "Acrtaminophen",
+        "confidence": 0.82,
+        "bbox": [
+          909,
+          300,
+          219,
+          39
+        ]
+      },
+      {
+        "type": "primary_brand_header",
+        "text": "uitraf",
+        "confidence": 0.62,
+        "bbox": [
+          937,
+          251,
+          158,
+          40
+        ]
+      },
+      {
+        "type": "body_metadata",
+        "text": "PF",
+        "confidence": 0.5,
+        "bbox": [
+          1083,
+          294,
+          26,
+          15
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "yellow",
+      "status_id": "Perhatian Khusus",
+      "status_emoji": "🟡",
+      "headline": "Perhatian: Terdapat hal yang perlu dievaluasi lebih lanjut sebelum konsumsi.",
+      "confidence_percentage": 76,
+      "image_quality_score": 87,
+      "identity_decision": "Ambiguous Match",
+      "is_officially_verified": false,
+      "critical_risks": [],
+      "caution_warnings": [],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 87,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "UNVERIFIED",
+          "decision": "Ambiguous Match",
+          "confidence": 76,
+          "detail": "Belum terverifikasi sempurna dengan katalog resmi"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-14T16:37:00.718069+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
     "scan_id": "dbbaf810-4a7a-4514-be7c-3afd0545d44f",
     "user_id": null,
     "user_name": null,

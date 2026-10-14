@@ -122,16 +122,16 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
         'relative flex items-center justify-between px-3.5 py-3 rounded-2xl mx-3 my-1',
         'text-xs transition-all duration-180 group',
         isActive
-          ? 'bg-[#0284c7] text-white shadow-md shadow-sky-500/25 font-extrabold dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/20'
+          ? 'bg-[#0284c7] text-white shadow-md shadow-sky-500/25 font-extrabold dark:bg-[#10b981] dark:text-[#0f172a] dark:shadow-[#10b981]/20'
           : 'text-slate-800 hover:text-slate-950 hover:bg-slate-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/[0.06] font-bold',
       ].join(' ')}
     >
       <div className="flex items-center gap-3 min-w-0">
-        <span className={isActive ? 'text-white' : 'text-slate-600 group-hover:text-slate-950 dark:text-neutral-400 dark:group-hover:text-white'}>
+        <span className={isActive ? 'text-white dark:text-[#0f172a]' : 'text-slate-600 group-hover:text-slate-950 dark:text-neutral-400 dark:group-hover:text-white'}>
           <Icon />
         </span>
         {!collapsed && (
-          <span className={`truncate ${isActive ? 'text-white font-black' : 'text-slate-800 group-hover:text-slate-950 dark:text-neutral-200 dark:group-hover:text-white font-bold'}`}>
+          <span className={`truncate ${isActive ? 'text-white dark:text-[#0f172a] font-black' : 'text-slate-800 group-hover:text-slate-950 dark:text-neutral-200 dark:group-hover:text-white font-bold'}`}>
             {label}
           </span>
         )}
@@ -140,7 +140,7 @@ function NavLink({ href, label, badge, Icon, collapsed, onClick }) {
       {!collapsed && (
         <div>
           {isActive ? (
-            <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/30 dark:bg-black/80 dark:text-[#c8f93a] dark:border-transparent">
+            <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/30 dark:bg-black/25 dark:text-[#0f172a] dark:border-black/15">
               Aktif
             </span>
           ) : badge ? (
@@ -209,14 +209,14 @@ export default function Sidebar() {
         'flex items-center border-b border-[var(--color-border)] shrink-0',
         collapsed ? 'justify-center px-0 py-4 h-16' : 'gap-3 px-5 py-4 h-16',
       ].join(' ')}>
-        <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0284c7] text-white shadow-lg shadow-sky-500/25 dark:bg-[#c8f93a] dark:text-[#0c1004] dark:shadow-[#c8f93a]/25 font-black shrink-0">
+        <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0284c7] text-white shadow-lg shadow-sky-500/25 dark:bg-[#10b981] dark:text-[#0f172a] dark:shadow-[#10b981]/25 font-black shrink-0">
           <ShieldIcon />
         </div>
         {!collapsed && (
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="text-[var(--color-text-primary)] font-black text-base tracking-tight truncate">MedikaGuard</span>
-              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#c8f93a]/15 dark:text-[#c8f93a] dark:border-[#c8f93a]/30">ID</span>
+              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#f1f5f9] text-[#0f172a] border border-[#cbd5e1] dark:bg-[#10b981]/15 dark:text-[#10b981] dark:border-[#10b981]/30">ID</span>
             </div>
             <p className="text-[var(--color-text-muted)] text-[10px] font-medium tracking-wide">Healthcare Dashboard</p>
           </div>

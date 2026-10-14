@@ -56,13 +56,14 @@ export default function MedicineResultCard({
     setSpeaking(true);
   };
 
-  // State Themes
+  // State Themes with explicit Dual Encoding (colors + symbols)
   const stateThemes = {
     green: {
-      border: 'border-emerald-300 dark:border-[#c8f93a]/40',
-      bg: 'bg-emerald-50 dark:bg-[#c8f93a]/10',
-      text: 'text-emerald-900 dark:text-[#c8f93a]',
-      badge: 'bg-emerald-600 text-white dark:bg-[#c8f93a] dark:text-black font-extrabold',
+      border: 'border-emerald-300 dark:border-emerald-500/40',
+      bg: 'bg-emerald-50 dark:bg-emerald-950/25',
+      text: 'text-emerald-900 dark:text-[#10b981]',
+      badge: 'bg-emerald-700 text-white dark:bg-[#10b981] dark:text-[#0f172a] font-black',
+      symbol: '[✓]',
       title: 'Obat Terverifikasi — Layak Konsumsi Sesuai Aturan',
       sub: 'Kemasan terverifikasi valid dan tidak ditemukan konflik alergi, kontraindikasi, atau interaksi klinis berisiko pada profil Anda.',
     },
@@ -71,14 +72,16 @@ export default function MedicineResultCard({
       bg: 'bg-amber-50 dark:bg-amber-500/10',
       text: 'text-amber-950 dark:text-amber-300',
       badge: 'bg-amber-500 text-slate-950 font-black',
+      symbol: '[!]',
       title: 'Perhatian Khusus / Evaluasi Lebih Lanjut Diperlukan',
       sub: 'Terdapat catatan perhatian: golongan obat keras/resep dokter, profil medis parsial, atau potensi interaksi ringan yang perlu diperhatikan.',
     },
     red: {
-      border: 'border-rose-300 dark:border-rose-500/50',
-      bg: 'bg-rose-50 dark:bg-rose-500/15',
-      text: 'text-rose-950 dark:text-rose-300',
-      badge: 'bg-rose-600 text-white font-black',
+      border: 'border-rose-400 dark:border-red-600/50',
+      bg: 'bg-rose-50 dark:bg-red-950/40',
+      text: 'text-rose-950 dark:text-rose-200',
+      badge: 'bg-red-600 text-white font-black',
+      symbol: '[⚠]',
       title: 'JANGAN KONSUMSI HINGGA RISIKO KESELAMATAN TERATASI',
       sub: 'Konflik keselamatan kritis terdeteksi: riwayat alergi obat, kontraindikasi penyakit yang Anda miliki, atau interaksi obat mayor.',
     },
@@ -87,6 +90,7 @@ export default function MedicineResultCard({
       bg: 'bg-slate-100 dark:bg-neutral-800/40',
       text: 'text-slate-900 dark:text-neutral-300',
       badge: 'bg-slate-700 text-white font-bold',
+      symbol: '[?]',
       title: 'Identitas Obat Belum Dapat Dipastikan Secara Aman',
       sub: 'Hasil pemindaian kemasan obat buram, kurang pencahayaan, atau tidak cocok dengan database resmi. Jangan mengonsumsi obat ini semata berdasarkan hasil scan.',
     },
@@ -102,8 +106,9 @@ export default function MedicineResultCard({
           <div className="flex items-center gap-3">
             <span className="text-3xl">{result.statusEmoji}</span>
             <div>
-              <span className={`text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full ${theme.badge}`}>
-                Status Evaluasi: {result.statusId}
+              <span className={`text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 ${theme.badge}`}>
+                <span>{theme.symbol}</span>
+                <span>Status Evaluasi: {result.statusId}</span>
               </span>
               <h2 className={`text-lg sm:text-xl font-black mt-1 ${theme.text}`}>
                 {theme.title}
@@ -390,7 +395,7 @@ export default function MedicineResultCard({
           </button>
           <button
             onClick={onResetScan}
-            className="px-5 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#c8f93a] dark:text-black dark:hover:bg-[#b5f524] font-black text-xs transition-all shadow-md flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] font-black text-xs transition-all shadow-md flex items-center gap-1.5"
           >
             <span>📸</span>
             <span>Scan Obat Lain</span>
@@ -406,7 +411,7 @@ export default function MedicineResultCard({
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/medicines"
-            className="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 hover:border-[#0284c7] hover:text-[#0284c7] dark:hover:border-[#c8f93a]/40 dark:hover:text-[#c8f93a] text-slate-700 dark:text-neutral-300 text-xs font-bold transition-all shadow-sm"
+            className="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 hover:border-[#0284c7] hover:text-[#0284c7] dark:hover:border-[#10b981]/40 dark:hover:text-[#10b981] text-slate-700 dark:text-neutral-300 text-xs font-bold transition-all shadow-sm"
           >
             📋 Lihat Detail di Katalog
           </Link>
