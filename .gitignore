@@ -19,3 +19,4 @@ out/
 .idea/
 .DS_Store
 .vercel/
+cloudflared.exe

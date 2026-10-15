@@ -58,9 +58,11 @@ class MetaWhatsAppService:
 
     def clean_recipient(self, phone: str) -> str:
         """Clean phone string to international format (e.g., 6281234567890)."""
-        clean = "".join(ch for ch in phone if ch.isdigit())
+        clean = "".join(ch for ch in str(phone) if ch.isdigit())
         if clean.startswith("0"):
             clean = "62" + clean[1:]
+        elif clean.startswith("8"):
+            clean = "62" + clean
         return clean
 
     async def _send_payload(self, payload: dict[str, Any]) -> dict[str, Any]:
@@ -78,8 +80,31 @@ class MetaWhatsAppService:
             body_text = interactive.get("body", {}).get("text", "")
             footer_text = interactive.get("footer", {}).get("text", "")
             buttons = interactive.get("action", {}).get("buttons", [])
-            btn_options = "\n".join([f"👉 {b.get('reply', {}).get('title')}" for b in buttons])
-            text_content = f"*{header_text}*\n\n{body_text}\n\n*PILIHAN:*\n{btn_options}\n\n_{footer_text}_"
+
+            # Format interaktif respons cepat nomor untuk WhatsApp
+            btn_lines = []
+            for idx, b in enumerate(buttons, start=1):
+                title = b.get('reply', {}).get('title', '')
+                b_id = b.get('reply', {}).get('id', '')
+                if ":15" in b_id:
+                    btn_lines.append(f"1️⃣ Ketik *15* untuk *{title}*")
+                elif ":30" in b_id:
+                    btn_lines.append(f"2️⃣ Ketik *30* untuk *{title}*")
+                elif "ACT_SKIP" in b_id:
+                    btn_lines.append(f"3️⃣ Ketik *3* atau *lewati* untuk *{title}*")
+                else:
+                    btn_lines.append(f"{idx}️⃣ Ketik *{idx}* untuk *{title}*")
+
+            btn_options = "\n".join(btn_lines) if btn_lines else "1️⃣ Ketik *1* untuk *✅ Ya, Sudah*\n2️⃣ Ketik *2* untuk *❌ Belum*"
+
+            text_content = (
+                f"{body_text}\n\n"
+                f"━━━━━━━━━━━━━━━━━━━━\n"
+                f"👉 *PILIH CARA MENJAWAB:*\n"
+                f"{btn_options}\n"
+                f"━━━━━━━━━━━━━━━━━━━━\n"
+                f"💡 _Cukup ketik angka pilihan atau balas kata seperti *\"sudah\"*, *\"belum\"*, *\"tunda 15 menit\"*._"
+            )
 
         wa_link = f"https://wa.me/{recipient}?text={urllib.parse.quote(text_content)}" if recipient and text_content else ""
 
@@ -231,20 +256,22 @@ class MetaWhatsAppService:
         instructions: Optional[str] = None
     ) -> dict[str, Any]:
         """
-        Send H-10 Minutes Preparation Reminder directly to patient's WhatsApp.
+        Tahap 1: Pre-Medication Reminder (T - 10 Menit)
+        Template:
+        🔔 [PharmaShield Reminder]
+        Halo! Mengingatkan 10 menit lagi adalah waktunya Anda minum obat:
+        💊 *[Nama Obat]* - [Dosis, misal: 1 Tablet]
+        ⏰ Waktu: Pukul [Jam:Menit] WIB
+
+        Silakan siapkan air minum dan obat Anda dari sekarang!
         """
-        inst_text = f"\n📝 *Aturan:* {instructions}" if instructions else ""
+        inst_text = f" ({instructions})" if instructions else ""
         text = (
-            f"⏰ *Pengingat Minum Obat (10 Menit Lagi)*\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"Halo *{patient_name}*,\n"
-            f"10 menit lagi ({scheduled_time_str} WIB) adalah jadwal minum obat:\n\n"
-            f"💊 *{medication_name}*\n"
-            f"⚖️ *Dosis:* {dosage}{inst_text}\n\n"
-            f"Mohon siapkan obat dan air minum Anda sekarang ya. "
-            f"Pesan pengingat akan dikirim saat jam minum obat tiba.\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"_Layanan Pengingat Pasien MedikaGuard_"
+            f"🔔 [PharmaShield Reminder]\n"
+            f"Halo! Mengingatkan 10 menit lagi adalah waktunya Anda minum obat:\n"
+            f"💊 *{medication_name}* - {dosage}{inst_text}\n"
+            f"⏰ Waktu: Pukul {scheduled_time_str} WIB\n\n"
+            f"Silakan siapkan air minum dan obat Anda dari sekarang!"
         )
         return await self.send_text_message(to_phone, text)
 
@@ -259,19 +286,98 @@ class MetaWhatsAppService:
         patient_name: str,
         medication_name: str,
         dosage: str,
-        instructions: Optional[str] = None
+        instructions: Optional[str] = None,
+        image_url: Optional[str] = None,
+        scheduled_time_str: Optional[str] = None
     ) -> dict[str, Any]:
         """
-        Stage 3: Send H-0 On-Time Interactive Message with [Ya, Sudah Minum] & [Belum] reply buttons.
+        Tahap 2: Main Execution & Confirmation (Tepat pada Jamnya)
+        Template:
+        ⏰ [WAKTUNYA MINUM OBAT]
+        Halo, sekarang sudah pukul [Jam:Menit] WIB.
+        Waktunya meminum obat: *[Nama Obat]* ([Dosis]).
+
+        Apakah Anda sudah meminum obat ini?
+        Buttons: [ ✅ Ya, Sudah ] | [ ❌ Belum ]
+        """
+        recipient = self.clean_recipient(to_phone)
+        from datetime import timezone, timedelta, datetime
+        wib = timezone(timedelta(hours=7))
+        time_display = scheduled_time_str or datetime.now(wib).strftime("%H:%M")
+        inst_text = f" - {instructions}" if instructions else ""
+
+        body_text = (
+            f"⏰ [WAKTUNYA MINUM OBAT]\n"
+            f"Halo, sekarang sudah pukul {time_display} WIB.\n"
+            f"Waktunya meminum obat: *{medication_name}* ({dosage}{inst_text}).\n\n"
+            f"Apakah Anda sudah meminum obat ini?"
+        )
+
+        header_dict: dict[str, Any] = {
+            "type": "text",
+            "text": "Waktunya Minum Obat 💊"
+        }
+        if image_url and image_url.startswith("http"):
+            header_dict = {
+                "type": "image",
+                "image": {"link": image_url}
+            }
+
+        payload = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": recipient,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "header": header_dict,
+                "body": {
+                    "text": body_text
+                },
+                "footer": {
+                    "text": "Pilih salah satu tombol di bawah:"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": f"ACT_TAKEN:{log_id}",
+                                "title": "✅ Ya, Sudah"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": f"ACT_NOT_YET:{log_id}",
+                                "title": "❌ Belum"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+        return await self._send_payload(payload)
+
+    async def send_snooze_options_buttons(
+        self,
+        to_phone: str,
+        log_id: str,
+        medication_name: str
+    ) -> dict[str, Any]:
+        """
+        Skenario B: Opsi tunda saat user klik [ ❌ Belum ]
+        Template:
+        ⚠️ Baik, pengingat dicatat bahwa Anda belum meminum obat *[Nama Obat]*.
+
+        Ingin kami ingatkan kembali kapan?
+        Buttons: [ ⏱️ Tunda 15 Menit ] | [ ⏱️ Tunda 30 Menit ] | [ 🚫 Lewati Dosis Ini ]
         """
         recipient = self.clean_recipient(to_phone)
         body_text = (
-            f"Halo *{patient_name}*, tepat saatnya minum obat *{medication_name}* ({dosage})."
+            f"⚠️ Baik, pengingat dicatat bahwa Anda belum meminum obat *{medication_name}*.\n\n"
+            f"Ingin kami ingatkan kembali kapan?"
         )
-        if instructions:
-            body_text += f"\n📝 Aturan: {instructions}"
-        body_text += "\n\nApakah obat sudah diminum sekarang?"
-
         payload = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -281,28 +387,35 @@ class MetaWhatsAppService:
                 "type": "button",
                 "header": {
                     "type": "text",
-                    "text": "Waktunya Minum Obat 💊"
+                    "text": "Tunda Pengingat Obat ⏰"
                 },
                 "body": {
                     "text": body_text
                 },
                 "footer": {
-                    "text": "Pilih respon di bawah ini:"
+                    "text": "Pilih opsi durasi tunda:"
                 },
                 "action": {
                     "buttons": [
                         {
                             "type": "reply",
                             "reply": {
-                                "id": f"BTN_ONTIME_TAKEN:{log_id}",
-                                "title": "Ya, Sudah Minum"
+                                "id": f"ACT_SNOOZE_FIXED:{log_id}:15",
+                                "title": "⏱️ Tunda 15 Menit"
                             }
                         },
                         {
                             "type": "reply",
                             "reply": {
-                                "id": f"BTN_ONTIME_NOT:{log_id}",
-                                "title": "Belum"
+                                "id": f"ACT_SNOOZE_FIXED:{log_id}:30",
+                                "title": "⏱️ Tunda 30 Menit"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": f"ACT_SKIP:{log_id}",
+                                "title": "🚫 Lewati Dosis Ini"
                             }
                         }
                     ]
@@ -366,6 +479,54 @@ class MetaWhatsAppService:
             }
         }
         return await self._send_payload(payload)
+
+    async def send_caregiver_escalation_alert(
+        self,
+        caregiver_phone: str,
+        caregiver_name: str,
+        patient_name: str,
+        medication_name: str,
+        scheduled_time_str: str
+    ) -> dict[str, Any]:
+        """
+        Send escalation alert to family/caregiver WhatsApp when patient is unresponsive after 30m.
+        """
+        text = (
+            f"⚠️ *PERINGATAN ESKALASI PENGINGAT OBAT*\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"Halo *{caregiver_name}* (Pendamping),\n\n"
+            f"Pasien *{patient_name}* belum mengonfirmasi jadwal minum obat:\n\n"
+            f"💊 *Obat:* {medication_name}\n"
+            f"⏰ *Jadwal Asli:* {scheduled_time_str} WIB\n"
+            f"⏳ *Status:* Belum merespons setelah 30 menit (2x pengingat terkirim).\n\n"
+            f"Mohon bantu hubungi atau ingatkan {patient_name} demi menjaga kepatuhan minum obat beliau.\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"_Layanan Pemantauan Pasien MedikaGuard_"
+        )
+        return await self.send_text_message(caregiver_phone, text)
+
+    async def send_refill_alert(
+        self,
+        to_phone: str,
+        patient_name: str,
+        medication_name: str,
+        remaining_stock: int,
+        days_left: int
+    ) -> dict[str, Any]:
+        """
+        Send automatic refill alert when remaining medication stock is <= 3 days.
+        """
+        text = (
+            f"📦 *PERINGATAN SISA STOK OBAT*\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"Halo *{patient_name}*,\n"
+            f"Stok obat *{medication_name}* Anda saat ini tersisa *{remaining_stock} tablet* "
+            f"(diperkirakan cukup untuk *{days_left} hari ke depan*).\n\n"
+            f"💡 *Saran:* Segera lakukan penebusan resep atau hubungi apotek/klinik langganan agar pengobatan tidak terputus.\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"_Layanan Inventaris Obat MedikaGuard_"
+        )
+        return await self.send_text_message(to_phone, text)
 
 
 meta_wa_service = MetaWhatsAppService()

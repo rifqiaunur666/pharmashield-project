@@ -418,39 +418,61 @@ export default function AppHomePage() {
             </button>
           </div>
 
-          {/* Metric Cards Row */}
+          {/* Metric Cards Row — shows skeleton placeholders while loading */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <RingMetricCard
-              title="Tingkat Kelayakan"
-              percentage={safeRate}
-              label="Indeks Keamanan"
-              targetText="Kesesuaian standar klinis"
-            />
-            <MetricCard
-              title="Total Pemindaian"
-              value={metrics.total}
-              unit="kali"
-              label="Log Sistem"
-              badge="Semua Log"
-              trend="+12%"
-            />
-            <MetricCard
-              title="Aman Tanpa Risiko"
-              value={metrics.safe}
-              unit="produk"
-              label="Kategori Hijau"
-              badge="[✓] Bebas Risiko"
-              accentColor="text-emerald-700 dark:text-[#10b981]"
-            />
-            <MetricCard
-              title="Perhatian & Risiko"
-              value={metrics.warning + metrics.danger}
-              unit="produk"
-              label="Perlu Evaluasi Khusus"
-              badge="[⚠] Risiko Terdeteksi"
-              accentColor="text-red-600 dark:text-[#ef4444]"
-              isAlert={true}
-            />
+            {isHistoryLoading ? (
+              <>
+                {[0,1,2,3].map((i) => (
+                  <div key={i} className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)] p-5 shadow-sm animate-pulse">
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-2">
+                        <div className="h-2.5 w-28 rounded bg-neutral-200 dark:bg-white/10" />
+                        <div className="h-8 w-16 rounded bg-neutral-200 dark:bg-white/10" />
+                      </div>
+                      <div className="h-14 w-14 rounded-full bg-neutral-200 dark:bg-white/10" />
+                    </div>
+                    <div className="mt-4 flex justify-between border-t border-[var(--color-border)] pt-3">
+                      <div className="h-2 w-24 rounded bg-neutral-200 dark:bg-white/10" />
+                      <div className="h-4 w-14 rounded-full bg-neutral-200 dark:bg-white/10" />
+                    </div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <RingMetricCard
+                  title="Tingkat Kelayakan"
+                  percentage={safeRate}
+                  label="Indeks Keamanan"
+                  targetText="Kesesuaian standar klinis"
+                />
+                <MetricCard
+                  title="Total Pemindaian"
+                  value={metrics.total}
+                  unit="kali"
+                  label="Log Sistem"
+                  badge="Semua Log"
+                  trend="+12%"
+                />
+                <MetricCard
+                  title="Aman Tanpa Risiko"
+                  value={metrics.safe}
+                  unit="produk"
+                  label="Kategori Hijau"
+                  badge="[✓] Bebas Risiko"
+                  accentColor="text-emerald-700 dark:text-[#10b981]"
+                />
+                <MetricCard
+                  title="Perhatian & Risiko"
+                  value={metrics.warning + metrics.danger}
+                  unit="produk"
+                  label="Perlu Evaluasi Khusus"
+                  badge="[⚠] Risiko Terdeteksi"
+                  accentColor="text-red-600 dark:text-[#ef4444]"
+                  isAlert={true}
+                />
+              </>
+            )}
           </div>
 
           {/* Recent Drug Scans & History Feed */}

@@ -1,175 +1,248 @@
 {
   "patients": {
-    "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa": {
-      "id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
+    "2bb0cd0c-ff7b-4a65-9526-6fd4348b5641": {
+      "id": "2bb0cd0c-ff7b-4a65-9526-6fd4348b5641",
       "user_id": null,
-      "name": "Rifqi Aunur Rahman",
-      "whatsapp_no": "6285374497583",
+      "name": "Ibu Siti",
+      "whatsapp_no": "6289520344305",
+      "qr_code_url": null,
+      "qr_contact_name": null,
+      "caregiver_name": "Budi Santoso",
+      "caregiver_whatsapp": "628123456789",
+      "escalation_enabled": true,
       "timezone": "Asia/Jakarta",
-      "created_at": "2026-10-13T04:10:53.267787+07:00"
+      "created_at": "2026-10-15T13:47:43.154793+07:00"
     },
-    "4f40a4da-dd21-48c8-bd2c-590a96f69fee": {
-      "id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
+    "35a395c1-455d-4d39-b3c3-6efa7b2ac325": {
+      "id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
       "user_id": null,
       "name": "Rifqi Aunur Rahman",
       "whatsapp_no": "6285374497583",
       "qr_code_url": "https://wa.me/qr/S7RKLDEWBD7LK1",
       "qr_contact_name": "qii",
+      "caregiver_name": null,
+      "caregiver_whatsapp": null,
+      "escalation_enabled": true,
       "timezone": "Asia/Jakarta",
-      "created_at": "2026-10-13T19:57:06.059369+07:00"
-    },
-    "2fffaca4-6a0c-4bd9-8ab4-ab4fca1a8533": {
-      "id": "2fffaca4-6a0c-4bd9-8ab4-ab4fca1a8533",
-      "user_id": null,
-      "name": "Rifqi Aunur Rahman",
-      "whatsapp_no": "6285374497583",
-      "qr_code_url": null,
-      "qr_contact_name": null,
-      "timezone": "Asia/Jakarta",
-      "created_at": "2026-10-13T21:53:11.365504+07:00"
-    },
-    "de0a7849-5d57-444c-991e-eda9903d7e3c": {
-      "id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
-      "user_id": null,
-      "name": "Aunur Rahman",
-      "whatsapp_no": "6289520344305",
-      "qr_code_url": null,
-      "qr_contact_name": null,
-      "timezone": "Asia/Jakarta",
-      "created_at": "2026-10-13T21:58:59.008910+07:00"
-    },
-    "33d62c9c-6020-4855-b6fd-2d29d210aa62": {
-      "id": "33d62c9c-6020-4855-b6fd-2d29d210aa62",
-      "user_id": null,
-      "name": "Rifqi Aunur",
-      "whatsapp_no": "6285374497583",
-      "qr_code_url": "https://wa.me/qr/CK6UCSGDWXM7P1",
-      "qr_contact_name": "WhatsApp dan menambahkan Anda",
-      "timezone": "Asia/Jakarta",
-      "created_at": "2026-10-13T22:02:56.698981+07:00"
+      "created_at": "2026-10-15T13:52:17.323837+07:00"
     }
   },
   "medications": {
-    "12370940-1227-46e8-8726-26ffb368809d": {
-      "id": "12370940-1227-46e8-8726-26ffb368809d",
-      "patient_id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
-      "name": "ultralflu",
-      "dosage": "1",
+    "3c73bcad-c7f3-4c64-9a7a-f896247d0f49": {
+      "id": "3c73bcad-c7f3-4c64-9a7a-f896247d0f49",
+      "patient_id": "2bb0cd0c-ff7b-4a65-9526-6fd4348b5641",
+      "name": "Amlodipine",
+      "dosage": "5 mg - 1 Tablet",
       "instructions": "Sesudah makan",
-      "start_date": "2026-10-13",
+      "start_date": "2026-10-15",
       "duration_days": 1,
+      "stock_quantity": 29,
+      "daily_dose_count": 2,
+      "refill_threshold_days": 3,
+      "image_url": null,
       "is_active": true,
-      "created_at": "2026-10-13T04:11:26.394801+07:00",
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T13:47:43.155242+07:00",
       "schedule": {
-        "id": "65eeb295-6b2b-4cd1-9ea2-61228f71e01d",
+        "id": "4ccbbed8-fff9-4fd1-8449-4fee0a7417cb",
         "type": "FIXED_TIMES",
         "interval_hours": 8,
         "target_times": [
-          "08:00",
-          "14:00",
-          "20:00"
-        ]
+          "09:15",
+          "14:30"
+        ],
+        "user_timezone": "Asia/Jakarta"
       }
     },
-    "e9fc0455-52f0-4b6b-8f54-8e3e5d7f4710": {
-      "id": "e9fc0455-52f0-4b6b-8f54-8e3e5d7f4710",
-      "patient_id": "3fc0fc5c-b597-49fa-a4ee-d5e031ef64aa",
+    "e5c22034-de4d-4e5b-91d2-26bdfb102a45": {
+      "id": "e5c22034-de4d-4e5b-91d2-26bdfb102a45",
+      "patient_id": "2bb0cd0c-ff7b-4a65-9526-6fd4348b5641",
+      "name": "Paracetamol",
+      "dosage": "500 mg",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-15",
+      "duration_days": 1,
+      "stock_quantity": 30,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
+      "is_active": true,
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T13:47:51.414549+07:00",
+      "schedule": {
+        "id": "4acffdbc-f287-449d-bae1-3837524a16fc",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "20:00"
+        ],
+        "user_timezone": "Asia/Jakarta"
+      }
+    },
+    "65e569c4-87c8-4b07-b0a5-8875f8647a9c": {
+      "id": "65e569c4-87c8-4b07-b0a5-8875f8647a9c",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
       "name": "Ultraflu",
       "dosage": "1",
       "instructions": "Sesudah makan",
-      "start_date": "2026-10-13",
-      "duration_days": 7,
+      "start_date": "2026-10-15",
+      "duration_days": 1,
+      "stock_quantity": 29,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
       "is_active": true,
-      "created_at": "2026-10-13T19:57:35.745849+07:00",
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T13:53:19.394140+07:00",
       "schedule": {
-        "id": "e1238645-3f24-4aac-b9ef-97b70c8a63ee",
+        "id": "d9d11c16-e450-4ab3-8fd1-9e86fbc6d357",
         "type": "FIXED_TIMES",
         "interval_hours": 8,
         "target_times": [
-          "08:00",
-          "14:00",
-          "20:00"
-        ]
+          "14:10"
+        ],
+        "user_timezone": "Asia/Jakarta"
       }
     },
-    "963a5744-48a6-4002-aa46-1dff8567e72c": {
-      "id": "963a5744-48a6-4002-aa46-1dff8567e72c",
-      "patient_id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
+    "3b7aed7d-01a9-4a37-b855-f559810fa3c2": {
+      "id": "3b7aed7d-01a9-4a37-b855-f559810fa3c2",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
       "name": "Ultraflu",
-      "dosage": "1",
+      "dosage": "1 Kaplet",
       "instructions": "Sesudah makan",
-      "start_date": "2026-10-13",
-      "duration_days": 7,
+      "start_date": "2026-10-15",
+      "duration_days": 1,
+      "stock_quantity": 25,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
       "is_active": true,
-      "created_at": "2026-10-13T19:58:32.972460+07:00",
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T14:19:14.124600+07:00",
       "schedule": {
-        "id": "8c096156-3893-4d5d-a1c8-1dc881b89b26",
+        "id": "75c00ccc-4d57-46ab-bfc4-6597948fc452",
         "type": "FIXED_TIMES",
         "interval_hours": 8,
         "target_times": [
-          "08:00",
-          "14:00",
-          "20:00"
-        ]
+          "14:19"
+        ],
+        "user_timezone": "Asia/Jakarta"
       }
     },
-    "0633a420-f06a-458f-acab-db56036277cd": {
-      "id": "0633a420-f06a-458f-acab-db56036277cd",
-      "patient_id": "4f40a4da-dd21-48c8-bd2c-590a96f69fee",
-      "name": "Ultraflu",
+    "48892251-1b66-4efe-8cbd-c0faf8d73f1e": {
+      "id": "48892251-1b66-4efe-8cbd-c0faf8d73f1e",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "name": "Ibu Proven",
       "dosage": "1",
       "instructions": "Sesudah makan",
-      "start_date": "2026-10-13",
+      "start_date": "2026-10-15",
       "duration_days": 1,
+      "stock_quantity": 29,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
       "is_active": true,
-      "created_at": "2026-10-13T20:33:17.342326+07:00",
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T14:28:18.520477+07:00",
       "schedule": {
-        "id": "d04f292c-f0ae-49f7-9877-bb62b527f35a",
+        "id": "4c5ee567-aeaa-496d-89e3-796033dad207",
         "type": "FIXED_TIMES",
         "interval_hours": 8,
         "target_times": [
-          "08:00"
-        ]
+          "14:40"
+        ],
+        "user_timezone": "Asia/Jakarta"
       }
     },
-    "131f031c-d3de-4f12-b387-3fde236f0e3d": {
-      "id": "131f031c-d3de-4f12-b387-3fde236f0e3d",
-      "patient_id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
-      "name": "ultraflu",
-      "dosage": "1",
+    "699a3113-de7a-4133-8068-8756cec53566": {
+      "id": "699a3113-de7a-4133-8068-8756cec53566",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "name": "Paracetamol 500mg",
+      "dosage": "1 tablet (500mg)",
       "instructions": "Sesudah makan",
-      "start_date": "2026-10-13",
+      "start_date": "2026-10-15",
       "duration_days": 1,
+      "stock_quantity": 10,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
       "is_active": true,
-      "created_at": "2026-10-13T22:03:36.854702+07:00",
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T15:44:43.123162+07:00",
       "schedule": {
-        "id": "b1c0ce0d-5945-4b45-a144-6eff17ca768e",
+        "id": "bc84cc49-785a-4d1c-93e2-2e3645ba3eb2",
         "type": "FIXED_TIMES",
         "interval_hours": 8,
         "target_times": [
-          "08:00"
-        ]
-      }
-    },
-    "7cd67628-124b-452c-b450-785122524cee": {
-      "id": "7cd67628-124b-452c-b450-785122524cee",
-      "patient_id": "de0a7849-5d57-444c-991e-eda9903d7e3c",
-      "name": "ultraflu",
-      "dosage": "1",
-      "instructions": "Sesudah makan",
-      "start_date": "2026-10-14",
-      "duration_days": 1,
-      "is_active": true,
-      "created_at": "2026-10-14T08:05:04.589705+07:00",
-      "schedule": {
-        "id": "d359fec8-d848-4ae2-b528-9c1f45d742ec",
-        "type": "FIXED_TIMES",
-        "interval_hours": 8,
-        "target_times": [
-          "08:00"
-        ]
+          "15:46"
+        ],
+        "user_timezone": "Asia/Jakarta"
       }
     }
   },
-  "logs": {}
+  "logs": {
+    "62dff136-251b-488f-95c6-212d1c24a846": {
+      "id": "62dff136-251b-488f-95c6-212d1c24a846",
+      "medication_id": "65e569c4-87c8-4b07-b0a5-8875f8647a9c",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "user_timezone": "Asia/Jakarta",
+      "original_scheduled_at": "2026-10-15T14:10:00+07:00",
+      "scheduled_at": "2026-10-15T14:10:00+07:00",
+      "scheduled_at_utc": "2026-10-15T07:10:00+00:00",
+      "status": "TAKEN",
+      "snooze_count": 0,
+      "snoozed_until": null,
+      "skip_reason": null,
+      "reminded_10m_at": "2026-10-15T14:00:05.449752+07:00",
+      "due_sent_at": "2026-10-15T14:10:06.997833+07:00",
+      "followup_sent_at": null,
+      "caregiver_escalated_at": null,
+      "taken_at": "2026-10-15T14:14:21.426876+07:00",
+      "actual_taken_at": "2026-10-15T14:14:21.426876+07:00",
+      "created_at": "2026-10-15T13:53:19.395713+07:00",
+      "updated_at": "2026-10-15T14:14:21.426876+07:00"
+    },
+    "9c90fdef-2d9d-43aa-bfca-6bcff4f006fc": {
+      "id": "9c90fdef-2d9d-43aa-bfca-6bcff4f006fc",
+      "medication_id": "48892251-1b66-4efe-8cbd-c0faf8d73f1e",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "user_timezone": "Asia/Jakarta",
+      "original_scheduled_at": "2026-10-15T14:40:00+07:00",
+      "scheduled_at": "2026-10-15T14:40:00+07:00",
+      "scheduled_at_utc": "2026-10-15T07:40:00+00:00",
+      "status": "TAKEN",
+      "snooze_count": 0,
+      "snoozed_until": null,
+      "skip_reason": null,
+      "reminded_10m_at": "2026-10-15T14:30:19.491752+07:00",
+      "due_sent_at": "2026-10-15T14:40:26.453780+07:00",
+      "followup_sent_at": null,
+      "caregiver_escalated_at": null,
+      "taken_at": "2026-10-15T14:40:41.309601+07:00",
+      "actual_taken_at": "2026-10-15T14:40:41.309601+07:00",
+      "created_at": "2026-10-15T14:28:18.521459+07:00",
+      "updated_at": "2026-10-15T14:40:41.309601+07:00"
+    },
+    "3b8bac59-ae26-4a17-90e3-733719d07d45": {
+      "id": "3b8bac59-ae26-4a17-90e3-733719d07d45",
+      "medication_id": "699a3113-de7a-4133-8068-8756cec53566",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "user_timezone": "Asia/Jakarta",
+      "original_scheduled_at": "2026-10-15T15:46:00+07:00",
+      "scheduled_at": "2026-10-15T15:46:00+07:00",
+      "scheduled_at_utc": "2026-10-15T08:46:00+00:00",
+      "status": "DELAYED",
+      "snooze_count": 0,
+      "snoozed_until": null,
+      "skip_reason": null,
+      "reminded_10m_at": "2026-10-15T15:44:57.864765+07:00",
+      "due_sent_at": "2026-10-15T15:46:01.670013+07:00",
+      "followup_sent_at": "2026-10-15T16:01:01.378215+07:00",
+      "caregiver_escalated_at": null,
+      "taken_at": null,
+      "actual_taken_at": null,
+      "created_at": "2026-10-15T15:44:43.127889+07:00",
+      "updated_at": "2026-10-15T16:01:01.378215+07:00"
+    }
+  }
 }

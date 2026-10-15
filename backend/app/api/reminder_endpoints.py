@@ -40,6 +40,9 @@ class CreatePatientRequest(BaseModel):
     whatsapp_no: Optional[str] = Field(None, example="6281234567890")
     qr_code_url: Optional[str] = None
     qr_contact_name: Optional[str] = None
+    caregiver_name: Optional[str] = None
+    caregiver_whatsapp: Optional[str] = None
+    escalation_enabled: bool = True
     user_id: Optional[str] = None
 
 
@@ -53,10 +56,19 @@ class CreateMedicationRequest(BaseModel):
     interval_hours: int = Field(8, ge=1, le=24)
     target_times: Optional[list[str]] = Field(default_factory=lambda: ["08:00", "14:00", "20:00"])
     start_date: Optional[str] = None  # YYYY-MM-DD
+    stock_quantity: int = Field(30, ge=1, le=1000)
+    daily_dose_count: Optional[int] = Field(None, ge=1, le=24)
+    refill_threshold_days: int = Field(3, ge=1, le=30)
+    image_url: Optional[str] = None
 
 
 class ManualSimulateActionRequest(BaseModel):
-    button_id: str = Field(..., example="BTN_ONTIME_TAKEN:log_id")
+    button_id: str = Field(..., example="ACT_TAKEN:log_id")
+
+
+class ManualSimulateTextRequest(BaseModel):
+    phone: str = Field(..., example="6281234567890")
+    text: str = Field(..., example="tunda 45 menit")
 
 
 # ─── REST Endpoints ──────────────────────────────────────────────────────────
@@ -90,7 +102,10 @@ async def create_patient(payload: CreatePatientRequest):
         whatsapp_no=payload.whatsapp_no or "",
         user_id=payload.user_id,
         qr_code_url=payload.qr_code_url,
-        qr_contact_name=payload.qr_contact_name
+        qr_contact_name=payload.qr_contact_name,
+        caregiver_name=payload.caregiver_name,
+        caregiver_whatsapp=payload.caregiver_whatsapp,
+        escalation_enabled=payload.escalation_enabled,
     )
     return {"success": True, "patient": patient}
 
@@ -113,7 +128,11 @@ async def create_medication(payload: CreateMedicationRequest):
             schedule_type=payload.schedule_type,
             interval_hours=payload.interval_hours,
             target_times=payload.target_times,
-            start_date_str=payload.start_date
+            start_date_str=payload.start_date,
+            stock_quantity=payload.stock_quantity,
+            daily_dose_count=payload.daily_dose_count,
+            refill_threshold_days=payload.refill_threshold_days,
+            image_url=payload.image_url,
         )
         patient = reminder_engine.get_patient(payload.patient_id)
         wa_link = None
@@ -242,6 +261,14 @@ async def simulate_button_interaction(payload: ManualSimulateActionRequest):
     """Simulate receiving a button click from patient WhatsApp."""
     result = await reminder_engine.handle_button_interaction(payload.button_id)
     return {"success": True, "result": result}
+
+
+@router.post("/simulate-text")
+async def simulate_text_interaction(payload: ManualSimulateTextRequest):
+    """Simulate receiving a natural language custom snooze text message from patient WhatsApp."""
+    result = await reminder_engine.handle_text_interaction(payload.phone, payload.text)
+    return {"success": True, "result": result}
+
 
 
 @router.post("/trigger-due/{log_id}")
@@ -440,8 +467,74 @@ async def meta_webhook_receiver(request: Request):
                             # Handle button action in state machine
                             await reminder_engine.handle_button_interaction(button_id)
 
+                    # Check for incoming free text (Custom Snooze NLP parser)
+                    elif msg.get("type") == "text":
+                        body_text = msg.get("text", {}).get("body", "")
+                        from_phone = msg.get("from", "")
+                        if body_text and from_phone:
+                            logger.info("[MetaWebhook] Inbound text received from %s: %s", from_phone, body_text)
+                            reminder_engine.add_activity_log(
+                                event_type="META_INBOUND_TEXT",
+                                title=f"WhatsApp Inbound Text from {from_phone}",
+                                details={"from": from_phone, "text": body_text}
+                            )
+                            await reminder_engine.handle_text_interaction(from_phone, body_text)
+
     except Exception as exc:
         logger.error("[MetaWebhook] Error processing webhook event: %s", exc)
 
     # Always return 200 OK so Meta doesn't retry endlessly
     return {"status": "EVENT_RECEIVED"}
+
+
+@webhook_router.post("/fonnte")
+@webhook_router.post("/whatsapp")
+async def fonnte_webhook_receiver(request: Request):
+    """
+    Inbound webhook receiver for Fonnte WhatsApp messages.
+    Receives incoming chats from users/patients (e.g., '1', 'sudah minum', 'tunda 30 menit').
+    """
+    try:
+        sender = None
+        message = None
+
+        # 1. Try parsing JSON body first
+        try:
+            data = await request.json()
+            if isinstance(data, dict):
+                sender = data.get("sender") or data.get("from")
+                message = data.get("message") or data.get("text")
+        except Exception:
+            pass
+
+        # 2. If not found, try Form data
+        if not sender or not message:
+            try:
+                form = await request.form()
+                sender = sender or form.get("sender") or form.get("from")
+                message = message or form.get("message") or form.get("text")
+            except Exception:
+                pass
+
+        if sender and message:
+            logger.info("[FonnteWebhook] Inbound WhatsApp from %s: %s", sender, message)
+            reminder_engine.add_activity_log(
+                event_type="FONNTE_INBOUND_MSG",
+                title=f"WhatsApp Inbound dari {sender}: {message}",
+                details={"sender": str(sender), "message": str(message)}
+            )
+            result = await reminder_engine.handle_text_interaction(str(sender), str(message))
+            return {"status": True, "result": result}
+        else:
+            logger.warning("[FonnteWebhook] Received empty sender/message in payload")
+    except Exception as exc:
+        logger.error("[FonnteWebhook] Error handling webhook: %s", exc)
+
+    return {"status": True}
+
+
+@webhook_router.get("/fonnte")
+async def fonnte_webhook_test():
+    """Health check for Fonnte webhook configuration."""
+    return {"status": True, "service": "PharmaShield Fonnte Webhook Active"}
+

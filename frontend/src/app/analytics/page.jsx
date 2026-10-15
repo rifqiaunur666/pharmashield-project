@@ -6,7 +6,7 @@
  */
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { fetchHistory } from '@/lib/api';
 import { INDONESIA_MEDICINES } from '@/lib/indonesiaMedicineCatalog';
 
@@ -15,10 +15,12 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const controller = new AbortController();
     fetchHistory()
       .then((data) => setStats(data))
-      .catch((err) => console.warn(err))
+      .catch((err) => { if (err.name !== 'AbortError') console.warn(err); })
       .finally(() => setLoading(false));
+    return () => controller.abort();
   }, []);
 
   const totalScans = stats.total || stats.items?.length || 0;
@@ -30,10 +32,12 @@ export default function AnalyticsPage() {
   const warnPct = totalScans ? Math.round((warningCount / totalScans) * 100) : 12;
   const dangPct = totalScans ? Math.round((dangerCount / totalScans) * 100) : 3;
 
-  // BPOM distribution from catalog
-  const bebasCount = INDONESIA_MEDICINES.filter((m) => m.bpomClass.code === 'bebas').length;
-  const terbatasCount = INDONESIA_MEDICINES.filter((m) => m.bpomClass.code === 'bebas-terbatas').length;
-  const kerasCount = INDONESIA_MEDICINES.filter((m) => m.bpomClass.code === 'keras').length;
+  // BPOM distribution — memoized so it only computes once (catalog is static 1000+ items)
+  const { bebasCount, terbatasCount, kerasCount } = useMemo(() => ({
+    bebasCount: INDONESIA_MEDICINES.filter((m) => m.bpomClass?.code === 'bebas').length,
+    terbatasCount: INDONESIA_MEDICINES.filter((m) => m.bpomClass?.code === 'bebas-terbatas').length,
+    kerasCount: INDONESIA_MEDICINES.filter((m) => m.bpomClass?.code === 'keras').length,
+  }), []);
 
   return (
     <div className="space-y-8 animate-fade-in">

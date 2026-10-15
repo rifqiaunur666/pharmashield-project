@@ -1,5 +1,442 @@
 [
   {
+    "scan_id": "fcee6278-782b-402f-868c-1dc3c7e0cf67",
+    "user_id": null,
+    "user_name": null,
+    "scanned_at": "2026-10-14T18:34:07.699190+00:00",
+    "scanned_at_formatted": "15 October 2026 01:34 WIB",
+    "identified": true,
+    "name": "Ultraflu",
+    "medicine_name": "Ultraflu",
+    "generic_name": "Ultraflu",
+    "brand_names": [
+      "Ultraflu"
+    ],
+    "category": "Obat demam dan flu",
+    "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "dosage_strength": "Sesuai kemasan produk",
+    "dosage_form": "Kaplet",
+    "purpose": "Meringankan gejala flu",
+    "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "ingredients": [
+      "Ultraflu"
+    ],
+    "side_effects": [
+      "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+    ],
+    "warnings": [
+      "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+    ],
+    "contraindications": [
+      "Hipersensitivitas terhadap Ultraflu."
+    ],
+    "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "bpom_registration": "DTL10000847A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "valid",
+    "readability_label": "Label Valid & Terbaca Jelas",
+    "is_safe_to_consume": true,
+    "risk_level": "Rendah",
+    "confidence_percentage": 85,
+    "status": "green",
+    "status_id": "Aman Teridentifikasi",
+    "status_emoji": "🟢",
+    "status_keamanan": "AMAN",
+    "confidence_score": 85.5,
+    "nama_produk": "Ultraflu",
+    "golongan_bpom": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "kekuatan_dosis": "Sesuai kemasan produk",
+    "bentuk_sediaan": "Kaplet",
+    "nomor_registrasi_bpom": "DTL10000847A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Meringankan gejala flu",
+    "aturan_penggunaan": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "kandungan_zat_aktif": "Ultraflu",
+    "informasi_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "peringatan_keselamatan": "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:",
+    "shelf_life_note": "No identified safety concern based on the information available.",
+    "recommendation": "Produk aman dan layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera pada kemasan.",
+    "ocr_confidence": 0.84,
+    "match_confidence": 0.85,
+    "overall_confidence": 0.85,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Restorasi Ketajaman Teks (Unsharp Mask, Blur: 153.7)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "ultraflu",
+      "nama_obat": "Ultraflu",
+      "kategori_penyakit": "Demam & Nyeri",
+      "status_bpom": "Obat Bebas Terbatas",
+      "merk": "Ultraflu",
+      "sediaan": "Kaplet",
+      "zat_aktif": "Ultraflu",
+      "indikasi_kegunaan": "Meringankan gejala flu",
+      "detail_lengkap": {
+        "dosis": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "aturan_pakai": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "efek_samping": [
+          "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+        ],
+        "kontraindikasi": [
+          "Hipersensitivitas terhadap Ultraflu."
+        ],
+        "peringatan": [
+          "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+        ],
+        "cara_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+        "nomor_bpom": "DTL10000847A1"
+      },
+      "name": "Ultraflu",
+      "medicine_name": "Ultraflu",
+      "generic_name": "Ultraflu",
+      "category": "Obat demam dan flu",
+      "categoryLabel": "Demam & Nyeri",
+      "category_icon": "🌡️",
+      "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+      "brand_names": [
+        "Ultraflu"
+      ],
+      "dosage_strength": "Sesuai kemasan produk",
+      "dosage_form": "Kaplet",
+      "dosage_and_forms": "Kaplet",
+      "indications": "Meringankan gejala flu",
+      "purpose": "Meringankan gejala flu",
+      "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+      "ingredients": [
+        "Ultraflu"
+      ],
+      "side_effects": [
+        "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+      ],
+      "warnings": [
+        "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+      ],
+      "contraindications": [
+        "Hipersensitivitas terhadap Ultraflu."
+      ],
+      "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+      "bpom_registration": "DTL10000847A1",
+      "aliases": [
+        "ultraphlu",
+        "ultrafl",
+        "utraflu",
+        "ultraflu",
+        "uitrafiu",
+        "ultr4flu",
+        "u1traf1u"
+      ],
+      "common_misspellings": [
+        "u1traf1u",
+        "uitrafiu",
+        "ultr4flu",
+        "ultrafl",
+        "ultraphlu",
+        "utraflu"
+      ],
+      "normalized_name": "ultraflu",
+      "normalized_generic": "ultraflu"
+    },
+    "extracted_text": "RAT FUL\nuttraflu\naf",
+    "alternative_suggestions": [],
+    "retake_prompt": null,
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "uttraflu",
+        "confidence": 0.62,
+        "bbox": [
+          595,
+          273,
+          125,
+          36
+        ]
+      },
+      {
+        "type": "body_metadata",
+        "text": "RAT FUL",
+        "confidence": 0.57,
+        "bbox": [
+          609,
+          242,
+          88,
+          25
+        ]
+      },
+      {
+        "type": "body_metadata",
+        "text": "af",
+        "confidence": 0.52,
+        "bbox": [
+          654,
+          449,
+          53,
+          22
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "green",
+      "status_id": "Aman Teridentifikasi",
+      "status_emoji": "🟢",
+      "headline": "No identified safety concern based on the information available.",
+      "confidence_percentage": 85,
+      "image_quality_score": 80,
+      "identity_decision": "Verified Match",
+      "is_officially_verified": true,
+      "critical_risks": [],
+      "caution_warnings": [],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 80,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "VERIFIED",
+          "decision": "Verified Match",
+          "confidence": 85,
+          "detail": "Terverifikasi pada basis data obat Indonesia (Skor: 85%)"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-14T18:34:13.613466+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
+    "scan_id": "6e2fa028-0eb0-4113-b515-452c67a3875c",
+    "user_id": null,
+    "user_name": null,
+    "scanned_at": "2026-10-14T18:01:56.158661+00:00",
+    "scanned_at_formatted": "15 October 2026 01:01 WIB",
+    "identified": true,
+    "name": "Ultraflu",
+    "medicine_name": "Ultraflu",
+    "generic_name": "Ultraflu",
+    "brand_names": [
+      "Ultraflu"
+    ],
+    "category": "Obat demam dan flu",
+    "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "dosage_strength": "Sesuai kemasan produk",
+    "dosage_form": "Kaplet",
+    "purpose": "Meringankan gejala flu",
+    "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "ingredients": [
+      "Ultraflu"
+    ],
+    "side_effects": [
+      "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+    ],
+    "warnings": [
+      "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+    ],
+    "contraindications": [
+      "Hipersensitivitas terhadap Ultraflu."
+    ],
+    "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "bpom_registration": "DTL10000847A1",
+    "bpom_status": "Terverifikasi Resmi BPOM",
+    "data_source": "Basis Data Resmi Obat & BPOM Indonesia",
+    "data_updated_at": "Oktober 2026",
+    "disclaimer": "Informasi ini bersifat edukasi dan bukan pengganti konsultasi dengan dokter atau apoteker. Jangan mengubah dosis tanpa arahan profesional kesehatan.",
+    "readability_status": "valid",
+    "readability_label": "Label Valid & Terbaca Jelas",
+    "is_safe_to_consume": true,
+    "risk_level": "Rendah",
+    "confidence_percentage": 85,
+    "status": "green",
+    "status_id": "Aman Teridentifikasi",
+    "status_emoji": "🟢",
+    "status_keamanan": "AMAN",
+    "confidence_score": 85.5,
+    "nama_produk": "Ultraflu",
+    "golongan_bpom": "Obat Bebas Terbatas (Lingkaran Biru)",
+    "kekuatan_dosis": "Sesuai kemasan produk",
+    "bentuk_sediaan": "Kaplet",
+    "nomor_registrasi_bpom": "DTL10000847A1",
+    "status_registrasi": "Terverifikasi Resmi BPOM",
+    "indikasi_medis": "Meringankan gejala flu",
+    "aturan_penggunaan": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+    "kandungan_zat_aktif": "Ultraflu",
+    "informasi_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+    "peringatan_keselamatan": "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:",
+    "shelf_life_note": "No identified safety concern based on the information available.",
+    "recommendation": "Produk aman dan layak dikonsumsi sesuai indikasi dan aturan pakai yang tertera pada kemasan.",
+    "ocr_confidence": 1.0,
+    "match_confidence": 0.85,
+    "overall_confidence": 0.85,
+    "preprocessing_applied": [
+      "Decode Multi-format (JPG/PNG/WEBP)",
+      "Super-resolution Upscale (1.09x)",
+      "Konversi Grayscale",
+      "Normalisasi Pencahayaan & Reduksi Silau (Illumination Division)",
+      "Peningkatan Kontras Adaptif (CLAHE)",
+      "Pereduksi Derau (Bilateral Filter)",
+      "Thresholding Biner Adaptif"
+    ],
+    "skew_angle_corrected": 0.0,
+    "matched_drug": {
+      "id": "ultraflu",
+      "nama_obat": "Ultraflu",
+      "kategori_penyakit": "Demam & Nyeri",
+      "status_bpom": "Obat Bebas Terbatas",
+      "merk": "Ultraflu",
+      "sediaan": "Kaplet",
+      "zat_aktif": "Ultraflu",
+      "indikasi_kegunaan": "Meringankan gejala flu",
+      "detail_lengkap": {
+        "dosis": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "aturan_pakai": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+        "efek_samping": [
+          "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+        ],
+        "kontraindikasi": [
+          "Hipersensitivitas terhadap Ultraflu."
+        ],
+        "peringatan": [
+          "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+        ],
+        "cara_penyimpanan": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+        "nomor_bpom": "DTL10000847A1"
+      },
+      "name": "Ultraflu",
+      "medicine_name": "Ultraflu",
+      "generic_name": "Ultraflu",
+      "category": "Obat demam dan flu",
+      "categoryLabel": "Demam & Nyeri",
+      "category_icon": "🌡️",
+      "bpom_class": "Obat Bebas Terbatas (Lingkaran Biru)",
+      "brand_names": [
+        "Ultraflu"
+      ],
+      "dosage_strength": "Sesuai kemasan produk",
+      "dosage_form": "Kaplet",
+      "dosage_and_forms": "Kaplet",
+      "indications": "Meringankan gejala flu",
+      "purpose": "Meringankan gejala flu",
+      "usage": "Dosis Ultraflu tergantung pada usia dan jenis produk yang digunakan. Berikut ini adalah penjelasannya:",
+      "ingredients": [
+        "Ultraflu"
+      ],
+      "side_effects": [
+        "Jika dikonsumsi sesuai anjuran dokter dan petunjuk penggunaan, Ultraflu jarang menimbulkan efek samping. Namun, jika digunakan secara berlebihan, dapat muncul beberapa efek samping berikut:"
+      ],
+      "warnings": [
+        "Berikut ini adalah beberapa hal yang perlu Anda perhatikan sebelum mengonsumsi Ultraflu:"
+      ],
+      "contraindications": [
+        "Hipersensitivitas terhadap Ultraflu."
+      ],
+      "storage_info": "Simpan pada suhu ruangan di bawah 30°C, hindari kelembapan dan sinar matahari langsung.",
+      "bpom_registration": "DTL10000847A1",
+      "aliases": [
+        "ultraphlu",
+        "ultrafl",
+        "utraflu",
+        "ultraflu",
+        "uitrafiu",
+        "ultr4flu",
+        "u1traf1u"
+      ],
+      "common_misspellings": [
+        "u1traf1u",
+        "uitrafiu",
+        "ultr4flu",
+        "ultrafl",
+        "ultraphlu",
+        "utraflu"
+      ],
+      "normalized_name": "ultraflu",
+      "normalized_generic": "ultraflu"
+    },
+    "extracted_text": "ultraf",
+    "alternative_suggestions": [],
+    "retake_prompt": null,
+    "match_priority": "brand_name",
+    "applied_algorithms": [
+      "Levenshtein Distance",
+      "Jaro-Winkler Similarity",
+      "RapidFuzz Token Set Ratio",
+      "Trigram / N-gram Similarity",
+      "OCR Character Typo Normalization"
+    ],
+    "roi_regions": [
+      {
+        "type": "primary_brand_header",
+        "text": "ultraf",
+        "confidence": 0.78,
+        "bbox": [
+          773,
+          224,
+          202,
+          64
+        ]
+      }
+    ],
+    "clinical_assessment": {
+      "final_status": "green",
+      "status_id": "Aman Teridentifikasi",
+      "status_emoji": "🟢",
+      "headline": "No identified safety concern based on the information available.",
+      "confidence_percentage": 85,
+      "image_quality_score": 95,
+      "identity_decision": "Verified Match",
+      "is_officially_verified": true,
+      "critical_risks": [],
+      "caution_warnings": [],
+      "verification_checks": [
+        {
+          "layer": "Image Quality Gate",
+          "score": 95,
+          "status": "PASS",
+          "detail": "Kualitas visual memadai untuk analisis OCR"
+        },
+        {
+          "layer": "Official Reference Matching (BPOM)",
+          "status": "VERIFIED",
+          "decision": "Verified Match",
+          "confidence": 85,
+          "detail": "Terverifikasi pada basis data obat Indonesia (Skor: 85%)"
+        }
+      ],
+      "profile_completed": false,
+      "allergy_screen_passed": true,
+      "interaction_screen_passed": true,
+      "assessed_at": "2026-10-14T18:01:58.924205+00:00",
+      "limitations_notice": "Hasil skrining AI ini bukan merupakan pengganti nasihat medis profesional, resep dokter, atau konsultasi resmi dengan apoteker berlisensi."
+    },
+    "notes": [
+      "Kemasan obat dipindai: scan_packaging.jpg"
+    ]
+  },
+  {
     "scan_id": "b47de05c-6953-41e4-908f-86a1a4298ef4",
     "user_id": null,
     "user_name": null,

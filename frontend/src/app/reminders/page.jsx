@@ -221,7 +221,7 @@ export default function RemindersPage() {
   useEffect(() => {
     setMounted(true);
     loadData();
-    const interval = setInterval(loadData, 5000); // 5s auto refresh for live activity
+    const interval = setInterval(loadData, 10000); // 10s auto refresh for live activity (reduced from 5s)
     return () => clearInterval(interval);
   }, []);
 
@@ -339,10 +339,23 @@ export default function RemindersPage() {
     }
 
     try {
+      // Normalisasi input jam: dukung format 8:00, 08.00, 14.30, 9:00 tanpa reset ke 08:00
       const times = medForm.target_times_str
-        .split(',')
-        .map((t) => t.trim())
-        .filter((t) => /^([01]\d|2[0-3]):([0-5]\d)$/.test(t));
+        .split(/[,;\s]+/)
+        .map((t) => t.trim().replace('.', ':'))
+        .filter(Boolean)
+        .map((t) => {
+          const match = t.match(/^(\d{1,2}):(\d{2})$/);
+          if (match) {
+            const h = parseInt(match[1], 10);
+            const m = parseInt(match[2], 10);
+            if (h >= 0 && h < 24 && m >= 0 && m < 60) {
+              return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+            }
+          }
+          return null;
+        })
+        .filter(Boolean);
 
       const createdRes = await createReminderMedication({
         patient_id: medForm.patient_id,
@@ -352,7 +365,7 @@ export default function RemindersPage() {
         duration_days: parseInt(medForm.duration_days, 10) || 1,
         schedule_type: medForm.schedule_type,
         interval_hours: parseInt(medForm.interval_hours, 10) || 8,
-        target_times: times.length > 0 ? times : ['08:00'],
+        target_times: times.length > 0 ? times : [medForm.target_times_str.trim().padStart(5, '0')],
       });
 
       const patient = patients.find((p) => p.id === medForm.patient_id);
@@ -541,7 +554,7 @@ export default function RemindersPage() {
   // Metrics Calculation
   const metrics = useMemo(() => {
     const totalActive = logs.length;
-    const completed = logs.filter((l) => l.status === 'COMPLETED').length;
+    const completed = logs.filter((l) => l.status === 'COMPLETED' || l.status === 'TAKEN').length;
     const delayed = logs.filter((l) => l.status === 'DELAYED').length;
     const rescheduled = logs.filter((l) => l.status === 'RESCHEDULED').length;
     const onTimeRate = totalActive > 0 ? Math.round((completed / totalActive) * 100) : 100;
@@ -572,7 +585,9 @@ export default function RemindersPage() {
     // Filter by Status (10-minute warning is strictly treated as PENDING on dashboard)
     if (selectedFilter !== 'ALL') {
       list = list.filter((l) => {
-        const effectiveStatus = (l.status === 'REMINDED_10M' || l.status === 'REMINDED_15M') ? 'PENDING' : l.status;
+        const effectiveStatus = (l.status === 'REMINDED_10M' || l.status === 'REMINDED_15M')
+          ? 'PENDING'
+          : (l.status === 'TAKEN' ? 'COMPLETED' : l.status);
         return effectiveStatus === selectedFilter;
       });
     }
@@ -592,6 +607,7 @@ export default function RemindersPage() {
   const renderStatusBadge = (status) => {
     switch (status) {
       case 'COMPLETED':
+      case 'TAKEN':
         return (
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30">
             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -994,7 +1010,9 @@ export default function RemindersPage() {
                   ? (timeHorizon === 'TODAY' ? todayLogsCount : logs.length)
                   : logs.filter((l) => {
                       const matchesHorizon = timeHorizon === 'TODAY' ? l.scheduled_at?.split('T')[0] === todayStr : true;
-                      const effStatus = (l.status === 'REMINDED_10M' || l.status === 'REMINDED_15M') ? 'PENDING' : l.status;
+                      const effStatus = (l.status === 'REMINDED_10M' || l.status === 'REMINDED_15M')
+                        ? 'PENDING'
+                        : (l.status === 'TAKEN' ? 'COMPLETED' : l.status);
                       return matchesHorizon && effStatus === key;
                     }).length;
 

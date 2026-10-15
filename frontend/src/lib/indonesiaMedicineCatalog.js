@@ -2,7 +2,7 @@
  * src/lib/indonesiaMedicineCatalog.js
  * PharmaShield — Dataset Resmi & Komprehensif 1.000+ Obat Beredar di Indonesia (BPOM).
  * Sumber: Basis Data Terverifikasi Alodokter (https://www.alodokter.com/obat-a-z)
- * Total Data: 1088 Obat.
+ * Total Data: 1223 Obat.
  */
 
 export const MEDICINE_CATEGORIES = [
@@ -1506,6 +1506,58 @@ export const INDONESIA_MEDICINES = [
     ],
     "storageInfo": "Simpan di tempat sejuk di bawah 30°C.",
     "bpomRegistrationExample": "DTL0411637329A1"
+  },
+  {
+    "id": "rhinos-sr",
+    "nama_obat": "Rhinos SR",
+    "name": "Rhinos SR",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Rhinos SR",
+    "brandNames": [
+      "Rhinos SR"
+    ],
+    "sediaan": "Kapsul - Cetirizine + Pseudoephedrine",
+    "dosageForm": "Kapsul - Cetirizine + Pseudoephedrine",
+    "zat_aktif": "Cetirizine + Pseudoephedrine",
+    "activeSubstance": "Cetirizine + Pseudoephedrine",
+    "indikasi_kegunaan": "Mengatasi rinitis alergi dengan hidung tersumbat",
+    "indications": "Mengatasi rinitis alergi dengan hidung tersumbat",
+    "detail_lengkap": {
+      "dosis": "1 kapsul, 2x sehari",
+      "aturan_pakai": "1 kapsul, 2x sehari",
+      "efek_samping": [
+        "Kantuk ringan",
+        "Insomnia"
+      ],
+      "kontraindikasi": [
+        "Hipertensi berat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 kapsul, 2x sehari",
+    "sideEffects": [
+      "Kantuk ringan",
+      "Insomnia"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipertensi berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
   },
   {
     "id": "omeprazole",
@@ -60121,5 +60173,7092 @@ export const INDONESIA_MEDICINES = [
     ],
     "storageInfo": "Simpan di tempat kering dan sejuk di bawah 30°C.",
     "bpomRegistrationExample": "TR142679841"
+  },
+  {
+    "id": "paracetamol-650mg",
+    "nama_obat": "Paracetamol 650mg",
+    "name": "Paracetamol 650mg",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Paracetamol 650mg, Biogesic, Panadol Extra",
+    "brandNames": [
+      "Paracetamol 650mg",
+      "Biogesic",
+      "Panadol Extra"
+    ],
+    "sediaan": "Tablet - Paracetamol",
+    "dosageForm": "Tablet - Paracetamol",
+    "zat_aktif": "Paracetamol",
+    "activeSubstance": "Paracetamol",
+    "indikasi_kegunaan": "Meredakan demam dan nyeri ringan hingga sedang",
+    "indications": "Meredakan demam dan nyeri ringan hingga sedang",
+    "detail_lengkap": {
+      "dosis": "Dewasa: 650mg tiap 4-6 jam, maks 4g/hari",
+      "aturan_pakai": "Dewasa: 650mg tiap 4-6 jam, maks 4g/hari",
+      "efek_samping": [
+        "Mual",
+        "Gangguan hati (dosis tinggi)"
+      ],
+      "kontraindikasi": [
+        "Gangguan hati berat"
+      ],
+      "peringatan": [
+        "Jangan melebihi dosis maksimal"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Dewasa: 650mg tiap 4-6 jam, maks 4g/hari",
+    "sideEffects": [
+      "Mual",
+      "Gangguan hati (dosis tinggi)"
+    ],
+    "warnings": [
+      "Jangan melebihi dosis maksimal"
+    ],
+    "contraindications": [
+      "Gangguan hati berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "paracetamol-sirup-anak",
+    "nama_obat": "Paracetamol Sirup Anak",
+    "name": "Paracetamol Sirup Anak",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Paracetamol Sirup Anak, Pamol, Tempra, Sanmol Sirup",
+    "brandNames": [
+      "Paracetamol Sirup Anak",
+      "Pamol",
+      "Tempra",
+      "Sanmol Sirup"
+    ],
+    "sediaan": "Sirup - Paracetamol 120mg/5ml",
+    "dosageForm": "Sirup - Paracetamol 120mg/5ml",
+    "zat_aktif": "Paracetamol 120mg/5ml",
+    "activeSubstance": "Paracetamol 120mg/5ml",
+    "indikasi_kegunaan": "Meredakan demam dan nyeri pada anak",
+    "indications": "Meredakan demam dan nyeri pada anak",
+    "detail_lengkap": {
+      "dosis": "Anak 1-5 tahun: 5-10ml tiap 4-6 jam",
+      "aturan_pakai": "Anak 1-5 tahun: 5-10ml tiap 4-6 jam",
+      "efek_samping": [
+        "Reaksi alergi",
+        "Gangguan hati"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas paracetamol"
+      ],
+      "peringatan": [
+        "Tidak untuk bayi < 3 bulan tanpa saran dokter"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 1-5 tahun: 5-10ml tiap 4-6 jam",
+    "sideEffects": [
+      "Reaksi alergi",
+      "Gangguan hati"
+    ],
+    "warnings": [
+      "Tidak untuk bayi < 3 bulan tanpa saran dokter"
+    ],
+    "contraindications": [
+      "Hipersensitivitas paracetamol"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ibuprofen-200mg",
+    "nama_obat": "Ibuprofen 200mg",
+    "name": "Ibuprofen 200mg",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Ibuprofen 200mg, Advil, Proris, Ibumax",
+    "brandNames": [
+      "Ibuprofen 200mg",
+      "Advil",
+      "Proris",
+      "Ibumax"
+    ],
+    "sediaan": "Tablet - Ibuprofen",
+    "dosageForm": "Tablet - Ibuprofen",
+    "zat_aktif": "Ibuprofen",
+    "activeSubstance": "Ibuprofen",
+    "indikasi_kegunaan": "Meredakan nyeri ringan-sedang, demam, dan peradangan",
+    "indications": "Meredakan nyeri ringan-sedang, demam, dan peradangan",
+    "detail_lengkap": {
+      "dosis": "Dewasa: 200-400mg tiap 4-6 jam, maks 1200mg/hari",
+      "aturan_pakai": "Dewasa: 200-400mg tiap 4-6 jam, maks 1200mg/hari",
+      "efek_samping": [
+        "Mual",
+        "Gangguan lambung",
+        "Pusing"
+      ],
+      "kontraindikasi": [
+        "Tukak lambung aktif",
+        "Gagal ginjal"
+      ],
+      "peringatan": [
+        "Minum bersama makanan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Dewasa: 200-400mg tiap 4-6 jam, maks 1200mg/hari",
+    "sideEffects": [
+      "Mual",
+      "Gangguan lambung",
+      "Pusing"
+    ],
+    "warnings": [
+      "Minum bersama makanan"
+    ],
+    "contraindications": [
+      "Tukak lambung aktif",
+      "Gagal ginjal"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "promag-tablet",
+    "nama_obat": "Promag Tablet",
+    "name": "Promag Tablet",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Promag Tablet, Promag",
+    "brandNames": [
+      "Promag Tablet",
+      "Promag"
+    ],
+    "sediaan": "Tablet Kunyah - Hidrotalcit + Simeticone",
+    "dosageForm": "Tablet Kunyah - Hidrotalcit + Simeticone",
+    "zat_aktif": "Hidrotalcit + Simeticone",
+    "activeSubstance": "Hidrotalcit + Simeticone",
+    "indikasi_kegunaan": "Meredakan kembung, maag, dan nyeri lambung",
+    "indications": "Meredakan kembung, maag, dan nyeri lambung",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet, 3-4x sehari sebelum makan",
+      "aturan_pakai": "1-2 tablet, 3-4x sehari sebelum makan",
+      "efek_samping": [
+        "Sembelit",
+        "Diare ringan"
+      ],
+      "kontraindikasi": [
+        "Gagal ginjal berat"
+      ],
+      "peringatan": [
+        "Kunyah sebelum ditelan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet, 3-4x sehari sebelum makan",
+    "sideEffects": [
+      "Sembelit",
+      "Diare ringan"
+    ],
+    "warnings": [
+      "Kunyah sebelum ditelan"
+    ],
+    "contraindications": [
+      "Gagal ginjal berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "mylanta-suspensi",
+    "nama_obat": "Mylanta Suspensi",
+    "name": "Mylanta Suspensi",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Mylanta Suspensi, Mylanta",
+    "brandNames": [
+      "Mylanta Suspensi",
+      "Mylanta"
+    ],
+    "sediaan": "Suspensi - Aluminium Hidroksida + Magnesium Hidroksida + Simeticone",
+    "dosageForm": "Suspensi - Aluminium Hidroksida + Magnesium Hidroksida + Simeticone",
+    "zat_aktif": "Aluminium Hidroksida + Magnesium Hidroksida + Simeticone",
+    "activeSubstance": "Aluminium Hidroksida + Magnesium Hidroksida + Simeticone",
+    "indikasi_kegunaan": "Meredakan kembung, maag, dan asam lambung berlebih",
+    "indications": "Meredakan kembung, maag, dan asam lambung berlebih",
+    "detail_lengkap": {
+      "dosis": "1-2 sendok makan, 3-4x sehari 1-3 jam setelah makan",
+      "aturan_pakai": "1-2 sendok makan, 3-4x sehari 1-3 jam setelah makan",
+      "efek_samping": [
+        "Sembelit",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas komponen"
+      ],
+      "peringatan": [
+        "Kocok sebelum digunakan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 sendok makan, 3-4x sehari 1-3 jam setelah makan",
+    "sideEffects": [
+      "Sembelit",
+      "Diare"
+    ],
+    "warnings": [
+      "Kocok sebelum digunakan"
+    ],
+    "contraindications": [
+      "Hipersensitivitas komponen"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "polysilane-suspensi",
+    "nama_obat": "Polysilane Suspensi",
+    "name": "Polysilane Suspensi",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Polysilane Suspensi, Polysilane",
+    "brandNames": [
+      "Polysilane Suspensi",
+      "Polysilane"
+    ],
+    "sediaan": "Suspensi - Polydimethylsiloxane + Aluminium Hidroksida + Mg Hidroksida",
+    "dosageForm": "Suspensi - Polydimethylsiloxane + Aluminium Hidroksida + Mg Hidroksida",
+    "zat_aktif": "Polydimethylsiloxane + Aluminium Hidroksida + Mg Hidroksida",
+    "activeSubstance": "Polydimethylsiloxane + Aluminium Hidroksida + Mg Hidroksida",
+    "indikasi_kegunaan": "Meredakan kembung dan nyeri perut akibat gas berlebih",
+    "indications": "Meredakan kembung dan nyeri perut akibat gas berlebih",
+    "detail_lengkap": {
+      "dosis": "1-2 sendok makan, 3-4x sehari",
+      "aturan_pakai": "1-2 sendok makan, 3-4x sehari",
+      "efek_samping": [
+        "Sembelit ringan"
+      ],
+      "kontraindikasi": [
+        "Gangguan ginjal berat"
+      ],
+      "peringatan": [
+        "Kocok dulu"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 sendok makan, 3-4x sehari",
+    "sideEffects": [
+      "Sembelit ringan"
+    ],
+    "warnings": [
+      "Kocok dulu"
+    ],
+    "contraindications": [
+      "Gangguan ginjal berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "maag-zuur-riopan",
+    "nama_obat": "Maag Zuur Riopan",
+    "name": "Maag Zuur Riopan",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Maag Zuur Riopan, Riopan",
+    "brandNames": [
+      "Maag Zuur Riopan",
+      "Riopan"
+    ],
+    "sediaan": "Suspensi - Magaldrate",
+    "dosageForm": "Suspensi - Magaldrate",
+    "zat_aktif": "Magaldrate",
+    "activeSubstance": "Magaldrate",
+    "indikasi_kegunaan": "Meredakan kembung dan gejala maag",
+    "indications": "Meredakan kembung dan gejala maag",
+    "detail_lengkap": {
+      "dosis": "1 sendok makan, 3-4x sehari",
+      "aturan_pakai": "1 sendok makan, 3-4x sehari",
+      "efek_samping": [
+        "Sembelit"
+      ],
+      "kontraindikasi": [
+        "Hipofosfatemia berat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sendok makan, 3-4x sehari",
+    "sideEffects": [
+      "Sembelit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipofosfatemia berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vitamin-c-500mg",
+    "nama_obat": "Vitamin C 500mg",
+    "name": "Vitamin C 500mg",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vitamin C 500mg, Vitacimin, Ester-C, Enervon-C",
+    "brandNames": [
+      "Vitamin C 500mg",
+      "Vitacimin",
+      "Ester-C",
+      "Enervon-C"
+    ],
+    "sediaan": "Tablet/Tablet Hisap - Asam Askorbat",
+    "dosageForm": "Tablet/Tablet Hisap - Asam Askorbat",
+    "zat_aktif": "Asam Askorbat",
+    "activeSubstance": "Asam Askorbat",
+    "indikasi_kegunaan": "Mencegah dan mengatasi kekurangan vitamin C, meningkatkan daya tahan tubuh",
+    "indications": "Mencegah dan mengatasi kekurangan vitamin C, meningkatkan daya tahan tubuh",
+    "detail_lengkap": {
+      "dosis": "1 tablet per hari setelah makan",
+      "aturan_pakai": "1 tablet per hari setelah makan",
+      "efek_samping": [
+        "Diare (dosis tinggi)",
+        "Batu ginjal (pemakaian lama dosis tinggi)"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [
+        "Minum air yang cukup"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet per hari setelah makan",
+    "sideEffects": [
+      "Diare (dosis tinggi)",
+      "Batu ginjal (pemakaian lama dosis tinggi)"
+    ],
+    "warnings": [
+      "Minum air yang cukup"
+    ],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vitamin-c-250mg-tablet-hisap",
+    "nama_obat": "Vitamin C 250mg Tablet Hisap",
+    "name": "Vitamin C 250mg Tablet Hisap",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vitamin C 250mg Tablet Hisap, Vitacimin, CDR",
+    "brandNames": [
+      "Vitamin C 250mg Tablet Hisap",
+      "Vitacimin",
+      "CDR"
+    ],
+    "sediaan": "Tablet Hisap - Asam Askorbat 250mg",
+    "dosageForm": "Tablet Hisap - Asam Askorbat 250mg",
+    "zat_aktif": "Asam Askorbat 250mg",
+    "activeSubstance": "Asam Askorbat 250mg",
+    "indikasi_kegunaan": "Suplemen vitamin C untuk daya tahan tubuh",
+    "indications": "Suplemen vitamin C untuk daya tahan tubuh",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet per hari",
+      "aturan_pakai": "1-2 tablet per hari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet per hari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vitamin-b-kompleks",
+    "nama_obat": "Vitamin B Kompleks",
+    "name": "Vitamin B Kompleks",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vitamin B Kompleks, Neurobion, Becombion, Vitamin B Complex",
+    "brandNames": [
+      "Vitamin B Kompleks",
+      "Neurobion",
+      "Becombion",
+      "Vitamin B Complex"
+    ],
+    "sediaan": "Tablet - Vitamin B1 + B2 + B3 + B5 + B6 + B12",
+    "dosageForm": "Tablet - Vitamin B1 + B2 + B3 + B5 + B6 + B12",
+    "zat_aktif": "Vitamin B1 + B2 + B3 + B5 + B6 + B12",
+    "activeSubstance": "Vitamin B1 + B2 + B3 + B5 + B6 + B12",
+    "indikasi_kegunaan": "Mencegah dan mengatasi kekurangan vitamin B kompleks, mendukung fungsi saraf dan metabolisme",
+    "indications": "Mencegah dan mengatasi kekurangan vitamin B kompleks, mendukung fungsi saraf dan metabolisme",
+    "detail_lengkap": {
+      "dosis": "1 tablet per hari",
+      "aturan_pakai": "1 tablet per hari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet per hari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "neurobion-tablet",
+    "nama_obat": "Neurobion Tablet",
+    "name": "Neurobion Tablet",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Neurobion Tablet, Neurobion",
+    "brandNames": [
+      "Neurobion Tablet",
+      "Neurobion"
+    ],
+    "sediaan": "Tablet - Vitamin B1 100mg + B6 200mg + B12 200mcg",
+    "dosageForm": "Tablet - Vitamin B1 100mg + B6 200mg + B12 200mcg",
+    "zat_aktif": "Vitamin B1 100mg + B6 200mg + B12 200mcg",
+    "activeSubstance": "Vitamin B1 100mg + B6 200mg + B12 200mcg",
+    "indikasi_kegunaan": "Mencegah dan mengatasi neuritis perifer, kesemutan, dan nyeri saraf",
+    "indications": "Mencegah dan mengatasi neuritis perifer, kesemutan, dan nyeri saraf",
+    "detail_lengkap": {
+      "dosis": "1 tablet 3x sehari",
+      "aturan_pakai": "1 tablet 3x sehari",
+      "efek_samping": [
+        "Reaksi alergi jarang"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet 3x sehari",
+    "sideEffects": [
+      "Reaksi alergi jarang"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vitamin-e-400-iu",
+    "nama_obat": "Vitamin E 400 IU",
+    "name": "Vitamin E 400 IU",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vitamin E 400 IU, Natur-E, Evion",
+    "brandNames": [
+      "Vitamin E 400 IU",
+      "Natur-E",
+      "Evion"
+    ],
+    "sediaan": "Kapsul Lunak - Tokoferol",
+    "dosageForm": "Kapsul Lunak - Tokoferol",
+    "zat_aktif": "Tokoferol",
+    "activeSubstance": "Tokoferol",
+    "indikasi_kegunaan": "Antioksidan, mencegah kekurangan vitamin E",
+    "indications": "Antioksidan, mencegah kekurangan vitamin E",
+    "detail_lengkap": {
+      "dosis": "1 kapsul per hari",
+      "aturan_pakai": "1 kapsul per hari",
+      "efek_samping": [
+        "Gangguan lambung (dosis tinggi)"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 kapsul per hari",
+    "sideEffects": [
+      "Gangguan lambung (dosis tinggi)"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vitamin-d3-1000-iu",
+    "nama_obat": "Vitamin D3 1000 IU",
+    "name": "Vitamin D3 1000 IU",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vitamin D3 1000 IU, Vidita",
+    "brandNames": [
+      "Vitamin D3 1000 IU",
+      "Vidita"
+    ],
+    "sediaan": "Kapsul/Tablet - Kolekalsiferol",
+    "dosageForm": "Kapsul/Tablet - Kolekalsiferol",
+    "zat_aktif": "Kolekalsiferol",
+    "activeSubstance": "Kolekalsiferol",
+    "indikasi_kegunaan": "Mencegah dan mengatasi defisiensi vitamin D, mendukung kesehatan tulang",
+    "indications": "Mencegah dan mengatasi defisiensi vitamin D, mendukung kesehatan tulang",
+    "detail_lengkap": {
+      "dosis": "1 kapsul per hari",
+      "aturan_pakai": "1 kapsul per hari",
+      "efek_samping": [
+        "Hiperkalsemia (dosis sangat tinggi)"
+      ],
+      "kontraindikasi": [
+        "Hiperkalsemia"
+      ],
+      "peringatan": [
+        "Periksa kadar vitamin D secara berkala"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 kapsul per hari",
+    "sideEffects": [
+      "Hiperkalsemia (dosis sangat tinggi)"
+    ],
+    "warnings": [
+      "Periksa kadar vitamin D secara berkala"
+    ],
+    "contraindications": [
+      "Hiperkalsemia"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "kalsium-laktat-500mg",
+    "nama_obat": "Kalsium Laktat 500mg",
+    "name": "Kalsium Laktat 500mg",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Kalsium Laktat 500mg, Calnic, Kalk",
+    "brandNames": [
+      "Kalsium Laktat 500mg",
+      "Calnic",
+      "Kalk"
+    ],
+    "sediaan": "Tablet - Kalsium Laktat",
+    "dosageForm": "Tablet - Kalsium Laktat",
+    "zat_aktif": "Kalsium Laktat",
+    "activeSubstance": "Kalsium Laktat",
+    "indikasi_kegunaan": "Suplemen kalsium untuk tulang dan gigi, mencegah osteoporosis",
+    "indications": "Suplemen kalsium untuk tulang dan gigi, mencegah osteoporosis",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet per hari",
+      "aturan_pakai": "1-2 tablet per hari",
+      "efek_samping": [
+        "Sembelit",
+        "Kembung"
+      ],
+      "kontraindikasi": [
+        "Hiperkalsemia",
+        "Batu ginjal"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet per hari",
+    "sideEffects": [
+      "Sembelit",
+      "Kembung"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hiperkalsemia",
+      "Batu ginjal"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "cdr-effervescent",
+    "nama_obat": "CDR Effervescent",
+    "name": "CDR Effervescent",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "CDR Effervescent, CDR",
+    "brandNames": [
+      "CDR Effervescent",
+      "CDR"
+    ],
+    "sediaan": "Tablet Efervesen - Kalsium + Vitamin C + Vitamin D",
+    "dosageForm": "Tablet Efervesen - Kalsium + Vitamin C + Vitamin D",
+    "zat_aktif": "Kalsium + Vitamin C + Vitamin D",
+    "activeSubstance": "Kalsium + Vitamin C + Vitamin D",
+    "indikasi_kegunaan": "Suplemen kalsium dan vitamin C efervesen untuk tulang kuat",
+    "indications": "Suplemen kalsium dan vitamin C efervesen untuk tulang kuat",
+    "detail_lengkap": {
+      "dosis": "1 tablet per hari dilarutkan dalam air",
+      "aturan_pakai": "1 tablet per hari dilarutkan dalam air",
+      "efek_samping": [
+        "Kembung ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet per hari dilarutkan dalam air",
+    "sideEffects": [
+      "Kembung ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "sangobion-kapsul",
+    "nama_obat": "Sangobion Kapsul",
+    "name": "Sangobion Kapsul",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Sangobion Kapsul, Sangobion",
+    "brandNames": [
+      "Sangobion Kapsul",
+      "Sangobion"
+    ],
+    "sediaan": "Kapsul - Fe-Glukonat + Mn-Sulfat + Cu-Sulfat + Sorbitol + Vit C + Asam Folat + Vit B12",
+    "dosageForm": "Kapsul - Fe-Glukonat + Mn-Sulfat + Cu-Sulfat + Sorbitol + Vit C + Asam Folat + Vit B12",
+    "zat_aktif": "Fe-Glukonat + Mn-Sulfat + Cu-Sulfat + Sorbitol + Vit C + Asam Folat + Vit B12",
+    "activeSubstance": "Fe-Glukonat + Mn-Sulfat + Cu-Sulfat + Sorbitol + Vit C + Asam Folat + Vit B12",
+    "indikasi_kegunaan": "Mencegah dan mengatasi anemia defisiensi besi",
+    "indications": "Mencegah dan mengatasi anemia defisiensi besi",
+    "detail_lengkap": {
+      "dosis": "1 kapsul per hari",
+      "aturan_pakai": "1 kapsul per hari",
+      "efek_samping": [
+        "Tinja berwarna hitam",
+        "Sembelit",
+        "Mual"
+      ],
+      "kontraindikasi": [
+        "Hemokromatosis"
+      ],
+      "peringatan": [
+        "Minum setelah makan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 kapsul per hari",
+    "sideEffects": [
+      "Tinja berwarna hitam",
+      "Sembelit",
+      "Mual"
+    ],
+    "warnings": [
+      "Minum setelah makan"
+    ],
+    "contraindications": [
+      "Hemokromatosis"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "enervon-c-tablet",
+    "nama_obat": "Enervon-C Tablet",
+    "name": "Enervon-C Tablet",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Enervon-C Tablet, Enervon-C",
+    "brandNames": [
+      "Enervon-C Tablet",
+      "Enervon-C"
+    ],
+    "sediaan": "Tablet - Vitamin C + Vitamin B1 + B2 + B6 + B12 + Nikotinamide + Kalsium Pantotenat",
+    "dosageForm": "Tablet - Vitamin C + Vitamin B1 + B2 + B6 + B12 + Nikotinamide + Kalsium Pantotenat",
+    "zat_aktif": "Vitamin C + Vitamin B1 + B2 + B6 + B12 + Nikotinamide + Kalsium Pantotenat",
+    "activeSubstance": "Vitamin C + Vitamin B1 + B2 + B6 + B12 + Nikotinamide + Kalsium Pantotenat",
+    "indikasi_kegunaan": "Suplemen multivitamin untuk menjaga kesehatan dan daya tahan tubuh",
+    "indications": "Suplemen multivitamin untuk menjaga kesehatan dan daya tahan tubuh",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet per hari",
+      "aturan_pakai": "1-2 tablet per hari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet per hari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "elkana-sirup",
+    "nama_obat": "Elkana Sirup",
+    "name": "Elkana Sirup",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Elkana Sirup, Elkana",
+    "brandNames": [
+      "Elkana Sirup",
+      "Elkana"
+    ],
+    "sediaan": "Sirup - Vitamin + Mineral Multivitamin Anak",
+    "dosageForm": "Sirup - Vitamin + Mineral Multivitamin Anak",
+    "zat_aktif": "Vitamin + Mineral Multivitamin Anak",
+    "activeSubstance": "Vitamin + Mineral Multivitamin Anak",
+    "indikasi_kegunaan": "Suplemen multivitamin untuk pertumbuhan dan perkembangan anak",
+    "indications": "Suplemen multivitamin untuk pertumbuhan dan perkembangan anak",
+    "detail_lengkap": {
+      "dosis": "Anak 1-12 tahun: 1 sendok makan per hari",
+      "aturan_pakai": "Anak 1-12 tahun: 1 sendok makan per hari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 1-12 tahun: 1 sendok makan per hari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "scotts-emulsion",
+    "nama_obat": "Scotts Emulsion",
+    "name": "Scotts Emulsion",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Scotts Emulsion, Scott's Emulsion",
+    "brandNames": [
+      "Scotts Emulsion",
+      "Scott's Emulsion"
+    ],
+    "sediaan": "Emulsi - Minyak Ikan Cod + Vitamin A + D",
+    "dosageForm": "Emulsi - Minyak Ikan Cod + Vitamin A + D",
+    "zat_aktif": "Minyak Ikan Cod + Vitamin A + D",
+    "activeSubstance": "Minyak Ikan Cod + Vitamin A + D",
+    "indikasi_kegunaan": "Suplemen vitamin A dan D dari minyak ikan untuk pertumbuhan anak",
+    "indications": "Suplemen vitamin A dan D dari minyak ikan untuk pertumbuhan anak",
+    "detail_lengkap": {
+      "dosis": "Anak: 1 sendok makan per hari",
+      "aturan_pakai": "Anak: 1 sendok makan per hari",
+      "efek_samping": [
+        "Mual (rasa ikan)"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak: 1 sendok makan per hari",
+    "sideEffects": [
+      "Mual (rasa ikan)"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "cerebrofort-gold",
+    "nama_obat": "Cerebrofort Gold",
+    "name": "Cerebrofort Gold",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Cerebrofort Gold",
+    "brandNames": [
+      "Cerebrofort Gold"
+    ],
+    "sediaan": "Sirup - DHA + AA + Kolin + Vitamin B Kompleks",
+    "dosageForm": "Sirup - DHA + AA + Kolin + Vitamin B Kompleks",
+    "zat_aktif": "DHA + AA + Kolin + Vitamin B Kompleks",
+    "activeSubstance": "DHA + AA + Kolin + Vitamin B Kompleks",
+    "indikasi_kegunaan": "Suplemen untuk kecerdasan dan perkembangan otak anak",
+    "indications": "Suplemen untuk kecerdasan dan perkembangan otak anak",
+    "detail_lengkap": {
+      "dosis": "1-2 sendok teh per hari",
+      "aturan_pakai": "1-2 sendok teh per hari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 sendok teh per hari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "curcuma-syrup",
+    "nama_obat": "Curcuma Syrup",
+    "name": "Curcuma Syrup",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Curcuma Syrup, Curcuma Plus",
+    "brandNames": [
+      "Curcuma Syrup",
+      "Curcuma Plus"
+    ],
+    "sediaan": "Sirup - Ekstrak Temulawak + Vitamin B",
+    "dosageForm": "Sirup - Ekstrak Temulawak + Vitamin B",
+    "zat_aktif": "Ekstrak Temulawak + Vitamin B",
+    "activeSubstance": "Ekstrak Temulawak + Vitamin B",
+    "indikasi_kegunaan": "Suplemen penambah nafsu makan dan pemeliharaan kesehatan",
+    "indications": "Suplemen penambah nafsu makan dan pemeliharaan kesehatan",
+    "detail_lengkap": {
+      "dosis": "2 sendok teh, 2x sehari",
+      "aturan_pakai": "2 sendok teh, 2x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 sendok teh, 2x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "oralit-serbuk",
+    "nama_obat": "Oralit Serbuk",
+    "name": "Oralit Serbuk",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Oralit Serbuk, Oralit DOEN, Pedialyte",
+    "brandNames": [
+      "Oralit Serbuk",
+      "Oralit DOEN",
+      "Pedialyte"
+    ],
+    "sediaan": "Serbuk - Natrium Klorida + Kalium Klorida + Natrium Sitrat + Glukosa",
+    "dosageForm": "Serbuk - Natrium Klorida + Kalium Klorida + Natrium Sitrat + Glukosa",
+    "zat_aktif": "Natrium Klorida + Kalium Klorida + Natrium Sitrat + Glukosa",
+    "activeSubstance": "Natrium Klorida + Kalium Klorida + Natrium Sitrat + Glukosa",
+    "indikasi_kegunaan": "Menggantikan cairan dan elektrolit yang hilang akibat diare",
+    "indications": "Menggantikan cairan dan elektrolit yang hilang akibat diare",
+    "detail_lengkap": {
+      "dosis": "Larutkan 1 sachet dalam 200ml air matang",
+      "aturan_pakai": "Larutkan 1 sachet dalam 200ml air matang",
+      "efek_samping": [],
+      "kontraindikasi": [
+        "Ileus paralitik",
+        "Muntah persisten"
+      ],
+      "peringatan": [
+        "Minum perlahan dalam jumlah kecil"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Larutkan 1 sachet dalam 200ml air matang",
+    "sideEffects": [],
+    "warnings": [
+      "Minum perlahan dalam jumlah kecil"
+    ],
+    "contraindications": [
+      "Ileus paralitik",
+      "Muntah persisten"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "pocari-sweat-ion-supply",
+    "nama_obat": "Pocari Sweat Ion Supply",
+    "name": "Pocari Sweat Ion Supply",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Pocari Sweat Ion Supply, Pocari Sweat",
+    "brandNames": [
+      "Pocari Sweat Ion Supply",
+      "Pocari Sweat"
+    ],
+    "sediaan": "Serbuk/Minuman - Natrium + Kalium + Kalsium + Magnesium + Klorida",
+    "dosageForm": "Serbuk/Minuman - Natrium + Kalium + Kalsium + Magnesium + Klorida",
+    "zat_aktif": "Natrium + Kalium + Kalsium + Magnesium + Klorida",
+    "activeSubstance": "Natrium + Kalium + Kalsium + Magnesium + Klorida",
+    "indikasi_kegunaan": "Menggantikan ion dan cairan tubuh yang hilang",
+    "indications": "Menggantikan ion dan cairan tubuh yang hilang",
+    "detail_lengkap": {
+      "dosis": "Minum sesuai kebutuhan",
+      "aturan_pakai": "Minum sesuai kebutuhan",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Minum sesuai kebutuhan",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "tolak-angin-cair",
+    "nama_obat": "Tolak Angin Cair",
+    "name": "Tolak Angin Cair",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Tolak Angin Cair, Tolak Angin Sido Muncul",
+    "brandNames": [
+      "Tolak Angin Cair",
+      "Tolak Angin Sido Muncul"
+    ],
+    "sediaan": "Cairan - Ekstrak Jahe + Temulawak + Kayu Manis + Mint + Madu",
+    "dosageForm": "Cairan - Ekstrak Jahe + Temulawak + Kayu Manis + Mint + Madu",
+    "zat_aktif": "Ekstrak Jahe + Temulawak + Kayu Manis + Mint + Madu",
+    "activeSubstance": "Ekstrak Jahe + Temulawak + Kayu Manis + Mint + Madu",
+    "indikasi_kegunaan": "Meredakan masuk angin, mual, dan perut kembung",
+    "indications": "Meredakan masuk angin, mual, dan perut kembung",
+    "detail_lengkap": {
+      "dosis": "1 sachet, 2-3x sehari",
+      "aturan_pakai": "1 sachet, 2-3x sehari",
+      "efek_samping": [
+        "Mual ringan pada sebagian orang"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sachet, 2-3x sehari",
+    "sideEffects": [
+      "Mual ringan pada sebagian orang"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "stimuno-sirup",
+    "nama_obat": "Stimuno Sirup",
+    "name": "Stimuno Sirup",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Stimuno Sirup, Stimuno",
+    "brandNames": [
+      "Stimuno Sirup",
+      "Stimuno"
+    ],
+    "sediaan": "Sirup/Kapsul - Ekstrak Phyllanthus niruri (Meniran)",
+    "dosageForm": "Sirup/Kapsul - Ekstrak Phyllanthus niruri (Meniran)",
+    "zat_aktif": "Ekstrak Phyllanthus niruri (Meniran)",
+    "activeSubstance": "Ekstrak Phyllanthus niruri (Meniran)",
+    "indikasi_kegunaan": "Meningkatkan daya tahan tubuh dan imunitas",
+    "indications": "Meningkatkan daya tahan tubuh dan imunitas",
+    "detail_lengkap": {
+      "dosis": "2 sendok teh, 3x sehari",
+      "aturan_pakai": "2 sendok teh, 3x sehari",
+      "efek_samping": [
+        "Reaksi alergi ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 sendok teh, 3x sehari",
+    "sideEffects": [
+      "Reaksi alergi ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "diapet-nr",
+    "nama_obat": "Diapet NR",
+    "name": "Diapet NR",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Diapet NR, Diapet",
+    "brandNames": [
+      "Diapet NR",
+      "Diapet"
+    ],
+    "sediaan": "Tablet/Kapsul - Ekstrak Psidium guajava + Phyllanthus niruri",
+    "dosageForm": "Tablet/Kapsul - Ekstrak Psidium guajava + Phyllanthus niruri",
+    "zat_aktif": "Ekstrak Psidium guajava + Phyllanthus niruri",
+    "activeSubstance": "Ekstrak Psidium guajava + Phyllanthus niruri",
+    "indikasi_kegunaan": "Membantu mengatasi diare tidak spesifik",
+    "indications": "Membantu mengatasi diare tidak spesifik",
+    "detail_lengkap": {
+      "dosis": "2 kapsul, 3x sehari",
+      "aturan_pakai": "2 kapsul, 3x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 kapsul, 3x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vegeta-herbal",
+    "nama_obat": "Vegeta Herbal",
+    "name": "Vegeta Herbal",
+    "kategori_penyakit": "Herbal & Jamu",
+    "category": "herbal-jamu",
+    "categoryLabel": "Herbal & Jamu",
+    "category_icon": "🍃",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Vegeta Herbal, Vegeta",
+    "brandNames": [
+      "Vegeta Herbal",
+      "Vegeta"
+    ],
+    "sediaan": "Granul - Ekstrak Plantago ovata + Cassia angustifolia",
+    "dosageForm": "Granul - Ekstrak Plantago ovata + Cassia angustifolia",
+    "zat_aktif": "Ekstrak Plantago ovata + Cassia angustifolia",
+    "activeSubstance": "Ekstrak Plantago ovata + Cassia angustifolia",
+    "indikasi_kegunaan": "Membantu melancarkan buang air besar",
+    "indications": "Membantu melancarkan buang air besar",
+    "detail_lengkap": {
+      "dosis": "1 sachet, 1-2x sehari",
+      "aturan_pakai": "1 sachet, 1-2x sehari",
+      "efek_samping": [
+        "Kram perut ringan"
+      ],
+      "kontraindikasi": [
+        "Ileus obstruktif"
+      ],
+      "peringatan": [
+        "Minum dengan banyak air"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sachet, 1-2x sehari",
+    "sideEffects": [
+      "Kram perut ringan"
+    ],
+    "warnings": [
+      "Minum dengan banyak air"
+    ],
+    "contraindications": [
+      "Ileus obstruktif"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "laksatif-herbal-dulcolax-herbal",
+    "nama_obat": "Laksatif Herbal Dulcolax Herbal",
+    "name": "Laksatif Herbal Dulcolax Herbal",
+    "kategori_penyakit": "Herbal & Jamu",
+    "category": "herbal-jamu",
+    "categoryLabel": "Herbal & Jamu",
+    "category_icon": "🍃",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Laksatif Herbal Dulcolax Herbal, Dulcolax Herbal",
+    "brandNames": [
+      "Laksatif Herbal Dulcolax Herbal",
+      "Dulcolax Herbal"
+    ],
+    "sediaan": "Tablet - Bisakodil herbal-based",
+    "dosageForm": "Tablet - Bisakodil herbal-based",
+    "zat_aktif": "Bisakodil herbal-based",
+    "activeSubstance": "Bisakodil herbal-based",
+    "indikasi_kegunaan": "Membantu melancarkan BAB secara alami",
+    "indications": "Membantu melancarkan BAB secara alami",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet malam hari",
+      "aturan_pakai": "1-2 tablet malam hari",
+      "efek_samping": [
+        "Kram perut"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet malam hari",
+    "sideEffects": [
+      "Kram perut"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "fitolac",
+    "nama_obat": "Fitolac",
+    "name": "Fitolac",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Fitolac",
+    "brandNames": [
+      "Fitolac"
+    ],
+    "sediaan": "Kapsul - Ekstrak Daun Katuk + Torbangun",
+    "dosageForm": "Kapsul - Ekstrak Daun Katuk + Torbangun",
+    "zat_aktif": "Ekstrak Daun Katuk + Torbangun",
+    "activeSubstance": "Ekstrak Daun Katuk + Torbangun",
+    "indikasi_kegunaan": "Suplemen untuk memperlancar dan meningkatkan produksi ASI",
+    "indications": "Suplemen untuk memperlancar dan meningkatkan produksi ASI",
+    "detail_lengkap": {
+      "dosis": "1-2 kapsul, 3x sehari",
+      "aturan_pakai": "1-2 kapsul, 3x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 kapsul, 3x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "kiranti-sehat-datang-bulan",
+    "nama_obat": "Kiranti Sehat Datang Bulan",
+    "name": "Kiranti Sehat Datang Bulan",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Kiranti Sehat Datang Bulan, Kiranti",
+    "brandNames": [
+      "Kiranti Sehat Datang Bulan",
+      "Kiranti"
+    ],
+    "sediaan": "Minuman - Ekstrak Kunyit + Asam Jawa",
+    "dosageForm": "Minuman - Ekstrak Kunyit + Asam Jawa",
+    "zat_aktif": "Ekstrak Kunyit + Asam Jawa",
+    "activeSubstance": "Ekstrak Kunyit + Asam Jawa",
+    "indikasi_kegunaan": "Meredakan nyeri haid dan ketidaknyamanan saat menstruasi",
+    "indications": "Meredakan nyeri haid dan ketidaknyamanan saat menstruasi",
+    "detail_lengkap": {
+      "dosis": "1 botol per hari saat haid",
+      "aturan_pakai": "1 botol per hari saat haid",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 botol per hari saat haid",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "lasegar-herbal",
+    "nama_obat": "Lasegar Herbal",
+    "name": "Lasegar Herbal",
+    "kategori_penyakit": "Herbal & Jamu",
+    "category": "herbal-jamu",
+    "categoryLabel": "Herbal & Jamu",
+    "category_icon": "🍃",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Lasegar Herbal, Lasegar",
+    "brandNames": [
+      "Lasegar Herbal",
+      "Lasegar"
+    ],
+    "sediaan": "Tablet - Ekstrak Temulawak + Kunyit + Kayu Manis",
+    "dosageForm": "Tablet - Ekstrak Temulawak + Kunyit + Kayu Manis",
+    "zat_aktif": "Ekstrak Temulawak + Kunyit + Kayu Manis",
+    "activeSubstance": "Ekstrak Temulawak + Kunyit + Kayu Manis",
+    "indikasi_kegunaan": "Meredakan masuk angin dan meningkatkan nafsu makan",
+    "indications": "Meredakan masuk angin dan meningkatkan nafsu makan",
+    "detail_lengkap": {
+      "dosis": "2 tablet, 3x sehari",
+      "aturan_pakai": "2 tablet, 3x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 tablet, 3x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "biolacton",
+    "nama_obat": "Biolacton",
+    "name": "Biolacton",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Biolacton",
+    "brandNames": [
+      "Biolacton"
+    ],
+    "sediaan": "Kapsul - Lactobacillus acidophilus + Bifidobacterium",
+    "dosageForm": "Kapsul - Lactobacillus acidophilus + Bifidobacterium",
+    "zat_aktif": "Lactobacillus acidophilus + Bifidobacterium",
+    "activeSubstance": "Lactobacillus acidophilus + Bifidobacterium",
+    "indikasi_kegunaan": "Menjaga keseimbangan flora usus dan membantu mengatasi diare",
+    "indications": "Menjaga keseimbangan flora usus dan membantu mengatasi diare",
+    "detail_lengkap": {
+      "dosis": "1-2 kapsul per hari",
+      "aturan_pakai": "1-2 kapsul per hari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 kapsul per hari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "probiotik-lacto-b",
+    "nama_obat": "Probiotik Lacto-B",
+    "name": "Probiotik Lacto-B",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Probiotik Lacto-B, Lacto-B",
+    "brandNames": [
+      "Probiotik Lacto-B",
+      "Lacto-B"
+    ],
+    "sediaan": "Serbuk - Lactobacillus acidophilus + Bifidobacterium longum + Streptococcus thermophilus",
+    "dosageForm": "Serbuk - Lactobacillus acidophilus + Bifidobacterium longum + Streptococcus thermophilus",
+    "zat_aktif": "Lactobacillus acidophilus + Bifidobacterium longum + Streptococcus thermophilus",
+    "activeSubstance": "Lactobacillus acidophilus + Bifidobacterium longum + Streptococcus thermophilus",
+    "indikasi_kegunaan": "Membantu mengatasi diare pada anak dan menjaga kesehatan usus",
+    "indications": "Membantu mengatasi diare pada anak dan menjaga kesehatan usus",
+    "detail_lengkap": {
+      "dosis": "1 sachet, 3x sehari dicampur makanan/minuman",
+      "aturan_pakai": "1 sachet, 3x sehari dicampur makanan/minuman",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sachet, 3x sehari dicampur makanan/minuman",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "betadine-antiseptik",
+    "nama_obat": "Betadine Antiseptik",
+    "name": "Betadine Antiseptik",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Betadine Antiseptik, Betadine",
+    "brandNames": [
+      "Betadine Antiseptik",
+      "Betadine"
+    ],
+    "sediaan": "Larutan/Salep - Povidone Iodine 10%",
+    "dosageForm": "Larutan/Salep - Povidone Iodine 10%",
+    "zat_aktif": "Povidone Iodine 10%",
+    "activeSubstance": "Povidone Iodine 10%",
+    "indikasi_kegunaan": "Antiseptik untuk membersihkan luka dan mencegah infeksi",
+    "indications": "Antiseptik untuk membersihkan luka dan mencegah infeksi",
+    "detail_lengkap": {
+      "dosis": "Oleskan pada luka 1-2x sehari",
+      "aturan_pakai": "Oleskan pada luka 1-2x sehari",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Alergi yodium",
+        "Hipertiroid"
+      ],
+      "peringatan": [
+        "Hindari kontak mata"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan pada luka 1-2x sehari",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [
+      "Hindari kontak mata"
+    ],
+    "contraindications": [
+      "Alergi yodium",
+      "Hipertiroid"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "rivanol",
+    "nama_obat": "Rivanol",
+    "name": "Rivanol",
+    "kategori_penyakit": "Antiseptik & Luar",
+    "category": "antiseptik-luar",
+    "categoryLabel": "Antiseptik & Luar",
+    "category_icon": "🩹",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Rivanol",
+    "brandNames": [
+      "Rivanol"
+    ],
+    "sediaan": "Larutan - Ethacridine Laktat 0,1%",
+    "dosageForm": "Larutan - Ethacridine Laktat 0,1%",
+    "zat_aktif": "Ethacridine Laktat 0,1%",
+    "activeSubstance": "Ethacridine Laktat 0,1%",
+    "indikasi_kegunaan": "Antiseptik luka ringan dan kompres luka bernanah",
+    "indications": "Antiseptik luka ringan dan kompres luka bernanah",
+    "detail_lengkap": {
+      "dosis": "Kompres luka 2-3x sehari",
+      "aturan_pakai": "Kompres luka 2-3x sehari",
+      "efek_samping": [
+        "Iritasi kulit ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [
+        "Jangan ditelan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Kompres luka 2-3x sehari",
+    "sideEffects": [
+      "Iritasi kulit ringan"
+    ],
+    "warnings": [
+      "Jangan ditelan"
+    ],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "balsem-geliga",
+    "nama_obat": "Balsem Geliga",
+    "name": "Balsem Geliga",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Balsem Geliga, Geliga",
+    "brandNames": [
+      "Balsem Geliga",
+      "Geliga"
+    ],
+    "sediaan": "Balsem - Menthol + Methyl Salicylate + Camphor",
+    "dosageForm": "Balsem - Menthol + Methyl Salicylate + Camphor",
+    "zat_aktif": "Menthol + Methyl Salicylate + Camphor",
+    "activeSubstance": "Menthol + Methyl Salicylate + Camphor",
+    "indikasi_kegunaan": "Meredakan nyeri otot, pegal-pegal, dan masuk angin",
+    "indications": "Meredakan nyeri otot, pegal-pegal, dan masuk angin",
+    "detail_lengkap": {
+      "dosis": "Oleskan pada area yang sakit 3-4x sehari",
+      "aturan_pakai": "Oleskan pada area yang sakit 3-4x sehari",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Kulit luka"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan pada area yang sakit 3-4x sehari",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kulit luka"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "counterpain-cool",
+    "nama_obat": "Counterpain Cool",
+    "name": "Counterpain Cool",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Counterpain Cool",
+    "brandNames": [
+      "Counterpain Cool"
+    ],
+    "sediaan": "Krim - Menthol + Methyl Salicylate",
+    "dosageForm": "Krim - Menthol + Methyl Salicylate",
+    "zat_aktif": "Menthol + Methyl Salicylate",
+    "activeSubstance": "Menthol + Methyl Salicylate",
+    "indikasi_kegunaan": "Meredakan nyeri otot dan sendi",
+    "indications": "Meredakan nyeri otot dan sendi",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis 3-4x sehari",
+      "aturan_pakai": "Oleskan tipis 3-4x sehari",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Kulit luka terbuka",
+        "Alergi salisilat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis 3-4x sehari",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kulit luka terbuka",
+      "Alergi salisilat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "salonpas-patch",
+    "nama_obat": "Salonpas Patch",
+    "name": "Salonpas Patch",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Salonpas Patch, Salonpas",
+    "brandNames": [
+      "Salonpas Patch",
+      "Salonpas"
+    ],
+    "sediaan": "Plester/Patch - Methyl Salicylate + Menthol",
+    "dosageForm": "Plester/Patch - Methyl Salicylate + Menthol",
+    "zat_aktif": "Methyl Salicylate + Menthol",
+    "activeSubstance": "Methyl Salicylate + Menthol",
+    "indikasi_kegunaan": "Meredakan nyeri otot dan sendi secara topikal",
+    "indications": "Meredakan nyeri otot dan sendi secara topikal",
+    "detail_lengkap": {
+      "dosis": "Tempel 1 patch pada area nyeri, ganti tiap 8 jam",
+      "aturan_pakai": "Tempel 1 patch pada area nyeri, ganti tiap 8 jam",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Alergi aspirn/salisilat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Tempel 1 patch pada area nyeri, ganti tiap 8 jam",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Alergi aspirn/salisilat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "bio-placenta",
+    "nama_obat": "Bio Placenta",
+    "name": "Bio Placenta",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Bio Placenta",
+    "brandNames": [
+      "Bio Placenta"
+    ],
+    "sediaan": "Krim - Ekstrak Plasenta + Vitamin E",
+    "dosageForm": "Krim - Ekstrak Plasenta + Vitamin E",
+    "zat_aktif": "Ekstrak Plasenta + Vitamin E",
+    "activeSubstance": "Ekstrak Plasenta + Vitamin E",
+    "indikasi_kegunaan": "Merawat dan meremajakan kulit",
+    "indications": "Merawat dan meremajakan kulit",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis pada kulit 2x sehari",
+      "aturan_pakai": "Oleskan tipis pada kulit 2x sehari",
+      "efek_samping": [
+        "Iritasi ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis pada kulit 2x sehari",
+    "sideEffects": [
+      "Iritasi ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "insto-regular-eye-drops",
+    "nama_obat": "Insto Regular Eye Drops",
+    "name": "Insto Regular Eye Drops",
+    "kategori_penyakit": "Mata & Telinga",
+    "category": "mata-telinga",
+    "categoryLabel": "Mata & Telinga",
+    "category_icon": "👁️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Insto Regular Eye Drops, Insto",
+    "brandNames": [
+      "Insto Regular Eye Drops",
+      "Insto"
+    ],
+    "sediaan": "Tetes Mata - Tetrahidrozolin HCl + Benzalkonium Klorida",
+    "dosageForm": "Tetes Mata - Tetrahidrozolin HCl + Benzalkonium Klorida",
+    "zat_aktif": "Tetrahidrozolin HCl + Benzalkonium Klorida",
+    "activeSubstance": "Tetrahidrozolin HCl + Benzalkonium Klorida",
+    "indikasi_kegunaan": "Meredakan mata merah akibat iritasi ringan",
+    "indications": "Meredakan mata merah akibat iritasi ringan",
+    "detail_lengkap": {
+      "dosis": "1-2 tetes, 3-4x sehari",
+      "aturan_pakai": "1-2 tetes, 3-4x sehari",
+      "efek_samping": [
+        "Mata perih sementara"
+      ],
+      "kontraindikasi": [
+        "Glaukoma sudut sempit"
+      ],
+      "peringatan": [
+        "Jangan digunakan > 3 hari tanpa saran dokter"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tetes, 3-4x sehari",
+    "sideEffects": [
+      "Mata perih sementara"
+    ],
+    "warnings": [
+      "Jangan digunakan > 3 hari tanpa saran dokter"
+    ],
+    "contraindications": [
+      "Glaukoma sudut sempit"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "rohto-eye-drops",
+    "nama_obat": "Rohto Eye Drops",
+    "name": "Rohto Eye Drops",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Rohto Eye Drops, Rohto",
+    "brandNames": [
+      "Rohto Eye Drops",
+      "Rohto"
+    ],
+    "sediaan": "Tetes Mata - Menthol + Naphazoline HCl",
+    "dosageForm": "Tetes Mata - Menthol + Naphazoline HCl",
+    "zat_aktif": "Menthol + Naphazoline HCl",
+    "activeSubstance": "Menthol + Naphazoline HCl",
+    "indikasi_kegunaan": "Meredakan mata merah, gatal, dan lelah",
+    "indications": "Meredakan mata merah, gatal, dan lelah",
+    "detail_lengkap": {
+      "dosis": "1-2 tetes, 3-4x sehari",
+      "aturan_pakai": "1-2 tetes, 3-4x sehari",
+      "efek_samping": [
+        "Rasa sejuk berlebih"
+      ],
+      "kontraindikasi": [
+        "Glaukoma"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tetes, 3-4x sehari",
+    "sideEffects": [
+      "Rasa sejuk berlebih"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Glaukoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "visine-eye-drops",
+    "nama_obat": "Visine Eye Drops",
+    "name": "Visine Eye Drops",
+    "kategori_penyakit": "Mata & Telinga",
+    "category": "mata-telinga",
+    "categoryLabel": "Mata & Telinga",
+    "category_icon": "👁️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Visine Eye Drops, Visine",
+    "brandNames": [
+      "Visine Eye Drops",
+      "Visine"
+    ],
+    "sediaan": "Tetes Mata - Tetrahidrozolin HCl 0,05%",
+    "dosageForm": "Tetes Mata - Tetrahidrozolin HCl 0,05%",
+    "zat_aktif": "Tetrahidrozolin HCl 0,05%",
+    "activeSubstance": "Tetrahidrozolin HCl 0,05%",
+    "indikasi_kegunaan": "Mengatasi mata merah akibat iritasi",
+    "indications": "Mengatasi mata merah akibat iritasi",
+    "detail_lengkap": {
+      "dosis": "1-2 tetes, 3-4x sehari",
+      "aturan_pakai": "1-2 tetes, 3-4x sehari",
+      "efek_samping": [
+        "Iritasi sementara"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [
+        "Tidak untuk penggunaan jangka panjang"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tetes, 3-4x sehari",
+    "sideEffects": [
+      "Iritasi sementara"
+    ],
+    "warnings": [
+      "Tidak untuk penggunaan jangka panjang"
+    ],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "eyemo-eye-drops",
+    "nama_obat": "Eyemo Eye Drops",
+    "name": "Eyemo Eye Drops",
+    "kategori_penyakit": "Mata & Telinga",
+    "category": "mata-telinga",
+    "categoryLabel": "Mata & Telinga",
+    "category_icon": "👁️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Eyemo Eye Drops, Eyemo",
+    "brandNames": [
+      "Eyemo Eye Drops",
+      "Eyemo"
+    ],
+    "sediaan": "Tetes Mata - Tetrahidrozolin HCl",
+    "dosageForm": "Tetes Mata - Tetrahidrozolin HCl",
+    "zat_aktif": "Tetrahidrozolin HCl",
+    "activeSubstance": "Tetrahidrozolin HCl",
+    "indikasi_kegunaan": "Meredakan mata lelah dan merah",
+    "indications": "Meredakan mata lelah dan merah",
+    "detail_lengkap": {
+      "dosis": "1-2 tetes, 3-4x sehari",
+      "aturan_pakai": "1-2 tetes, 3-4x sehari",
+      "efek_samping": [
+        "Perih ringan"
+      ],
+      "kontraindikasi": [
+        "Glaukoma sudut sempit"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tetes, 3-4x sehari",
+    "sideEffects": [
+      "Perih ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Glaukoma sudut sempit"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "albothyl-konsentrat",
+    "nama_obat": "Albothyl Konsentrat",
+    "name": "Albothyl Konsentrat",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Albothyl Konsentrat, Albothyl",
+    "brandNames": [
+      "Albothyl Konsentrat",
+      "Albothyl"
+    ],
+    "sediaan": "Larutan Topikal - Policresulene 36%",
+    "dosageForm": "Larutan Topikal - Policresulene 36%",
+    "zat_aktif": "Policresulene 36%",
+    "activeSubstance": "Policresulene 36%",
+    "indikasi_kegunaan": "Mengobati sariawan, radang gusi, dan infeksi mulut ringan",
+    "indications": "Mengobati sariawan, radang gusi, dan infeksi mulut ringan",
+    "detail_lengkap": {
+      "dosis": "Oleskan pada sariawan 2-3x sehari",
+      "aturan_pakai": "Oleskan pada sariawan 2-3x sehari",
+      "efek_samping": [
+        "Rasa terbakar"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [
+        "Encerkan sebelum digunakan di mulut"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan pada sariawan 2-3x sehari",
+    "sideEffects": [
+      "Rasa terbakar"
+    ],
+    "warnings": [
+      "Encerkan sebelum digunakan di mulut"
+    ],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "tantum-verde-gargle",
+    "nama_obat": "Tantum Verde Gargle",
+    "name": "Tantum Verde Gargle",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Tantum Verde Gargle, Tantum Verde",
+    "brandNames": [
+      "Tantum Verde Gargle",
+      "Tantum Verde"
+    ],
+    "sediaan": "Larutan Kumur - Benzydamine HCl",
+    "dosageForm": "Larutan Kumur - Benzydamine HCl",
+    "zat_aktif": "Benzydamine HCl",
+    "activeSubstance": "Benzydamine HCl",
+    "indikasi_kegunaan": "Meredakan radang dan nyeri tenggorokan",
+    "indications": "Meredakan radang dan nyeri tenggorokan",
+    "detail_lengkap": {
+      "dosis": "Kumur 15ml, 2-3x sehari",
+      "aturan_pakai": "Kumur 15ml, 2-3x sehari",
+      "efek_samping": [
+        "Mati rasa lidah",
+        "Rasa terbakar ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [
+        "Jangan ditelan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Kumur 15ml, 2-3x sehari",
+    "sideEffects": [
+      "Mati rasa lidah",
+      "Rasa terbakar ringan"
+    ],
+    "warnings": [
+      "Jangan ditelan"
+    ],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "enkasari-sirup",
+    "nama_obat": "Enkasari Sirup",
+    "name": "Enkasari Sirup",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Enkasari Sirup, Enkasari",
+    "brandNames": [
+      "Enkasari Sirup",
+      "Enkasari"
+    ],
+    "sediaan": "Larutan Kumur/Sirup - Sorbitol + Lisozim + Klorida",
+    "dosageForm": "Larutan Kumur/Sirup - Sorbitol + Lisozim + Klorida",
+    "zat_aktif": "Sorbitol + Lisozim + Klorida",
+    "activeSubstance": "Sorbitol + Lisozim + Klorida",
+    "indikasi_kegunaan": "Meredakan sariawan dan menjaga kebersihan mulut",
+    "indications": "Meredakan sariawan dan menjaga kebersihan mulut",
+    "detail_lengkap": {
+      "dosis": "Kumur 3-4x sehari",
+      "aturan_pakai": "Kumur 3-4x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Kumur 3-4x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "otrivin-nasal-spray",
+    "nama_obat": "Otrivin Nasal Spray",
+    "name": "Otrivin Nasal Spray",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Otrivin Nasal Spray, Otrivin",
+    "brandNames": [
+      "Otrivin Nasal Spray",
+      "Otrivin"
+    ],
+    "sediaan": "Semprotan Hidung - Xylometazoline HCl 0",
+    "dosageForm": "Semprotan Hidung - Xylometazoline HCl 0",
+    "zat_aktif": "Xylometazoline HCl 0,1%",
+    "activeSubstance": "Xylometazoline HCl 0,1%",
+    "indikasi_kegunaan": "Meredakan hidung tersumbat akibat pilek atau alergi",
+    "indications": "Meredakan hidung tersumbat akibat pilek atau alergi",
+    "detail_lengkap": {
+      "dosis": "1-2 semprotan tiap lubang hidung, 2-3x sehari",
+      "aturan_pakai": "1-2 semprotan tiap lubang hidung, 2-3x sehari",
+      "efek_samping": [
+        "Iritasi hidung",
+        "Rebound congestion"
+      ],
+      "kontraindikasi": [
+        "Rhinitis atrofi",
+        "Anak < 12 tahun (dosis dewasa)"
+      ],
+      "peringatan": [
+        "Tidak > 5 hari"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 semprotan tiap lubang hidung, 2-3x sehari",
+    "sideEffects": [
+      "Iritasi hidung",
+      "Rebound congestion"
+    ],
+    "warnings": [
+      "Tidak > 5 hari"
+    ],
+    "contraindications": [
+      "Rhinitis atrofi",
+      "Anak < 12 tahun (dosis dewasa)"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "sterimar-nasal-spray",
+    "nama_obat": "Sterimar Nasal Spray",
+    "name": "Sterimar Nasal Spray",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Sterimar Nasal Spray, Sterimar",
+    "brandNames": [
+      "Sterimar Nasal Spray",
+      "Sterimar"
+    ],
+    "sediaan": "Semprotan Hidung - Larutan Garam Fisiologis (NaCl 0",
+    "dosageForm": "Semprotan Hidung - Larutan Garam Fisiologis (NaCl 0",
+    "zat_aktif": "Larutan Garam Fisiologis (NaCl 0,9%)",
+    "activeSubstance": "Larutan Garam Fisiologis (NaCl 0,9%)",
+    "indikasi_kegunaan": "Membersihkan rongga hidung dan melembapkan mukosa nasal",
+    "indications": "Membersihkan rongga hidung dan melembapkan mukosa nasal",
+    "detail_lengkap": {
+      "dosis": "1-3 semprotan per lubang hidung, beberapa kali sehari",
+      "aturan_pakai": "1-3 semprotan per lubang hidung, beberapa kali sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-3 semprotan per lubang hidung, beberapa kali sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "eardrops-otopain",
+    "nama_obat": "Eardrops Otopain",
+    "name": "Eardrops Otopain",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Eardrops Otopain, Otopain",
+    "brandNames": [
+      "Eardrops Otopain",
+      "Otopain"
+    ],
+    "sediaan": "Tetes Telinga - Polymyxin B + Neomycin + Phenazone + Lidocaine",
+    "dosageForm": "Tetes Telinga - Polymyxin B + Neomycin + Phenazone + Lidocaine",
+    "zat_aktif": "Polymyxin B + Neomycin + Phenazone + Lidocaine",
+    "activeSubstance": "Polymyxin B + Neomycin + Phenazone + Lidocaine",
+    "indikasi_kegunaan": "Meredakan nyeri dan infeksi telinga luar",
+    "indications": "Meredakan nyeri dan infeksi telinga luar",
+    "detail_lengkap": {
+      "dosis": "3-4 tetes, 3-4x sehari",
+      "aturan_pakai": "3-4 tetes, 3-4x sehari",
+      "efek_samping": [
+        "Iritasi telinga"
+      ],
+      "kontraindikasi": [
+        "Perforasi membran timpani"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "3-4 tetes, 3-4x sehari",
+    "sideEffects": [
+      "Iritasi telinga"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Perforasi membran timpani"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "dulcolax-tablet",
+    "nama_obat": "Dulcolax Tablet",
+    "name": "Dulcolax Tablet",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Dulcolax Tablet, Dulcolax",
+    "brandNames": [
+      "Dulcolax Tablet",
+      "Dulcolax"
+    ],
+    "sediaan": "Tablet Salut Selaput - Bisacodyl 5mg",
+    "dosageForm": "Tablet Salut Selaput - Bisacodyl 5mg",
+    "zat_aktif": "Bisacodyl 5mg",
+    "activeSubstance": "Bisacodyl 5mg",
+    "indikasi_kegunaan": "Mengatasi sembelit",
+    "indications": "Mengatasi sembelit",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet malam sebelum tidur",
+      "aturan_pakai": "1-2 tablet malam sebelum tidur",
+      "efek_samping": [
+        "Kram perut",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Appendisitis",
+        "Ileus"
+      ],
+      "peringatan": [
+        "Minum dengan air putih, jangan dengan susu"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet malam sebelum tidur",
+    "sideEffects": [
+      "Kram perut",
+      "Diare"
+    ],
+    "warnings": [
+      "Minum dengan air putih, jangan dengan susu"
+    ],
+    "contraindications": [
+      "Appendisitis",
+      "Ileus"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "laxacod",
+    "nama_obat": "Laxacod",
+    "name": "Laxacod",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Laxacod",
+    "brandNames": [
+      "Laxacod"
+    ],
+    "sediaan": "Tablet - Bisakodil 5mg",
+    "dosageForm": "Tablet - Bisakodil 5mg",
+    "zat_aktif": "Bisakodil 5mg",
+    "activeSubstance": "Bisakodil 5mg",
+    "indikasi_kegunaan": "Mengatasi konstipasi atau sembelit",
+    "indications": "Mengatasi konstipasi atau sembelit",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet malam hari",
+      "aturan_pakai": "1-2 tablet malam hari",
+      "efek_samping": [
+        "Kram perut"
+      ],
+      "kontraindikasi": [
+        "Obstruksi usus"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet malam hari",
+    "sideEffects": [
+      "Kram perut"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Obstruksi usus"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "attapulgite-600mg",
+    "nama_obat": "Attapulgite 600mg",
+    "name": "Attapulgite 600mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Attapulgite 600mg, Neo Entrostop",
+    "brandNames": [
+      "Attapulgite 600mg",
+      "Neo Entrostop"
+    ],
+    "sediaan": "Tablet - Attapulgite",
+    "dosageForm": "Tablet - Attapulgite",
+    "zat_aktif": "Attapulgite",
+    "activeSubstance": "Attapulgite",
+    "indikasi_kegunaan": "Menyerap toksin dan mengurangi frekuensi diare",
+    "indications": "Menyerap toksin dan mengurangi frekuensi diare",
+    "detail_lengkap": {
+      "dosis": "2 tablet setelah BAB cair, maks 12 tablet/hari",
+      "aturan_pakai": "2 tablet setelah BAB cair, maks 12 tablet/hari",
+      "efek_samping": [
+        "Sembelit"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [
+        "Minum dengan banyak air"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 tablet setelah BAB cair, maks 12 tablet/hari",
+    "sideEffects": [
+      "Sembelit"
+    ],
+    "warnings": [
+      "Minum dengan banyak air"
+    ],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "neo-entrostop",
+    "nama_obat": "Neo Entrostop",
+    "name": "Neo Entrostop",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Neo Entrostop",
+    "brandNames": [
+      "Neo Entrostop"
+    ],
+    "sediaan": "Tablet - Attapulgite + Pektin",
+    "dosageForm": "Tablet - Attapulgite + Pektin",
+    "zat_aktif": "Attapulgite + Pektin",
+    "activeSubstance": "Attapulgite + Pektin",
+    "indikasi_kegunaan": "Mengatasi diare dan menyerap racun di usus",
+    "indications": "Mengatasi diare dan menyerap racun di usus",
+    "detail_lengkap": {
+      "dosis": "2 tablet setelah setiap BAB cair",
+      "aturan_pakai": "2 tablet setelah setiap BAB cair",
+      "efek_samping": [
+        "Sembelit ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 tablet setelah setiap BAB cair",
+    "sideEffects": [
+      "Sembelit ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "charcoal-tablet-norit",
+    "nama_obat": "Charcoal Tablet (Norit)",
+    "name": "Charcoal Tablet (Norit)",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Charcoal Tablet (Norit), Norit",
+    "brandNames": [
+      "Charcoal Tablet (Norit)",
+      "Norit"
+    ],
+    "sediaan": "Tablet - Arang Aktif / Activated Charcoal",
+    "dosageForm": "Tablet - Arang Aktif / Activated Charcoal",
+    "zat_aktif": "Arang Aktif / Activated Charcoal",
+    "activeSubstance": "Arang Aktif / Activated Charcoal",
+    "indikasi_kegunaan": "Menyerap gas dan toksin di saluran pencernaan, mengurangi kembung",
+    "indications": "Menyerap gas dan toksin di saluran pencernaan, mengurangi kembung",
+    "detail_lengkap": {
+      "dosis": "2-4 tablet, 3x sehari",
+      "aturan_pakai": "2-4 tablet, 3x sehari",
+      "efek_samping": [
+        "Tinja berwarna hitam",
+        "Sembelit"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2-4 tablet, 3x sehari",
+    "sideEffects": [
+      "Tinja berwarna hitam",
+      "Sembelit"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "microlax-enema",
+    "nama_obat": "Microlax Enema",
+    "name": "Microlax Enema",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Microlax Enema, Microlax",
+    "brandNames": [
+      "Microlax Enema",
+      "Microlax"
+    ],
+    "sediaan": "Enema/Tube Rektal - Natrium Sitrat + Natrium Lauril Sulfoasetat + Sorbitol",
+    "dosageForm": "Enema/Tube Rektal - Natrium Sitrat + Natrium Lauril Sulfoasetat + Sorbitol",
+    "zat_aktif": "Natrium Sitrat + Natrium Lauril Sulfoasetat + Sorbitol",
+    "activeSubstance": "Natrium Sitrat + Natrium Lauril Sulfoasetat + Sorbitol",
+    "indikasi_kegunaan": "Mengatasi sembelit dengan cepat",
+    "indications": "Mengatasi sembelit dengan cepat",
+    "detail_lengkap": {
+      "dosis": "1 tube per pemakaian rektal",
+      "aturan_pakai": "1 tube per pemakaian rektal",
+      "efek_samping": [
+        "Kram perut ringan"
+      ],
+      "kontraindikasi": [
+        "Fisura ani akut"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tube per pemakaian rektal",
+    "sideEffects": [
+      "Kram perut ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Fisura ani akut"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "betahistine-8mg",
+    "nama_obat": "Betahistine 8mg",
+    "name": "Betahistine 8mg",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Betahistine 8mg, Betaserc, Merislon",
+    "brandNames": [
+      "Betahistine 8mg",
+      "Betaserc",
+      "Merislon"
+    ],
+    "sediaan": "Tablet - Betahistine Mesylate",
+    "dosageForm": "Tablet - Betahistine Mesylate",
+    "zat_aktif": "Betahistine Mesylate",
+    "activeSubstance": "Betahistine Mesylate",
+    "indikasi_kegunaan": "Mengatasi vertigo, pusing berputar, dan tinnitus",
+    "indications": "Mengatasi vertigo, pusing berputar, dan tinnitus",
+    "detail_lengkap": {
+      "dosis": "8-16mg, 3x sehari",
+      "aturan_pakai": "8-16mg, 3x sehari",
+      "efek_samping": [
+        "Mual",
+        "Sakit kepala"
+      ],
+      "kontraindikasi": [
+        "Feokromositoma"
+      ],
+      "peringatan": [
+        "Minum saat makan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "8-16mg, 3x sehari",
+    "sideEffects": [
+      "Mual",
+      "Sakit kepala"
+    ],
+    "warnings": [
+      "Minum saat makan"
+    ],
+    "contraindications": [
+      "Feokromositoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "antimo-tablet-dewasa",
+    "nama_obat": "Antimo Tablet Dewasa",
+    "name": "Antimo Tablet Dewasa",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Antimo Tablet Dewasa, Antimo",
+    "brandNames": [
+      "Antimo Tablet Dewasa",
+      "Antimo"
+    ],
+    "sediaan": "Tablet - Dimenhydrinate 50mg",
+    "dosageForm": "Tablet - Dimenhydrinate 50mg",
+    "zat_aktif": "Dimenhydrinate 50mg",
+    "activeSubstance": "Dimenhydrinate 50mg",
+    "indikasi_kegunaan": "Mencegah dan mengatasi mabuk perjalanan",
+    "indications": "Mencegah dan mengatasi mabuk perjalanan",
+    "detail_lengkap": {
+      "dosis": "1 tablet 30 menit sebelum perjalanan, dapat diulang tiap 4-6 jam",
+      "aturan_pakai": "1 tablet 30 menit sebelum perjalanan, dapat diulang tiap 4-6 jam",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Glaukoma",
+        "Pembesaran prostat"
+      ],
+      "peringatan": [
+        "Hati-hati mengemudi"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet 30 menit sebelum perjalanan, dapat diulang tiap 4-6 jam",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering"
+    ],
+    "warnings": [
+      "Hati-hati mengemudi"
+    ],
+    "contraindications": [
+      "Glaukoma",
+      "Pembesaran prostat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "minyak-angin-aroma",
+    "nama_obat": "Minyak Angin Aroma",
+    "name": "Minyak Angin Aroma",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Minyak Angin Aroma, Aroma, Tropical",
+    "brandNames": [
+      "Minyak Angin Aroma",
+      "Aroma",
+      "Tropical"
+    ],
+    "sediaan": "Minyak Aromaterapi - Menthol + Camphor + Peppermint Oil",
+    "dosageForm": "Minyak Aromaterapi - Menthol + Camphor + Peppermint Oil",
+    "zat_aktif": "Menthol + Camphor + Peppermint Oil",
+    "activeSubstance": "Menthol + Camphor + Peppermint Oil",
+    "indikasi_kegunaan": "Meredakan pusing, mual, dan hidung tersumbat ringan",
+    "indications": "Meredakan pusing, mual, dan hidung tersumbat ringan",
+    "detail_lengkap": {
+      "dosis": "Hirup atau oleskan di hidung dan dahi",
+      "aturan_pakai": "Hirup atau oleskan di hidung dan dahi",
+      "efek_samping": [
+        "Iritasi ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Hirup atau oleskan di hidung dan dahi",
+    "sideEffects": [
+      "Iritasi ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "zinc-sulfat-20mg",
+    "nama_obat": "Zinc Sulfat 20mg",
+    "name": "Zinc Sulfat 20mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Zinc Sulfat 20mg, Zincpro, Zinc Kids",
+    "brandNames": [
+      "Zinc Sulfat 20mg",
+      "Zincpro",
+      "Zinc Kids"
+    ],
+    "sediaan": "Tablet/Sirup - Zinc Sulfat Monohidrat",
+    "dosageForm": "Tablet/Sirup - Zinc Sulfat Monohidrat",
+    "zat_aktif": "Zinc Sulfat Monohidrat",
+    "activeSubstance": "Zinc Sulfat Monohidrat",
+    "indikasi_kegunaan": "Suplemen zinc untuk daya tahan tubuh dan penyembuhan luka, terapi adjuvan diare",
+    "indications": "Suplemen zinc untuk daya tahan tubuh dan penyembuhan luka, terapi adjuvan diare",
+    "detail_lengkap": {
+      "dosis": "Dewasa: 20mg per hari; Anak: 10mg per hari",
+      "aturan_pakai": "Dewasa: 20mg per hari; Anak: 10mg per hari",
+      "efek_samping": [
+        "Mual",
+        "Rasa logam di mulut"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [
+        "Minum setelah makan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Dewasa: 20mg per hari; Anak: 10mg per hari",
+    "sideEffects": [
+      "Mual",
+      "Rasa logam di mulut"
+    ],
+    "warnings": [
+      "Minum setelah makan"
+    ],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "minyak-ikan-omega-3",
+    "nama_obat": "Minyak Ikan Omega 3",
+    "name": "Minyak Ikan Omega 3",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Minyak Ikan Omega 3, Scott's, Vitalong C",
+    "brandNames": [
+      "Minyak Ikan Omega 3",
+      "Scott's",
+      "Vitalong C"
+    ],
+    "sediaan": "Kapsul Lunak - EPA + DHA (Omega-3 Fatty Acids)",
+    "dosageForm": "Kapsul Lunak - EPA + DHA (Omega-3 Fatty Acids)",
+    "zat_aktif": "EPA + DHA (Omega-3 Fatty Acids)",
+    "activeSubstance": "EPA + DHA (Omega-3 Fatty Acids)",
+    "indikasi_kegunaan": "Suplemen untuk kesehatan jantung, otak, dan sendi",
+    "indications": "Suplemen untuk kesehatan jantung, otak, dan sendi",
+    "detail_lengkap": {
+      "dosis": "1-2 kapsul per hari",
+      "aturan_pakai": "1-2 kapsul per hari",
+      "efek_samping": [
+        "Sendawa berbau ikan",
+        "Mual ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 kapsul per hari",
+    "sideEffects": [
+      "Sendawa berbau ikan",
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "folat-asam-folat-400mcg",
+    "nama_obat": "Folat / Asam Folat 400mcg",
+    "name": "Folat / Asam Folat 400mcg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Folat / Asam Folat 400mcg, Folavit, Asam Folat DOEN",
+    "brandNames": [
+      "Folat / Asam Folat 400mcg",
+      "Folavit",
+      "Asam Folat DOEN"
+    ],
+    "sediaan": "Tablet - Asam Folat",
+    "dosageForm": "Tablet - Asam Folat",
+    "zat_aktif": "Asam Folat",
+    "activeSubstance": "Asam Folat",
+    "indikasi_kegunaan": "Mencegah defisiensi folat, mendukung pembentukan sel darah merah dan perkembangan janin",
+    "indications": "Mencegah defisiensi folat, mendukung pembentukan sel darah merah dan perkembangan janin",
+    "detail_lengkap": {
+      "dosis": "1 tablet per hari (400mcg profilaksis, 800-1000mcg terapi)",
+      "aturan_pakai": "1 tablet per hari (400mcg profilaksis, 800-1000mcg terapi)",
+      "efek_samping": [
+        "Mual ringan (jarang)"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet per hari (400mcg profilaksis, 800-1000mcg terapi)",
+    "sideEffects": [
+      "Mual ringan (jarang)"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "biotin-5000mcg",
+    "nama_obat": "Biotin 5000mcg",
+    "name": "Biotin 5000mcg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Biotin 5000mcg, Natrol Biotin",
+    "brandNames": [
+      "Biotin 5000mcg",
+      "Natrol Biotin"
+    ],
+    "sediaan": "Tablet/Kapsul - Biotin (Vitamin H)",
+    "dosageForm": "Tablet/Kapsul - Biotin (Vitamin H)",
+    "zat_aktif": "Biotin (Vitamin H)",
+    "activeSubstance": "Biotin (Vitamin H)",
+    "indikasi_kegunaan": "Suplemen untuk kesehatan rambut, kuku, dan kulit",
+    "indications": "Suplemen untuk kesehatan rambut, kuku, dan kulit",
+    "detail_lengkap": {
+      "dosis": "1 tablet per hari",
+      "aturan_pakai": "1 tablet per hari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet per hari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ferrous-sulfat-200mg",
+    "nama_obat": "Ferrous Sulfat 200mg",
+    "name": "Ferrous Sulfat 200mg",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Ferrous Sulfat 200mg, Iberet, FE",
+    "brandNames": [
+      "Ferrous Sulfat 200mg",
+      "Iberet",
+      "FE"
+    ],
+    "sediaan": "Tablet Salut Selaput - Ferro Sulfat",
+    "dosageForm": "Tablet Salut Selaput - Ferro Sulfat",
+    "zat_aktif": "Ferro Sulfat",
+    "activeSubstance": "Ferro Sulfat",
+    "indikasi_kegunaan": "Suplemen zat besi untuk mencegah dan mengatasi anemia defisiensi besi",
+    "indications": "Suplemen zat besi untuk mencegah dan mengatasi anemia defisiensi besi",
+    "detail_lengkap": {
+      "dosis": "1-3 tablet per hari",
+      "aturan_pakai": "1-3 tablet per hari",
+      "efek_samping": [
+        "Mual",
+        "Sembelit",
+        "Tinja hitam"
+      ],
+      "kontraindikasi": [
+        "Hemokromatosis"
+      ],
+      "peringatan": [
+        "Minum setelah makan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-3 tablet per hari",
+    "sideEffects": [
+      "Mual",
+      "Sembelit",
+      "Tinja hitam"
+    ],
+    "warnings": [
+      "Minum setelah makan"
+    ],
+    "contraindications": [
+      "Hemokromatosis"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "magnesium-250mg",
+    "nama_obat": "Magnesium 250mg",
+    "name": "Magnesium 250mg",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Magnesium 250mg, Magtab",
+    "brandNames": [
+      "Magnesium 250mg",
+      "Magtab"
+    ],
+    "sediaan": "Tablet - Magnesium Oksida/Sitrat",
+    "dosageForm": "Tablet - Magnesium Oksida/Sitrat",
+    "zat_aktif": "Magnesium Oksida/Sitrat",
+    "activeSubstance": "Magnesium Oksida/Sitrat",
+    "indikasi_kegunaan": "Suplemen magnesium untuk mencegah kram otot dan mendukung fungsi saraf",
+    "indications": "Suplemen magnesium untuk mencegah kram otot dan mendukung fungsi saraf",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet per hari",
+      "aturan_pakai": "1-2 tablet per hari",
+      "efek_samping": [
+        "Diare (dosis tinggi)"
+      ],
+      "kontraindikasi": [
+        "Gagal ginjal berat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet per hari",
+    "sideEffects": [
+      "Diare (dosis tinggi)"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Gagal ginjal berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "multivitamin-anak-vitummy",
+    "nama_obat": "Multivitamin Anak Vitummy",
+    "name": "Multivitamin Anak Vitummy",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Multivitamin Anak Vitummy, Vitummy, Pedialit",
+    "brandNames": [
+      "Multivitamin Anak Vitummy",
+      "Vitummy",
+      "Pedialit"
+    ],
+    "sediaan": "Tablet Kunyah/Sirup - Vitamin A + C + D + E + B Kompleks + Mineral",
+    "dosageForm": "Tablet Kunyah/Sirup - Vitamin A + C + D + E + B Kompleks + Mineral",
+    "zat_aktif": "Vitamin A + C + D + E + B Kompleks + Mineral",
+    "activeSubstance": "Vitamin A + C + D + E + B Kompleks + Mineral",
+    "indikasi_kegunaan": "Suplemen multivitamin lengkap untuk anak-anak",
+    "indications": "Suplemen multivitamin lengkap untuk anak-anak",
+    "detail_lengkap": {
+      "dosis": "1 tablet atau 1 sendok teh per hari",
+      "aturan_pakai": "1 tablet atau 1 sendok teh per hari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet atau 1 sendok teh per hari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "appeton-weight-gain",
+    "nama_obat": "Appeton Weight Gain",
+    "name": "Appeton Weight Gain",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Appeton Weight Gain, Appeton",
+    "brandNames": [
+      "Appeton Weight Gain",
+      "Appeton"
+    ],
+    "sediaan": "Serbuk - Protein + Vitamin + Mineral",
+    "dosageForm": "Serbuk - Protein + Vitamin + Mineral",
+    "zat_aktif": "Protein + Vitamin + Mineral",
+    "activeSubstance": "Protein + Vitamin + Mineral",
+    "indikasi_kegunaan": "Suplemen untuk menambah berat badan dan massa otot",
+    "indications": "Suplemen untuk menambah berat badan dan massa otot",
+    "detail_lengkap": {
+      "dosis": "2-3 sendok per sajian, 2x sehari",
+      "aturan_pakai": "2-3 sendok per sajian, 2x sehari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2-3 sendok per sajian, 2x sehari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "herbadrink-temulawak",
+    "nama_obat": "Herbadrink Temulawak",
+    "name": "Herbadrink Temulawak",
+    "kategori_penyakit": "Herbal & Jamu",
+    "category": "herbal-jamu",
+    "categoryLabel": "Herbal & Jamu",
+    "category_icon": "🍃",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Herbadrink Temulawak, Herbadrink",
+    "brandNames": [
+      "Herbadrink Temulawak",
+      "Herbadrink"
+    ],
+    "sediaan": "Serbuk/Minuman - Ekstrak Curcuma xanthorrhiza",
+    "dosageForm": "Serbuk/Minuman - Ekstrak Curcuma xanthorrhiza",
+    "zat_aktif": "Ekstrak Curcuma xanthorrhiza",
+    "activeSubstance": "Ekstrak Curcuma xanthorrhiza",
+    "indikasi_kegunaan": "Memelihara kesehatan hati dan meningkatkan nafsu makan",
+    "indications": "Memelihara kesehatan hati dan meningkatkan nafsu makan",
+    "detail_lengkap": {
+      "dosis": "1 sachet per hari",
+      "aturan_pakai": "1 sachet per hari",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sachet per hari",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "kuku-bima-ener-g",
+    "nama_obat": "Kuku Bima Ener-G",
+    "name": "Kuku Bima Ener-G",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Kuku Bima Ener-G",
+    "brandNames": [
+      "Kuku Bima Ener-G"
+    ],
+    "sediaan": "Minuman Serbuk - Vitamin B + Taurine + Caffeine",
+    "dosageForm": "Minuman Serbuk - Vitamin B + Taurine + Caffeine",
+    "zat_aktif": "Vitamin B + Taurine + Caffeine",
+    "activeSubstance": "Vitamin B + Taurine + Caffeine",
+    "indikasi_kegunaan": "Suplemen untuk meningkatkan energi dan stamina",
+    "indications": "Suplemen untuk meningkatkan energi dan stamina",
+    "detail_lengkap": {
+      "dosis": "1 sachet per sajian",
+      "aturan_pakai": "1 sachet per sajian",
+      "efek_samping": [
+        "Insomnia (kafein)",
+        "Palpitasi"
+      ],
+      "kontraindikasi": [
+        "Penyakit jantung",
+        "Anak-anak"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 sachet per sajian",
+    "sideEffects": [
+      "Insomnia (kafein)",
+      "Palpitasi"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Penyakit jantung",
+      "Anak-anak"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "tropicana-slim-stevia",
+    "nama_obat": "Tropicana Slim Stevia",
+    "name": "Tropicana Slim Stevia",
+    "kategori_penyakit": "Herbal & Jamu",
+    "category": "herbal-jamu",
+    "categoryLabel": "Herbal & Jamu",
+    "category_icon": "🍃",
+    "status_bpom": "Obat Bebas",
+    "bpomClass": {
+      "label": "Obat Bebas",
+      "code": "bebas",
+      "symbol": "🟢",
+      "badgeColor": "bg-emerald-950/40 text-emerald-400 border-emerald-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas"
+    },
+    "merk": "Tropicana Slim Stevia, Tropicana Slim",
+    "brandNames": [
+      "Tropicana Slim Stevia",
+      "Tropicana Slim"
+    ],
+    "sediaan": "Serbuk - Steviol Glikosida",
+    "dosageForm": "Serbuk - Steviol Glikosida",
+    "zat_aktif": "Steviol Glikosida",
+    "activeSubstance": "Steviol Glikosida",
+    "indikasi_kegunaan": "Pemanis alami bebas kalori untuk penderita diabetes atau diet",
+    "indications": "Pemanis alami bebas kalori untuk penderita diabetes atau diet",
+    "detail_lengkap": {
+      "dosis": "Sesuai selera sebagai pengganti gula",
+      "aturan_pakai": "Sesuai selera sebagai pengganti gula",
+      "efek_samping": [],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Sesuai selera sebagai pengganti gula",
+    "sideEffects": [],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ctm-4mg-chlorpheniramine-maleate",
+    "nama_obat": "CTM 4mg (Chlorpheniramine Maleate)",
+    "name": "CTM 4mg (Chlorpheniramine Maleate)",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "CTM 4mg (Chlorpheniramine Maleate), CTM DOEN",
+    "brandNames": [
+      "CTM 4mg (Chlorpheniramine Maleate)",
+      "CTM DOEN"
+    ],
+    "sediaan": "Tablet - Klorfeniramin Maleat",
+    "dosageForm": "Tablet - Klorfeniramin Maleat",
+    "zat_aktif": "Klorfeniramin Maleat",
+    "activeSubstance": "Klorfeniramin Maleat",
+    "indikasi_kegunaan": "Mengatasi alergi ringan, gatal-gatal, dan rinitis alergi",
+    "indications": "Mengatasi alergi ringan, gatal-gatal, dan rinitis alergi",
+    "detail_lengkap": {
+      "dosis": "4mg, 3-4x sehari",
+      "aturan_pakai": "4mg, 3-4x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering",
+        "Retensi urin"
+      ],
+      "kontraindikasi": [
+        "Glaukoma",
+        "Hipertrofi prostat"
+      ],
+      "peringatan": [
+        "Hindari mengemudi"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "4mg, 3-4x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering",
+      "Retensi urin"
+    ],
+    "warnings": [
+      "Hindari mengemudi"
+    ],
+    "contraindications": [
+      "Glaukoma",
+      "Hipertrofi prostat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "loratadine-10mg",
+    "nama_obat": "Loratadine 10mg",
+    "name": "Loratadine 10mg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Loratadine 10mg, Claritin, Loratin",
+    "brandNames": [
+      "Loratadine 10mg",
+      "Claritin",
+      "Loratin"
+    ],
+    "sediaan": "Tablet - Loratadine",
+    "dosageForm": "Tablet - Loratadine",
+    "zat_aktif": "Loratadine",
+    "activeSubstance": "Loratadine",
+    "indikasi_kegunaan": "Antihistamin non-sedatif untuk rinitis alergi dan urtikaria kronik",
+    "indications": "Antihistamin non-sedatif untuk rinitis alergi dan urtikaria kronik",
+    "detail_lengkap": {
+      "dosis": "10mg, 1x sehari",
+      "aturan_pakai": "10mg, 1x sehari",
+      "efek_samping": [
+        "Sakit kepala",
+        "Mulut kering (jarang)"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10mg, 1x sehari",
+    "sideEffects": [
+      "Sakit kepala",
+      "Mulut kering (jarang)"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "difenhidramin-25mg",
+    "nama_obat": "Difenhidramin 25mg",
+    "name": "Difenhidramin 25mg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Difenhidramin 25mg, Benadryl, Difenhidramin",
+    "brandNames": [
+      "Difenhidramin 25mg",
+      "Benadryl",
+      "Difenhidramin"
+    ],
+    "sediaan": "Tablet/Kapsul - Diphenhydramine HCl",
+    "dosageForm": "Tablet/Kapsul - Diphenhydramine HCl",
+    "zat_aktif": "Diphenhydramine HCl",
+    "activeSubstance": "Diphenhydramine HCl",
+    "indikasi_kegunaan": "Antihistamin untuk alergi, gatal-gatal, dan mabuk perjalanan",
+    "indications": "Antihistamin untuk alergi, gatal-gatal, dan mabuk perjalanan",
+    "detail_lengkap": {
+      "dosis": "25-50mg, tiap 4-6 jam",
+      "aturan_pakai": "25-50mg, tiap 4-6 jam",
+      "efek_samping": [
+        "Kantuk berat",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Glaukoma",
+        "Bayi prematur"
+      ],
+      "peringatan": [
+        "Tidak untuk anak < 2 tahun"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "25-50mg, tiap 4-6 jam",
+    "sideEffects": [
+      "Kantuk berat",
+      "Mulut kering"
+    ],
+    "warnings": [
+      "Tidak untuk anak < 2 tahun"
+    ],
+    "contraindications": [
+      "Glaukoma",
+      "Bayi prematur"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "loratadine-5mg-sirup-anak",
+    "nama_obat": "Loratadine 5mg Sirup Anak",
+    "name": "Loratadine 5mg Sirup Anak",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Loratadine 5mg Sirup Anak, Claritin Sirup",
+    "brandNames": [
+      "Loratadine 5mg Sirup Anak",
+      "Claritin Sirup"
+    ],
+    "sediaan": "Sirup - Loratadine 5mg/5ml",
+    "dosageForm": "Sirup - Loratadine 5mg/5ml",
+    "zat_aktif": "Loratadine 5mg/5ml",
+    "activeSubstance": "Loratadine 5mg/5ml",
+    "indikasi_kegunaan": "Antihistamin untuk anak dengan rinitis alergi dan urtikaria",
+    "indications": "Antihistamin untuk anak dengan rinitis alergi dan urtikaria",
+    "detail_lengkap": {
+      "dosis": "Anak 2-12 tahun: 5ml, 1x sehari",
+      "aturan_pakai": "Anak 2-12 tahun: 5ml, 1x sehari",
+      "efek_samping": [
+        "Kantuk ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 2-12 tahun: 5ml, 1x sehari",
+    "sideEffects": [
+      "Kantuk ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "fexofenadine-120mg",
+    "nama_obat": "Fexofenadine 120mg",
+    "name": "Fexofenadine 120mg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Fexofenadine 120mg, Telfast",
+    "brandNames": [
+      "Fexofenadine 120mg",
+      "Telfast"
+    ],
+    "sediaan": "Tablet - Fexofenadine HCl",
+    "dosageForm": "Tablet - Fexofenadine HCl",
+    "zat_aktif": "Fexofenadine HCl",
+    "activeSubstance": "Fexofenadine HCl",
+    "indikasi_kegunaan": "Antihistamin generasi ketiga non-sedatif untuk rinitis alergi",
+    "indications": "Antihistamin generasi ketiga non-sedatif untuk rinitis alergi",
+    "detail_lengkap": {
+      "dosis": "120mg, 1x sehari",
+      "aturan_pakai": "120mg, 1x sehari",
+      "efek_samping": [
+        "Sakit kepala",
+        "Mual"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "120mg, 1x sehari",
+    "sideEffects": [
+      "Sakit kepala",
+      "Mual"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "obh-obat-batuk-hitam",
+    "nama_obat": "OBH (Obat Batuk Hitam)",
+    "name": "OBH (Obat Batuk Hitam)",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "OBH (Obat Batuk Hitam), OBH Combi, OBH Nellco",
+    "brandNames": [
+      "OBH (Obat Batuk Hitam)",
+      "OBH Combi",
+      "OBH Nellco"
+    ],
+    "sediaan": "Sirup - Ammonium Klorida + Succus Liquiritiae + Anisol",
+    "dosageForm": "Sirup - Ammonium Klorida + Succus Liquiritiae + Anisol",
+    "zat_aktif": "Ammonium Klorida + Succus Liquiritiae + Anisol",
+    "activeSubstance": "Ammonium Klorida + Succus Liquiritiae + Anisol",
+    "indikasi_kegunaan": "Mengencerkan dahak dan memudahkan pengeluaran dahak",
+    "indications": "Mengencerkan dahak dan memudahkan pengeluaran dahak",
+    "detail_lengkap": {
+      "dosis": "1-2 sendok makan, 3-4x sehari",
+      "aturan_pakai": "1-2 sendok makan, 3-4x sehari",
+      "efek_samping": [
+        "Mual",
+        "Muntah (dosis tinggi)"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas ammonium klorida"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 sendok makan, 3-4x sehari",
+    "sideEffects": [
+      "Mual",
+      "Muntah (dosis tinggi)"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas ammonium klorida"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "guaifenesin-100mg",
+    "nama_obat": "Guaifenesin 100mg",
+    "name": "Guaifenesin 100mg",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Guaifenesin 100mg, GG DOEN",
+    "brandNames": [
+      "Guaifenesin 100mg",
+      "GG DOEN"
+    ],
+    "sediaan": "Tablet/Sirup - Guaifenesin (Gliseril Guaiakolat)",
+    "dosageForm": "Tablet/Sirup - Guaifenesin (Gliseril Guaiakolat)",
+    "zat_aktif": "Guaifenesin (Gliseril Guaiakolat)",
+    "activeSubstance": "Guaifenesin (Gliseril Guaiakolat)",
+    "indikasi_kegunaan": "Ekspektoran untuk mengencerkan dan mengeluarkan dahak",
+    "indications": "Ekspektoran untuk mengencerkan dan mengeluarkan dahak",
+    "detail_lengkap": {
+      "dosis": "100-200mg, tiap 4 jam",
+      "aturan_pakai": "100-200mg, tiap 4 jam",
+      "efek_samping": [
+        "Mual",
+        "Muntah"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [
+        "Minum banyak air"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "100-200mg, tiap 4 jam",
+    "sideEffects": [
+      "Mual",
+      "Muntah"
+    ],
+    "warnings": [
+      "Minum banyak air"
+    ],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "bromhexine-8mg",
+    "nama_obat": "Bromhexine 8mg",
+    "name": "Bromhexine 8mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Bromhexine 8mg, Bisolvon, Broncas",
+    "brandNames": [
+      "Bromhexine 8mg",
+      "Bisolvon",
+      "Broncas"
+    ],
+    "sediaan": "Tablet/Sirup - Bromhexine HCl",
+    "dosageForm": "Tablet/Sirup - Bromhexine HCl",
+    "zat_aktif": "Bromhexine HCl",
+    "activeSubstance": "Bromhexine HCl",
+    "indikasi_kegunaan": "Mukolitik untuk mengencerkan dahak kental",
+    "indications": "Mukolitik untuk mengencerkan dahak kental",
+    "detail_lengkap": {
+      "dosis": "8mg, 3x sehari",
+      "aturan_pakai": "8mg, 3x sehari",
+      "efek_samping": [
+        "Mual",
+        "Gangguan saluran cerna"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "8mg, 3x sehari",
+    "sideEffects": [
+      "Mual",
+      "Gangguan saluran cerna"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ambroxol-30mg",
+    "nama_obat": "Ambroxol 30mg",
+    "name": "Ambroxol 30mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Ambroxol 30mg, Mucos, Ambroxol DOEN",
+    "brandNames": [
+      "Ambroxol 30mg",
+      "Mucos",
+      "Ambroxol DOEN"
+    ],
+    "sediaan": "Tablet/Sirup - Ambroxol HCl",
+    "dosageForm": "Tablet/Sirup - Ambroxol HCl",
+    "zat_aktif": "Ambroxol HCl",
+    "activeSubstance": "Ambroxol HCl",
+    "indikasi_kegunaan": "Mukolitik untuk mengencerkan dahak pada bronkitis dan ISPA",
+    "indications": "Mukolitik untuk mengencerkan dahak pada bronkitis dan ISPA",
+    "detail_lengkap": {
+      "dosis": "30mg, 3x sehari",
+      "aturan_pakai": "30mg, 3x sehari",
+      "efek_samping": [
+        "Mual",
+        "Diare ringan"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "30mg, 3x sehari",
+    "sideEffects": [
+      "Mual",
+      "Diare ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ambroxol-sirup-anak-15mg-5ml",
+    "nama_obat": "Ambroxol Sirup Anak 15mg/5ml",
+    "name": "Ambroxol Sirup Anak 15mg/5ml",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Ambroxol Sirup Anak 15mg/5ml, Mucos Sirup, Ambroxol Sirup",
+    "brandNames": [
+      "Ambroxol Sirup Anak 15mg/5ml",
+      "Mucos Sirup",
+      "Ambroxol Sirup"
+    ],
+    "sediaan": "Sirup - Ambroxol HCl 15mg/5ml",
+    "dosageForm": "Sirup - Ambroxol HCl 15mg/5ml",
+    "zat_aktif": "Ambroxol HCl 15mg/5ml",
+    "activeSubstance": "Ambroxol HCl 15mg/5ml",
+    "indikasi_kegunaan": "Mukolitik untuk anak dengan batuk berdahak",
+    "indications": "Mukolitik untuk anak dengan batuk berdahak",
+    "detail_lengkap": {
+      "dosis": "Anak 2-6 tahun: 2,5ml, 3x sehari",
+      "aturan_pakai": "Anak 2-6 tahun: 2,5ml, 3x sehari",
+      "efek_samping": [
+        "Mual",
+        "Diare ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 2-6 tahun: 2,5ml, 3x sehari",
+    "sideEffects": [
+      "Mual",
+      "Diare ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "triprolidine-pseudoephedrine",
+    "nama_obat": "Triprolidine + Pseudoephedrine",
+    "name": "Triprolidine + Pseudoephedrine",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Triprolidine + Pseudoephedrine, Actifed, Stopcold",
+    "brandNames": [
+      "Triprolidine + Pseudoephedrine",
+      "Actifed",
+      "Stopcold"
+    ],
+    "sediaan": "Tablet/Sirup - Triprolidine HCl + Pseudoephedrine HCl",
+    "dosageForm": "Tablet/Sirup - Triprolidine HCl + Pseudoephedrine HCl",
+    "zat_aktif": "Triprolidine HCl + Pseudoephedrine HCl",
+    "activeSubstance": "Triprolidine HCl + Pseudoephedrine HCl",
+    "indikasi_kegunaan": "Mengatasi gejala flu, hidung tersumbat, dan bersin akibat alergi",
+    "indications": "Mengatasi gejala flu, hidung tersumbat, dan bersin akibat alergi",
+    "detail_lengkap": {
+      "dosis": "1 tablet atau 10ml sirup, 3x sehari",
+      "aturan_pakai": "1 tablet atau 10ml sirup, 3x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Gelisah",
+        "Insomnia"
+      ],
+      "kontraindikasi": [
+        "Hipertensi berat",
+        "Glaukoma"
+      ],
+      "peringatan": [
+        "Hati-hati mengemudi"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet atau 10ml sirup, 3x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Gelisah",
+      "Insomnia"
+    ],
+    "warnings": [
+      "Hati-hati mengemudi"
+    ],
+    "contraindications": [
+      "Hipertensi berat",
+      "Glaukoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "pseudoephedrine-60mg",
+    "nama_obat": "Pseudoephedrine 60mg",
+    "name": "Pseudoephedrine 60mg",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Pseudoephedrine 60mg, Sudafed",
+    "brandNames": [
+      "Pseudoephedrine 60mg",
+      "Sudafed"
+    ],
+    "sediaan": "Tablet - Pseudoephedrine HCl",
+    "dosageForm": "Tablet - Pseudoephedrine HCl",
+    "zat_aktif": "Pseudoephedrine HCl",
+    "activeSubstance": "Pseudoephedrine HCl",
+    "indikasi_kegunaan": "Dekongestan untuk mengatasi hidung tersumbat",
+    "indications": "Dekongestan untuk mengatasi hidung tersumbat",
+    "detail_lengkap": {
+      "dosis": "60mg, tiap 4-6 jam",
+      "aturan_pakai": "60mg, tiap 4-6 jam",
+      "efek_samping": [
+        "Insomnia",
+        "Palpitasi",
+        "Hipertensi"
+      ],
+      "kontraindikasi": [
+        "Hipertiroid",
+        "Penyakit jantung"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "60mg, tiap 4-6 jam",
+    "sideEffects": [
+      "Insomnia",
+      "Palpitasi",
+      "Hipertensi"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipertiroid",
+      "Penyakit jantung"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "woods-peppermint-antitussif",
+    "nama_obat": "Woods Peppermint Antitussif",
+    "name": "Woods Peppermint Antitussif",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Woods Peppermint Antitussif, Woods",
+    "brandNames": [
+      "Woods Peppermint Antitussif",
+      "Woods"
+    ],
+    "sediaan": "Sirup - Creosote + Menthol",
+    "dosageForm": "Sirup - Creosote + Menthol",
+    "zat_aktif": "Creosote + Menthol",
+    "activeSubstance": "Creosote + Menthol",
+    "indikasi_kegunaan": "Meredakan batuk kering dan iritasi tenggorokan",
+    "indications": "Meredakan batuk kering dan iritasi tenggorokan",
+    "detail_lengkap": {
+      "dosis": "2 sendok makan, 3-4x sehari",
+      "aturan_pakai": "2 sendok makan, 3-4x sehari",
+      "efek_samping": [
+        "Mual"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 sendok makan, 3-4x sehari",
+    "sideEffects": [
+      "Mual"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "alco-plus-batuk-pilek",
+    "nama_obat": "Alco Plus Batuk Pilek",
+    "name": "Alco Plus Batuk Pilek",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Alco Plus Batuk Pilek, Alco Plus",
+    "brandNames": [
+      "Alco Plus Batuk Pilek",
+      "Alco Plus"
+    ],
+    "sediaan": "Sirup - Paracetamol + CTM + DMP + Pseudoephedrine",
+    "dosageForm": "Sirup - Paracetamol + CTM + DMP + Pseudoephedrine",
+    "zat_aktif": "Paracetamol + CTM + DMP + Pseudoephedrine",
+    "activeSubstance": "Paracetamol + CTM + DMP + Pseudoephedrine",
+    "indikasi_kegunaan": "Mengatasi gejala flu, demam, batuk, dan hidung tersumbat",
+    "indications": "Mengatasi gejala flu, demam, batuk, dan hidung tersumbat",
+    "detail_lengkap": {
+      "dosis": "1-2 sendok makan, 3-4x sehari",
+      "aturan_pakai": "1-2 sendok makan, 3-4x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering",
+        "Mual"
+      ],
+      "kontraindikasi": [
+        "Glaukoma",
+        "Hipertensi berat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 sendok makan, 3-4x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering",
+      "Mual"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Glaukoma",
+      "Hipertensi berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "alco-flu-tablet",
+    "nama_obat": "Alco Flu Tablet",
+    "name": "Alco Flu Tablet",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Alco Flu Tablet, Alco Flu",
+    "brandNames": [
+      "Alco Flu Tablet",
+      "Alco Flu"
+    ],
+    "sediaan": "Tablet - Paracetamol + Phenylephrine + CTM",
+    "dosageForm": "Tablet - Paracetamol + Phenylephrine + CTM",
+    "zat_aktif": "Paracetamol + Phenylephrine + CTM",
+    "activeSubstance": "Paracetamol + Phenylephrine + CTM",
+    "indikasi_kegunaan": "Meredakan gejala flu seperti demam, hidung tersumbat, dan bersin",
+    "indications": "Meredakan gejala flu seperti demam, hidung tersumbat, dan bersin",
+    "detail_lengkap": {
+      "dosis": "1-2 tablet, 3x sehari",
+      "aturan_pakai": "1-2 tablet, 3x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Hipertensi",
+        "Glaukoma"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tablet, 3x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipertensi",
+      "Glaukoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "panadol-cold-flu",
+    "nama_obat": "Panadol Cold & Flu",
+    "name": "Panadol Cold & Flu",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Panadol Cold & Flu, Panadol Cold Flu",
+    "brandNames": [
+      "Panadol Cold & Flu",
+      "Panadol Cold Flu"
+    ],
+    "sediaan": "Tablet/Kaplet - Paracetamol + Pseudoephedrine + Dextromethorphan",
+    "dosageForm": "Tablet/Kaplet - Paracetamol + Pseudoephedrine + Dextromethorphan",
+    "zat_aktif": "Paracetamol + Pseudoephedrine + Dextromethorphan",
+    "activeSubstance": "Paracetamol + Pseudoephedrine + Dextromethorphan",
+    "indikasi_kegunaan": "Mengatasi gejala flu komplet: demam, batuk, hidung tersumbat",
+    "indications": "Mengatasi gejala flu komplet: demam, batuk, hidung tersumbat",
+    "detail_lengkap": {
+      "dosis": "1-2 kaplet, tiap 6 jam",
+      "aturan_pakai": "1-2 kaplet, tiap 6 jam",
+      "efek_samping": [
+        "Kantuk",
+        "Insomnia",
+        "Mual"
+      ],
+      "kontraindikasi": [
+        "Hipertensi",
+        "Penyakit jantung"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 kaplet, tiap 6 jam",
+    "sideEffects": [
+      "Kantuk",
+      "Insomnia",
+      "Mual"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipertensi",
+      "Penyakit jantung"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "decolgen-tablet",
+    "nama_obat": "Decolgen Tablet",
+    "name": "Decolgen Tablet",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Decolgen Tablet, Decolgen",
+    "brandNames": [
+      "Decolgen Tablet",
+      "Decolgen"
+    ],
+    "sediaan": "Tablet - Paracetamol + Phenylpropanolamine + CTM",
+    "dosageForm": "Tablet - Paracetamol + Phenylpropanolamine + CTM",
+    "zat_aktif": "Paracetamol + Phenylpropanolamine + CTM",
+    "activeSubstance": "Paracetamol + Phenylpropanolamine + CTM",
+    "indikasi_kegunaan": "Mengatasi gejala flu dan pilek",
+    "indications": "Mengatasi gejala flu dan pilek",
+    "detail_lengkap": {
+      "dosis": "1 tablet, 3-4x sehari",
+      "aturan_pakai": "1 tablet, 3-4x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Hipertensi"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet, 3-4x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipertensi"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "siladex-dmp-sirup",
+    "nama_obat": "Siladex DMP Sirup",
+    "name": "Siladex DMP Sirup",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Siladex DMP Sirup, Siladex",
+    "brandNames": [
+      "Siladex DMP Sirup",
+      "Siladex"
+    ],
+    "sediaan": "Sirup - Dextromethorphan HBr + Guaifenesin",
+    "dosageForm": "Sirup - Dextromethorphan HBr + Guaifenesin",
+    "zat_aktif": "Dextromethorphan HBr + Guaifenesin",
+    "activeSubstance": "Dextromethorphan HBr + Guaifenesin",
+    "indikasi_kegunaan": "Mengatasi batuk kering dan batuk berdahak",
+    "indications": "Mengatasi batuk kering dan batuk berdahak",
+    "detail_lengkap": {
+      "dosis": "2 sendok teh, 3-4x sehari",
+      "aturan_pakai": "2 sendok teh, 3-4x sehari",
+      "efek_samping": [
+        "Kantuk ringan",
+        "Mual"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 sendok teh, 3-4x sehari",
+    "sideEffects": [
+      "Kantuk ringan",
+      "Mual"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "vicks-formula-44",
+    "nama_obat": "Vicks Formula 44",
+    "name": "Vicks Formula 44",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Vicks Formula 44",
+    "brandNames": [
+      "Vicks Formula 44"
+    ],
+    "sediaan": "Sirup - Dextromethorphan HBr + Doxylamine",
+    "dosageForm": "Sirup - Dextromethorphan HBr + Doxylamine",
+    "zat_aktif": "Dextromethorphan HBr + Doxylamine",
+    "activeSubstance": "Dextromethorphan HBr + Doxylamine",
+    "indikasi_kegunaan": "Menekan batuk dan membantu istirahat malam",
+    "indications": "Menekan batuk dan membantu istirahat malam",
+    "detail_lengkap": {
+      "dosis": "2 sendok teh sebelum tidur",
+      "aturan_pakai": "2 sendok teh sebelum tidur",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Glaukoma"
+      ],
+      "peringatan": [
+        "Hati-hati saat mengemudi"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 sendok teh sebelum tidur",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering"
+    ],
+    "warnings": [
+      "Hati-hati saat mengemudi"
+    ],
+    "contraindications": [
+      "Glaukoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "bisolvon-sirup-anak",
+    "nama_obat": "Bisolvon Sirup Anak",
+    "name": "Bisolvon Sirup Anak",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Bisolvon Sirup Anak, Bisolvon Children",
+    "brandNames": [
+      "Bisolvon Sirup Anak",
+      "Bisolvon Children"
+    ],
+    "sediaan": "Sirup - Bromhexine HCl 4mg/5ml",
+    "dosageForm": "Sirup - Bromhexine HCl 4mg/5ml",
+    "zat_aktif": "Bromhexine HCl 4mg/5ml",
+    "activeSubstance": "Bromhexine HCl 4mg/5ml",
+    "indikasi_kegunaan": "Mukolitik untuk anak dengan batuk berdahak kental",
+    "indications": "Mukolitik untuk anak dengan batuk berdahak kental",
+    "detail_lengkap": {
+      "dosis": "Anak 2-6 tahun: 5ml, 3x sehari",
+      "aturan_pakai": "Anak 2-6 tahun: 5ml, 3x sehari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 2-6 tahun: 5ml, 3x sehari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "hufagrip-flu-anak-sirup",
+    "nama_obat": "Hufagrip Flu Anak Sirup",
+    "name": "Hufagrip Flu Anak Sirup",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Hufagrip Flu Anak Sirup, Hufagrip",
+    "brandNames": [
+      "Hufagrip Flu Anak Sirup",
+      "Hufagrip"
+    ],
+    "sediaan": "Sirup - Paracetamol + CTM + Phenylephrine",
+    "dosageForm": "Sirup - Paracetamol + CTM + Phenylephrine",
+    "zat_aktif": "Paracetamol + CTM + Phenylephrine",
+    "activeSubstance": "Paracetamol + CTM + Phenylephrine",
+    "indikasi_kegunaan": "Mengatasi flu dan demam pada anak",
+    "indications": "Mengatasi flu dan demam pada anak",
+    "detail_lengkap": {
+      "dosis": "Anak 2-6 tahun: 5ml, 3-4x sehari",
+      "aturan_pakai": "Anak 2-6 tahun: 5ml, 3-4x sehari",
+      "efek_samping": [
+        "Kantuk"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 2-6 tahun: 5ml, 3-4x sehari",
+    "sideEffects": [
+      "Kantuk"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "mebendazole-100mg",
+    "nama_obat": "Mebendazole 100mg",
+    "name": "Mebendazole 100mg",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Mebendazole 100mg, Vermox, Mebendazol",
+    "brandNames": [
+      "Mebendazole 100mg",
+      "Vermox",
+      "Mebendazol"
+    ],
+    "sediaan": "Tablet Kunyah - Mebendazole",
+    "dosageForm": "Tablet Kunyah - Mebendazole",
+    "zat_aktif": "Mebendazole",
+    "activeSubstance": "Mebendazole",
+    "indikasi_kegunaan": "Mengobati infeksi cacing (kremi, gelang, tambang, cambuk)",
+    "indications": "Mengobati infeksi cacing (kremi, gelang, tambang, cambuk)",
+    "detail_lengkap": {
+      "dosis": "100mg, 2x sehari selama 3 hari (atau 500mg dosis tunggal)",
+      "aturan_pakai": "100mg, 2x sehari selama 3 hari (atau 500mg dosis tunggal)",
+      "efek_samping": [
+        "Mual",
+        "Kram perut",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Kehamilan trimester 1"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "100mg, 2x sehari selama 3 hari (atau 500mg dosis tunggal)",
+    "sideEffects": [
+      "Mual",
+      "Kram perut",
+      "Diare"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kehamilan trimester 1"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "albendazole-400mg",
+    "nama_obat": "Albendazole 400mg",
+    "name": "Albendazole 400mg",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Albendazole 400mg, Zentel, Alben",
+    "brandNames": [
+      "Albendazole 400mg",
+      "Zentel",
+      "Alben"
+    ],
+    "sediaan": "Tablet Kunyah - Albendazole",
+    "dosageForm": "Tablet Kunyah - Albendazole",
+    "zat_aktif": "Albendazole",
+    "activeSubstance": "Albendazole",
+    "indikasi_kegunaan": "Mengobati berbagai infeksi cacing termasuk cacing kremi dan sistiserkosis",
+    "indications": "Mengobati berbagai infeksi cacing termasuk cacing kremi dan sistiserkosis",
+    "detail_lengkap": {
+      "dosis": "400mg dosis tunggal (cacingan biasa)",
+      "aturan_pakai": "400mg dosis tunggal (cacingan biasa)",
+      "efek_samping": [
+        "Mual",
+        "Sakit kepala"
+      ],
+      "kontraindikasi": [
+        "Kehamilan"
+      ],
+      "peringatan": [
+        "Minum bersama makanan berlemak"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "400mg dosis tunggal (cacingan biasa)",
+    "sideEffects": [
+      "Mual",
+      "Sakit kepala"
+    ],
+    "warnings": [
+      "Minum bersama makanan berlemak"
+    ],
+    "contraindications": [
+      "Kehamilan"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "pyrantel-pamoate-125mg",
+    "nama_obat": "Pyrantel Pamoate 125mg",
+    "name": "Pyrantel Pamoate 125mg",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Pyrantel Pamoate 125mg, Combantrin, Piranted",
+    "brandNames": [
+      "Pyrantel Pamoate 125mg",
+      "Combantrin",
+      "Piranted"
+    ],
+    "sediaan": "Tablet Kunyah/Suspensi - Pyrantel Pamoate",
+    "dosageForm": "Tablet Kunyah/Suspensi - Pyrantel Pamoate",
+    "zat_aktif": "Pyrantel Pamoate",
+    "activeSubstance": "Pyrantel Pamoate",
+    "indikasi_kegunaan": "Mengobati infeksi cacing kremi dan cacing gelang",
+    "indications": "Mengobati infeksi cacing kremi dan cacing gelang",
+    "detail_lengkap": {
+      "dosis": "10mg/kgBB dosis tunggal",
+      "aturan_pakai": "10mg/kgBB dosis tunggal",
+      "efek_samping": [
+        "Mual",
+        "Kram perut ringan"
+      ],
+      "kontraindikasi": [
+        "Gangguan hati"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10mg/kgBB dosis tunggal",
+    "sideEffects": [
+      "Mual",
+      "Kram perut ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Gangguan hati"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "dimenhydrinate-50mg-anak",
+    "nama_obat": "Dimenhydrinate 50mg Anak",
+    "name": "Dimenhydrinate 50mg Anak",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Dimenhydrinate 50mg Anak, Antimo Anak, Dimen",
+    "brandNames": [
+      "Dimenhydrinate 50mg Anak",
+      "Antimo Anak",
+      "Dimen"
+    ],
+    "sediaan": "Tablet/Sirup - Dimenhydrinate",
+    "dosageForm": "Tablet/Sirup - Dimenhydrinate",
+    "zat_aktif": "Dimenhydrinate",
+    "activeSubstance": "Dimenhydrinate",
+    "indikasi_kegunaan": "Mencegah dan mengatasi mabuk perjalanan pada anak",
+    "indications": "Mencegah dan mengatasi mabuk perjalanan pada anak",
+    "detail_lengkap": {
+      "dosis": "Anak 6-12 tahun: 25mg, tiap 6-8 jam",
+      "aturan_pakai": "Anak 6-12 tahun: 25mg, tiap 6-8 jam",
+      "efek_samping": [
+        "Kantuk",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Bayi < 2 tahun"
+      ],
+      "peringatan": [
+        "Berikan 30 menit sebelum perjalanan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 6-12 tahun: 25mg, tiap 6-8 jam",
+    "sideEffects": [
+      "Kantuk",
+      "Mulut kering"
+    ],
+    "warnings": [
+      "Berikan 30 menit sebelum perjalanan"
+    ],
+    "contraindications": [
+      "Bayi < 2 tahun"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "visine-lr",
+    "nama_obat": "Visine LR",
+    "name": "Visine LR",
+    "kategori_penyakit": "Mata & Telinga",
+    "category": "mata-telinga",
+    "categoryLabel": "Mata & Telinga",
+    "category_icon": "👁️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Visine LR",
+    "brandNames": [
+      "Visine LR"
+    ],
+    "sediaan": "Tetes Mata - Oxymetazoline HCl",
+    "dosageForm": "Tetes Mata - Oxymetazoline HCl",
+    "zat_aktif": "Oxymetazoline HCl",
+    "activeSubstance": "Oxymetazoline HCl",
+    "indikasi_kegunaan": "Meredakan mata merah dalam waktu lama (hingga 6 jam)",
+    "indications": "Meredakan mata merah dalam waktu lama (hingga 6 jam)",
+    "detail_lengkap": {
+      "dosis": "1-2 tetes, 2-3x sehari",
+      "aturan_pakai": "1-2 tetes, 2-3x sehari",
+      "efek_samping": [
+        "Rebound redness"
+      ],
+      "kontraindikasi": [
+        "Glaukoma sudut sempit"
+      ],
+      "peringatan": [
+        "Tidak > 4 hari"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1-2 tetes, 2-3x sehari",
+    "sideEffects": [
+      "Rebound redness"
+    ],
+    "warnings": [
+      "Tidak > 4 hari"
+    ],
+    "contraindications": [
+      "Glaukoma sudut sempit"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "thiamine-hcl-50mg-vitamin-b1",
+    "nama_obat": "Thiamine HCl 50mg (Vitamin B1)",
+    "name": "Thiamine HCl 50mg (Vitamin B1)",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Thiamine HCl 50mg (Vitamin B1), Benavit, Thiamine",
+    "brandNames": [
+      "Thiamine HCl 50mg (Vitamin B1)",
+      "Benavit",
+      "Thiamine"
+    ],
+    "sediaan": "Tablet - Thiamine HCl",
+    "dosageForm": "Tablet - Thiamine HCl",
+    "zat_aktif": "Thiamine HCl",
+    "activeSubstance": "Thiamine HCl",
+    "indikasi_kegunaan": "Mencegah dan mengatasi defisiensi vitamin B1 (beri-beri)",
+    "indications": "Mencegah dan mengatasi defisiensi vitamin B1 (beri-beri)",
+    "detail_lengkap": {
+      "dosis": "10-30mg per hari (profilaksis), 50-100mg per hari (terapi)",
+      "aturan_pakai": "10-30mg per hari (profilaksis), 50-100mg per hari (terapi)",
+      "efek_samping": [
+        "Reaksi alergi jarang"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10-30mg per hari (profilaksis), 50-100mg per hari (terapi)",
+    "sideEffects": [
+      "Reaksi alergi jarang"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "pyridoxine-10mg-vitamin-b6",
+    "nama_obat": "Pyridoxine 10mg (Vitamin B6)",
+    "name": "Pyridoxine 10mg (Vitamin B6)",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Pyridoxine 10mg (Vitamin B6), Pyridoxine DOEN",
+    "brandNames": [
+      "Pyridoxine 10mg (Vitamin B6)",
+      "Pyridoxine DOEN"
+    ],
+    "sediaan": "Tablet - Pyridoxine HCl",
+    "dosageForm": "Tablet - Pyridoxine HCl",
+    "zat_aktif": "Pyridoxine HCl",
+    "activeSubstance": "Pyridoxine HCl",
+    "indikasi_kegunaan": "Mencegah dan mengatasi defisiensi vitamin B6, meredakan mual kehamilan",
+    "indications": "Mencegah dan mengatasi defisiensi vitamin B6, meredakan mual kehamilan",
+    "detail_lengkap": {
+      "dosis": "10-25mg per hari",
+      "aturan_pakai": "10-25mg per hari",
+      "efek_samping": [
+        "Neuropati perifer (dosis tinggi jangka panjang)"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10-25mg per hari",
+    "sideEffects": [
+      "Neuropati perifer (dosis tinggi jangka panjang)"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "cyanocobalamin-500mcg-vitamin-b12",
+    "nama_obat": "Cyanocobalamin 500mcg (Vitamin B12)",
+    "name": "Cyanocobalamin 500mcg (Vitamin B12)",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Cyanocobalamin 500mcg (Vitamin B12), Mecobalamin",
+    "brandNames": [
+      "Cyanocobalamin 500mcg (Vitamin B12)",
+      "Mecobalamin"
+    ],
+    "sediaan": "Tablet - Sianokobalamin",
+    "dosageForm": "Tablet - Sianokobalamin",
+    "zat_aktif": "Sianokobalamin",
+    "activeSubstance": "Sianokobalamin",
+    "indikasi_kegunaan": "Mencegah dan mengatasi defisiensi vitamin B12 dan anemia megaloblastik",
+    "indications": "Mencegah dan mengatasi defisiensi vitamin B12 dan anemia megaloblastik",
+    "detail_lengkap": {
+      "dosis": "500-1000mcg per hari",
+      "aturan_pakai": "500-1000mcg per hari",
+      "efek_samping": [
+        "Reaksi alergi (jarang)"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "500-1000mcg per hari",
+    "sideEffects": [
+      "Reaksi alergi (jarang)"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "asam-folat-1mg",
+    "nama_obat": "Asam Folat 1mg",
+    "name": "Asam Folat 1mg",
+    "kategori_penyakit": "Vitamin & Suplemen",
+    "category": "vitamin-suplemen",
+    "categoryLabel": "Vitamin & Suplemen",
+    "category_icon": "🍊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Asam Folat 1mg, Folacid",
+    "brandNames": [
+      "Asam Folat 1mg",
+      "Folacid"
+    ],
+    "sediaan": "Tablet - Asam Folat",
+    "dosageForm": "Tablet - Asam Folat",
+    "zat_aktif": "Asam Folat",
+    "activeSubstance": "Asam Folat",
+    "indikasi_kegunaan": "Terapi defisiensi folat dan anemia megaloblastik, suplemen kehamilan dosis tinggi",
+    "indications": "Terapi defisiensi folat dan anemia megaloblastik, suplemen kehamilan dosis tinggi",
+    "detail_lengkap": {
+      "dosis": "1mg per hari",
+      "aturan_pakai": "1mg per hari",
+      "efek_samping": [
+        "Mual ringan"
+      ],
+      "kontraindikasi": [
+        "Anemia pernisiosa tanpa terapi B12"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1mg per hari",
+    "sideEffects": [
+      "Mual ringan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Anemia pernisiosa tanpa terapi B12"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "xylometazoline-0-05-anak",
+    "nama_obat": "Xylometazoline 0,05% Anak",
+    "name": "Xylometazoline 0,05% Anak",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Xylometazoline 0,05% Anak, Otrivin Anak, Iliadin Anak",
+    "brandNames": [
+      "Xylometazoline 0,05% Anak",
+      "Otrivin Anak",
+      "Iliadin Anak"
+    ],
+    "sediaan": "Tetes/Semprotan Hidung - Xylometazoline HCl 0",
+    "dosageForm": "Tetes/Semprotan Hidung - Xylometazoline HCl 0",
+    "zat_aktif": "Xylometazoline HCl 0,05%",
+    "activeSubstance": "Xylometazoline HCl 0,05%",
+    "indikasi_kegunaan": "Dekongestan topikal untuk hidung tersumbat pada anak",
+    "indications": "Dekongestan topikal untuk hidung tersumbat pada anak",
+    "detail_lengkap": {
+      "dosis": "Anak 2-12 tahun: 1-2 tetes tiap lubang hidung, 2-3x sehari",
+      "aturan_pakai": "Anak 2-12 tahun: 1-2 tetes tiap lubang hidung, 2-3x sehari",
+      "efek_samping": [
+        "Iritasi hidung",
+        "Rebound congestion"
+      ],
+      "kontraindikasi": [
+        "Anak < 2 tahun"
+      ],
+      "peringatan": [
+        "Tidak > 5 hari"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak 2-12 tahun: 1-2 tetes tiap lubang hidung, 2-3x sehari",
+    "sideEffects": [
+      "Iritasi hidung",
+      "Rebound congestion"
+    ],
+    "warnings": [
+      "Tidak > 5 hari"
+    ],
+    "contraindications": [
+      "Anak < 2 tahun"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "oxymetazoline-0-05",
+    "nama_obat": "Oxymetazoline 0,05%",
+    "name": "Oxymetazoline 0,05%",
+    "kategori_penyakit": "Flu & Batuk",
+    "category": "flu-batuk",
+    "categoryLabel": "Flu & Batuk",
+    "category_icon": "🤧",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Oxymetazoline 0,05%, Afrin, Nasivin",
+    "brandNames": [
+      "Oxymetazoline 0,05%",
+      "Afrin",
+      "Nasivin"
+    ],
+    "sediaan": "Semprotan Hidung - Oxymetazoline HCl",
+    "dosageForm": "Semprotan Hidung - Oxymetazoline HCl",
+    "zat_aktif": "Oxymetazoline HCl",
+    "activeSubstance": "Oxymetazoline HCl",
+    "indikasi_kegunaan": "Dekongestan hidung untuk rinitis akut dan sinusitis",
+    "indications": "Dekongestan hidung untuk rinitis akut dan sinusitis",
+    "detail_lengkap": {
+      "dosis": "2-3 semprotan, 2x sehari (pagi & malam)",
+      "aturan_pakai": "2-3 semprotan, 2x sehari (pagi & malam)",
+      "efek_samping": [
+        "Iritasi hidung",
+        "Rebound congestion berat"
+      ],
+      "kontraindikasi": [
+        "Rhinitis atrofi"
+      ],
+      "peringatan": [
+        "Tidak > 3 hari"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2-3 semprotan, 2x sehari (pagi & malam)",
+    "sideEffects": [
+      "Iritasi hidung",
+      "Rebound congestion berat"
+    ],
+    "warnings": [
+      "Tidak > 3 hari"
+    ],
+    "contraindications": [
+      "Rhinitis atrofi"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "krim-hidrokortison-1",
+    "nama_obat": "Krim Hidrokortison 1%",
+    "name": "Krim Hidrokortison 1%",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Krim Hidrokortison 1%, Hydrocortisone Krim",
+    "brandNames": [
+      "Krim Hidrokortison 1%",
+      "Hydrocortisone Krim"
+    ],
+    "sediaan": "Krim - Hydrocortisone 1%",
+    "dosageForm": "Krim - Hydrocortisone 1%",
+    "zat_aktif": "Hydrocortisone 1%",
+    "activeSubstance": "Hydrocortisone 1%",
+    "indikasi_kegunaan": "Mengurangi peradangan, gatal, dan kemerahan pada dermatitis ringan dan eksim",
+    "indications": "Mengurangi peradangan, gatal, dan kemerahan pada dermatitis ringan dan eksim",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis 2-3x sehari",
+      "aturan_pakai": "Oleskan tipis 2-3x sehari",
+      "efek_samping": [
+        "Penipisan kulit (pemakaian lama)"
+      ],
+      "kontraindikasi": [
+        "Infeksi kulit fungal/bakteri tanpa terapi"
+      ],
+      "peringatan": [
+        "Tidak untuk kulit wajah"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis 2-3x sehari",
+    "sideEffects": [
+      "Penipisan kulit (pemakaian lama)"
+    ],
+    "warnings": [
+      "Tidak untuk kulit wajah"
+    ],
+    "contraindications": [
+      "Infeksi kulit fungal/bakteri tanpa terapi"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "daktarin-krim-miconazole-2",
+    "nama_obat": "Daktarin Krim (Miconazole 2%)",
+    "name": "Daktarin Krim (Miconazole 2%)",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Daktarin Krim (Miconazole 2%), Daktarin",
+    "brandNames": [
+      "Daktarin Krim (Miconazole 2%)",
+      "Daktarin"
+    ],
+    "sediaan": "Krim - Miconazole Nitrat 2%",
+    "dosageForm": "Krim - Miconazole Nitrat 2%",
+    "zat_aktif": "Miconazole Nitrat 2%",
+    "activeSubstance": "Miconazole Nitrat 2%",
+    "indikasi_kegunaan": "Mengobati infeksi jamur kulit (tinea pedis, tinea corporis, kandidiasis)",
+    "indications": "Mengobati infeksi jamur kulit (tinea pedis, tinea corporis, kandidiasis)",
+    "detail_lengkap": {
+      "dosis": "Oleskan 2x sehari selama 2-4 minggu",
+      "aturan_pakai": "Oleskan 2x sehari selama 2-4 minggu",
+      "efek_samping": [
+        "Iritasi kulit",
+        "Rasa terbakar"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas mikonazol"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan 2x sehari selama 2-4 minggu",
+    "sideEffects": [
+      "Iritasi kulit",
+      "Rasa terbakar"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas mikonazol"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "canesten-krim-clotrimazole-1",
+    "nama_obat": "Canesten Krim (Clotrimazole 1%)",
+    "name": "Canesten Krim (Clotrimazole 1%)",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Canesten Krim (Clotrimazole 1%), Canesten, Clotrimazole",
+    "brandNames": [
+      "Canesten Krim (Clotrimazole 1%)",
+      "Canesten",
+      "Clotrimazole"
+    ],
+    "sediaan": "Krim - Clotrimazole 1%",
+    "dosageForm": "Krim - Clotrimazole 1%",
+    "zat_aktif": "Clotrimazole 1%",
+    "activeSubstance": "Clotrimazole 1%",
+    "indikasi_kegunaan": "Mengobati kurap, kutu air, panu, dan infeksi jamur kulit",
+    "indications": "Mengobati kurap, kutu air, panu, dan infeksi jamur kulit",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis 2-3x sehari selama 4 minggu",
+      "aturan_pakai": "Oleskan tipis 2-3x sehari selama 4 minggu",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis 2-3x sehari selama 4 minggu",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ketoconazole-sampo-2",
+    "nama_obat": "Ketoconazole Sampo 2%",
+    "name": "Ketoconazole Sampo 2%",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Ketoconazole Sampo 2%, Nizoral Sampo",
+    "brandNames": [
+      "Ketoconazole Sampo 2%",
+      "Nizoral Sampo"
+    ],
+    "sediaan": "Sampo - Ketoconazole 2%",
+    "dosageForm": "Sampo - Ketoconazole 2%",
+    "zat_aktif": "Ketoconazole 2%",
+    "activeSubstance": "Ketoconazole 2%",
+    "indikasi_kegunaan": "Mengobati ketombe dan infeksi jamur kulit kepala",
+    "indications": "Mengobati ketombe dan infeksi jamur kulit kepala",
+    "detail_lengkap": {
+      "dosis": "Gunakan 2-3x seminggu selama 2-4 minggu",
+      "aturan_pakai": "Gunakan 2-3x seminggu selama 2-4 minggu",
+      "efek_samping": [
+        "Iritasi kepala",
+        "Rambut kering"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Gunakan 2-3x seminggu selama 2-4 minggu",
+    "sideEffects": [
+      "Iritasi kepala",
+      "Rambut kering"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "whitfield-ointment",
+    "nama_obat": "Whitfield Ointment",
+    "name": "Whitfield Ointment",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Whitfield Ointment",
+    "brandNames": [
+      "Whitfield Ointment"
+    ],
+    "sediaan": "Salep - Asam Benzoat 6% + Asam Salisilat 3%",
+    "dosageForm": "Salep - Asam Benzoat 6% + Asam Salisilat 3%",
+    "zat_aktif": "Asam Benzoat 6% + Asam Salisilat 3%",
+    "activeSubstance": "Asam Benzoat 6% + Asam Salisilat 3%",
+    "indikasi_kegunaan": "Mengobati infeksi jamur kulit ringan dan panu",
+    "indications": "Mengobati infeksi jamur kulit ringan dan panu",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis 1-2x sehari",
+      "aturan_pakai": "Oleskan tipis 1-2x sehari",
+      "efek_samping": [
+        "Iritasi kulit",
+        "Pengelupasan"
+      ],
+      "kontraindikasi": [
+        "Kulit luka terbuka"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis 1-2x sehari",
+    "sideEffects": [
+      "Iritasi kulit",
+      "Pengelupasan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kulit luka terbuka"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "sulfur-salicyl-salep",
+    "nama_obat": "Sulfur Salicyl Salep",
+    "name": "Sulfur Salicyl Salep",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Sulfur Salicyl Salep, Salep Sulfur",
+    "brandNames": [
+      "Sulfur Salicyl Salep",
+      "Salep Sulfur"
+    ],
+    "sediaan": "Salep - Sulfur Praesipitatum + Asam Salisilat",
+    "dosageForm": "Salep - Sulfur Praesipitatum + Asam Salisilat",
+    "zat_aktif": "Sulfur Praesipitatum + Asam Salisilat",
+    "activeSubstance": "Sulfur Praesipitatum + Asam Salisilat",
+    "indikasi_kegunaan": "Mengobati dermatitis seboroik, ketombe, dan penyakit kulit bersisik",
+    "indications": "Mengobati dermatitis seboroik, ketombe, dan penyakit kulit bersisik",
+    "detail_lengkap": {
+      "dosis": "Oleskan tipis 1-2x sehari",
+      "aturan_pakai": "Oleskan tipis 1-2x sehari",
+      "efek_samping": [
+        "Iritasi kulit",
+        "Kulit kering"
+      ],
+      "kontraindikasi": [],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan tipis 1-2x sehari",
+    "sideEffects": [
+      "Iritasi kulit",
+      "Kulit kering"
+    ],
+    "warnings": [],
+    "contraindications": [],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "solarcaine",
+    "nama_obat": "Solarcaine",
+    "name": "Solarcaine",
+    "kategori_penyakit": "Demam & Nyeri",
+    "category": "demam-nyeri",
+    "categoryLabel": "Demam & Nyeri",
+    "category_icon": "🌡️",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Solarcaine",
+    "brandNames": [
+      "Solarcaine"
+    ],
+    "sediaan": "Semprotan/Krim - Benzocaine + Triclosan",
+    "dosageForm": "Semprotan/Krim - Benzocaine + Triclosan",
+    "zat_aktif": "Benzocaine + Triclosan",
+    "activeSubstance": "Benzocaine + Triclosan",
+    "indikasi_kegunaan": "Meredakan nyeri dan gatal akibat luka bakar ringan dan sengatan matahari",
+    "indications": "Meredakan nyeri dan gatal akibat luka bakar ringan dan sengatan matahari",
+    "detail_lengkap": {
+      "dosis": "Semprotkan atau oleskan pada area terbakar",
+      "aturan_pakai": "Semprotkan atau oleskan pada area terbakar",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Alergi benzocaine"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Semprotkan atau oleskan pada area terbakar",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Alergi benzocaine"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "klorokuin-150mg",
+    "nama_obat": "Klorokuin 150mg",
+    "name": "Klorokuin 150mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Klorokuin 150mg, Resochin",
+    "brandNames": [
+      "Klorokuin 150mg",
+      "Resochin"
+    ],
+    "sediaan": "Tablet - Chloroquine Fosfat",
+    "dosageForm": "Tablet - Chloroquine Fosfat",
+    "zat_aktif": "Chloroquine Fosfat",
+    "activeSubstance": "Chloroquine Fosfat",
+    "indikasi_kegunaan": "Profilaksis dan pengobatan malaria ringan",
+    "indications": "Profilaksis dan pengobatan malaria ringan",
+    "detail_lengkap": {
+      "dosis": "Profilaksis: 300mg sekali seminggu",
+      "aturan_pakai": "Profilaksis: 300mg sekali seminggu",
+      "efek_samping": [
+        "Mual",
+        "Sakit kepala",
+        "Gangguan penglihatan"
+      ],
+      "kontraindikasi": [
+        "Epilepsi",
+        "Retinopati"
+      ],
+      "peringatan": [
+        "Kontrol rutin visus"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Profilaksis: 300mg sekali seminggu",
+    "sideEffects": [
+      "Mual",
+      "Sakit kepala",
+      "Gangguan penglihatan"
+    ],
+    "warnings": [
+      "Kontrol rutin visus"
+    ],
+    "contraindications": [
+      "Epilepsi",
+      "Retinopati"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "primaquine-15mg",
+    "nama_obat": "Primaquine 15mg",
+    "name": "Primaquine 15mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Primaquine 15mg, Primaquine",
+    "brandNames": [
+      "Primaquine 15mg",
+      "Primaquine"
+    ],
+    "sediaan": "Tablet - Primaquine Fosfat",
+    "dosageForm": "Tablet - Primaquine Fosfat",
+    "zat_aktif": "Primaquine Fosfat",
+    "activeSubstance": "Primaquine Fosfat",
+    "indikasi_kegunaan": "Pengobatan malaria vivax dan mencegah relaps",
+    "indications": "Pengobatan malaria vivax dan mencegah relaps",
+    "detail_lengkap": {
+      "dosis": "15mg per hari selama 14 hari",
+      "aturan_pakai": "15mg per hari selama 14 hari",
+      "efek_samping": [
+        "Mual",
+        "Nyeri perut",
+        "Hemolisis pada G6PD"
+      ],
+      "kontraindikasi": [
+        "Defisiensi G6PD",
+        "Kehamilan"
+      ],
+      "peringatan": [
+        "Cek G6PD sebelum terapi"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "15mg per hari selama 14 hari",
+    "sideEffects": [
+      "Mual",
+      "Nyeri perut",
+      "Hemolisis pada G6PD"
+    ],
+    "warnings": [
+      "Cek G6PD sebelum terapi"
+    ],
+    "contraindications": [
+      "Defisiensi G6PD",
+      "Kehamilan"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "nystatin-vaginal-tablet",
+    "nama_obat": "Nystatin Vaginal Tablet",
+    "name": "Nystatin Vaginal Tablet",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Nystatin Vaginal Tablet, Mycostatin Vaginal",
+    "brandNames": [
+      "Nystatin Vaginal Tablet",
+      "Mycostatin Vaginal"
+    ],
+    "sediaan": "Tablet Vaginal - Nystatin 100.000 IU",
+    "dosageForm": "Tablet Vaginal - Nystatin 100.000 IU",
+    "zat_aktif": "Nystatin 100.000 IU",
+    "activeSubstance": "Nystatin 100.000 IU",
+    "indikasi_kegunaan": "Mengobati kandidiasis vagina",
+    "indications": "Mengobati kandidiasis vagina",
+    "detail_lengkap": {
+      "dosis": "1 tablet vaginal per hari selama 14 hari",
+      "aturan_pakai": "1 tablet vaginal per hari selama 14 hari",
+      "efek_samping": [
+        "Iritasi lokal",
+        "Rasa terbakar"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas nistatin"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "1 tablet vaginal per hari selama 14 hari",
+    "sideEffects": [
+      "Iritasi lokal",
+      "Rasa terbakar"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas nistatin"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "benzyl-benzoate-lotion-25",
+    "nama_obat": "Benzyl Benzoate Lotion 25%",
+    "name": "Benzyl Benzoate Lotion 25%",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Benzyl Benzoate Lotion 25%, Scabimite, Ascabiol",
+    "brandNames": [
+      "Benzyl Benzoate Lotion 25%",
+      "Scabimite",
+      "Ascabiol"
+    ],
+    "sediaan": "Losion - Benzyl Benzoate",
+    "dosageForm": "Losion - Benzyl Benzoate",
+    "zat_aktif": "Benzyl Benzoate",
+    "activeSubstance": "Benzyl Benzoate",
+    "indikasi_kegunaan": "Mengobati skabies (gudik) dan pedikulosis",
+    "indications": "Mengobati skabies (gudik) dan pedikulosis",
+    "detail_lengkap": {
+      "dosis": "Oleskan ke seluruh tubuh, diamkan 24 jam",
+      "aturan_pakai": "Oleskan ke seluruh tubuh, diamkan 24 jam",
+      "efek_samping": [
+        "Iritasi kulit"
+      ],
+      "kontraindikasi": [
+        "Kulit luka terbuka"
+      ],
+      "peringatan": [
+        "Hindari mata dan mulut"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan ke seluruh tubuh, diamkan 24 jam",
+    "sideEffects": [
+      "Iritasi kulit"
+    ],
+    "warnings": [
+      "Hindari mata dan mulut"
+    ],
+    "contraindications": [
+      "Kulit luka terbuka"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "permethrin-5-krim",
+    "nama_obat": "Permethrin 5% Krim",
+    "name": "Permethrin 5% Krim",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Permethrin 5% Krim",
+    "brandNames": [
+      "Permethrin 5% Krim"
+    ],
+    "sediaan": "Krim - Permethrin",
+    "dosageForm": "Krim - Permethrin",
+    "zat_aktif": "Permethrin",
+    "activeSubstance": "Permethrin",
+    "indikasi_kegunaan": "Mengobati skabies dengan efektivitas tinggi",
+    "indications": "Mengobati skabies dengan efektivitas tinggi",
+    "detail_lengkap": {
+      "dosis": "Oleskan sekali, diamkan 8-14 jam lalu bilas",
+      "aturan_pakai": "Oleskan sekali, diamkan 8-14 jam lalu bilas",
+      "efek_samping": [
+        "Iritasi kulit sementara",
+        "Rasa terbakar"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas pirethroid"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Oleskan sekali, diamkan 8-14 jam lalu bilas",
+    "sideEffects": [
+      "Iritasi kulit sementara",
+      "Rasa terbakar"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas pirethroid"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ondansetron-4mg",
+    "nama_obat": "Ondansetron 4mg",
+    "name": "Ondansetron 4mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Ondansetron 4mg, Zofran, Vomceran, Ondansetron",
+    "brandNames": [
+      "Ondansetron 4mg",
+      "Zofran",
+      "Vomceran",
+      "Ondansetron"
+    ],
+    "sediaan": "Tablet/ODT - Ondansetron HCl",
+    "dosageForm": "Tablet/ODT - Ondansetron HCl",
+    "zat_aktif": "Ondansetron HCl",
+    "activeSubstance": "Ondansetron HCl",
+    "indikasi_kegunaan": "Mencegah dan mengatasi mual muntah",
+    "indications": "Mencegah dan mengatasi mual muntah",
+    "detail_lengkap": {
+      "dosis": "4-8mg, tiap 8-12 jam",
+      "aturan_pakai": "4-8mg, tiap 8-12 jam",
+      "efek_samping": [
+        "Sakit kepala",
+        "Konstipasi",
+        "Pusing"
+      ],
+      "kontraindikasi": [
+        "Sindrom QT panjang"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "4-8mg, tiap 8-12 jam",
+    "sideEffects": [
+      "Sakit kepala",
+      "Konstipasi",
+      "Pusing"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Sindrom QT panjang"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "domperidone-10mg",
+    "nama_obat": "Domperidone 10mg",
+    "name": "Domperidone 10mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Domperidone 10mg, Vometa, Motilium",
+    "brandNames": [
+      "Domperidone 10mg",
+      "Vometa",
+      "Motilium"
+    ],
+    "sediaan": "Tablet - Domperidone",
+    "dosageForm": "Tablet - Domperidone",
+    "zat_aktif": "Domperidone",
+    "activeSubstance": "Domperidone",
+    "indikasi_kegunaan": "Mengatasi mual, muntah, dan mempercepat pengosongan lambung",
+    "indications": "Mengatasi mual, muntah, dan mempercepat pengosongan lambung",
+    "detail_lengkap": {
+      "dosis": "10mg, 3x sehari 15-30 menit sebelum makan",
+      "aturan_pakai": "10mg, 3x sehari 15-30 menit sebelum makan",
+      "efek_samping": [
+        "Sakit kepala",
+        "Mulut kering"
+      ],
+      "kontraindikasi": [
+        "Pendarahan gastrointestinal"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10mg, 3x sehari 15-30 menit sebelum makan",
+    "sideEffects": [
+      "Sakit kepala",
+      "Mulut kering"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Pendarahan gastrointestinal"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "metoclopramide-10mg",
+    "nama_obat": "Metoclopramide 10mg",
+    "name": "Metoclopramide 10mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Metoclopramide 10mg, Primperan, Metolon",
+    "brandNames": [
+      "Metoclopramide 10mg",
+      "Primperan",
+      "Metolon"
+    ],
+    "sediaan": "Tablet - Metoclopramide HCl",
+    "dosageForm": "Tablet - Metoclopramide HCl",
+    "zat_aktif": "Metoclopramide HCl",
+    "activeSubstance": "Metoclopramide HCl",
+    "indikasi_kegunaan": "Mengatasi mual, muntah, dan mempercepat motilitas lambung",
+    "indications": "Mengatasi mual, muntah, dan mempercepat motilitas lambung",
+    "detail_lengkap": {
+      "dosis": "10mg, 3x sehari sebelum makan",
+      "aturan_pakai": "10mg, 3x sehari sebelum makan",
+      "efek_samping": [
+        "Kantuk",
+        "Gelisah",
+        "Gejala ekstrapiramidal"
+      ],
+      "kontraindikasi": [
+        "Epilepsi",
+        "Pendarahan GI"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10mg, 3x sehari sebelum makan",
+    "sideEffects": [
+      "Kantuk",
+      "Gelisah",
+      "Gejala ekstrapiramidal"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Epilepsi",
+      "Pendarahan GI"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "ranitidine-150mg",
+    "nama_obat": "Ranitidine 150mg",
+    "name": "Ranitidine 150mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Ranitidine 150mg, Zantac, Ranitidine",
+    "brandNames": [
+      "Ranitidine 150mg",
+      "Zantac",
+      "Ranitidine"
+    ],
+    "sediaan": "Tablet - Ranitidine HCl",
+    "dosageForm": "Tablet - Ranitidine HCl",
+    "zat_aktif": "Ranitidine HCl",
+    "activeSubstance": "Ranitidine HCl",
+    "indikasi_kegunaan": "Mengurangi produksi asam lambung untuk tukak lambung dan GERD",
+    "indications": "Mengurangi produksi asam lambung untuk tukak lambung dan GERD",
+    "detail_lengkap": {
+      "dosis": "150mg, 2x sehari atau 300mg, 1x sehari malam",
+      "aturan_pakai": "150mg, 2x sehari atau 300mg, 1x sehari malam",
+      "efek_samping": [
+        "Sakit kepala",
+        "Konstipasi",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "150mg, 2x sehari atau 300mg, 1x sehari malam",
+    "sideEffects": [
+      "Sakit kepala",
+      "Konstipasi",
+      "Diare"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "famotidine-20mg",
+    "nama_obat": "Famotidine 20mg",
+    "name": "Famotidine 20mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Famotidine 20mg, Pepcid, Famocid",
+    "brandNames": [
+      "Famotidine 20mg",
+      "Pepcid",
+      "Famocid"
+    ],
+    "sediaan": "Tablet - Famotidine",
+    "dosageForm": "Tablet - Famotidine",
+    "zat_aktif": "Famotidine",
+    "activeSubstance": "Famotidine",
+    "indikasi_kegunaan": "Mengurangi asam lambung berlebih pada tukak lambung dan GERD",
+    "indications": "Mengurangi asam lambung berlebih pada tukak lambung dan GERD",
+    "detail_lengkap": {
+      "dosis": "20mg, 2x sehari",
+      "aturan_pakai": "20mg, 2x sehari",
+      "efek_samping": [
+        "Sakit kepala",
+        "Pusing",
+        "Konstipasi"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "20mg, 2x sehari",
+    "sideEffects": [
+      "Sakit kepala",
+      "Pusing",
+      "Konstipasi"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Hipersensitivitas"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "loperamide-2mg",
+    "nama_obat": "Loperamide 2mg",
+    "name": "Loperamide 2mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Loperamide 2mg, Imodium, Lodia",
+    "brandNames": [
+      "Loperamide 2mg",
+      "Imodium",
+      "Lodia"
+    ],
+    "sediaan": "Tablet/Kapsul - Loperamide HCl",
+    "dosageForm": "Tablet/Kapsul - Loperamide HCl",
+    "zat_aktif": "Loperamide HCl",
+    "activeSubstance": "Loperamide HCl",
+    "indikasi_kegunaan": "Mengatasi diare akut non-infeksi, mengurangi frekuensi BAB",
+    "indications": "Mengatasi diare akut non-infeksi, mengurangi frekuensi BAB",
+    "detail_lengkap": {
+      "dosis": "Dosis awal 4mg, lalu 2mg setelah setiap BAB cair, maks 16mg/hari",
+      "aturan_pakai": "Dosis awal 4mg, lalu 2mg setelah setiap BAB cair, maks 16mg/hari",
+      "efek_samping": [
+        "Sembelit",
+        "Kembung",
+        "Mual"
+      ],
+      "kontraindikasi": [
+        "Diare berdarah",
+        "Kolitis"
+      ],
+      "peringatan": [
+        "Hidrasi cukup"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Dosis awal 4mg, lalu 2mg setelah setiap BAB cair, maks 16mg/hari",
+    "sideEffects": [
+      "Sembelit",
+      "Kembung",
+      "Mual"
+    ],
+    "warnings": [
+      "Hidrasi cukup"
+    ],
+    "contraindications": [
+      "Diare berdarah",
+      "Kolitis"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "sennosides-8-6mg",
+    "nama_obat": "Sennosides 8,6mg",
+    "name": "Sennosides 8,6mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Bebas Terbatas",
+    "bpomClass": {
+      "label": "Obat Bebas Terbatas",
+      "code": "bebas-terbatas",
+      "symbol": "🔵",
+      "badgeColor": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Bebas Terbatas"
+    },
+    "merk": "Sennosides 8,6mg, Laxadin, Senna",
+    "brandNames": [
+      "Sennosides 8,6mg",
+      "Laxadin",
+      "Senna"
+    ],
+    "sediaan": "Tablet - Sennoside A+B (dari Senna)",
+    "dosageForm": "Tablet - Sennoside A+B (dari Senna)",
+    "zat_aktif": "Sennoside A+B (dari Senna)",
+    "activeSubstance": "Sennoside A+B (dari Senna)",
+    "indikasi_kegunaan": "Laksatif stimulan untuk konstipasi",
+    "indications": "Laksatif stimulan untuk konstipasi",
+    "detail_lengkap": {
+      "dosis": "2 tablet sebelum tidur",
+      "aturan_pakai": "2 tablet sebelum tidur",
+      "efek_samping": [
+        "Kram perut",
+        "Diare",
+        "Urin berwarna merah-coklat"
+      ],
+      "kontraindikasi": [
+        "Obstruksi usus",
+        "Crohn"
+      ],
+      "peringatan": [
+        "Tidak untuk penggunaan jangka panjang"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 tablet sebelum tidur",
+    "sideEffects": [
+      "Kram perut",
+      "Diare",
+      "Urin berwarna merah-coklat"
+    ],
+    "warnings": [
+      "Tidak untuk penggunaan jangka panjang"
+    ],
+    "contraindications": [
+      "Obstruksi usus",
+      "Crohn"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "amoxicillin-250mg-sirup",
+    "nama_obat": "Amoxicillin 250mg Sirup",
+    "name": "Amoxicillin 250mg Sirup",
+    "kategori_penyakit": "Antibiotik & Infeksi",
+    "category": "antibiotik-infeksi",
+    "categoryLabel": "Antibiotik & Infeksi",
+    "category_icon": "🔬",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Amoxicillin 250mg Sirup, Amoxil Sirup",
+    "brandNames": [
+      "Amoxicillin 250mg Sirup",
+      "Amoxil Sirup"
+    ],
+    "sediaan": "Sirup - Amoksisilin 125mg/5ml",
+    "dosageForm": "Sirup - Amoksisilin 125mg/5ml",
+    "zat_aktif": "Amoksisilin 125mg/5ml",
+    "activeSubstance": "Amoksisilin 125mg/5ml",
+    "indikasi_kegunaan": "Antibiotik untuk infeksi bakteri pada anak-anak",
+    "indications": "Antibiotik untuk infeksi bakteri pada anak-anak",
+    "detail_lengkap": {
+      "dosis": "Anak < 20kg: 20-40mg/kgBB/hari dibagi 3 dosis",
+      "aturan_pakai": "Anak < 20kg: 20-40mg/kgBB/hari dibagi 3 dosis",
+      "efek_samping": [
+        "Diare",
+        "Mual",
+        "Ruam"
+      ],
+      "kontraindikasi": [
+        "Alergi penisilin"
+      ],
+      "peringatan": [
+        "Kocok sebelum diminum, habiskan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "Anak < 20kg: 20-40mg/kgBB/hari dibagi 3 dosis",
+    "sideEffects": [
+      "Diare",
+      "Mual",
+      "Ruam"
+    ],
+    "warnings": [
+      "Kocok sebelum diminum, habiskan"
+    ],
+    "contraindications": [
+      "Alergi penisilin"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "cotrimoxazole-480mg",
+    "nama_obat": "Cotrimoxazole 480mg",
+    "name": "Cotrimoxazole 480mg",
+    "kategori_penyakit": "Maag & Pencernaan",
+    "category": "maag-pencernaan",
+    "categoryLabel": "Maag & Pencernaan",
+    "category_icon": "🥣",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Cotrimoxazole 480mg, Bactrim, Septrin",
+    "brandNames": [
+      "Cotrimoxazole 480mg",
+      "Bactrim",
+      "Septrin"
+    ],
+    "sediaan": "Tablet - Trimethoprim + Sulfamethoxazole",
+    "dosageForm": "Tablet - Trimethoprim + Sulfamethoxazole",
+    "zat_aktif": "Trimethoprim + Sulfamethoxazole",
+    "activeSubstance": "Trimethoprim + Sulfamethoxazole",
+    "indikasi_kegunaan": "Antibiotik untuk ISK, bronkitis akut, diare bakteri, dan toksoplasma",
+    "indications": "Antibiotik untuk ISK, bronkitis akut, diare bakteri, dan toksoplasma",
+    "detail_lengkap": {
+      "dosis": "2 tablet, 2x sehari",
+      "aturan_pakai": "2 tablet, 2x sehari",
+      "efek_samping": [
+        "Mual",
+        "Ruam",
+        "Fotosensitivitas"
+      ],
+      "kontraindikasi": [
+        "Alergi sulfa",
+        "Kehamilan trimester 3"
+      ],
+      "peringatan": [
+        "Minum banyak air"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2 tablet, 2x sehari",
+    "sideEffects": [
+      "Mual",
+      "Ruam",
+      "Fotosensitivitas"
+    ],
+    "warnings": [
+      "Minum banyak air"
+    ],
+    "contraindications": [
+      "Alergi sulfa",
+      "Kehamilan trimester 3"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "metformin-500mg",
+    "nama_obat": "Metformin 500mg",
+    "name": "Metformin 500mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Metformin 500mg, Glucophage, Metformin",
+    "brandNames": [
+      "Metformin 500mg",
+      "Glucophage",
+      "Metformin"
+    ],
+    "sediaan": "Tablet - Metformin HCl",
+    "dosageForm": "Tablet - Metformin HCl",
+    "zat_aktif": "Metformin HCl",
+    "activeSubstance": "Metformin HCl",
+    "indikasi_kegunaan": "Mengontrol kadar gula darah pada diabetes melitus tipe 2",
+    "indications": "Mengontrol kadar gula darah pada diabetes melitus tipe 2",
+    "detail_lengkap": {
+      "dosis": "500-850mg, 2-3x sehari bersama makan",
+      "aturan_pakai": "500-850mg, 2-3x sehari bersama makan",
+      "efek_samping": [
+        "Mual",
+        "Diare",
+        "Metalik rasa"
+      ],
+      "kontraindikasi": [
+        "Gagal ginjal",
+        "Gagal hati"
+      ],
+      "peringatan": [
+        "Monitor fungsi ginjal"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "500-850mg, 2-3x sehari bersama makan",
+    "sideEffects": [
+      "Mual",
+      "Diare",
+      "Metalik rasa"
+    ],
+    "warnings": [
+      "Monitor fungsi ginjal"
+    ],
+    "contraindications": [
+      "Gagal ginjal",
+      "Gagal hati"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "amlodipine-5mg",
+    "nama_obat": "Amlodipine 5mg",
+    "name": "Amlodipine 5mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Amlodipine 5mg, Norvasc, Tensivask",
+    "brandNames": [
+      "Amlodipine 5mg",
+      "Norvasc",
+      "Tensivask"
+    ],
+    "sediaan": "Tablet - Amlodipine Besilate",
+    "dosageForm": "Tablet - Amlodipine Besilate",
+    "zat_aktif": "Amlodipine Besilate",
+    "activeSubstance": "Amlodipine Besilate",
+    "indikasi_kegunaan": "Mengontrol tekanan darah tinggi dan mencegah angina",
+    "indications": "Mengontrol tekanan darah tinggi dan mencegah angina",
+    "detail_lengkap": {
+      "dosis": "5-10mg, 1x sehari",
+      "aturan_pakai": "5-10mg, 1x sehari",
+      "efek_samping": [
+        "Edema tungkai",
+        "Pusing",
+        "Palpitasi"
+      ],
+      "kontraindikasi": [
+        "Stenosis aorta berat"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "5-10mg, 1x sehari",
+    "sideEffects": [
+      "Edema tungkai",
+      "Pusing",
+      "Palpitasi"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Stenosis aorta berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "captopril-25mg",
+    "nama_obat": "Captopril 25mg",
+    "name": "Captopril 25mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Captopril 25mg, Capoten, Tensicap",
+    "brandNames": [
+      "Captopril 25mg",
+      "Capoten",
+      "Tensicap"
+    ],
+    "sediaan": "Tablet - Captopril",
+    "dosageForm": "Tablet - Captopril",
+    "zat_aktif": "Captopril",
+    "activeSubstance": "Captopril",
+    "indikasi_kegunaan": "Mengobati hipertensi dan gagal jantung",
+    "indications": "Mengobati hipertensi dan gagal jantung",
+    "detail_lengkap": {
+      "dosis": "12,5-50mg, 2-3x sehari",
+      "aturan_pakai": "12,5-50mg, 2-3x sehari",
+      "efek_samping": [
+        "Batuk kering",
+        "Hipotensi",
+        "Hiperkalemia"
+      ],
+      "kontraindikasi": [
+        "Kehamilan",
+        "Stenosis arteri renalis"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "12,5-50mg, 2-3x sehari",
+    "sideEffects": [
+      "Batuk kering",
+      "Hipotensi",
+      "Hiperkalemia"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kehamilan",
+      "Stenosis arteri renalis"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "lisinopril-10mg",
+    "nama_obat": "Lisinopril 10mg",
+    "name": "Lisinopril 10mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Lisinopril 10mg, Zestril, Prinivil",
+    "brandNames": [
+      "Lisinopril 10mg",
+      "Zestril",
+      "Prinivil"
+    ],
+    "sediaan": "Tablet - Lisinopril",
+    "dosageForm": "Tablet - Lisinopril",
+    "zat_aktif": "Lisinopril",
+    "activeSubstance": "Lisinopril",
+    "indikasi_kegunaan": "Mengobati hipertensi, gagal jantung, dan nefropati diabetik",
+    "indications": "Mengobati hipertensi, gagal jantung, dan nefropati diabetik",
+    "detail_lengkap": {
+      "dosis": "10-40mg, 1x sehari",
+      "aturan_pakai": "10-40mg, 1x sehari",
+      "efek_samping": [
+        "Batuk kering",
+        "Hipotensi",
+        "Hiperkalemia"
+      ],
+      "kontraindikasi": [
+        "Kehamilan",
+        "Angioedema"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10-40mg, 1x sehari",
+    "sideEffects": [
+      "Batuk kering",
+      "Hipotensi",
+      "Hiperkalemia"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Kehamilan",
+      "Angioedema"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "simvastatin-20mg",
+    "nama_obat": "Simvastatin 20mg",
+    "name": "Simvastatin 20mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Simvastatin 20mg, Zocor, Simvastatin",
+    "brandNames": [
+      "Simvastatin 20mg",
+      "Zocor",
+      "Simvastatin"
+    ],
+    "sediaan": "Tablet - Simvastatin",
+    "dosageForm": "Tablet - Simvastatin",
+    "zat_aktif": "Simvastatin",
+    "activeSubstance": "Simvastatin",
+    "indikasi_kegunaan": "Menurunkan kadar kolesterol darah untuk mencegah penyakit jantung",
+    "indications": "Menurunkan kadar kolesterol darah untuk mencegah penyakit jantung",
+    "detail_lengkap": {
+      "dosis": "20-40mg, 1x sehari malam",
+      "aturan_pakai": "20-40mg, 1x sehari malam",
+      "efek_samping": [
+        "Mialgia",
+        "Nyeri otot",
+        "Peningkatan enzim hati"
+      ],
+      "kontraindikasi": [
+        "Penyakit hati aktif",
+        "Kehamilan"
+      ],
+      "peringatan": [
+        "Hindari jeruk bali"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "20-40mg, 1x sehari malam",
+    "sideEffects": [
+      "Mialgia",
+      "Nyeri otot",
+      "Peningkatan enzim hati"
+    ],
+    "warnings": [
+      "Hindari jeruk bali"
+    ],
+    "contraindications": [
+      "Penyakit hati aktif",
+      "Kehamilan"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "atorvastatin-20mg",
+    "nama_obat": "Atorvastatin 20mg",
+    "name": "Atorvastatin 20mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Atorvastatin 20mg, Lipitor, Atorlip",
+    "brandNames": [
+      "Atorvastatin 20mg",
+      "Lipitor",
+      "Atorlip"
+    ],
+    "sediaan": "Tablet - Atorvastatin Kalsium",
+    "dosageForm": "Tablet - Atorvastatin Kalsium",
+    "zat_aktif": "Atorvastatin Kalsium",
+    "activeSubstance": "Atorvastatin Kalsium",
+    "indikasi_kegunaan": "Menurunkan kolesterol LDL dan trigliserida",
+    "indications": "Menurunkan kolesterol LDL dan trigliserida",
+    "detail_lengkap": {
+      "dosis": "10-80mg, 1x sehari",
+      "aturan_pakai": "10-80mg, 1x sehari",
+      "efek_samping": [
+        "Mialgia",
+        "Gangguan hati"
+      ],
+      "kontraindikasi": [
+        "Penyakit hati aktif",
+        "Kehamilan"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "10-80mg, 1x sehari",
+    "sideEffects": [
+      "Mialgia",
+      "Gangguan hati"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Penyakit hati aktif",
+      "Kehamilan"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "glibenclamide-5mg",
+    "nama_obat": "Glibenclamide 5mg",
+    "name": "Glibenclamide 5mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Glibenclamide 5mg, Daonil, Glucovance",
+    "brandNames": [
+      "Glibenclamide 5mg",
+      "Daonil",
+      "Glucovance"
+    ],
+    "sediaan": "Tablet - Glibenclamide (Glyburide)",
+    "dosageForm": "Tablet - Glibenclamide (Glyburide)",
+    "zat_aktif": "Glibenclamide (Glyburide)",
+    "activeSubstance": "Glibenclamide (Glyburide)",
+    "indikasi_kegunaan": "Merangsang sekresi insulin untuk menurunkan gula darah pada DM tipe 2",
+    "indications": "Merangsang sekresi insulin untuk menurunkan gula darah pada DM tipe 2",
+    "detail_lengkap": {
+      "dosis": "2,5-10mg, 1x sehari",
+      "aturan_pakai": "2,5-10mg, 1x sehari",
+      "efek_samping": [
+        "Hipoglikemia",
+        "Mual",
+        "Berat badan naik"
+      ],
+      "kontraindikasi": [
+        "DM tipe 1",
+        "Gagal ginjal berat"
+      ],
+      "peringatan": [
+        "Monitor gula darah"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "2,5-10mg, 1x sehari",
+    "sideEffects": [
+      "Hipoglikemia",
+      "Mual",
+      "Berat badan naik"
+    ],
+    "warnings": [
+      "Monitor gula darah"
+    ],
+    "contraindications": [
+      "DM tipe 1",
+      "Gagal ginjal berat"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "clopidogrel-75mg",
+    "nama_obat": "Clopidogrel 75mg",
+    "name": "Clopidogrel 75mg",
+    "kategori_penyakit": "Hipertensi & Jantung",
+    "category": "hipertensi-jantung",
+    "categoryLabel": "Hipertensi & Jantung",
+    "category_icon": "❤️",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Clopidogrel 75mg, Plavix",
+    "brandNames": [
+      "Clopidogrel 75mg",
+      "Plavix"
+    ],
+    "sediaan": "Tablet - Clopidogrel Bisulfat",
+    "dosageForm": "Tablet - Clopidogrel Bisulfat",
+    "zat_aktif": "Clopidogrel Bisulfat",
+    "activeSubstance": "Clopidogrel Bisulfat",
+    "indikasi_kegunaan": "Mencegah pembekuan darah pada pasien risiko serangan jantung atau stroke",
+    "indications": "Mencegah pembekuan darah pada pasien risiko serangan jantung atau stroke",
+    "detail_lengkap": {
+      "dosis": "75mg, 1x sehari",
+      "aturan_pakai": "75mg, 1x sehari",
+      "efek_samping": [
+        "Perdarahan",
+        "Mual",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Perdarahan aktif",
+        "Alergi"
+      ],
+      "peringatan": [
+        "Hati-hati risiko perdarahan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "75mg, 1x sehari",
+    "sideEffects": [
+      "Perdarahan",
+      "Mual",
+      "Diare"
+    ],
+    "warnings": [
+      "Hati-hati risiko perdarahan"
+    ],
+    "contraindications": [
+      "Perdarahan aktif",
+      "Alergi"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "alprazolam-0-5mg",
+    "nama_obat": "Alprazolam 0,5mg",
+    "name": "Alprazolam 0,5mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Alprazolam 0,5mg, Xanax, Alganax",
+    "brandNames": [
+      "Alprazolam 0,5mg",
+      "Xanax",
+      "Alganax"
+    ],
+    "sediaan": "Tablet - Alprazolam",
+    "dosageForm": "Tablet - Alprazolam",
+    "zat_aktif": "Alprazolam",
+    "activeSubstance": "Alprazolam",
+    "indikasi_kegunaan": "Mengatasi gangguan kecemasan dan serangan panik",
+    "indications": "Mengatasi gangguan kecemasan dan serangan panik",
+    "detail_lengkap": {
+      "dosis": "0,25-0,5mg, 3x sehari",
+      "aturan_pakai": "0,25-0,5mg, 3x sehari",
+      "efek_samping": [
+        "Kantuk",
+        "Ketergantungan",
+        "Amnesia"
+      ],
+      "kontraindikasi": [
+        "Depresi napas",
+        "Glaukoma"
+      ],
+      "peringatan": [
+        "Risiko ketergantungan"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "0,25-0,5mg, 3x sehari",
+    "sideEffects": [
+      "Kantuk",
+      "Ketergantungan",
+      "Amnesia"
+    ],
+    "warnings": [
+      "Risiko ketergantungan"
+    ],
+    "contraindications": [
+      "Depresi napas",
+      "Glaukoma"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "diazepam-5mg",
+    "nama_obat": "Diazepam 5mg",
+    "name": "Diazepam 5mg",
+    "kategori_penyakit": "Pengobatan Umum",
+    "category": "pengobatan-umum",
+    "categoryLabel": "Pengobatan Umum",
+    "category_icon": "💊",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Diazepam 5mg, Valium, Stesolid",
+    "brandNames": [
+      "Diazepam 5mg",
+      "Valium",
+      "Stesolid"
+    ],
+    "sediaan": "Tablet - Diazepam",
+    "dosageForm": "Tablet - Diazepam",
+    "zat_aktif": "Diazepam",
+    "activeSubstance": "Diazepam",
+    "indikasi_kegunaan": "Mengatasi kecemasan, kejang, dan relaksasi otot",
+    "indications": "Mengatasi kecemasan, kejang, dan relaksasi otot",
+    "detail_lengkap": {
+      "dosis": "5mg, 2-3x sehari",
+      "aturan_pakai": "5mg, 2-3x sehari",
+      "efek_samping": [
+        "Kantuk berat",
+        "Ketergantungan"
+      ],
+      "kontraindikasi": [
+        "Depresi napas",
+        "Miastenia gravis"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "5mg, 2-3x sehari",
+    "sideEffects": [
+      "Kantuk berat",
+      "Ketergantungan"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Depresi napas",
+      "Miastenia gravis"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "methylprednisolone-4mg",
+    "nama_obat": "Methylprednisolone 4mg",
+    "name": "Methylprednisolone 4mg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Methylprednisolone 4mg, Medrol, Methylpred",
+    "brandNames": [
+      "Methylprednisolone 4mg",
+      "Medrol",
+      "Methylpred"
+    ],
+    "sediaan": "Tablet - Methylprednisolone",
+    "dosageForm": "Tablet - Methylprednisolone",
+    "zat_aktif": "Methylprednisolone",
+    "activeSubstance": "Methylprednisolone",
+    "indikasi_kegunaan": "Antiinflamasi dan imunosupresan untuk berbagai kondisi alergi dan autoimun",
+    "indications": "Antiinflamasi dan imunosupresan untuk berbagai kondisi alergi dan autoimun",
+    "detail_lengkap": {
+      "dosis": "4-48mg per hari sesuai kondisi",
+      "aturan_pakai": "4-48mg per hari sesuai kondisi",
+      "efek_samping": [
+        "Peningkatan gula darah",
+        "Osteoporosis",
+        "Moonface"
+      ],
+      "kontraindikasi": [
+        "Infeksi sistemik tanpa terapi"
+      ],
+      "peringatan": [
+        "Jangan hentikan mendadak"
+      ],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "4-48mg per hari sesuai kondisi",
+    "sideEffects": [
+      "Peningkatan gula darah",
+      "Osteoporosis",
+      "Moonface"
+    ],
+    "warnings": [
+      "Jangan hentikan mendadak"
+    ],
+    "contraindications": [
+      "Infeksi sistemik tanpa terapi"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
+  },
+  {
+    "id": "dexamethasone-0-5mg",
+    "nama_obat": "Dexamethasone 0,5mg",
+    "name": "Dexamethasone 0,5mg",
+    "kategori_penyakit": "Alergi & Kulit",
+    "category": "alergi-kulit",
+    "categoryLabel": "Alergi & Kulit",
+    "category_icon": "🌿",
+    "status_bpom": "Obat Keras",
+    "bpomClass": {
+      "label": "Obat Keras",
+      "code": "keras",
+      "symbol": "🔴",
+      "badgeColor": "bg-rose-500/10 text-rose-400 border-rose-500/30",
+      "description": "Status izin edar resmi BPOM: Obat Keras"
+    },
+    "merk": "Dexamethasone 0,5mg, Dexamethasone DOEN",
+    "brandNames": [
+      "Dexamethasone 0,5mg",
+      "Dexamethasone DOEN"
+    ],
+    "sediaan": "Tablet - Dexamethasone",
+    "dosageForm": "Tablet - Dexamethasone",
+    "zat_aktif": "Dexamethasone",
+    "activeSubstance": "Dexamethasone",
+    "indikasi_kegunaan": "Kortikosteroid untuk kondisi inflamasi berat, alergi, dan edema serebral",
+    "indications": "Kortikosteroid untuk kondisi inflamasi berat, alergi, dan edema serebral",
+    "detail_lengkap": {
+      "dosis": "0,5-10mg per hari",
+      "aturan_pakai": "0,5-10mg per hari",
+      "efek_samping": [
+        "Peningkatan nafsu makan",
+        "Insomnia",
+        "Osteoporosis"
+      ],
+      "kontraindikasi": [
+        "Infeksi jamur sistemik"
+      ],
+      "peringatan": [],
+      "cara_penyimpanan": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+      "nomor_bpom": "DBL8504503710A1"
+    },
+    "usageInstructions": "0,5-10mg per hari",
+    "sideEffects": [
+      "Peningkatan nafsu makan",
+      "Insomnia",
+      "Osteoporosis"
+    ],
+    "warnings": [],
+    "contraindications": [
+      "Infeksi jamur sistemik"
+    ],
+    "storageInfo": "Simpan pada suhu di bawah 30°C, terlindung dari cahaya matahari langsung dan jangkauan anak-anak.",
+    "bpomRegistrationExample": "DBL8504503710A1"
   }
 ];

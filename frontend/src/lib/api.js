@@ -274,16 +274,23 @@ export async function scanMedicineImage(imageBlob, patientProfile = null) {
     formData.append('patient_profile_json', JSON.stringify(patientProfile));
   }
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 60000); // 60s timeout for AI processing
+
   let response;
   try {
     response = await fetch(`${API_BASE}/scan-medicine`, {
       method: 'POST',
       headers: getAuthHeaders(),
       body: formData,
+      signal: controller.signal,
     });
   } catch (netErr) {
+    clearTimeout(timer);
+    if (netErr.name === 'AbortError') throw new Error('Pemindaian timeout — AI membutuhkan waktu terlalu lama. Coba lagi.');
     throw new Error(`Tidak dapat terhubung ke server backend di ${API_BASE}. Pastikan server aktif.`);
   }
+  clearTimeout(timer);
 
   if (!response.ok) {
     let errText = 'Terjadi kesalahan saat memproses pemindaian.';
@@ -340,15 +347,21 @@ export async function checkDrugInteractions(drugs = []) {
 // ─── History & Stats ────────────────────────────────────────────────────────
 
 export async function fetchHistory() {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
   let response;
   try {
     response = await fetch(`${API_BASE}/history`, {
       headers: getAuthHeaders(),
       cache: 'no-store',
+      signal: controller.signal,
     });
   } catch (netErr) {
+    clearTimeout(timer);
+    if (netErr.name === 'AbortError') throw new Error('Request timeout — server tidak merespons dalam 8 detik.');
     throw new Error(`Gagal memuat riwayat: ${netErr.message}`);
   }
+  clearTimeout(timer);
 
   if (!response.ok) {
     throw new Error(`Gagal memuat riwayat: HTTP ${response.status}`);

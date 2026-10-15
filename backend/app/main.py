@@ -88,6 +88,7 @@ app.include_router(webhook_router, prefix="/api", tags=["Meta WhatsApp Webhook"]
 
 # Direct fallback without /api prefix for maximum client resilience
 app.include_router(api_router, tags=["Direct Routes (Convenience)"])
+app.include_router(webhook_router, tags=["Direct Webhook Routes (Convenience)"])
 
 
 # ─── Health Check ─────────────────────────────────────────────────────────────

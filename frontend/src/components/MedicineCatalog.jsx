@@ -5,7 +5,7 @@
  */
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import {
   INDONESIA_MEDICINES,
@@ -17,6 +17,7 @@ const ITEMS_PER_PAGE = 24;
 
 export default function MedicineCatalog({ initialSearch = '', onSelectMedicine }) {
   const [mounted, setMounted] = useState(false);
+  const [inputValue, setInputValue] = useState(initialSearch);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedBpom, setSelectedBpom] = useState('all');
@@ -75,11 +76,16 @@ export default function MedicineCatalog({ initialSearch = '', onSelectMedicine }
     });
   }, [searchQuery, selectedCategory, selectedBpom]);
 
-  // Reset pagination on filter/query change
-  const handleQueryChange = (val) => {
-    setSearchQuery(val);
-    setVisibleCount(ITEMS_PER_PAGE);
-  };
+  // Reset pagination on filter/query change (debounced 200ms to avoid hammering 1000+ item filter)
+  const searchTimeoutRef = useRef(null);
+  const handleQueryChange = useCallback((val) => {
+    setInputValue(val); // Update display immediately
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    searchTimeoutRef.current = setTimeout(() => {
+      setSearchQuery(val);
+      setVisibleCount(ITEMS_PER_PAGE);
+    }, 200);
+  }, []);
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
