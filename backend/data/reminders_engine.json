@@ -162,7 +162,7 @@
       "instructions": "Sesudah makan",
       "start_date": "2026-10-15",
       "duration_days": 1,
-      "stock_quantity": 10,
+      "stock_quantity": 9,
       "daily_dose_count": 1,
       "refill_threshold_days": 3,
       "image_url": null,
@@ -175,6 +175,31 @@
         "interval_hours": 8,
         "target_times": [
           "15:46"
+        ],
+        "user_timezone": "Asia/Jakarta"
+      }
+    },
+    "369ce8b0-d08a-4080-af67-84b537cfe4cc": {
+      "id": "369ce8b0-d08a-4080-af67-84b537cfe4cc",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "name": "Paracetamol 500mg",
+      "dosage": "1 tablet",
+      "instructions": "Sesudah makan",
+      "start_date": "2026-10-15",
+      "duration_days": 1,
+      "stock_quantity": 29,
+      "daily_dose_count": 1,
+      "refill_threshold_days": 3,
+      "image_url": null,
+      "is_active": true,
+      "user_timezone": "Asia/Jakarta",
+      "created_at": "2026-10-15T16:12:08.484651+07:00",
+      "schedule": {
+        "id": "6bb27405-6bff-4b4b-8c42-dad5ba644b2c",
+        "type": "FIXED_TIMES",
+        "interval_hours": 8,
+        "target_times": [
+          "16:15"
         ],
         "user_timezone": "Asia/Jakarta"
       }
@@ -231,7 +256,7 @@
       "original_scheduled_at": "2026-10-15T15:46:00+07:00",
       "scheduled_at": "2026-10-15T15:46:00+07:00",
       "scheduled_at_utc": "2026-10-15T08:46:00+00:00",
-      "status": "DELAYED",
+      "status": "TAKEN",
       "snooze_count": 0,
       "snoozed_until": null,
       "skip_reason": null,
@@ -239,10 +264,31 @@
       "due_sent_at": "2026-10-15T15:46:01.670013+07:00",
       "followup_sent_at": "2026-10-15T16:01:01.378215+07:00",
       "caregiver_escalated_at": null,
-      "taken_at": null,
-      "actual_taken_at": null,
+      "taken_at": "2026-10-15T16:10:53.852596+07:00",
+      "actual_taken_at": "2026-10-15T16:10:53.852596+07:00",
       "created_at": "2026-10-15T15:44:43.127889+07:00",
-      "updated_at": "2026-10-15T16:01:01.378215+07:00"
+      "updated_at": "2026-10-15T16:10:53.852596+07:00"
+    },
+    "9d7327b3-81f2-4356-bc11-4f906dd34aba": {
+      "id": "9d7327b3-81f2-4356-bc11-4f906dd34aba",
+      "medication_id": "369ce8b0-d08a-4080-af67-84b537cfe4cc",
+      "patient_id": "35a395c1-455d-4d39-b3c3-6efa7b2ac325",
+      "user_timezone": "Asia/Jakarta",
+      "original_scheduled_at": "2026-10-15T16:15:00+07:00",
+      "scheduled_at": "2026-10-15T16:15:00+07:00",
+      "scheduled_at_utc": "2026-10-15T09:15:00+00:00",
+      "status": "TAKEN",
+      "snooze_count": 0,
+      "snoozed_until": null,
+      "skip_reason": null,
+      "reminded_10m_at": "2026-10-15T16:12:36.969899+07:00",
+      "due_sent_at": "2026-10-15T16:15:07.803967+07:00",
+      "followup_sent_at": null,
+      "caregiver_escalated_at": null,
+      "taken_at": "2026-10-15T16:18:25.828122+07:00",
+      "actual_taken_at": "2026-10-15T16:18:25.828122+07:00",
+      "created_at": "2026-10-15T16:12:08.485740+07:00",
+      "updated_at": "2026-10-15T16:18:25.828122+07:00"
     }
   }
 }

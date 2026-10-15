@@ -420,25 +420,22 @@ async def scan_medicine(
         "notes": [f"Kemasan obat dipindai: {upload_target.filename or 'scan_kemasan.jpg'}"],
     }
 
-    # 4. Persist to history
+    # 4. Persist to history — SECURITY: Only store if user is authenticated
     try:
-        history_entry = {k: v for k, v in response_data.items() if k != "raw_text"}
-        _append_history_item(history_entry)
+        if user_optional and user_optional.get("id"):
+            history_entry = {k: v for k, v in response_data.items() if k != "raw_text"}
+            _append_history_item(history_entry)
+        else:
+            logger.info("[Scan] Scan result not persisted — user not authenticated (anonymous scan)")
     except Exception as exc:
         logger.error("[Scan] Failed to persist scan history: %s", exc)
 
     # 5. Background WhatsApp Alert
+    # SECURITY: Only send WA to the authenticated user's own registered phone
+    # REMOVED: No longer fallback to last patient's phone (prevents cross-user WA notification leak)
     target_wa = None
     if user_optional and user_optional.get("phone"):
         target_wa = user_optional.get("phone")
-    else:
-        try:
-            from app.services.reminder_service import reminder_engine
-            pats = reminder_engine.list_patients()
-            if pats:
-                target_wa = pats[-1].whatsapp_no
-        except Exception:
-            pass
 
     wa_payload = {
         "medicine_name": medicine_name,
@@ -663,8 +660,15 @@ async def get_stats():
 
 
 @router.delete("/history/{scan_id}", summary="Delete single history entry")
-async def delete_history_item(scan_id: str):
+async def delete_history_item(
+    scan_id: str,
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
     items = _load_history_from_disk()
+    # SECURITY: Only allow deletion of items belonging to the authenticated user
+    target = next((i for i in items if i.get("scan_id") == scan_id or i.get("id") == scan_id), None)
+    if target and target.get("user_id") and target.get("user_id") != user["id"]:
+        raise HTTPException(status_code=403, detail="Akses Ditolak: Riwayat ini bukan milik akun Anda.")
     filtered = [i for i in items if i.get("scan_id") != scan_id and i.get("id") != scan_id]
 
     if len(filtered) == len(items):
@@ -675,6 +679,12 @@ async def delete_history_item(scan_id: str):
 
 
 @router.delete("/history", summary="Clear all scan history")
-async def clear_all_history():
-    _save_history_to_disk([])
-    return JSONResponse(content={"success": True, "message": "Semua riwayat berhasil dihapus."})
+async def clear_all_history(
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
+    # SECURITY: Only delete history items belonging to the authenticated user
+    # Other users' history is preserved
+    all_items = _load_history_from_disk()
+    remaining = [i for i in all_items if i.get("user_id") != user["id"]]
+    _save_history_to_disk(remaining)
+    return JSONResponse(content={"success": True, "message": "Semua riwayat Anda berhasil dihapus."})

@@ -19,18 +19,46 @@ import logging
 import re
 import httpx
 from typing import Any, Optional
-from fastapi import APIRouter, Request, HTTPException, Query, Response, UploadFile, File
+from fastapi import APIRouter, Request, HTTPException, Query, Response, UploadFile, File, Depends, Header
 from pydantic import BaseModel, Field
 
 from app.config import settings
 from app.services.reminder_service import reminder_engine
 from app.services.meta_wa_service import meta_wa_service
 from app.services.wa_qr_service import wa_qr_service
+from app.services.auth_service import decode_access_token, get_user_by_id
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/reminders", tags=["Medicine Reminder Engine"])
 webhook_router = APIRouter(prefix="/webhook", tags=["Meta WhatsApp Webhook"])
+
+
+# ─── Auth Dependencies ────────────────────────────────────────────────────────
+
+async def get_current_user_optional(authorization: Optional[str] = Header(None)) -> Optional[dict[str, Any]]:
+    """Extract user from Bearer token if provided."""
+    if not authorization or not authorization.startswith("Bearer "):
+        return None
+    token = authorization.split(" ")[1]
+    payload = decode_access_token(token)
+    if not payload:
+        return None
+    user_id = payload.get("sub")
+    if not user_id:
+        return None
+    return get_user_by_id(user_id)
+
+
+async def get_current_user_required(authorization: Optional[str] = Header(None)) -> dict[str, Any]:
+    """Require valid authenticated Bearer token or raise 401."""
+    user = await get_current_user_optional(authorization)
+    if not user:
+        raise HTTPException(
+            status_code=401,
+            detail="Akses Ditolak: Anda harus masuk atau membuat akun terlebih dahulu untuk menyimpan jadwal obat."
+        )
+    return user
 
 
 # ─── Pydantic Request Schemas ────────────────────────────────────────────────
@@ -96,11 +124,15 @@ async def scan_qr_contact(file: UploadFile = File(...)):
 
 
 @router.post("/patients")
-async def create_patient(payload: CreatePatientRequest):
+async def create_patient(
+    payload: CreatePatientRequest,
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
+    # SECURITY: user_id always from authenticated token, NEVER from request body
     patient = reminder_engine.create_patient(
         name=payload.name,
         whatsapp_no=payload.whatsapp_no or "",
-        user_id=payload.user_id,
+        user_id=user["id"],
         qr_code_url=payload.qr_code_url,
         qr_contact_name=payload.qr_contact_name,
         caregiver_name=payload.caregiver_name,
@@ -111,14 +143,27 @@ async def create_patient(payload: CreatePatientRequest):
 
 
 @router.get("/patients")
-async def list_patients(user_id: Optional[str] = Query(None)):
-    patients = reminder_engine.list_patients(user_id=user_id)
+async def list_patients(
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional),
+):
+    # SECURITY: Only return patients belonging to authenticated user
+    # Unauthenticated users see empty list — no cross-user data exposure
+    uid = user["id"] if user else None
+    patients = reminder_engine.list_patients(user_id=uid)
     return {"success": True, "patients": patients}
 
 
 @router.post("/medications")
-async def create_medication(payload: CreateMedicationRequest):
+async def create_medication(
+    payload: CreateMedicationRequest,
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
     try:
+        # SECURITY: Verify the patient belongs to the authenticated user
+        _pat_check = reminder_engine.get_patient(payload.patient_id)
+        if _pat_check and _pat_check.user_id and _pat_check.user_id != user["id"]:
+            raise HTTPException(status_code=403, detail="Akses Ditolak: Pasien ini tidak terdaftar dalam akun Anda.")
+
         med, logs = reminder_engine.create_medication_and_schedules(
             patient_id=payload.patient_id,
             name=payload.name,
@@ -165,12 +210,22 @@ async def create_medication(payload: CreateMedicationRequest):
             "patient_name": patient.name if patient else "",
             "patient_phone": patient.whatsapp_no if patient else ""
         }
+    except HTTPException:
+        raise
     except ValueError as val_err:
         raise HTTPException(status_code=404, detail=str(val_err))
 
 
 @router.get("/medications")
-async def list_medications(patient_id: Optional[str] = Query(None)):
+async def list_medications(
+    patient_id: Optional[str] = Query(None),
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional),
+):
+    # SECURITY: Verify patient ownership before returning medications
+    if patient_id and user:
+        _pat = reminder_engine.get_patient(patient_id)
+        if _pat and _pat.user_id and _pat.user_id != user["id"]:
+            return {"success": True, "medications": []}  # Empty — no cross-user data leak
     meds = reminder_engine.list_medications(patient_id=patient_id)
     return {"success": True, "medications": meds}
 
@@ -178,14 +233,27 @@ async def list_medications(patient_id: Optional[str] = Query(None)):
 @router.get("/logs")
 async def list_logs(
     patient_id: Optional[str] = Query(None),
-    medication_id: Optional[str] = Query(None)
+    medication_id: Optional[str] = Query(None),
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional),
 ):
+    # SECURITY: Verify patient ownership before returning logs
+    if patient_id and user:
+        _pat = reminder_engine.get_patient(patient_id)
+        if _pat and _pat.user_id and _pat.user_id != user["id"]:
+            return {"success": True, "logs": [], "total": 0}  # Empty — no cross-user data leak
     logs = reminder_engine.list_logs(patient_id=patient_id, medication_id=medication_id)
     return {"success": True, "logs": logs, "total": len(logs)}
 
 
 @router.delete("/patients/{patient_id}")
-async def delete_patient(patient_id: str):
+async def delete_patient(
+    patient_id: str,
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
+    # SECURITY: Verify ownership before deletion
+    _pat = reminder_engine.get_patient(patient_id)
+    if _pat and _pat.user_id and _pat.user_id != user["id"]:
+        raise HTTPException(status_code=403, detail="Akses Ditolak: Anda tidak memiliki izin menghapus data pasien ini.")
     success = reminder_engine.delete_patient(patient_id)
     if not success:
         raise HTTPException(status_code=404, detail="Patient not found")
@@ -193,7 +261,17 @@ async def delete_patient(patient_id: str):
 
 
 @router.delete("/medications/{medication_id}")
-async def delete_medication(medication_id: str):
+async def delete_medication(
+    medication_id: str,
+    user: dict[str, Any] = Depends(get_current_user_required),
+):
+    # SECURITY: Verify ownership via patient association
+    all_meds = reminder_engine.list_medications()
+    _target = next((m for m in all_meds if m.get("id") == medication_id), None)
+    if _target:
+        _pat = reminder_engine.get_patient(_target.get("patient_id", ""))
+        if _pat and _pat.user_id and _pat.user_id != user["id"]:
+            raise HTTPException(status_code=403, detail="Akses Ditolak: Anda tidak memiliki izin menghapus data obat ini.")
     success = reminder_engine.delete_medication(medication_id)
     if not success:
         raise HTTPException(status_code=404, detail="Medication not found")
