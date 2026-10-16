@@ -668,5 +668,79 @@
       "profile_completed": true,
       "updated_at": "2026-10-13T12:19:51.797359+00:00"
     }
+  },
+  "khairirafif10@gmail.com": {
+    "id": "ef183fd5-197e-407a-ba4e-1529b6135dd0",
+    "full_name": "Rafif",
+    "email": "khairirafif10@gmail.com",
+    "hashed_password": "$pbkdf2-sha256$29000$HeO81xrD2Lv3PkeolfLeew$NeCVfC0IyEwCv0yvYvIiJ.3tBlAVVkX/ogh.AxAKlX4",
+    "is_verified": true,
+    "created_at": "2026-10-16T08:08:48.067761+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": "2026-10-16T08:08:53.010797+00:00"
+    }
+  },
+  "dr.safetyscan_1792142948@pharmashield.id": {
+    "id": "fbd486f3-fffc-48eb-9793-ce77fb919c41",
+    "full_name": "Dr. Safety Scanner",
+    "email": "dr.safetyscan_1792142948@pharmashield.id",
+    "hashed_password": "$2b$12$aknAHgedsvjzsXA8YTNZb.qRFmXQlGyk4zrzM5k838oJ.1K2OeYrW",
+    "status": "active",
+    "is_verified": true,
+    "created_at": "2026-10-16T09:29:08.628291+00:00",
+    "updated_at": "2026-10-16T09:29:09.047784+00:00",
+    "medical_profile": {
+      "allergies": [
+        "paracetamol"
+      ],
+      "adverse_reactions": [
+        "ruam kulit"
+      ],
+      "current_prescriptions": [
+        "amlodipine 5mg"
+      ],
+      "otc_medications": [],
+      "supplements": [
+        "vitamin c"
+      ],
+      "medical_conditions": [
+        "hipertensi"
+      ],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": true,
+      "updated_at": "2026-10-16T09:29:09.047784+00:00"
+    }
+  },
+  "duplicate_check@domain.id": {
+    "id": "31566576-151f-4c21-999f-efef86bc94ae",
+    "full_name": "User Pertama",
+    "email": "duplicate_check@domain.id",
+    "hashed_password": "$2b$12$0Pm3PYksEajYyr78eeBAVeF6zNzZR.ugzVjLF4yRsuHxmNQIw7Ffm",
+    "status": "active",
+    "is_verified": true,
+    "created_at": "2026-10-16T09:31:52.471111+00:00",
+    "updated_at": null,
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
   }
 }

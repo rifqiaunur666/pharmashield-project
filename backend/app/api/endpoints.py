@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
-from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, Header, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Cookie, Depends, File, Form, Header, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
 
 from app.config import settings
@@ -51,11 +51,22 @@ router = APIRouter()
 
 # ─── Auth Dependency Helper ──────────────────────────────────────────────────
 
-async def get_current_user_optional(authorization: Optional[str] = Header(None)) -> Optional[dict[str, Any]]:
-    """Extract user payload if valid Bearer token provided."""
-    if not authorization or not authorization.startswith("Bearer "):
+async def get_current_user_optional(
+    authorization: Optional[str] = Header(None),
+    pharmashield_session: Optional[str] = Cookie(None),
+    pharmashield_token: Optional[str] = Cookie(None),
+) -> Optional[dict[str, Any]]:
+    """Extract user payload if valid Bearer token or cookie session provided."""
+    token = None
+    if isinstance(authorization, str) and authorization.startswith("Bearer "):
+        token = authorization.split(" ")[1]
+    elif isinstance(pharmashield_session, str) and pharmashield_session:
+        token = pharmashield_session
+    elif isinstance(pharmashield_token, str) and pharmashield_token:
+        token = pharmashield_token
+
+    if not token or not isinstance(token, str):
         return None
-    token = authorization.split(" ")[1]
     payload = decode_access_token(token)
     if not payload:
         return None
@@ -65,9 +76,10 @@ async def get_current_user_optional(authorization: Optional[str] = Header(None))
     return get_user_by_id(user_id)
 
 
-async def get_current_user_required(authorization: Optional[str] = Header(None)) -> dict[str, Any]:
-    """Require valid authenticated Bearer token."""
-    user = await get_current_user_optional(authorization)
+async def get_current_user_required(
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional)
+) -> dict[str, Any]:
+    """Require valid authenticated Bearer token or session."""
     if not user:
         raise HTTPException(status_code=401, detail="Sesi autentikasi tidak valid atau telah berakhir.")
     return user
@@ -123,7 +135,26 @@ async def api_register(req: UserRegisterRequest):
     success, msg, user_data = register_user(req)
     if not success:
         raise HTTPException(status_code=400, detail=msg)
-    return JSONResponse(content={"success": True, "message": msg, "user": user_data})
+    response = JSONResponse(content={"success": True, "message": msg, "user": user_data})
+    if user_data and "token" in user_data:
+        token = user_data["token"]
+        response.set_cookie(
+            key="pharmashield_session",
+            value=token,
+            httponly=True,
+            max_age=7 * 24 * 3600,
+            samesite="lax",
+            path="/"
+        )
+        response.set_cookie(
+            key="pharmashield_token",
+            value=token,
+            httponly=False,
+            max_age=7 * 24 * 3600,
+            samesite="lax",
+            path="/"
+        )
+    return response
 
 
 @router.post("/auth/login", summary="Login with email and password")
@@ -131,7 +162,34 @@ async def api_login(req: UserLoginRequest):
     success, msg, user_data = authenticate_user(req)
     if not success:
         raise HTTPException(status_code=401, detail=msg)
-    return JSONResponse(content={"success": True, "message": msg, "user": user_data})
+    response = JSONResponse(content={"success": True, "message": msg, "user": user_data})
+    if user_data and "token" in user_data:
+        token = user_data["token"]
+        response.set_cookie(
+            key="pharmashield_session",
+            value=token,
+            httponly=True,
+            max_age=7 * 24 * 3600,
+            samesite="lax",
+            path="/"
+        )
+        response.set_cookie(
+            key="pharmashield_token",
+            value=token,
+            httponly=False,
+            max_age=7 * 24 * 3600,
+            samesite="lax",
+            path="/"
+        )
+    return response
+
+
+@router.post("/auth/logout", summary="Logout current user and clear cookies")
+async def api_logout():
+    response = JSONResponse(content={"success": True, "message": "Logout berhasil."})
+    response.delete_cookie(key="pharmashield_session", path="/")
+    response.delete_cookie(key="pharmashield_token", path="/")
+    return response
 
 
 @router.get("/auth/me", summary="Get current logged in user and medical profile")
@@ -662,12 +720,12 @@ async def get_stats():
 @router.delete("/history/{scan_id}", summary="Delete single history entry")
 async def delete_history_item(
     scan_id: str,
-    user: dict[str, Any] = Depends(get_current_user_required),
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional),
 ):
     items = _load_history_from_disk()
-    # SECURITY: Only allow deletion of items belonging to the authenticated user
+    # SECURITY: If user is authenticated, only allow deletion of items belonging to that user
     target = next((i for i in items if i.get("scan_id") == scan_id or i.get("id") == scan_id), None)
-    if target and target.get("user_id") and target.get("user_id") != user["id"]:
+    if user and target and target.get("user_id") and target.get("user_id") != user["id"]:
         raise HTTPException(status_code=403, detail="Akses Ditolak: Riwayat ini bukan milik akun Anda.")
     filtered = [i for i in items if i.get("scan_id") != scan_id and i.get("id") != scan_id]
 
@@ -680,11 +738,12 @@ async def delete_history_item(
 
 @router.delete("/history", summary="Clear all scan history")
 async def clear_all_history(
-    user: dict[str, Any] = Depends(get_current_user_required),
+    user: Optional[dict[str, Any]] = Depends(get_current_user_optional),
 ):
-    # SECURITY: Only delete history items belonging to the authenticated user
-    # Other users' history is preserved
     all_items = _load_history_from_disk()
-    remaining = [i for i in all_items if i.get("user_id") != user["id"]]
+    if user:
+        remaining = [i for i in all_items if i.get("user_id") != user["id"]]
+    else:
+        remaining = []
     _save_history_to_disk(remaining)
     return JSONResponse(content={"success": True, "message": "Semua riwayat Anda berhasil dihapus."})

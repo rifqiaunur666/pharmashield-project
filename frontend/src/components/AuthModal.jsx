@@ -53,12 +53,18 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
         onClose();
       } else if (mode === 'register') {
         if (password !== passwordConfirm) {
-          throw new Error('Konfirmasi kata sandi tidak cocok.');
+          throw new Error('Password dan Konfirmasi Password tidak cocok.');
+        }
+        if (password.length < 8) {
+          throw new Error('Password minimal 8 karakter.');
+        }
+        if (!(/[a-zA-Z]/.test(password) && /\d/.test(password))) {
+          throw new Error('Password harus mengandung kombinasi huruf dan angka.');
         }
         if (!acceptTerms) {
           throw new Error('Anda harus menyetujui syarat & kebijakan privasi.');
         }
-        await register(fullName, email, password);
+        await register({ fullName, email, password, confirmPassword: passwordConfirm, autoLogin: true });
         if (onSuccess) onSuccess('register');
         onClose();
       } else if (mode === 'forgot') {
@@ -156,7 +162,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', onSu
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Minimal 6 karakter"
+                placeholder="Minimal 8 karakter (huruf & angka)"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#161922] text-slate-900 dark:text-white focus:outline-none focus:border-[#0284c7] dark:focus:border-[#10b981] placeholder-slate-400"
               />
             </div>

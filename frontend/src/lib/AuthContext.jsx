@@ -50,10 +50,12 @@ export function AuthProvider({ children }) {
     return loggedInUser;
   };
 
-  const register = async (fullName, email, password) => {
-    const newUser = await registerUser({ fullName, email, password });
-    setUser(newUser);
-    return newUser;
+  const register = async ({ fullName, email, password, confirmPassword, autoLogin = false }) => {
+    const res = await registerUser({ fullName, email, password, confirmPassword, autoLogin });
+    if (autoLogin && res?.user) {
+      setUser(res.user);
+    }
+    return res;
   };
 
   const logout = () => {
