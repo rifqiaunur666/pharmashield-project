@@ -15,15 +15,56 @@ from pathlib import Path
 from typing import Any, Optional
 
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from pydantic import BaseModel, Field, field_validator
 
 from app.config import settings
 
 logger = logging.getLogger(__name__)
 
-# Password hashing: use pbkdf2_sha256 which is safe, robust, and free from bcrypt 4.1+ 72-byte init bug
-pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
+# ─── Password Hashing (Python stdlib — zero external dependency) ───────────────
+# Uses PBKDF2-SHA256 via hashlib, compatible with all Python 3.8+ environments.
+# Format: "pbkdf2sha256$<iterations>$<salt_hex>$<hash_hex>"
+
+_ITERATIONS = 260_000   # OWASP 2023 recommended minimum
+
+def get_password_hash(password: str) -> str:
+    """Hash password with PBKDF2-SHA256 (stdlib). Always returns a fresh salt."""
+    import hashlib, os
+    salt = os.urandom(32)
+    dk = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, _ITERATIONS)
+    return f"pbkdf2sha256${_ITERATIONS}${salt.hex()}${dk.hex()}"
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """Verify a plain password against a stored hash. Supports both new format and
+    legacy passlib pbkdf2-sha256 format so existing accounts still work."""
+    import hashlib, hmac as _hmac
+    if not hashed_password:
+        return False
+
+    # ── New stdlib format: "pbkdf2sha256$<iters>$<salt_hex>$<hash_hex>" ──────
+    if hashed_password.startswith("pbkdf2sha256$"):
+        try:
+            _, iters_str, salt_hex, stored_hex = hashed_password.split("$", 3)
+            iters = int(iters_str)
+            salt = bytes.fromhex(salt_hex)
+            stored = bytes.fromhex(stored_hex)
+            dk = hashlib.pbkdf2_hmac("sha256", plain_password.encode("utf-8"), salt, iters)
+            return _hmac.compare_digest(dk, stored)
+        except Exception:
+            return False
+
+    # ── Legacy passlib format: "$pbkdf2-sha256$<rounds>$<b64salt>$<b64hash>" ─
+    # Re-hash with passlib if it's installed, else reject legacy accounts
+    if hashed_password.startswith("$pbkdf2-sha256$"):
+        try:
+            from passlib.context import CryptContext
+            _legacy_ctx = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
+            return _legacy_ctx.verify(plain_password, hashed_password)
+        except Exception:
+            return False
+
+    return False
 
 # JWT Configuration
 JWT_SECRET_KEY = "pharmashield-ultra-secure-jwt-key-change-in-prod-2026"
@@ -123,17 +164,6 @@ def _save_reset_tokens(tokens: dict[str, dict[str, Any]]) -> None:
     RESET_TOKENS_FILE.write_text(json.dumps(tokens, indent=2), encoding="utf-8")
 
 
-# ─── Password & Token Utilities ──────────────────────────────────────────────
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    try:
-        return pwd_context.verify(plain_password, hashed_password)
-    except Exception:
-        return False
-
-
-def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
 
 
 def create_access_token(data: dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
