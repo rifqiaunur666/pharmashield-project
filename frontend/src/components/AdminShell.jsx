@@ -41,13 +41,9 @@ function AdminShellInner({ children }) {
 
   // Protected Route Client Guard
   useEffect(() => {
-    if (!loading) {
-      if (!isAuthenticated && !isAuthPage) {
-        const redirectParam = pathname && pathname !== '/' ? `?redirect=${encodeURIComponent(pathname)}` : '';
-        router.replace(`/login${redirectParam}`);
-      } else if (isAuthenticated && isAuthPage) {
-        router.replace('/');
-      }
+    if (!loading && !isAuthenticated && !isAuthPage) {
+      const redirectParam = pathname && pathname !== '/' ? `?redirect=${encodeURIComponent(pathname)}` : '';
+      router.replace(`/login${redirectParam}`);
     }
   }, [isAuthenticated, loading, isAuthPage, pathname, router]);
 

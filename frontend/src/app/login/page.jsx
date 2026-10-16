@@ -1,16 +1,15 @@
 /**
  * src/app/login/page.jsx
- * PharmaShield — Dedicated User Login / Sign In Page.
+ * PharmaShield — Dedicated User Login / Sign In Page (Instant, Seamless & Zero Delay).
  */
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/AuthContext';
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const { login, isAuthenticated, loading: authLoading } = useAuth();
 
@@ -18,42 +17,48 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [toastMessage, setToastMessage] = useState('');
 
-  // Check if redirected after registration or logout
+  // Check if redirected after registration
   useEffect(() => {
     if (searchParams.get('registered') === '1') {
       setToastMessage('Pendaftaran berhasil! Silakan login.');
     }
   }, [searchParams]);
 
-  // If already authenticated, redirect to dashboard
+  // If already authenticated on landing, redirect immediately to target without delay
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
       const redirectTarget = searchParams.get('redirect') || '/';
-      router.replace(redirectTarget);
+      window.location.href = redirectTarget;
     }
-  }, [isAuthenticated, authLoading, router, searchParams]);
+  }, [isAuthenticated, authLoading, searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
     setToastMessage('');
 
-    if (!email.trim() || !password) {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail || !password) {
       setErrorMessage('Email dan password wajib diisi.');
       return;
     }
 
     setSubmitting(true);
     try {
-      await login(email.trim(), password);
-      const redirectTarget = searchParams.get('redirect') || '/';
-      router.replace(redirectTarget);
+      const loggedUser = await login(trimmedEmail, password);
+      if (loggedUser) {
+        setLoginSuccess(true);
+        const redirectTarget = searchParams.get('redirect') || '/';
+        // Direct browser navigation ensures 100% reliable, instant transition with zero router lag
+        window.location.href = redirectTarget;
+        return;
+      }
     } catch (err) {
       setErrorMessage(err.message || 'Email atau password salah.');
-    } finally {
       setSubmitting(false);
     }
   };
@@ -89,7 +94,7 @@ function LoginForm() {
           {/* Success Toast */}
           {toastMessage && (
             <div className="rounded-xl border border-emerald-300 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-3.5 flex items-start gap-2.5 animate-fade-in">
-              <span className="text-emerald-600 dark:text-emerald-400 text-base">✓</span>
+              <span className="text-emerald-600 dark:text-emerald-400 text-base font-bold">✓</span>
               <p className="text-xs font-semibold text-emerald-800 dark:text-emerald-300 leading-relaxed">
                 {toastMessage}
               </p>
@@ -99,7 +104,7 @@ function LoginForm() {
           {/* Error Alert */}
           {errorMessage && (
             <div className="rounded-xl border border-rose-300 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-500/10 p-3.5 flex items-start gap-2.5 animate-shake">
-              <span className="text-rose-600 dark:text-rose-400 text-base">⚠</span>
+              <span className="text-rose-600 dark:text-rose-400 text-base font-bold">⚠</span>
               <p className="text-xs font-semibold text-rose-800 dark:text-rose-300 leading-relaxed">
                 {errorMessage}
               </p>
@@ -152,11 +157,16 @@ function LoginForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs tracking-wide shadow-lg shadow-emerald-600/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs tracking-wide shadow-lg shadow-emerald-600/25 transition-all disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
             >
-              {submitting ? (
+              {loginSuccess ? (
                 <>
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span>Berhasil Masuk! Mengalihkan ke Dashboard...</span>
+                </>
+              ) : submitting ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                   <span>Memverifikasi Kredensial...</span>
                 </>
               ) : (

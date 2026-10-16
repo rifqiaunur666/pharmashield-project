@@ -32,9 +32,9 @@ function RegisterForm() {
   // If already logged in, redirect to dashboard
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
-      router.replace('/');
+      window.location.href = '/';
     }
-  }, [isAuthenticated, authLoading, router]);
+  }, [isAuthenticated, authLoading]);
 
   const validateFrontend = () => {
     if (!fullName.trim()) {
@@ -85,11 +85,11 @@ function RegisterForm() {
         autoLogin: false,
       });
 
-      // Redirect to login page with success notification query
-      router.push('/login?registered=1');
+      // Redirect immediately to login page with success notification query
+      window.location.href = '/login?registered=1';
+      return;
     } catch (err) {
       setErrorMessage(err.message || 'Pendaftaran gagal.');
-    } finally {
       setSubmitting(false);
     }
   };
