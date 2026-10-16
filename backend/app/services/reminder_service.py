@@ -977,7 +977,6 @@ class ReminderEngine:
           - Angka 2 / 'tunda' / 'tunda 30 menit' / 'ingatkan jam 8 malam' -> Eksekusi SNOOZE
           - Angka 3 / 'lewati' / 'skip' -> Eksekusi SKIPPED + Peringatan keselamatan
         """
-        self._load_data()
         clean_phone = meta_wa_service.clean_recipient(from_phone)
         now_wib = datetime.now(WIB_OFFSET)
 

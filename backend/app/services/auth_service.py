@@ -154,15 +154,21 @@ def decode_access_token(token: str) -> Optional[dict[str, Any]]:
 
 def register_user(req: UserRegisterRequest) -> tuple[bool, str, Optional[dict[str, Any]]]:
     email_key = req.email.lower().strip()
-    if len(req.password) < 6:
-        return False, "Kata sandi minimal 6 karakter.", None
+
+    # Password validation: min 8 chars, must contain letters AND digits
+    if len(req.password) < 8:
+        return False, "Password minimal 8 karakter.", None
+    if not re.search(r'[A-Za-z]', req.password):
+        return False, "Password harus mengandung huruf dan angka.", None
+    if not re.search(r'\d', req.password):
+        return False, "Password harus mengandung huruf dan angka.", None
 
     if not req.accept_terms:
         return False, "Anda harus menyetujui syarat & ketentuan layanan.", None
 
     users = _load_users()
     if email_key in users:
-        return False, "Alamat email ini sudah terdaftar.", None
+        return False, "Email sudah terdaftar. Silakan login.", None
 
     user_id = str(uuid.uuid4())
     now_iso = datetime.now(timezone.utc).isoformat()

@@ -15,6 +15,7 @@ Endpoints:
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import re
 import httpx
@@ -542,8 +543,8 @@ async def meta_webhook_receiver(request: Request):
                                 title=f"Meta WhatsApp Button Click: {button_id.split(':')[0]}",
                                 details={"button_id": button_id, "from": msg.get("from")}
                             )
-                            # Handle button action in state machine
-                            await reminder_engine.handle_button_interaction(button_id)
+                            # Fire-and-forget: process in background, return 200 instantly
+                            asyncio.create_task(reminder_engine.handle_button_interaction(button_id))
 
                     # Check for incoming free text (Custom Snooze NLP parser)
                     elif msg.get("type") == "text":
@@ -556,7 +557,8 @@ async def meta_webhook_receiver(request: Request):
                                 title=f"WhatsApp Inbound Text from {from_phone}",
                                 details={"from": from_phone, "text": body_text}
                             )
-                            await reminder_engine.handle_text_interaction(from_phone, body_text)
+                            # Fire-and-forget: process in background, return 200 instantly
+                            asyncio.create_task(reminder_engine.handle_text_interaction(from_phone, body_text))
 
     except Exception as exc:
         logger.error("[MetaWebhook] Error processing webhook event: %s", exc)
@@ -601,8 +603,8 @@ async def fonnte_webhook_receiver(request: Request):
                 title=f"WhatsApp Inbound dari {sender}: {message}",
                 details={"sender": str(sender), "message": str(message)}
             )
-            result = await reminder_engine.handle_text_interaction(str(sender), str(message))
-            return {"status": True, "result": result}
+            # Fire-and-forget: return 200 instantly so Fonnte never retries due to timeout
+            asyncio.create_task(reminder_engine.handle_text_interaction(str(sender), str(message)))
         else:
             logger.warning("[FonnteWebhook] Received empty sender/message in payload")
     except Exception as exc:

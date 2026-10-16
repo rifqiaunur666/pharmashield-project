@@ -29,6 +29,17 @@ class MetaWhatsAppService:
         self.version = settings.meta_wa_api_version.strip() or "v19.0"
         self.app_secret = settings.meta_wa_app_secret.strip()
         self.verify_token = settings.meta_wa_verify_token.strip()
+        self._http_client: Optional[httpx.AsyncClient] = None
+        self._device_token_cache: dict[str, str] = {}
+
+    async def get_http_client(self) -> httpx.AsyncClient:
+        """Reuse HTTP connection pool to avoid TLS renegotiation delay on every dispatch."""
+        if self._http_client is None or self._http_client.is_closed:
+            self._http_client = httpx.AsyncClient(
+                timeout=httpx.Timeout(connect=5.0, read=10.0, write=5.0, pool=10.0),
+                limits=httpx.Limits(max_keepalive_connections=20, max_connections=40),
+            )
+        return self._http_client
 
     @property
     def endpoint(self) -> str:
@@ -115,16 +126,16 @@ class MetaWhatsAppService:
                 "Content-Type": "application/json",
             }
             try:
-                async with httpx.AsyncClient(timeout=10.0) as client:
-                    resp = await client.post(self.endpoint, json=payload, headers=headers)
-                    data = resp.json()
+                client = await self.get_http_client()
+                resp = await client.post(self.endpoint, json=payload, headers=headers)
+                data = resp.json()
 
-                    if resp.status_code in (200, 201):
-                        logger.info("[MetaWA] Message sent successfully to %s: %s", recipient, data)
-                        return {"success": True, "provider": "meta", "wa_link": wa_link, **data}
-                    else:
-                        logger.error("[MetaWA] Failed to send message. HTTP %d: %s", resp.status_code, data)
-                        return {"success": False, "error": data, "http_status": resp.status_code, "wa_link": wa_link}
+                if resp.status_code in (200, 201):
+                    logger.info("[MetaWA] Message sent successfully to %s: %s", recipient, data)
+                    return {"success": True, "provider": "meta", "wa_link": wa_link, **data}
+                else:
+                    logger.error("[MetaWA] Failed to send message. HTTP %d: %s", resp.status_code, data)
+                    return {"success": False, "error": data, "http_status": resp.status_code, "wa_link": wa_link}
             except Exception as exc:
                 logger.error("[MetaWA] Network error calling Meta API: %s", exc)
                 return {"success": False, "error": str(exc), "wa_link": wa_link}
@@ -134,58 +145,59 @@ class MetaWhatsAppService:
         if fonnte_token and fonnte_token != "YOUR_FONNTE_TOKEN_HERE":
             try:
                 if text_content and recipient:
-                    effective_token = fonnte_token
-                    async with httpx.AsyncClient(timeout=10.0) as client:
-                        # Test if token is an account token or if device token needs resolving
-                        fonnte_resp = await client.post(
-                            "https://api.fonnte.com/send",
-                            data={
-                                "target": recipient,
-                                "message": text_content,
-                                "countryCode": "62",
-                            },
-                            headers={"Authorization": effective_token}
-                        )
-                        raw_data = fonnte_resp.json() if "application/json" in fonnte_resp.headers.get("content-type", "") else {"detail": fonnte_resp.text}
+                    effective_token = self._device_token_cache.get(fonnte_token, fonnte_token)
+                    client = await self.get_http_client()
 
-                        # If token was an Account Token (invalid on send endpoint), auto-resolve to Device Token!
-                        if raw_data.get("reason") in ("invalid token", "token invalid") or len(effective_token) > 30:
-                            try:
-                                dev_resp = await client.post(
-                                    "https://api.fonnte.com/get-devices",
-                                    headers={"Authorization": fonnte_token}
-                                )
-                                dev_data = dev_resp.json()
-                                if dev_data.get("status") and dev_data.get("data"):
-                                    device_info = dev_data["data"][0]
-                                    device_token = device_info.get("token")
-                                    device_status = device_info.get("status")
-                                    if device_token:
-                                        effective_token = device_token
-                                        # Retry send with resolved device token
-                                        fonnte_resp = await client.post(
-                                            "https://api.fonnte.com/send",
-                                            data={
-                                                "target": recipient,
-                                                "message": text_content,
-                                                "countryCode": "62",
-                                            },
-                                            headers={"Authorization": effective_token}
-                                        )
-                                        raw_data = fonnte_resp.json() if "application/json" in fonnte_resp.headers.get("content-type", "") else {"detail": fonnte_resp.text}
-                                        raw_data["device_status"] = device_status
-                                        raw_data["device_phone"] = device_info.get("device")
-                            except Exception as res_err:
-                                logger.warning("[MetaWA->FonnteFallback] Could not auto-resolve device token: %s", res_err)
+                    fonnte_resp = await client.post(
+                        "https://api.fonnte.com/send",
+                        data={
+                            "target": recipient,
+                            "message": text_content,
+                            "countryCode": "62",
+                        },
+                        headers={"Authorization": effective_token}
+                    )
+                    raw_data = fonnte_resp.json() if "application/json" in fonnte_resp.headers.get("content-type", "") else {"detail": fonnte_resp.text}
 
-                        fonnte_status = bool(fonnte_resp.status_code == 200 and raw_data.get("status") is not False)
-                        logger.info("[MetaWA->FonnteFallback] Live WhatsApp message response for %s: %s", recipient, raw_data)
-                        return {
-                            "success": fonnte_status,
-                            "provider": "fonnte_fallback",
-                            "wa_link": wa_link,
-                            "response": raw_data
-                        }
+                    # If token was an Account Token (invalid on send endpoint), auto-resolve to Device Token and cache it
+                    if raw_data.get("reason") in ("invalid token", "token invalid") or len(effective_token) > 30:
+                        try:
+                            dev_resp = await client.post(
+                                "https://api.fonnte.com/get-devices",
+                                headers={"Authorization": fonnte_token}
+                            )
+                            dev_data = dev_resp.json()
+                            if dev_data.get("status") and dev_data.get("data"):
+                                device_info = dev_data["data"][0]
+                                device_token = device_info.get("token")
+                                device_status = device_info.get("status")
+                                if device_token:
+                                    self._device_token_cache[fonnte_token] = device_token
+                                    effective_token = device_token
+                                    # Retry send with resolved device token
+                                    fonnte_resp = await client.post(
+                                        "https://api.fonnte.com/send",
+                                        data={
+                                            "target": recipient,
+                                            "message": text_content,
+                                            "countryCode": "62",
+                                        },
+                                        headers={"Authorization": effective_token}
+                                    )
+                                    raw_data = fonnte_resp.json() if "application/json" in fonnte_resp.headers.get("content-type", "") else {"detail": fonnte_resp.text}
+                                    raw_data["device_status"] = device_status
+                                    raw_data["device_phone"] = device_info.get("device")
+                        except Exception as res_err:
+                            logger.warning("[MetaWA->FonnteFallback] Could not auto-resolve device token: %s", res_err)
+
+                    fonnte_status = bool(fonnte_resp.status_code == 200 and raw_data.get("status") is not False)
+                    logger.info("[MetaWA->FonnteFallback] Live WhatsApp message response for %s: %s", recipient, raw_data)
+                    return {
+                        "success": fonnte_status,
+                        "provider": "fonnte_fallback",
+                        "wa_link": wa_link,
+                        "response": raw_data
+                    }
             except Exception as f_err:
                 logger.warning("[MetaWA->FonnteFallback] Failed sending via fallback: %s", f_err)
 

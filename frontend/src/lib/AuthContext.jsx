@@ -1,6 +1,8 @@
 /**
  * src/lib/AuthContext.jsx
  * PharmaShield — Global Authentication & Profile Context.
+ * Instant hydration: reads localStorage synchronously on first render,
+ * then validates the token async in the background (no loading flash).
  */
 'use client';
 
@@ -12,35 +14,48 @@ import {
   clearAuthSession,
   getStoredUser,
   getAuthToken,
+  setAuthToken,
+  setStoredUser,
   updateMedicalProfile as apiUpdateMedicalProfile,
 } from './api';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  // Initialize auth from token / local storage
-  const refreshUser = useCallback(async () => {
-    setLoading(true);
+  // Instant hydration — read localStorage right away (synchronous)
+  const [user, setUser] = useState(() => {
+    if (typeof window === 'undefined') return null;
     try {
-      const token = getAuthToken();
-      if (!token) {
-        setUser(null);
-        return;
-      }
+      const raw = localStorage.getItem('pharmashield_user');
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
+  // loading=false immediately because we already have cached data
+  const [loading, setLoading] = useState(false);
+
+  // Background validation: silently re-verify token with backend
+  const refreshUser = useCallback(async () => {
+    const token = getAuthToken();
+    if (!token) {
+      setUser(null);
+      return;
+    }
+    try {
       const current = await fetchCurrentUser();
-      setUser(current);
-    } catch (err) {
-      console.warn('[Auth] Session validation failed:', err);
-      setUser(getStoredUser());
-    } finally {
-      setLoading(false);
+      if (current) {
+        setUser(current);
+      }
+    } catch {
+      // Keep cached user if network fails — don't log out on flaky connection
+      const cached = getStoredUser();
+      if (cached) setUser(cached);
     }
   }, []);
 
   useEffect(() => {
+    // Run background token validation after mount — doesn't block render
     refreshUser();
   }, [refreshUser]);
 
@@ -92,3 +107,4 @@ export function useAuth() {
   }
   return ctx;
 }
+
