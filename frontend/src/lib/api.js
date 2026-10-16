@@ -32,22 +32,15 @@ const toList = (v) => (Array.isArray(v) ? v : v ? [String(v)] : []);
 
 export function getAuthToken() {
   if (typeof window === 'undefined') return null;
-  const local = localStorage.getItem('pharmashield_token');
-  if (local) return local;
-  // Fallback to cookie check
-  const match = document.cookie.match(new RegExp('(^| )pharmashield_token=([^;]+)'));
-  return match ? match[2] : null;
+  return localStorage.getItem('pharmashield_token');
 }
 
 export function setAuthToken(token) {
   if (typeof window === 'undefined') return;
   if (token) {
     localStorage.setItem('pharmashield_token', token);
-    document.cookie = `pharmashield_token=${token}; path=/; max-age=604800; SameSite=Lax`;
   } else {
     localStorage.removeItem('pharmashield_token');
-    document.cookie = 'pharmashield_token=; path=/; max-age=0; SameSite=Lax';
-    document.cookie = 'pharmashield_session=; path=/; max-age=0; SameSite=Lax';
   }
 }
 
@@ -74,9 +67,6 @@ export function setStoredUser(user) {
 export function clearAuthSession() {
   setAuthToken(null);
   setStoredUser(null);
-  if (typeof window !== 'undefined') {
-    fetch(`${API_BASE}/auth/logout`, { method: 'POST', credentials: 'omit' }).catch(() => {});
-  }
 }
 
 function getAuthHeaders() {
@@ -162,7 +152,7 @@ export function normalizeResult(raw = {}) {
 
 // ─── Authentication API Calls ────────────────────────────────────────────────
 
-export async function registerUser({ fullName, email, password, confirmPassword, autoLogin = false }) {
+export async function registerUser({ fullName, email, password }) {
   const res = await fetch(`${API_BASE}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -170,7 +160,6 @@ export async function registerUser({ fullName, email, password, confirmPassword,
       full_name: fullName,
       email,
       password,
-      confirm_password: confirmPassword || password,
       accept_terms: true,
     }),
   });
@@ -180,11 +169,11 @@ export async function registerUser({ fullName, email, password, confirmPassword,
     throw new Error(data.detail || data.message || 'Pendaftaran gagal.');
   }
 
-  if (autoLogin && data.user?.token) {
+  if (data.user?.token) {
     setAuthToken(data.user.token);
     setStoredUser(data.user);
   }
-  return data;
+  return data.user;
 }
 
 export async function loginUser({ email, password }) {

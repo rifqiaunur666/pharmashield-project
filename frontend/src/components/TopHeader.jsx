@@ -5,8 +5,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useSidebar } from './AdminShell';
 import { useAuth } from '@/lib/AuthContext';
 import { fetchHistory } from '@/lib/api';
@@ -36,7 +35,6 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
   const { user, isAuthenticated, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
-  const router = useRouter();
   const page = PAGE_TITLES[pathname] ?? { label: 'MedikaGuard', sub: 'Dashboard' };
 
   const [stats, setStats] = useState({ total: 0, safe: 0, warning: 0 });
@@ -169,7 +167,6 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
                   onClick={() => {
                     setShowUserDropdown(false);
                     logout();
-                    router.push('/login');
                   }}
                   className="w-full text-left px-3 py-2 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-lg text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-200 flex items-center gap-2"
                 >
@@ -180,18 +177,12 @@ export default function TopHeader({ onOpenAuth, onOpenProfile }) {
           </div>
         ) : (
           <div className="flex items-center gap-2">
-            <Link
-              href="/login"
-              className="px-3 py-1.5 rounded-xl border border-slate-300 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 text-xs font-bold text-slate-800 dark:text-neutral-200 transition-all"
-            >
-              Masuk
-            </Link>
-            <Link
-              href="/register"
+            <button
+              onClick={onOpenAuth}
               className="px-3.5 py-1.5 rounded-xl bg-[#0284c7] text-white hover:bg-[#075985] shadow-sky-500/20 dark:bg-[#10b981] dark:text-[#0f172a] dark:hover:bg-[#059669] text-xs font-black transition-all shadow-xs"
             >
-              Daftar Akun
-            </Link>
+              Masuk / Daftar
+            </button>
           </div>
         )}
       </div>
