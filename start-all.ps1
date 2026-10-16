@@ -37,7 +37,11 @@ Write-Host "[2/4] Menjalankan Backend FastAPI..." -ForegroundColor Yellow
 
 $backendJob = Start-Job -ScriptBlock {
     Set-Location "D:\pharmashield-project\backend"
-    & "D:\pharmashield-project\.venv\Scripts\python.exe" -m uvicorn app.main:app --host 127.0.0.1 --port 8000 2>&1
+    $py = "D:\pharmashield-project\.venv\Scripts\python.exe"
+    if (-not (Test-Path $py)) {
+        $py = "D:\pharmashield-project\backend\venv\Scripts\python.exe"
+    }
+    & $py -m uvicorn app.main:app --host 127.0.0.1 --port 8000 2>&1
 }
 
 # Tunggu backend siap (max 10 detik)
