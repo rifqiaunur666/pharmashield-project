@@ -98,11 +98,15 @@ class MetaWhatsAppService:
                 title = b.get('reply', {}).get('title', '')
                 b_id = b.get('reply', {}).get('id', '')
                 if ":15" in b_id:
-                    btn_lines.append(f"1️⃣ Ketik *15* untuk *{title}*")
+                    btn_lines.append(f"1️⃣ Ketik *1* (atau *15*) untuk *{title}*")
                 elif ":30" in b_id:
-                    btn_lines.append(f"2️⃣ Ketik *30* untuk *{title}*")
+                    btn_lines.append(f"2️⃣ Ketik *2* (atau *30*) untuk *{title}*")
                 elif "ACT_SKIP" in b_id:
-                    btn_lines.append(f"3️⃣ Ketik *3* atau *lewati* untuk *{title}*")
+                    btn_lines.append(f"3️⃣ Ketik *3* (atau *lewati*) untuk *{title}*")
+                elif "BTN_LATE_NOT" in b_id:
+                    btn_lines.append(f"2️⃣ Ketik *2* (atau *belum*) untuk *{title}*")
+                elif "BTN_LATE_TAKEN" in b_id:
+                    btn_lines.append(f"1️⃣ Ketik *1* (atau *sudah*) untuk *{title}*")
                 else:
                     btn_lines.append(f"{idx}️⃣ Ketik *{idx}* untuk *{title}*")
 
@@ -114,7 +118,7 @@ class MetaWhatsAppService:
                 f"👉 *PILIH CARA MENJAWAB:*\n"
                 f"{btn_options}\n"
                 f"━━━━━━━━━━━━━━━━━━━━\n"
-                f"💡 _Cukup ketik angka pilihan atau balas kata seperti *\"sudah\"*, *\"belum\"*, *\"tunda 15 menit\"*._"
+                f"💡 _Cukup balas angka (1, 2, atau 3) atau ketik \"sudah\", \"belum\", \"tunda 15 menit\"._"
             )
 
         wa_link = f"https://wa.me/{recipient}?text={urllib.parse.quote(text_content)}" if recipient and text_content else ""
@@ -148,11 +152,17 @@ class MetaWhatsAppService:
                     effective_token = self._device_token_cache.get(fonnte_token, fonnte_token)
                     client = await self.get_http_client()
 
+                    # Append micro timestamp to prevent gateway anti-spam duplicate rejection
+                    from datetime import datetime, timezone, timedelta
+                    _wib = timezone(timedelta(hours=7))
+                    _ts = datetime.now(_wib).strftime("%H:%M:%S")
+                    fonnte_message = f"{text_content}\n\n_Ref: PS-{_ts}_"
+
                     fonnte_resp = await client.post(
                         "https://api.fonnte.com/send",
                         data={
                             "target": recipient,
-                            "message": text_content,
+                            "message": fonnte_message,
                             "countryCode": "62",
                         },
                         headers={"Authorization": effective_token}

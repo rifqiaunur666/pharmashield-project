@@ -99,17 +99,17 @@ Write-Host "[4/4] Memperbarui Fonnte Webhook..." -ForegroundColor Yellow
 $webhookUrl = "$tunnelUrl/api/webhook/fonnte"
 
 try {
-    $body = "webhook=$([System.Uri]::EscapeDataString($webhookUrl))"
+    $postBody = "device=6289520344305&name=Rifqi+Aunur+Rahman&webhook=$([System.Uri]::EscapeDataString($webhookUrl))&autoread=true"
     $resp = Invoke-WebRequest `
-        -Uri "https://api.fonnte.com/webhook" `
+        -Uri "https://api.fonnte.com/update-device" `
         -Method POST `
         -Headers @{ Authorization = "W4yJB3NxYtR2h7jE7Z7G" } `
-        -Body $body `
+        -Body $postBody `
         -ContentType "application/x-www-form-urlencoded" `
         -UseBasicParsing
     $json = $resp.Content | ConvertFrom-Json
     if ($json.status) {
-        Write-Host "     Fonnte webhook berhasil diset ke:" -ForegroundColor Green
+        Write-Host "     Fonnte webhook & autoread berhasil diset ke:" -ForegroundColor Green
         Write-Host "     $webhookUrl" -ForegroundColor White
     } else {
         Write-Host "     Fonnte webhook gagal: $($resp.Content)" -ForegroundColor Red

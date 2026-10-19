@@ -49,8 +49,8 @@ class PrecisionSchedulerWorker:
             except Exception as exc:
                 logger.error("[SchedulerWorker] Unexpected error in worker tick: %s", exc)
 
-            # Sleep 30 seconds for higher precision matching
-            await asyncio.sleep(30)
+            # Sleep 10 seconds for real-time high-precision matching
+            await asyncio.sleep(10)
 
 
 scheduler_worker = PrecisionSchedulerWorker()

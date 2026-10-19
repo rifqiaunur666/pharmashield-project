@@ -22,7 +22,7 @@ if sys.platform == "win32":
 # Ensure backend root is in python path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from app.services.reminder_service import reminder_engine
+from app.services.reminder_service import reminder_engine, REMINDERS_DB_FILE
 from app.services.meta_wa_service import meta_wa_service
 from datetime import datetime, timedelta, timezone
 
@@ -31,7 +31,9 @@ async def run_tests():
     print("RUNNING PHARMASHIELD PRECISION REMINDER & TIMEZONE TEST SUITE")
     print("=" * 60)
 
-    # 1. Reset data
+    # 1. Isolate to temporary DB file so production reminders_engine.json is NEVER touched
+    test_db = Path("backend/data/test_precision_reminders.json")
+    reminder_engine.set_db_file(test_db)
     reminder_engine.clear_all_data()
 
     # 2. Register Patient
@@ -88,43 +90,91 @@ async def run_tests():
     assert res_b.get("status") == "DELAYED"
     log2_saved = reminder_engine.get_log(log2.id)
     assert log2_saved.status == "DELAYED"
+    assert log2_saved.last_prompt == "SNOOZE_MENU"
 
-    # 6. Test Sub-Skenario B.1: User Memilih Tunda (Snooze 15 Menit / ketik '15')
-    res_b1 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "15")
-    print(f"✅ [5] Sub-Skenario B.1 (Tunda 15 Menit) dieksekusi: status={res_b1.get('status')}")
+    # 6. Test FIX: Di Notifikasi Opsi Tunda (SNOOZE_MENU), user tekan '1' -> Tunda 15 Menit (BUKAN ditandai diminum!)
+    res_b1 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "1")
+    print(f"✅ [5] Sub-Skenario B.1 (User tekan '1' di menu tunda) -> SNOOZED 15m: status={res_b1.get('status')}")
     assert res_b1.get("status") == "SNOOZED"
     log2_snoozed = reminder_engine.get_log(log2.id)
     assert log2_snoozed.status == "SNOOZED"
     assert log2_snoozed.due_sent_at is None  # Reset so it triggers again!
 
-    # 7. Test Sub-Skenario B.2: User Memilih [ 🚫 Lewati Dosis Ini ] (atau ketik '3' / 'lewati')
-    res_b2 = await reminder_engine.handle_button_interaction(f"ACT_SKIP:{log2.id}")
-    print(f"✅ [6] Sub-Skenario B.2 (Lewati Dosis) dieksekusi: status={res_b2.get('status')}")
-    assert res_b2.get("status") == "SKIPPED"
-    log2_skipped = reminder_engine.get_log(log2.id)
-    assert log2_skipped.status == "SKIPPED"
+    # 7. Test FIX: Di Notifikasi Opsi Tunda (SNOOZE_MENU), user tekan '2' -> Tunda 30 Menit (BUKAN duplikat menu / hening!)
+    reminder_engine._logs[log2.id]["status"] = "DELAYED"
+    reminder_engine._logs[log2.id]["last_prompt"] = "SNOOZE_MENU"
+    reminder_engine._save_data()
+    res_b2 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "2")
+    print(f"✅ [6] Sub-Skenario B.2 (User tekan '2' di menu tunda) -> SNOOZED 30m: status={res_b2.get('status')}")
+    assert res_b2.get("status") == "SNOOZED"
+    assert "30" in str(res_b2)
 
-    # 8. Test Natural Language Custom Snooze
-    # Create another log to test NLP snooze
-    med2, logs2 = reminder_engine.create_medication_and_schedules(
+    # 8. Test FIX: Di Notifikasi Opsi Tunda (SNOOZE_MENU), user tekan '3' -> Lewati Dosis
+    reminder_engine._logs[log2.id]["status"] = "DELAYED"
+    reminder_engine._logs[log2.id]["last_prompt"] = "SNOOZE_MENU"
+    reminder_engine._save_data()
+    res_b3 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "3")
+    print(f"✅ [7] Sub-Skenario B.3 (User tekan '3' di menu tunda) -> SKIPPED: status={res_b3.get('status')}")
+    assert res_b3.get("status") == "SKIPPED"
+
+    # 9. Test FIX: Keterlambatan / Peringatan Keterlambatan (DELAY_FOLLOWUP), user tekan '1' -> Dynamic Rescheduling!
+    med_late, logs_late = reminder_engine.create_medication_and_schedules(
         patient_id=patient.id,
-        name="Paracetamol",
+        name="Metformin",
         dosage="500 mg",
         instructions="Sesudah makan",
-        duration_days=1,
-        target_times=["20:00"]
+        duration_days=2,
+        target_times=["08:00", "20:00"]
     )
-    log_nlp = logs2[0]
-    res_nlp = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "tunda 45 menit")
-    print(f"✅ [7] NLP Snooze ('tunda 45 menit') dieksekusi: action={res_nlp.get('action')}")
-    assert res_nlp.get("action") == "CUSTOM_TEXT_SNOOZE"
-    log_nlp_saved = reminder_engine.get_log(log_nlp.id)
-    assert log_nlp_saved.status == "SNOOZED"
+    late_log = logs_late[0]
+    reminder_engine._logs[late_log.id]["status"] = "DELAYED"
+    reminder_engine._logs[late_log.id]["last_prompt"] = "DELAY_FOLLOWUP"
+    reminder_engine._save_data()
+    res_late = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "1")
+    print(f"✅ [8] User tekan '1' pada Notifikasi Terlambat -> Dynamic Rescheduled: action={res_late.get('action')}")
+    assert res_late.get("action") == "BTN_LATE_TAKEN"
+    assert res_late.get("result", {}).get("rescheduled") is True or res_late.get("result", {}).get("actual_taken_at") is not None
+
+    # 10. Test FIX: Status ESCALATED (+30m terlambat), user tekan '1' -> Masih bisa konfirmasi diminum!
+    esc_log = logs_late[1]
+    reminder_engine._logs[esc_log.id]["status"] = "ESCALATED"
+    reminder_engine._logs[esc_log.id]["last_prompt"] = "ESCALATED_PROMPT"
+    reminder_engine._save_data()
+    res_esc = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "1")
+    print(f"✅ [9] User tekan '1' saat status ESCALATED -> Berhasil diproses: action={res_esc.get('action')}")
+    assert res_esc.get("action") == "BTN_LATE_TAKEN"
+
+    # 11. Test Natural Language Conversational Snooze
+    med_nlp, logs_nlp = reminder_engine.create_medication_and_schedules(
+        patient_id=patient.id,
+        name="Ultraflu",
+        dosage="1 Kaplet",
+        instructions="Sesudah makan",
+        duration_days=1,
+        target_times=["21:00"]
+    )
+    log_nlp = logs_nlp[0]
+    reminder_engine._logs[log_nlp.id]["status"] = "DUE_0M"
+    reminder_engine._save_data()
+    res_nlp1 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "setengah jam")
+    print(f"✅ [10] Conversational NLP ('setengah jam') dieksekusi: action={res_nlp1.get('action')}")
+    assert res_nlp1.get("action") == "CUSTOM_TEXT_SNOOZE"
+
+    reminder_engine._logs[log_nlp.id]["status"] = "DUE_0M"
+    reminder_engine._save_data()
+    res_nlp2 = await reminder_engine.handle_text_interaction(patient.whatsapp_no, "tunda 45 menit")
+    print(f"✅ [11] Conversational NLP ('tunda 45 menit') dieksekusi: action={res_nlp2.get('action')}")
+    assert res_nlp2.get("action") == "CUSTOM_TEXT_SNOOZE"
 
     print("\n" + "=" * 60)
     print("ALL TESTS PASSED WITH 100% SUCCESS!")
     print("Semua requirement arsitektur waktu, 2-stage reminder, dan skenario callback terbukti akurat.")
     print("=" * 60)
+
+    # Restore production DB file
+    reminder_engine.set_db_file(REMINDERS_DB_FILE)
+    if test_db.exists():
+        test_db.unlink()
 
 if __name__ == "__main__":
     asyncio.run(run_tests())

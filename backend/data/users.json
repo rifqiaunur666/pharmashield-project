@@ -669,5 +669,173 @@
       "profile_completed": false,
       "updated_at": null
     }
+  },
+  "dr.safetyscan_1792149634@pharmashield.id": {
+    "id": "6418ad07-becd-480a-8601-e5ed25b670f6",
+    "email": "dr.safetyscan_1792149634@pharmashield.id",
+    "full_name": "Dr. Safety Scanner",
+    "hashed_password": "pbkdf2sha256$260000$1628972182a0f0c28ace237af49f248b81a89e0f247433f4c80a5ac35659f75b$b48d1fc5327977eabe6e4fbd7da8268daf0582e618dabdaec8617baeea2ce77a",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T11:20:34.104243+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "tester_1792149698@pharmashield.id": {
+    "id": "8a06ddd7-ea00-4ea6-859a-069b90418fbb",
+    "email": "tester_1792149698@pharmashield.id",
+    "full_name": "Tester History",
+    "hashed_password": "pbkdf2sha256$260000$a07eb99763efae8d93f2ad8becaf87bed8fd95a784e378d16404d29475afe9d9$f504afc2f8740b1679c78ac8105116bb052fc0d1765e0b1e621224574b1c4fa3",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T11:21:38.520242+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "dr.safetyscan_1792149708@pharmashield.id": {
+    "id": "82e28fb7-346e-4463-877a-c55b10f978fc",
+    "email": "dr.safetyscan_1792149708@pharmashield.id",
+    "full_name": "Dr. Safety Scanner",
+    "hashed_password": "pbkdf2sha256$260000$13f3084adb652317b139a35d85e2b547e04400e25c7fba7175876bd607bafcbf$e2ac791536e2a81be8e0e85f2c8ca5b6dc7c09ab127d2e0e6088f5130eb57779",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T11:21:48.558868+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "tester_1792149728@pharmashield.id": {
+    "id": "83e36459-ef6f-4a6f-8706-911ad55c03f0",
+    "email": "tester_1792149728@pharmashield.id",
+    "full_name": "Tester History",
+    "hashed_password": "pbkdf2sha256$260000$1cfd3fed5d834dab888cc68a020286641d8dd70eab8b61fe8400199219b29597$dd389f67e982fb744262981882913c9d6608a41598c148d353dd6f4b05dd3d22",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T11:22:08.859504+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "dr.safetyscan_1792158300@pharmashield.id": {
+    "id": "1368bb34-aa2b-42a6-984e-631bf7cd719b",
+    "email": "dr.safetyscan_1792158300@pharmashield.id",
+    "full_name": "Dr. Safety Scanner",
+    "hashed_password": "pbkdf2sha256$260000$55eac3e8aa46e19cc470ad8b62db5fda0e21174e1f57e702a0f78d4c437f4afe$e53c92b4e94921b4bbf122b713b68dd819070f44ccac3a09cd9165b6f192ed8e",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T13:45:00.993756+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "tester_1792158347@pharmashield.id": {
+    "id": "26121236-c0e5-489c-b7a4-11e3de3cdde2",
+    "email": "tester_1792158347@pharmashield.id",
+    "full_name": "Tester History",
+    "hashed_password": "pbkdf2sha256$260000$076a98925728aaf8d1100916a048d6534994c4a7bccd0d0056fe0449173f0277$c942d0459cd82e188d6882f204e5ee130458ef1c340e4c2818ef1c3a58045385",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-16T13:45:47.979012+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "dr.safetyscan_1792418416@pharmashield.id": {
+    "id": "5c09e83e-3199-461a-bd82-60cc82995410",
+    "email": "dr.safetyscan_1792418416@pharmashield.id",
+    "full_name": "Dr. Safety Scanner",
+    "hashed_password": "pbkdf2sha256$260000$59446c05186f42939ded7e6fc1805a3b9e8aaad9a1c79fa02b0b04f06111ff8c$bce6f28c1fb058cc8bbe3f7cbcca405035f0a23a4b201ff04379b8472a69bb90",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-19T14:00:17.032659+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
+  },
+  "tester_1792418444@pharmashield.id": {
+    "id": "23bd2130-e819-4bdd-9cc6-6844d5726168",
+    "email": "tester_1792418444@pharmashield.id",
+    "full_name": "Tester History",
+    "hashed_password": "pbkdf2sha256$260000$abcd17c36ae9c1e0e4c6e888c04a9b6573a79159437ea07548f05f45cb9820ba$cb77032a36730805244df3bdc32a0cf48caac1d3f6c0f6092e4969483f66e0ae",
+    "is_verified": true,
+    "status": "active",
+    "created_at": "2026-10-19T14:00:44.369747+00:00",
+    "medical_profile": {
+      "allergies": [],
+      "adverse_reactions": [],
+      "current_prescriptions": [],
+      "otc_medications": [],
+      "supplements": [],
+      "medical_conditions": [],
+      "pregnancy_status": false,
+      "breastfeeding_status": false,
+      "profile_completed": false,
+      "updated_at": null
+    }
   }
 }

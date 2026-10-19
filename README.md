@@ -1,3 +1,30 @@
+## 👥 Tim Pengembang
+
+### **VectorX**
+- **Muhammad Umar Fathullah**
+- **Athaillah Ramadhan**
+- **Rifqi Aunur Rahman**
+- **Rafif Khairi Andriadel**
+
+---
+
+## 🤖 Sumber AI yang Digunakan
+
+### Daftar Sumber AI yang Digunakan dari Gemini:
+
+- https://share.gemini.google/zOKH71ntIyqk
+- https://share.gemini.google/75R260X3kKGg
+- https://share.gemini.google/hehNQnQPTGdb
+- https://share.gemini.google/rjnfcS4rtuX9
+- https://share.gemini.google/CxswWaZzA5R8
+- https://share.gemini.google/CJGpf3LYLycY
+- https://share.gemini.google/FTfN7f5LyiPz
+
+> [!NOTE]  
+> **Catatan:** Beberapa prompt juga dijalankan menggunakan platform Antigravity, namun riwayat percakapan tidak dapat diekstrak/diambil.
+
+---
+
 <div align="center">
 
 <img src="frontend/public/logo.png" alt="MedikaGuard Logo" width="120" />
@@ -19,6 +46,8 @@
 
 ## 📋 Daftar Isi
 
+- [Tim Pengembang](#-tim-pengembang)
+- [Sumber AI yang Digunakan](#-sumber-ai-yang-digunakan)
 - [Tentang Project](#-tentang-project)
 - [Fitur Utama](#-fitur-utama)
 - [Arsitektur Sistem](#-arsitektur-sistem)
@@ -47,6 +76,8 @@
 - [Testing](#-testing)
 - [Troubleshooting](#-troubleshooting)
 - [Kontribusi](#-kontribusi)
+- [Lisensi](#-lisensi)
+- [Link Penting](#-link-penting)
 
 ---
 
@@ -81,41 +112,47 @@
 
 ## 🏗️ Arsitektur Sistem
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        USER / PASIEN                        │
-└──────────────────────────┬──────────────────────────────────┘
-                           │  Browser
-              ┌────────────▼────────────┐
-              │   Next.js Frontend      │
-              │   localhost:3000        │
-              │   (atau Vercel)         │
-              └────────────┬────────────┘
-                           │ HTTP REST API
-              ┌────────────▼────────────┐
-              │   FastAPI Backend       │
-              │   localhost:8000        │
-              │   (atau Railway)        │
-              │                         │
-              │  ┌─────────────────┐    │
-              │  │ Reminder Engine │    │
-              │  │ Scheduler (30s) │    │
-              │  └───────┬─────────┘    │
-              └──────────┼──────────────┘
-                         │
-         ┌───────────────┼────────────────┐
-         │               │                │
-   ┌─────▼──────┐  ┌─────▼──────┐  ┌────▼──────┐
-   │ Fonnte WA  │  │ Gemini AI  │  │   OCR     │
-   │ Bot API    │  │ Vision API │  │ Tesseract │
-   └─────┬──────┘  └────────────┘  └───────────┘
-         │
-   ┌─────▼──────────────┐
-   │  WhatsApp Pasien   │
-   │  (nomor terdaftar) │
-   └────────────────────┘
-```
+```mermaid
+flowchart TD
+    subgraph ClientLayer["🖥️ Frontend & Client Layer"]
+        User(["👤 User / Pasien / Keluarga"])
+        NextApp["🌐 Next.js 14 Frontend Web App<br/>(Tailwind CSS, Lucide Icons, App Router)"]
+        User -->|"Browser Desktop / Mobile<br/>(localhost:3000 / Vercel)"| NextApp
+    end
 
+    subgraph BackendLayer["⚡ Backend & API Server"]
+        FastAPI["🚀 FastAPI REST Backend<br/>(Python 3.10+, Uvicorn, port 8000)"]
+        NextApp -->|"HTTP REST API & JSON Payload"| FastAPI
+        
+        SchedulerWorker[["⏰ High-Precision Background Scheduler<br/>Evaluasi Jadwal Setiap 10 Detik"]]
+        FastAPI --- SchedulerWorker
+    end
+
+    subgraph ServiceEngines["🧠 Core Intelligent Engines"]
+        direction TB
+        OCREngine["🔍 OCR Engine<br/>Tesseract + RapidOCR ONNX"]
+        SafetyEngine["🛡️ Safety Evaluator<br/>3-Level Safety Grading System"]
+        MatchingEngine["💊 Fuzzy Drug Matching<br/>RapidFuzz + 1000+ DB Obat Indonesia"]
+        InteractionEngine["⚠️ Drug Interaction Checker<br/>Multi-Prescription Cross Check"]
+        DynamicRescheduler["🔄 Dynamic Rescheduling Engine<br/>Kalkulasi Waktu Aman Pasca Keterlambatan"]
+    end
+
+    FastAPI --> OCREngine
+    FastAPI --> SafetyEngine
+    FastAPI --> MatchingEngine
+    FastAPI --> InteractionEngine
+    SchedulerWorker --> DynamicRescheduler
+
+    subgraph ExternalGateways["☁️ External Cloud Services & Gateways"]
+        GeminiAPI["🤖 Google Gemini 1.5 Flash<br/>Vision AI Scanner & Chatbot Farmasi"]
+        FonnteAPI["📲 Fonnte WhatsApp Gateway<br/>Inbound Webhook & Outbound Messaging"]
+        PatientWA["📱 WhatsApp Pasien & Caregiver<br/>(Nomor Riil Pasien)"]
+    end
+
+    FastAPI <-->|"Multimodal Vision & Prompts"| GeminiAPI
+    SchedulerWorker -->|"Kirim Notifikasi H-10 & H-0"| FonnteAPI
+    FonnteAPI <-->|"Pesan Interaktif Balas [1] / [2]"| PatientWA
+    FonnteAPI -->|"Webhook Masuk: POST /api/webhook/fonnte"| FastAPI
 ```
 
 ---
@@ -130,31 +167,38 @@ Berikut adalah diagram alur pengguna untuk setiap fitur utama MedikaGuard, dibua
 
 ```mermaid
 flowchart TD
-    A([🌐 Buka Aplikasi]) --> B{Sudah login?}
-    B -- Ya --> C[🏠 Halaman Dashboard]
-    B -- Tidak --> D[Tampil Tombol Login / Daftar]
-    D --> E{Pilih aksi}
-    E -- Daftar --> F[Isi Nama, Email, Password]
-    F --> G[Konfirmasi Password]
-    G --> H{Password cocok?}
-    H -- Tidak --> F
-    H -- Ya --> I[POST /api/auth/register]
-    I --> J{Berhasil?}
-    J -- Tidak --> K[Tampil pesan error]
-    K --> F
-    J -- Ya --> L[✅ Akun dibuat, auto login]
-    L --> C
-    E -- Login --> M[Isi Email & Password]
-    M --> N[POST /api/auth/login]
-    N --> O{Token valid?}
-    O -- Tidak --> P[❌ Tampil error kredensial]
-    P --> M
-    O -- Ya --> Q[Simpan JWT Token]
-    Q --> C
-    E -- Lupa sandi --> R[Isi Email]
-    R --> S[POST /api/auth/forgot-password]
-    S --> T[✉️ Info tautan pemulihan dikirim]
-    C --> U[Fitur lengkap terbuka]
+    Start([🌐 Buka Aplikasi PharmaShield]) --> CheckAuth{Status Autentikasi?}
+    
+    CheckAuth -- Sudah Login / Token Valid --> Dashboard[🏠 Halaman Dashboard Utama]
+    CheckAuth -- Belum Login / Sesi Habis --> AuthChoice{Pilih Aksi Masuk}
+
+    subgraph RegisterFlow ["📝 Alur Pendaftaran Akun Baru (Register)"]
+        AuthChoice -- Pilih Daftar --> RegForm["Formulir Registrasi:<br/>• Nama Lengkap<br/>• Email Aktif<br/>• Kata Sandi Minimal 8 Karakter"]
+        RegForm --> RegSubmit["Kirim Data: POST /api/auth/register"]
+        RegSubmit --> RegCheck{Validasi Backend?}
+        RegCheck -- Email Sudah Terdaftar / Data Tidak Valid --> RegErr["❌ Tampilkan Pesan Error Validasi"]
+        RegErr --> RegForm
+        RegCheck -- Berhasil --> RegSuccess["✅ Akun Terbuat & Auto-Login<br/>(Generate Token JWT)"]
+    end
+
+    subgraph LoginFlow ["🔐 Alur Masuk Akun (Login)"]
+        AuthChoice -- Pilih Masuk --> LoginForm["Formulir Login:<br/>• Masukkan Email<br/>• Masukkan Kata Sandi"]
+        LoginForm --> LoginSubmit["Kirim Kredensial: POST /api/auth/login"]
+        LoginSubmit --> LoginCheck{Verifikasi Kredensial?}
+        LoginCheck -- Email/Password Salah --> LoginErr["❌ Tampilkan Notifikasi Kredensial Salah"]
+        LoginErr --> LoginForm
+        LoginCheck -- Berhasil --> LoginSuccess["✅ Login Sukses<br/>(Simpan JWT Token di LocalStorage/Cookie)"]
+    end
+
+    subgraph ForgotFlow ["🔑 Pemulihan Kata Sandi (Forgot Password)"]
+        AuthChoice -- Lupa Sandi --> ForgotForm["Masukkan Alamat Email Terdaftar"]
+        ForgotForm --> ForgotSubmit["Kirim Permintaan: POST /api/auth/forgot-password"]
+        ForgotSubmit --> ForgotSuccess["✉️ Tautan Reset Sandi Dikirim ke Email"]
+    end
+
+    RegSuccess --> Dashboard
+    LoginSuccess --> Dashboard
+    Dashboard --> AppReady["🚀 Akses Seluruh Fitur Terbuka<br/>(AI Vision Scanner, Pengingat WA, Cek Interaksi Obat, Riwayat)"]
 ```
 
 ---
@@ -171,25 +215,25 @@ flowchart TD
     C --> F[Preview gambar]
     F --> G{Gambar OK?}
     G -- Retake --> B
-    G -- Ya --> H[POST /api/scan-medicine\nkirim file ke backend]
-    H --> I[OCR Engine\nTesseract + RapidOCR]
+    G -- Ya --> H["POST /api/scan-medicine<br/>kirim file ke backend"]
+    H --> I["OCR Engine<br/>Tesseract + RapidOCR"]
     I --> J[Ekstrak teks dari kemasan]
-    J --> K[Fuzzy Matching\ncocokkan nama obat ke database]
-    K --> L[Safety Evaluator\nhitung sisa hari kedaluwarsa]
+    J --> K["Fuzzy Matching<br/>cocokkan nama obat ke database"]
+    K --> L["Safety Evaluator<br/>hitung sisa hari kedaluwarsa"]
     L --> M{Status keamanan}
-    M -- Aman --> N[🟢 AMAN\nSisa hari tertera]
-    M -- Hampir exp --> O[🟡 PERHATIAN\nSegera habiskan]
-    M -- Kedaluwarsa --> P[🔴 BERBAHAYA\nJangan dikonsumsi]
+    M -- Aman --> N["🟢 AMAN<br/>Sisa hari tertera"]
+    M -- Hampir exp --> O["🟡 PERHATIAN<br/>Segera habiskan"]
+    M -- Kedaluwarsa --> P["🔴 BERBAHAYA<br/>Jangan dikonsumsi"]
     M -- Tidak terbaca --> Q[⚪ DATA TIDAK TERBACA]
-    N & O & P & Q --> R[Tampilkan MedicineResultCard\nnama obat, exp date, rekomendasi]
+    N & O & P & Q --> R["Tampilkan MedicineResultCard<br/>nama obat, exp date, rekomendasi"]
     R --> S[Simpan ke riwayat /api/history]
     S --> T{Kirim notif WA?}
-    T -- Ya --> U[POST /api/wa/send-alert\nFonnte API]
+    T -- Ya --> U["POST /api/wa/send-alert<br/>Fonnte API"]
     U --> V[📱 WhatsApp dikirim ke nomor target]
     T -- Tidak --> W[✅ Selesai]
     V --> W
     R --> X{Gemini AI Vision tersedia?}
-    X -- Ya --> Y[POST /api/ai/scan-vision\nanalisis lebih dalam]
+    X -- Ya --> Y["POST /api/ai/scan-vision<br/>analisis lebih dalam"]
     Y --> Z[Tampilkan AI Confidence Score Panel]
 ```
 
@@ -208,29 +252,30 @@ flowchart TD
     B -- Sudah --> G[Dashboard Pengingat Aktif]
     G --> H{Aksi pengguna}
 
-    H -- Daftarkan pasien --> I[Isi Nama & Nomor WA\natau Scan QR Kontak]
+    H -- Daftarkan pasien --> I["Isi Nama & Nomor WA<br/>atau Scan QR Kontak"]
     I --> J[POST /api/reminders/patients]
     J --> K[✅ Pasien terdaftar]
 
-    H -- Tambah jadwal obat --> L[Pilih pasien\nIsi nama obat, dosis, jam minum]
+    H -- Tambah jadwal obat --> L["Pilih pasien<br/>Isi nama obat, dosis, jam minum"]
     L --> M[POST /api/reminders/schedules]
-    M --> N[📤 Kirim WA konfirmasi jadwal\nke nomor pasien]
+    M --> N["📤 Kirim WA konfirmasi jadwal<br/>ke nomor pasien"]
     N --> O[✅ Jadwal aktif]
 
-    O --> P[[🔄 Scheduler berjalan setiap 30 detik]]
+    O --> P[["🔄 High-Precision Scheduler<br/>Evaluasi Setiap 10 Detik"]]
     P --> Q{10 menit sebelum jadwal?}
-    Q -- Ya --> R[📱 Kirim WA Persiapan\nH-10 menit ke pasien]
+    Q -- Ya --> R["📱 Kirim WA Persiapan<br/>H-10 menit ke pasien"]
     Q --> S{Tepat waktu jadwal?}
-    S -- Ya --> T[📱 Kirim WA + Tombol Reply\nYa Sudah Minum / Belum]
+    S -- Ya --> T["📱 Kirim WA Interaktif H-0<br/>Pilihan: 1 Ya Sudah / 2 Belum"]
     T --> U{Respons pasien}
-    U -- Ya Sudah Minum --> V[✅ Log COMPLETED\nJadwal berikutnya dibuat]
-    U -- Belum --> W[⏳ Tunggu 10 menit]
-    W --> X[📱 Kirim Follow-up WA\nApakah sudah minum?]
-    X --> Y{Respons follow-up}
-    Y -- Ya Sudah --> V
-    Y -- Belum Lagi --> Z[🔄 DELAYED\nDynamic Rescheduling]
-    Z --> AA[Jadwal baru = waktu aktual + interval dokter]
-    U -- Timeout --> Z
+    U -- Ketik 1 Ya Sudah --> V["✅ Log TAKEN / COMPLETED<br/>Stok berkurang & edukasi terkirim"]
+    U -- Ketik 2 Belum --> W["⏳ Kirim Menu Opsi Tunda<br/>1 Tunda 15m / 2 Tunda 30m / 3 Lewati"]
+    W --> X{Pilihan tunda}
+    X -- Ketik 1 / 2 --> Y["⏱️ Status SNOOZED<br/>Jadwal dihitung ulang real-time"]
+    X -- Ketik 3 --> SK["🚫 Status SKIPPED<br/>Dosis dilewati aman"]
+    U -- Timeout > 15 Menit --> Z["🔄 DELAYED (Terlambat)<br/>Kirim pesan peringatan follow-up"]
+    Z --> AA{Respons keterlambatan}
+    AA -- Balas 1 --> DR["💊 Dynamic Rescheduling<br/>Jadwal berikutnya digeser aman"]
+    AA -- Timeout > 30 Menit --> ESC["🚨 Status ESCALATED<br/>Notifikasi diteruskan ke Caregiver/Keluarga"]
 ```
 
 ---
@@ -240,19 +285,19 @@ flowchart TD
 ```mermaid
 flowchart TD
     A([💊 Halaman Interaksi Obat]) --> B[Ketik nama obat pertama]
-    B --> C[Autocomplete dari katalog\n1000+ obat Indonesia]
+    B --> C["Autocomplete dari katalog<br/>1000+ obat Indonesia"]
     C --> D[Pilih / tambah obat ke daftar]
     D --> E{Sudah 2+ obat?}
     E -- Belum --> B
     E -- Ya --> F[Klik Periksa Interaksi]
-    F --> G[POST /api/interactions/check\nkirim array nama obat]
-    G --> H[Drug Interaction Service\ncek database interaksi]
+    F --> G["POST /api/interactions/check<br/>kirim array nama obat"]
+    G --> H["Drug Interaction Service<br/>cek database interaksi"]
     H --> I{Ada interaksi?}
     I -- Tidak ada --> J[✅ Aman dikonsumsi bersamaan]
     I -- Ada --> K{Tingkat keparahan}
-    K -- Minor --> L[🟡 Interaksi Ringan\nPerlu perhatian]
-    K -- Moderate --> M[🟠 Interaksi Sedang\nKonsultasi dokter]
-    K -- Severe --> N[🔴 Interaksi Berat\nJangan dikombinasikan]
+    K -- Minor --> L["🟡 Interaksi Ringan<br/>Perlu perhatian"]
+    K -- Moderate --> M["🟠 Interaksi Sedang<br/>Konsultasi dokter"]
+    K -- Severe --> N["🔴 Interaksi Berat<br/>Jangan dikombinasikan"]
     J & L & M & N --> O[Tampilkan detail & rekomendasi]
     O --> P{Hapus obat & coba lain?}
     P -- Ya --> B
@@ -267,23 +312,23 @@ flowchart TD
 flowchart TD
     A([📋 Halaman Riwayat]) --> B{User login?}
     B -- Tidak --> C[❌ Tampil pesan belum login]
-    B -- Ya --> D[GET /api/history\nambil semua riwayat scan]
-    D --> E[Tampil tabel riwayat\nnama obat, status, tanggal scan]
+    B -- Ya --> D["GET /api/history<br/>ambil semua riwayat scan"]
+    D --> E["Tampil tabel riwayat<br/>nama obat, status, tanggal scan"]
     E --> F{Filter / Cari}
     F -- Filter status --> G[Filter: Aman / Perhatian / Berbahaya]
     F -- Cari nama --> H[Search by nama obat]
     G & H --> E
     E --> I{Aksi item}
     I -- Hapus satu --> J[DELETE /api/history/id]
-    I -- Hapus semua --> K[Konfirmasi dialog\nHapus semua?]
-    K -- Ya --> L[DELETE /api/history/clear-all]
+    I -- Hapus semua --> K["Konfirmasi dialog<br/>Hapus semua?"]
+    K -- Ya --> L["DELETE /api/history/clear-all"]
     J & L --> D
 
-    M([📊 Halaman Analitik]) --> N[GET /api/history\nambil semua data]
-    N --> O[Hitung statistik:\nTotal scan, Aman, Perhatian, Berbahaya]
-    O --> P[Tampil Radial Chart\nDistribusi status keamanan]
-    P --> Q[Tampil Distribusi BPOM\nBebas / Bebas Terbatas / Keras]
-    Q --> R[Tampil Tren Penyakit Umum\nIndonesia dari katalog]
+    M([📊 Halaman Analitik]) --> N["GET /api/history<br/>ambil semua data"]
+    N --> O["Hitung statistik:<br/>Total scan, Aman, Perhatian, Berbahaya"]
+    O --> P["Tampil Radial Chart<br/>Distribusi status keamanan"]
+    P --> Q["Tampil Distribusi BPOM<br/>Bebas / Bebas Terbatas / Keras"]
+    Q --> R["Tampil Tren Penyakit Umum<br/>Indonesia dari katalog"]
 ```
 
 ---
@@ -293,50 +338,70 @@ flowchart TD
 ```mermaid
 flowchart TD
     A([🤖 Buka AI Chatbot]) --> B[Sidebar chatbot muncul]
-    B --> C[User ketik pertanyaan\ntentang obat / kesehatan]
-    C --> D[POST /api/ai/chat\nkirim pesan + history konteks]
+    B --> C["User ketik pertanyaan<br/>tentang obat / kesehatan"]
+    C --> D["POST /api/ai/chat<br/>kirim pesan + history konteks"]
     D --> E[Gemini 1.5 Flash API]
     E --> F{Response berhasil?}
     F -- Tidak --> G[❌ Tampil pesan error koneksi]
     G --> C
-    F -- Ya --> H[Tampilkan jawaban AI\ndi bubble chat]
+    F -- Ya --> H["Tampilkan jawaban AI<br/>di bubble chat"]
     H --> I{Pertanyaan lanjutan?}
     I -- Ya --> C
-    I -- Tidak --> J[Riwayat chat tersimpan\ndi sesi browser]
+    I -- Tidak --> J["Riwayat chat tersimpan<br/>di sesi browser"]
 
     K([📸 Scan via AI Vision]) --> L[Upload gambar kemasan obat]
-    L --> M[POST /api/ai/scan-vision\nkirim gambar ke Gemini Vision]
+    L --> M["POST /api/ai/scan-vision<br/>kirim gambar ke Gemini Vision"]
     M --> N[Gemini analisis gambar]
-    N --> O[Tampilkan hasil analisis\nnama obat, komposisi, saran]
-    O --> P[Confidence Score Panel\ntingkat kepercayaan hasil]
+    N --> O["Tampilkan hasil analisis<br/>nama obat, komposisi, saran"]
+    O --> P["Confidence Score Panel<br/>tingkat kepercayaan hasil"]
 ```
 
 ---
 
 ### State Machine Reminder Engine
 
-Diagram transisi status internal pada setiap log pengingat obat:
+Diagram transisi status (*finite state machine*) pada setiap jadwal dosis minum obat pasien di PharmaShield:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> PENDING : Jadwal dibuat
+    [*] --> PENDING: Jadwal Terdaftar<br/>(Menunggu Waktu Minum)
 
-    PENDING --> REMINDED_10M : H-10 menit\nKirim WA persiapan
-    REMINDED_10M --> DUE_0M : Tepat waktu jadwal\nKirim WA + tombol reply
+    PENDING --> REMINDED_10M: T - 10 Menit<br/>Kirim WA Pra-Pengingat Persiapan
+    REMINDED_10M --> DUE_0M: Waktu H (T - 0)<br/>Kirim WA Interaktif [1] Sudah / [2] Belum
+    PENDING --> DUE_0M: Waktu H Tiba Langsung<br/>Kirim WA Interaktif
 
-    DUE_0M --> COMPLETED : Pasien klik\nYa Sudah Minum
-    DUE_0M --> DELAYED : Pasien klik Belum\natau timeout 15 menit
+    DUE_0M --> TAKEN: Pasien Balas 1 atau sudah<br/>Stok Berkurang & Edukasi Medis
+    DUE_0M --> SNOOZED: Pasien Balas 2 atau Opsi Tunda<br/>Tunda 15 atau 30 Menit
+    DUE_0M --> DELAYED: Tidak Merespons (>15 Menit)<br/>Kirim WA Follow-Up Keterlambatan
 
-    DELAYED --> COMPLETED : Follow-up dibalas\nYa Sudah
-    DELAYED --> RESCHEDULED : Follow-up dibalas Belum\natau timeout lanjutan
+    SNOOZED --> DUE_0M: Waktu Tunda Selesai<br/>Kirim Ulang Notifikasi Pengingat
 
-    RESCHEDULED --> PENDING : Jadwal baru dibuat\nwaktu aktual + interval dokter
+    DELAYED --> TAKEN: Dibalas 1 (Sudah Minum Terlambat)<br/>Dynamic Rescheduling Dosis Berikutnya
+    DELAYED --> SNOOZED: Dibalas 2 (Belum Minum)<br/>Buka Pilihan Tunda
+    DELAYED --> ESCALATED: Tidak Merespons (>30 Menit)<br/>Eskalasi ke Caregiver / Keluarga
 
-    COMPLETED --> [*] : Dosis tercatat ✅
-    SKIPPED --> [*] : Dosis dilewati ⚠️
+    ESCALATED --> TAKEN: Dikonfirmasi Sudah Diminum<br/>Keluarga Diberitahu Otomatis
+    
+    DUE_0M --> SKIPPED: Pasien Balas 3 atau lewati<br/>Dosis Dibatalkan Aman
+    DELAYED --> SKIPPED: Dosis Dibatalkan / Dilewati
 
-    PENDING --> SKIPPED : Melewati batas\nwaktu tanpa respons
+    TAKEN --> [*]: Dosis Selesai ✅<br/>(Kepatuhan Tercatat 100%)
+    SKIPPED --> [*]: Dosis Ditutup ⚠️<br/>(Catatan Riwayat Diperbarui)
 ```
+
+#### 📋 Tabel Rincian Transisi & Logika State Machine
+
+| Status | Pemicu (*Trigger*) | Aksi Sistem Otomatis | Tindak Lanjut (*Next State*) |
+|---|---|---|---|
+| **`PENDING`** | Jadwal obat berhasil didaftarkan | Sistem menjadwalkan timer presisi tinggi di background worker. | Beralih ke `REMINDED_10M` pada H-10 menit atau langsung `DUE_0M`. |
+| **`REMINDED_10M`** | Waktu saat ini = Jam Minum - 10 Menit | Mengirimkan pesan WhatsApp pra-pengingat persiapan minum obat. | Menunggu waktu H tepat untuk beralih ke `DUE_0M`. |
+| **`DUE_0M`** | Waktu saat ini = Jam Minum Obat (H-0) | Mengirimkan pesan interaktif WhatsApp dengan opsi `[1] Sudah`, `[2] Belum`. | Menunggu balasan pasien (Grace period 15 menit). |
+| **`SNOOZED`** | Pasien membalas `2`, `tunda 15m`, atau `tunda 30m` | Menghitung ulang timer jadwal tunda secara real-time. | Mengirimkan notifikasi ulang saat masa tunda selesai (`DUE_0M`). |
+| **`DELAYED`** | Pasien belum minum atau tidak ada respons > 15 menit | Mengirimkan pesan WhatsApp follow-up peringatan keterlambatan. | Menunggu konfirmasi lanjutan atau eskalasi ke keluarga. |
+| **`ESCALATED`** | Pasien tidak merespons > 30 menit | Mengirimkan notifikasi darurat ke nomor WhatsApp Caregiver/Keluarga terdaftar. | Memastikan pasien tidak melewatkan obat kritis. |
+| **`RESCHEDULED`** | Dosis diminum terlambat (setelah follow-up/eskalasi) | Mengaktifkan **Dynamic Rescheduling**: menggeser jadwal dosis berikutnya (`waktu aktual + interval`). | Menghindari risiko akumulasi toksisitas atau overdosis obat. |
+| **`TAKEN` / `COMPLETED`** | Pasien membalas `1` / `sudah` | Mengurangi stok obat di inventaris, menghitung persentase kepatuhan mingguan, dan mengirim edukasi medis. | Status dosis ditutup selesai (`[*]`). |
+| **`SKIPPED`** | Pasien membalas `3` / `lewati` | Membatalkan dosis saat ini secara aman dengan peringatan medis. | Dosis ditutup tanpa menggeser jadwal reguler berikutnya (`[*]`). |
 
 ---
 
@@ -1035,16 +1100,6 @@ refactor: pisah reminder engine menjadi modul terpisah
 - **JavaScript/JSX**: Gunakan functional components & React Hooks
 - **Komentar**: Bahasa Indonesia untuk komentar bisnis logic
 - **Jangan commit**: `.env`, `node_modules/`, `venv/`, `.venv/`, `__pycache__/`, `uploads/*`
-
----
-
-## 👥 Kolaborator
-
-| Nama | GitHub | Peran |
-|------|--------|-------|
-| Rifqi Aunur | [@rifqiaunur666](https://github.com/rifqiaunur666) | Lead Developer |
-
-> 💬 Ingin bergabung sebagai kolaborator? Buka **Issue** di GitHub atau hubungi langsung!
 
 ---
 

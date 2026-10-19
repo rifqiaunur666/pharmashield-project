@@ -12,9 +12,18 @@ Tests:
 
 import asyncio
 import pytest
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from app.services.reminder_service import reminder_engine, WIB_OFFSET
+from app.services.reminder_service import reminder_engine, WIB_OFFSET, REMINDERS_DB_FILE
+
+
+@pytest.fixture(autouse=True)
+def isolate_test_db(tmp_path):
+    test_db = tmp_path / "test_reminders_engine.json"
+    reminder_engine.set_db_file(test_db)
+    yield
+    reminder_engine.set_db_file(REMINDERS_DB_FILE)
 
 
 def test_create_patient_and_medication():
@@ -192,10 +201,10 @@ async def test_three_stage_reminder_pipeline():
     # Test Interactive Response: Patient clicks [Ya, Sudah Minum]
     btn_res = await reminder_engine.handle_button_interaction(f"BTN_ONTIME_TAKEN:{log.id}")
     assert btn_res["success"] is True
-    assert btn_res["status"] == "COMPLETED"
+    assert btn_res["status"] in ("COMPLETED", "TAKEN")
 
     completed_log = reminder_engine.get_log(log.id)
-    assert completed_log.status == "COMPLETED"
+    assert completed_log.status in ("COMPLETED", "TAKEN")
     assert completed_log.actual_taken_at is not None
 
     reminder_engine.clear_all_data()

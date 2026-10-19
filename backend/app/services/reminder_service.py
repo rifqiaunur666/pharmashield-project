@@ -70,6 +70,16 @@ def parse_indonesian_snooze(text: str, reference_time: Optional[datetime] = None
     now = reference_time or datetime.now(WIB_OFFSET)
     cleaned = text.strip().lower()
 
+    # 0. Pola Percakapan Populer
+    if cleaned in ("setengah jam", "tunda setengah jam", "undur setengah jam", "30m", "30 mnt", "30 menit"):
+        return now + timedelta(minutes=30)
+    if cleaned in ("sebentar", "nanti", "sebentar lagi", "tunda sebentar", "15m", "15 mnt", "15 menit"):
+        return now + timedelta(minutes=15)
+    if cleaned in ("1 jam", "tunda 1 jam", "undur 1 jam", "sejam"):
+        return now + timedelta(hours=1)
+    if cleaned in ("2 jam", "tunda 2 jam", "undur 2 jam"):
+        return now + timedelta(hours=2)
+
     # 1. Pola Relatif (Menit / Jam)
     rel_match = re.search(r'(?:tunda|undur|nanti|ingatkan|lagi)?\s*(\d+(?:[.,]\d+)?)\s*(menit|mnt|m|jam|jm)', cleaned)
     if rel_match:
@@ -230,6 +240,7 @@ class MedicationLogModel(BaseModel):
     caregiver_escalated_at: Optional[str] = None
     taken_at: Optional[str] = None          # Exact timestamp when user clicks [Ya, Sudah]
     actual_taken_at: Optional[str] = None   # Backward compatibility alias
+    last_prompt: Optional[str] = None       # DUE_0M, SNOOZE_MENU, DELAY_FOLLOWUP, ESCALATED_PROMPT, PRE_10M
     created_at: str = Field(default_factory=lambda: datetime.now(WIB_OFFSET).isoformat())
     updated_at: str = Field(default_factory=lambda: datetime.now(WIB_OFFSET).isoformat())
 
@@ -237,11 +248,16 @@ class MedicationLogModel(BaseModel):
 # ─── Reminder Store & Engine ──────────────────────────────────────────────────
 
 class ReminderEngine:
-    def __init__(self):
+    def __init__(self, db_file: Optional[Path] = None):
+        self._db_file = db_file or REMINDERS_DB_FILE
         self._patients: dict[str, dict] = {}
         self._medications: dict[str, dict] = {}
         self._logs: dict[str, dict] = {}
         self._activity_logs: list[dict[str, Any]] = []
+        self._load_data()
+
+    def set_db_file(self, db_file: Path):
+        self._db_file = db_file
         self._load_data()
 
     def add_activity_log(self, event_type: str, title: str, details: dict[str, Any]):
@@ -295,12 +311,12 @@ class ReminderEngine:
         return round((taken_doses / total_doses) * 100.0, 1)
 
     def _load_data(self):
-        if not REMINDERS_DB_FILE.exists():
+        if not self._db_file.exists():
             self._save_data()
             return
 
         try:
-            content = REMINDERS_DB_FILE.read_text(encoding="utf-8").strip()
+            content = self._db_file.read_text(encoding="utf-8").strip()
             data = json.loads(content) if content else {}
             self._patients: dict[str, dict] = data.get("patients", {})
             self._medications: dict[str, dict] = data.get("medications", {})
@@ -318,8 +334,8 @@ class ReminderEngine:
                 "medications": self._medications,
                 "logs": self._logs
             }
-            REMINDERS_DB_FILE.parent.mkdir(parents=True, exist_ok=True)
-            REMINDERS_DB_FILE.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+            self._db_file.parent.mkdir(parents=True, exist_ok=True)
+            self._db_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
         except Exception as exc:
             logger.error("[ReminderEngine] Error saving reminders DB: %s", exc)
 
@@ -562,6 +578,7 @@ class ReminderEngine:
         now_wib = datetime.now(WIB_OFFSET)
         log_data["status"] = "DUE_0M"
         log_data["due_sent_at"] = now_wib.isoformat()
+        log_data["last_prompt"] = "DUE_0M"
         log_data["updated_at"] = now_wib.isoformat()
         self._save_data()
 
@@ -661,8 +678,10 @@ class ReminderEngine:
             return {"success": True, "stage": "STAGE_1_CONFIRMATION", "dispatch_result": res}
 
         elif stage in ("STAGE_2_PRE_10M", "PRE_10M"):
-            # 10 menit sebelum jadwal hanya masuk ke WhatsApp, tidak merubah status dashboard
+            # 10 menit sebelum jadwal dicatat sebagai REMINDED_10M (list_logs akan menampilkan PENDING untuk dashboard)
+            log_data["status"] = "REMINDED_10M"
             log_data["reminded_10m_at"] = now_wib.isoformat()
+            log_data["last_prompt"] = "PRE_10M"
             log_data["updated_at"] = now_wib.isoformat()
             self._save_data()
 
@@ -726,7 +745,9 @@ class ReminderEngine:
 
                 # ─── Tahap 1: Pre-Medication Reminder (T - 10 Menit) ───
                 if status == "PENDING" and not log_data.get("reminded_10m_at") and 0 < diff_minutes <= 10:
+                    log_data["status"] = "REMINDED_10M"
                     log_data["reminded_10m_at"] = now.isoformat()
+                    log_data["last_prompt"] = "PRE_10M"
                     log_data["updated_at"] = now.isoformat()
                     counts["reminded_10m"] += 1
 
@@ -748,6 +769,7 @@ class ReminderEngine:
                 elif status in ("PENDING", "REMINDED_10M", "SNOOZED") and -15 <= diff_minutes <= 0 and not log_data.get("due_sent_at"):
                     log_data["status"] = "DUE_0M"
                     log_data["due_sent_at"] = now.isoformat()
+                    log_data["last_prompt"] = "DUE_0M"
                     log_data["updated_at"] = now.isoformat()
                     counts["due_0m"] += 1
 
@@ -767,11 +789,36 @@ class ReminderEngine:
                         details={"medication": medication.name, "log_id": log_id, "res": due_res}
                     )
 
+                # ─── Catch-up Dosis Lewat (Jika server baru online / jadwal tertinggal >15m) ───
+                elif status in ("PENDING", "REMINDED_10M") and diff_minutes < -15 and not log_data.get("due_sent_at"):
+                    log_data["status"] = "DELAYED"
+                    log_data["due_sent_at"] = now.isoformat()
+                    log_data["followup_sent_at"] = now.isoformat()
+                    log_data["last_prompt"] = "DELAY_FOLLOWUP"
+                    log_data["updated_at"] = now.isoformat()
+                    counts["delayed"] += 1
+
+                    time_str = scheduled_dt.strftime("%H:%M")
+                    delay_res = await meta_wa_service.send_delay_followup_buttons(
+                        to_phone=patient.whatsapp_no,
+                        log_id=log_id,
+                        patient_name=patient.name,
+                        medication_name=medication.name,
+                        dosage=medication.dosage,
+                        scheduled_time_str=time_str
+                    )
+                    self.add_activity_log(
+                        event_type="FOLLOWUP_CATCHUP",
+                        title=f"Late Dose Follow-up Catch-up: {patient.name}",
+                        details={"medication": medication.name, "log_id": log_id, "res": delay_res}
+                    )
+
                 # ─── Smart Follow-up & Caregiver Escalation ───
                 # A. Keterlambatan / Timeout (+15 menit tanpa konfirmasi): Gentle follow-up
                 elif status in ("DUE_0M", "DELAYED") and diff_minutes < -15 and not log_data.get("followup_sent_at"):
                     log_data["status"] = "DELAYED"
                     log_data["followup_sent_at"] = now.isoformat()
+                    log_data["last_prompt"] = "DELAY_FOLLOWUP"
                     log_data["updated_at"] = now.isoformat()
                     counts["delayed"] += 1
 
@@ -794,6 +841,7 @@ class ReminderEngine:
                 elif status in ("DUE_0M", "DELAYED") and diff_minutes < -30 and not log_data.get("caregiver_escalated_at"):
                     log_data["caregiver_escalated_at"] = now.isoformat()
                     log_data["status"] = "ESCALATED"
+                    log_data["last_prompt"] = "ESCALATED_PROMPT"
                     log_data["updated_at"] = now.isoformat()
 
                     time_str = scheduled_dt.strftime("%H:%M")
@@ -828,6 +876,7 @@ class ReminderEngine:
           - ACT_SKIP / BTN_LATE_NOT:<log_id> -> SKIPPED
           - BTN_LATE_TAKEN:<log_id> -> RESCHEDULED (Dynamic Rescheduling Algorithm)
         """
+        self._load_data()
         parts = button_id.split(":")
         action = parts[0]
         log_id = parts[1] if len(parts) > 1 else ""
@@ -849,6 +898,7 @@ class ReminderEngine:
             log["status"] = "TAKEN"
             log["taken_at"] = now_wib.isoformat()
             log["actual_taken_at"] = now_wib.isoformat()
+            log["last_prompt"] = "TAKEN"
             log["updated_at"] = now_wib.isoformat()
 
             # Otomatis kurangi stok obat di inventaris
@@ -907,6 +957,7 @@ class ReminderEngine:
         # 2. Skenario B: User Mengklik [ ❌ Belum ]
         elif action in ("ACT_NOT_YET", "ACT_SNOOZE_MENU", "BTN_ONTIME_NOT"):
             log["status"] = "DELAYED"
+            log["last_prompt"] = "SNOOZE_MENU"
             log["updated_at"] = now_wib.isoformat()
             self._save_data()
 
@@ -936,25 +987,37 @@ class ReminderEngine:
             log["snoozed_until"] = new_dt.isoformat()
             log["snooze_count"] = log.get("snooze_count", 0) + 1
             log["due_sent_at"] = None  # Reset agar saat tiba waktu baru, tombol interaktif dikirim ulang
+            log["followup_sent_at"] = None  # Reset follow-up timer untuk waktu baru
+            log["caregiver_escalated_at"] = None  # Reset eskalasi
+            log["last_prompt"] = "SNOOZED"
             log["updated_at"] = now_wib.isoformat()
             self._save_data()
 
-            msg = f"Pengingat ditunda. Bot akan mengkontak Anda kembali dalam {minutes} menit."
+            msg = (
+                f"⏱️ Baik *{patient.name}*, pengingat obat *{medication.name}* telah ditunda selama *{minutes} menit*.\n\n"
+                f"Bot akan mengingatkan Anda kembali pada pukul *{new_dt.strftime('%H:%M')} WIB*. Siapkan air minumnya ya! 🌿"
+            )
             await meta_wa_service.send_text_message(patient.whatsapp_no, msg)
             self.add_activity_log(
                 event_type="SNOOZE_FIXED_APPLIED",
                 title=f"Snooze +{minutes}m Terpasang: {patient.name}",
                 details={"medication": medication.name, "log_id": log_id, "minutes": minutes}
             )
-            return {"success": True, "action": action, "status": "SNOOZED", "new_scheduled_at": new_dt.isoformat()}
+            return {"success": True, "action": action, "status": "SNOOZED", "minutes": minutes, "new_scheduled_at": new_dt.isoformat()}
 
         # 4. Sub-Skenario B.2: User Memilih [ 🚫 Lewati Dosis Ini ]
         elif action in ("ACT_SKIP", "BTN_LATE_NOT"):
             log["status"] = "SKIPPED"
+            log["last_prompt"] = "SKIPPED"
             log["updated_at"] = now_wib.isoformat()
             self._save_data()
 
-            msg = f"Dosis obat *{medication.name}* untuk jam ini telah dilewati. Mohon konsultasikan dengan dokter jika Anda sering melewatkan dosis."
+            msg = (
+                f"🚫 Dosis obat *{medication.name}* untuk jam ini telah ditandai DILEWATI.\n\n"
+                f"⚠️ *Catatan Keselamatan Medis:*\n"
+                f"Jangan menggandakan dosis pada jadwal minum berikutnya untuk mengganti dosis yang terlewat. "
+                f"Konsultasikan dengan dokter jika Anda sering melewatkan dosis obat."
+            )
             await meta_wa_service.send_text_message(patient.whatsapp_no, msg)
             self.add_activity_log(
                 event_type="DOSE_SKIPPED",
@@ -964,7 +1027,7 @@ class ReminderEngine:
             return {"success": True, "action": action, "status": "SKIPPED"}
 
         # 5. User klik [Ya, Sudah] saat Terlambat -> TRIGGER DYNAMIC RESCHEDULING ALGORITHM
-        elif action == "BTN_LATE_TAKEN":
+        elif action in ("BTN_LATE_TAKEN", "ACT_LATE_TAKEN"):
             reschedule_result = await self.apply_dynamic_rescheduling(log_id, now_wib)
             return {"success": True, "action": action, "result": reschedule_result}
 
@@ -974,9 +1037,10 @@ class ReminderEngine:
         """
         Handle balasan teks WhatsApp pasien:
           - Angka 1 / 'sudah' / 'sudah minum' / '✅' -> Eksekusi COMPLETED + Penjelasan & Saran Medis Edukatif!
-          - Angka 2 / 'tunda' / 'tunda 30 menit' / 'ingatkan jam 8 malam' -> Eksekusi SNOOZE
+          - Angka 2 / 'belum' / 'tunda' / 'tunda 30 menit' / 'ingatkan jam 8 malam' -> Eksekusi SNOOZE
           - Angka 3 / 'lewati' / 'skip' -> Eksekusi SKIPPED + Peringatan keselamatan
         """
+        self._load_data()
         clean_phone = meta_wa_service.clean_recipient(from_phone)
         now_wib = datetime.now(WIB_OFFSET)
 
@@ -1001,12 +1065,12 @@ class ReminderEngine:
             return {"success": False, "reason": "Patient not found for this phone"}
 
         # 2. Temukan reminder log aktif milik pasien ini
-        # Prioritaskan status DUE_0M dan DELAYED (yang sedang aktif menunggu interaksi bot)
+        # Prioritaskan status DUE_0M, DELAYED, dan ESCALATED (yang sedang aktif menunggu interaksi bot)
         candidate_logs = []
         for lid, ldata in self._logs.items():
             if ldata.get("patient_id") == patient.id:
                 status = ldata.get("status")
-                if status in ("DUE_0M", "DELAYED", "SNOOZED", "PENDING"):
+                if status in ("DUE_0M", "DELAYED", "SNOOZED", "ESCALATED", "PENDING"):
                     sched_str = ldata.get("scheduled_at", "")
                     try:
                         sched_dt = datetime.fromisoformat(sched_str)
@@ -1016,13 +1080,12 @@ class ReminderEngine:
                     except Exception:
                         diff_sec = 999999
 
-                    # Priority score: DUE_0M / DELAYED (0), SNOOZED (1), PENDING within 2h (2)
-                    if status in ("DUE_0M", "DELAYED"):
+                    # Priority score: DUE_0M / DELAYED / ESCALATED (0), SNOOZED (1), PENDING within 2h (2)
+                    if status in ("DUE_0M", "DELAYED", "ESCALATED"):
                         prio = 0
                     elif status == "SNOOZED":
                         prio = 1
                     else:
-                        # Only include PENDING logs within 2 hours window (past or future)
                         prio = 2 if diff_sec <= 7200 else 99
                     if prio < 99:
                         candidate_logs.append((prio, diff_sec, lid, ldata))
@@ -1034,8 +1097,8 @@ class ReminderEngine:
             # Periksa apakah ada obat yang baru saja ditandai TAKEN dalam 30 menit terakhir
             recent_taken = None
             for lid, ldata in self._logs.items():
-                if ldata.get("patient_id") == patient.id and ldata.get("status") == "TAKEN":
-                    taken_at_str = ldata.get("taken_at") or ldata.get("updated_at")
+                if ldata.get("patient_id") == patient.id and ldata.get("status") in ("TAKEN", "RESCHEDULED"):
+                    taken_at_str = ldata.get("taken_at") or ldata.get("actual_taken_at") or ldata.get("updated_at")
                     if taken_at_str:
                         try:
                             t_dt = datetime.fromisoformat(taken_at_str)
@@ -1098,8 +1161,58 @@ class ReminderEngine:
             return {"success": False, "reason": "No active reminder log found"}
 
         clean_text = text.strip().lower()
+        log = self._logs[target_log_id]
+        log_status = log.get("status")
+        last_prompt = log.get("last_prompt", "")
+        medication = MedicationModel(**self._medications[log["medication_id"]]) if log["medication_id"] in self._medications else None
+        med_name = medication.name if medication else "Obat"
 
-        # ── KONDISI 1: Pengguna Memilih "SUDAH MINUM" (1, sudah, sudah minum, dsb) ──
+        # ── KONDISI 1: Pengguna sedang berada di Menu Opsi Tunda (last_prompt == "SNOOZE_MENU") ──
+        if last_prompt == "SNOOZE_MENU":
+            # Pilihan 1: Tunda 15 Menit
+            if clean_text in ("1", "1.", "15", "15m", "15 mnt", "15 menit", "tunda 15", "tunda 15 menit") or "15 menit" in clean_text:
+                return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:15")
+            # Pilihan 2: Tunda 30 Menit
+            if clean_text in ("2", "2.", "30", "30m", "30 mnt", "30 menit", "tunda 30", "tunda 30 menit") or "30 menit" in clean_text:
+                return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:30")
+            # Pilihan 3: Lewati Dosis Ini
+            if clean_text in ("3", "3.", "lewati", "skip", "lewat", "batal", "lewati dosis") or clean_text.startswith("lewati") or clean_text.startswith("3"):
+                return await self.handle_button_interaction(f"ACT_SKIP:{target_log_id}")
+            # Jika pengguna berubah pikiran dan ketik sudah minum:
+            if any(k in clean_text for k in ("sudah", "udah", "diminum", "ya, sudah", "selesai", "yes", "ok", "siap", "alhamdulillah")):
+                if log_status in ("DELAYED", "ESCALATED"):
+                    return await self.handle_button_interaction(f"BTN_LATE_TAKEN:{target_log_id}")
+                return await self.handle_button_interaction(f"ACT_TAKEN:{target_log_id}")
+
+        # ── KONDISI 2: Pengguna sedang di Notifikasi Terlambat / Eskalasi (DELAYED atau ESCALATED) ──
+        if last_prompt in ("DELAY_FOLLOWUP", "ESCALATED_PROMPT") or log_status in ("DELAYED", "ESCALATED"):
+            # Jika ketik 1 / sudah / ya -> konfirmasi diminum (eksekusi dynamic rescheduling)
+            taken_late_keywords = (
+                "1", "1.", "1-sudah", "1. sudah", "1 sudah",
+                "sudah", "sudah minum", "diminum", "udah", "ya sudah", "ok sudah",
+                "done", "selesai", "yes", "ya", "sip", "ok", "oke", "siap",
+                "alhamdulillah", "✅", "✅ ya, sudah", "ya, sudah"
+            )
+            if clean_text in taken_late_keywords or clean_text.startswith("sudah") or clean_text.startswith("udah") or clean_text.startswith("1 ") or clean_text.startswith("1."):
+                return await self.handle_button_interaction(f"BTN_LATE_TAKEN:{target_log_id}")
+
+            # Jika ketik 2 / belum -> kirim menu opsi tunda
+            belum_late_keywords = (
+                "2", "2.", "2-belum", "2. belum", "2 belum",
+                "belum", "belum minum", "gak", "tidak", "belum lagi", "❌", "❌ belum", "nanti", "tunda"
+            )
+            if clean_text in belum_late_keywords or clean_text.startswith("belum") or clean_text.startswith("2 ") or clean_text.startswith("2."):
+                return await self.handle_button_interaction(f"ACT_NOT_YET:{target_log_id}")
+
+            # Pilihan langsung menit tunda
+            if clean_text in ("15", "15m", "15 mnt", "tunda 15", "tunda 15 menit", "15 menit") or "15 menit" in clean_text:
+                return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:15")
+            if clean_text in ("30", "30m", "30 mnt", "tunda 30", "tunda 30 menit", "30 menit") or "30 menit" in clean_text:
+                return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:30")
+            if clean_text in ("3", "3.", "lewati", "skip", "lewat", "batal", "tidak minum") or clean_text.startswith("lewati") or clean_text.startswith("3"):
+                return await self.handle_button_interaction(f"ACT_SKIP:{target_log_id}")
+
+        # ── KONDISI 3: Pengguna sedang di Pengingat Waktu H (DUE_0M / SNOOZED / PENDING) ──
         taken_keywords = (
             "1", "1.", "1-sudah", "1. sudah", "1 sudah",
             "sudah", "sudah minum", "diminum", "udah", "ya sudah", "ok sudah",
@@ -1109,21 +1222,20 @@ class ReminderEngine:
         if clean_text in taken_keywords or clean_text.startswith("sudah") or clean_text.startswith("udah") or clean_text.startswith("1 ") or clean_text.startswith("1."):
             return await self.handle_button_interaction(f"ACT_TAKEN:{target_log_id}")
 
-        # ── KONDISI 2: Pengguna Memilih "BELUM MINUM" (2, belum, belum minum, dsb) ──
         belum_keywords = (
             "2", "2.", "2-belum", "2. belum", "2 belum",
-            "belum", "belum minum", "gak", "tidak", "belum lagi", "❌", "❌ belum"
+            "belum", "belum minum", "gak", "tidak", "belum lagi", "❌", "❌ belum", "nanti", "tunda"
         )
         if clean_text in belum_keywords or clean_text.startswith("belum") or clean_text.startswith("2 ") or clean_text.startswith("2."):
             return await self.handle_button_interaction(f"ACT_NOT_YET:{target_log_id}")
 
-        # ── KONDISI 3: Pengguna Memilih "TUNDA 15 / 30 MENIT" ──
+        # Pilihan tunda langsung
         if clean_text in ("15", "15m", "15 mnt", "tunda 15", "tunda 15 menit", "15 menit") or "15 menit" in clean_text:
             return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:15")
         if clean_text in ("30", "30m", "30 mnt", "tunda 30", "tunda 30 menit", "30 menit") or "30 menit" in clean_text:
             return await self.handle_button_interaction(f"ACT_SNOOZE_FIXED:{target_log_id}:30")
 
-        # ── KONDISI 4: Pengguna Memilih "LEWATI DOSIS" (3, lewati, skip, dsb) ──
+        # Pilihan lewati dosis
         skip_keywords = (
             "3", "3.", "3-lewati", "3. lewati", "3 lewati",
             "lewati", "skip", "lewati dosis", "batal", "lewat",
@@ -1132,24 +1244,26 @@ class ReminderEngine:
         if clean_text in skip_keywords or clean_text.startswith("lewati") or clean_text.startswith("3 ") or clean_text.startswith("3."):
             return await self.handle_button_interaction(f"ACT_SKIP:{target_log_id}")
 
-        # ── KONDISI 5: Pengguna Mengetik Waktu Tunda Bebas (Custom NLP Snooze) ──
+        # ── KONDISI 4: Pengguna Mengetik Waktu Tunda Bebas (Custom NLP Snooze) ──
         new_target_dt = parse_indonesian_snooze(clean_text, now_wib)
         if new_target_dt:
             minutes_snoozed = max(1, int((new_target_dt - now_wib).total_seconds() // 60))
-            log = self._logs[target_log_id]
-            medication = MedicationModel(**self._medications[log["medication_id"]]) if log["medication_id"] in self._medications else None
-            med_name = medication.name if medication else "Obat"
-
             log["status"] = "SNOOZED"
             log["scheduled_at"] = new_target_dt.isoformat()
             log["scheduled_at_utc"] = new_target_dt.astimezone(timezone.utc).isoformat()
             log["snoozed_until"] = new_target_dt.isoformat()
             log["snooze_count"] = log.get("snooze_count", 0) + 1
             log["due_sent_at"] = None
+            log["followup_sent_at"] = None
+            log["caregiver_escalated_at"] = None
+            log["last_prompt"] = "SNOOZED"
             log["updated_at"] = now_wib.isoformat()
             self._save_data()
 
-            reply_msg = f"Pengingat ditunda. Bot akan mengkontak Anda kembali dalam {minutes_snoozed} menit."
+            reply_msg = (
+                f"⏱️ Baik *{patient.name}*, pengingat obat *{med_name}* telah ditunda selama *{minutes_snoozed} menit*.\n\n"
+                f"Bot akan mengingatkan Anda kembali pada pukul *{new_target_dt.strftime('%H:%M')} WIB*. Tetap sehat ya! 🌿"
+            )
             await meta_wa_service.send_text_message(patient.whatsapp_no, reply_msg)
             self.add_activity_log(
                 event_type="CUSTOM_TEXT_SNOOZE",
@@ -1158,10 +1272,7 @@ class ReminderEngine:
             )
             return {"success": True, "action": "CUSTOM_TEXT_SNOOZE", "new_scheduled_at": new_target_dt.isoformat()}
 
-        # ── KONDISI 6: Teks Tidak Dikenali (Kirim Panduan Balas Cepat) ──
-        log = self._logs[target_log_id]
-        medication = MedicationModel(**self._medications[log["medication_id"]]) if log["medication_id"] in self._medications else None
-        med_name = medication.name if medication else "Obat"
+        # ── KONDISI 5: Teks Tidak Dikenali (Kirim Panduan Balas Cepat) ──
         guide_msg = (
             f"Halo *{patient.name}*,\n"
             f"Untuk merespons pengingat obat *{med_name}*, Anda cukup membalas:\n\n"
@@ -1181,14 +1292,43 @@ class ReminderEngine:
           Waktu Aktual Minum + Interval Dosis Asli dari Dokter
         Mencegah interval yang terlalu dekat yang berisiko toksisitas/overdosis.
         """
+        self._load_data()
         log = self._logs[log_id]
         patient = self.get_patient(log["patient_id"])
         medication = MedicationModel(**self._medications[log["medication_id"]])
 
+        if actual_taken_at.tzinfo is None:
+            actual_taken_at = actual_taken_at.replace(tzinfo=WIB_OFFSET)
+
         # 1. Update log saat ini
         log["status"] = "RESCHEDULED"
         log["actual_taken_at"] = actual_taken_at.isoformat()
+        log["taken_at"] = actual_taken_at.isoformat()
+        log["last_prompt"] = "RESCHEDULED"
         log["updated_at"] = actual_taken_at.isoformat()
+
+        # Otomatis kurangi stok obat di inventaris
+        med_dict = self._medications.get(medication.id)
+        if med_dict:
+            curr_stock = max(0, med_dict.get("stock_quantity", 30) - 1)
+            med_dict["stock_quantity"] = curr_stock
+            self._medications[medication.id] = med_dict
+            daily_count = max(1, med_dict.get("daily_dose_count", 1))
+            days_left = curr_stock // daily_count
+            threshold = med_dict.get("refill_threshold_days", 3)
+            if days_left <= threshold and curr_stock > 0:
+                try:
+                    asyncio.create_task(
+                        meta_wa_service.send_refill_alert(
+                            to_phone=patient.whatsapp_no,
+                            patient_name=patient.name,
+                            medication_name=medication.name,
+                            remaining_stock=curr_stock,
+                            days_left=days_left
+                        )
+                    )
+                except Exception as ref_err:
+                    logger.warning("[ReminderEngine] Error queueing refill alert: %s", ref_err)
 
         # Interval asli dosis
         interval_hours = medication.schedule.interval_hours or 8
@@ -1209,8 +1349,10 @@ class ReminderEngine:
 
         # 3. Hitung selisih waktu antara actual taken dan jadwal asli berikutnya
         original_next_dt = datetime.fromisoformat(next_log.scheduled_at)
-        remaining_gap = original_next_dt - actual_taken_at
+        if original_next_dt.tzinfo is None:
+            original_next_dt = original_next_dt.replace(tzinfo=WIB_OFFSET)
 
+        remaining_gap = original_next_dt - actual_taken_at
         is_shifted = False
         new_next_dt = original_next_dt
 
@@ -1222,6 +1364,7 @@ class ReminderEngine:
 
             # Update database untuk log berikutnya
             self._logs[next_log.id]["scheduled_at"] = new_next_dt.isoformat()
+            self._logs[next_log.id]["scheduled_at_utc"] = new_next_dt.astimezone(timezone.utc).isoformat()
             self._logs[next_log.id]["updated_at"] = datetime.now(WIB_OFFSET).isoformat()
 
         self._save_data()
@@ -1258,6 +1401,18 @@ class ReminderEngine:
                 title=f"Dose Recorded (Gap Safe): {patient.name}",
                 details={"medication": medication.name, "time": actual_str, "next_time": next_str}
             )
+
+        # Jika caregiver sebelumnya pernah dieskalasi, kirimkan pemberitahuan bahwa pasien sudah minum obat
+        if patient.caregiver_whatsapp and log.get("caregiver_escalated_at"):
+            caregiver_msg = (
+                f"✅ *Pemberitahuan Pasien Telah Minum Obat*\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"Halo *{patient.caregiver_name or 'Pendamping'}*,\n"
+                f"Pasien *{patient.name}* baru saja mengonfirmasi bahwa beliau telah meminum obat "
+                f"*{medication.name}* pada pukul {actual_str} WIB.\n\n"
+                f"Terima kasih atas kepedulian Anda mendampingi kesehatan pasien! 🌿"
+            )
+            asyncio.create_task(meta_wa_service.send_text_message(patient.caregiver_whatsapp, caregiver_msg))
 
         await meta_wa_service.send_text_message(patient.whatsapp_no, msg)
 

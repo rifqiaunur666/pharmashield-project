@@ -152,8 +152,20 @@ def test_api_scan_fallback_no_crash(client):
 
 
 def test_api_history_flow(client):
+    import time
+    # Register temporary user for authenticated delete
+    email = f"tester_{int(time.time())}@pharmashield.id"
+    reg_res = client.post("/api/auth/register", json={
+        "full_name": "Tester History",
+        "email": email,
+        "password": "Password123!",
+        "accept_terms": True
+    })
+    token = reg_res.json()["user"]["token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
     # Fetch history
-    res = client.get("/api/history")
+    res = client.get("/api/history", headers=headers)
     assert res.status_code == 200
     data = res.json()
     assert "total" in data
@@ -163,12 +175,12 @@ def test_api_history_flow(client):
     assert "items" in data
 
     # Clear history
-    del_res = client.delete("/api/history")
+    del_res = client.delete("/api/history", headers=headers)
     assert del_res.status_code == 200
     assert del_res.json()["success"] is True
 
-    # Check that history is empty
-    res_after = client.get("/api/history")
+    # Check that history is empty for this user
+    res_after = client.get("/api/history", headers=headers)
     assert res_after.json()["total"] == 0
 
 

@@ -597,14 +597,29 @@ async def fonnte_webhook_receiver(request: Request):
                 pass
 
         if sender and message:
-            logger.info("[FonnteWebhook] Inbound WhatsApp from %s: %s", sender, message)
+            clean_s = meta_wa_service.clean_recipient(str(sender))
+            bot_num = meta_wa_service.clean_recipient(getattr(settings, "fonnte_sender_number", "") or "")
+            if bot_num and clean_s == bot_num:
+                logger.debug("[FonnteWebhook] Ignored outgoing echo from bot device: %s", clean_s)
+                return {"status": True, "ignored": "bot_echo"}
+
+            clean_msg = str(message).strip()
+            logger.info("[FonnteWebhook] Inbound WhatsApp from %s: %s", clean_s, clean_msg)
             reminder_engine.add_activity_log(
                 event_type="FONNTE_INBOUND_MSG",
-                title=f"WhatsApp Inbound dari {sender}: {message}",
-                details={"sender": str(sender), "message": str(message)}
+                title=f"WhatsApp Inbound dari {clean_s}: {clean_msg}",
+                details={"sender": clean_s, "message": clean_msg}
             )
+
+            async def _safe_handle_inbound():
+                try:
+                    res = await reminder_engine.handle_text_interaction(clean_s, clean_msg)
+                    logger.info("[FonnteWebhook] Interaction result for %s: %s", clean_s, res)
+                except Exception as err:
+                    logger.error("[FonnteWebhook] Error handling interaction for %s: %s", clean_s, err, exc_info=True)
+
             # Fire-and-forget: return 200 instantly so Fonnte never retries due to timeout
-            asyncio.create_task(reminder_engine.handle_text_interaction(str(sender), str(message)))
+            asyncio.create_task(_safe_handle_inbound())
         else:
             logger.warning("[FonnteWebhook] Received empty sender/message in payload")
     except Exception as exc:
