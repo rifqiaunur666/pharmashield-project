@@ -29,15 +29,15 @@
 
 <img src="frontend/public/logo.png" alt="MedikaGuard Logo" width="120" />
 
-# 🛡️ MedikaGuard
+# 🛡️ MedikaGuard (PharmaShield ID)
 
-**Sistem Keamanan & Pengingat Obat Berbasis AI untuk Pasien & Lansia**
+**Sistem Keamanan Konsumsi & Pengingat Obat Berbasis AI untuk Pasien & Lansia**
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python)](https://python.org)
-[![Gemini AI](https://img.shields.io/badge/Google_Gemini_AI-Integrated-4285F4?style=flat-square&logo=google)](https://aistudio.google.com)
-[![WhatsApp Bot](https://img.shields.io/badge/WhatsApp_Bot-Fonnte-25D366?style=flat-square&logo=whatsapp)](https://fonnte.com)
+[![Gemini AI](https://img.shields.io/badge/Google_Gemini_AI-Vision_Integrated-4285F4?style=flat-square&logo=google)](https://aistudio.google.com)
+[![WhatsApp Gateway](https://img.shields.io/badge/WhatsApp_Gateway-Fonnte_%26_Meta-25D366?style=flat-square&logo=whatsapp)](https://fonnte.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 </div>
@@ -49,15 +49,15 @@
 - [Tim Pengembang](#-tim-pengembang)
 - [Sumber AI yang Digunakan](#-sumber-ai-yang-digunakan)
 - [Tentang Project](#-tentang-project)
-- [Fitur Utama](#-fitur-utama)
+- [Fitur Utama Website](#-fitur-utama-website)
 - [Arsitektur Sistem](#-arsitektur-sistem)
 - [User Flow](#-user-flow)
-  - [Flow 1 — Autentikasi (Login & Register)](#flow-1--autentikasi-login--register)
-  - [Flow 2 — Scan Kemasan Obat (AI Scanner)](#flow-2--scan-kemasan-obat-ai-scanner)
-  - [Flow 3 — Pengingat Minum Obat (WhatsApp Bot)](#flow-3--pengingat-minum-obat-whatsapp-bot)
+  - [Flow 1 — Autentikasi & Mode Tamu](#flow-1--autentikasi--mode-tamu)
+  - [Flow 2 — Scan Kemasan Obat & Evaluasi Keamanan](#flow-2--scan-kemasan-obat--evaluasi-keamanan)
+  - [Flow 3 — Pengingat Minum Obat WhatsApp & Smart Timeline](#flow-3--pengingat-minum-obat-whatsapp--smart-timeline)
   - [Flow 4 — Cek Interaksi Obat](#flow-4--cek-interaksi-obat)
-  - [Flow 5 — Riwayat & Analitik](#flow-5--riwayat--analitik)
-  - [Flow 6 — AI Chatbot Farmasi](#flow-6--ai-chatbot-farmasi)
+  - [Flow 5 — Riwayat Pindai & Analitik](#flow-5--riwayat-pindai--analitik)
+  - [Flow 6 — Pusat Aksesibilitas & Profil Medis Lansia](#flow-6--pusat-aksesibilitas--profil-medis-lansia)
   - [State Machine Reminder Engine](#state-machine-reminder-engine)
 - [Struktur Project](#-struktur-project)
 - [Tech Stack](#-tech-stack)
@@ -71,7 +71,7 @@
 - [Environment Variables Lengkap](#-environment-variables-lengkap)
 - [Menjalankan dengan Docker](#-menjalankan-dengan-docker)
 - [API Endpoints](#-api-endpoints)
-- [WhatsApp Bot & Notifikasi](#-whatsapp-bot--notifikasi)
+- [WhatsApp Gateway & Notifikasi](#-whatsapp-gateway--notifikasi)
 - [Deployment (Railway + Vercel)](#-deployment-railway--vercel)
 - [Testing](#-testing)
 - [Troubleshooting](#-troubleshooting)
@@ -83,30 +83,45 @@
 
 ## 🎯 Tentang Project
 
-**MedikaGuard** adalah platform kesehatan digital yang dirancang khusus untuk membantu pasien dan keluarga lansia dalam:
+**MedikaGuard** (dikenal juga sebagai **PharmaShield ID**) adalah platform kesehatan digital yang dirancang khusus untuk mempermudah pasien, keluarga, dan lansia dalam memastikan keamanan serta ketepatan konsumsi obat-obatan sehari-hari.
 
-1. **📸 Memindai kemasan obat** — AI Vision + OCR mengekstrak nama obat, tanggal kedaluwarsa, dan status keamanan secara otomatis.
-2. **⏰ Pengingat minum obat otomatis** — Bot WhatsApp mengirimkan notifikasi ke nomor pasien sesuai jadwal yang didaftarkan, dari nomor bot **+6289520344305**.
-3. **🤖 AI Chatbot Farmasi** — Tanya jawab seputar obat-obatan bertenaga Google Gemini.
-4. **💊 Katalog Interaksi Obat** — Database interaksi antar obat untuk keselamatan penggunaan.
-5. **📊 Riwayat & Analitik** — Histori pemindaian dan statistik penggunaan obat.
+Aplikasi web ini berfokus pada fitur-fitur nyata yang telah diimplementasikan:
+
+1. **📸 AI Vision Scanner & OCR Kemasan Obat** — Mengidentifikasi nama obat, tanggal kedaluwarsa, sisa masa simpan, dan klasifikasi keamanan secara otomatis melalui kamera atau unggahan foto.
+2. **🛡️ 4-State Safety Grading & Panel Transparansi AI** — Evaluasi keamanan 4 status (Aman, Perhatian Khusus, Bahaya, dan Peringatan) dilengkapi rincian skor keyakinan AI (*Confidence Score*).
+3. **👤 Profil Medis Lansia & Personalized Safety Screening** — Skrining otomatis riwayat penyakit kronis (Hipertensi, Diabetes, Ginjal, Asma) dan riwayat alergi obat pasien saat memindai obat.
+4. **🔊 Voice Guidance & Fitur Aksesibilitas Khusus Lansia** — Panduan suara (Text-to-Speech) dalam Bahasa Indonesia, kontrol ukuran teks fleksibel, serta Mode Kontras Tinggi (*High Contrast Mode*).
+5. **⏰ Pengingat Minum Obat WhatsApp & Smart Timeline** — Notifikasi otomatis multi-tahap (Konfirmasi Awal, Pra-minum H-10 Menit, dan Aksi Waktu H Interaktif) dengan *Dynamic Rescheduling Engine* saat terlambat minum.
+6. **📱 Pindai QR Kontak WhatsApp** — Kemudahan mendaftarkan nomor telepon pasien cukup dengan mengunggah tangkapan layar kode QR kontak WhatsApp.
+7. **💊 Cek Interaksi Antar-Obat** — Pemeriksaan kombinasi obat multipel secara simultan untuk mendeteksi potensi interaksi berbahaya.
+8. **📋 Datasheet 1000+ Obat Indonesia** — Katalog lengkap obat-obatan penyakit umum Indonesia terintegrasi data resmi BPOM dan Alodokter.
+9. **📊 Riwayat Pindai & Analitik Visual** — Pencatatan histori pemindaian dan visualisasi diagram status keselamatan obat.
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Fitur Utama Website
 
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🔍 **AI Vision Scanner** | Scan kemasan obat via foto — ekstrak nama, exp date, status otomatis |
-| 📅 **Pengingat Otomatis** | Bot WA kirim notifikasi H-10 menit & tepat waktu minum obat |
-| 💬 **Interactive Bot** | Pasien konfirmasi sudah/belum minum via tombol reply WhatsApp |
-| 🔄 **Dynamic Rescheduling** | Jadwal otomatis disesuaikan jika pasien terlambat minum |
-| 🤖 **AI Chatbot** | Tanya jawab farmasi berbasis Google Gemini AI |
-| 💊 **Cek Interaksi Obat** | Deteksi kombinasi obat berpotensi berbahaya |
-| 📋 **Katalog Obat** | 1000+ data obat Indonesia dari Alodokter |
-| 🔐 **Autentikasi** | Login user dengan JWT token |
-| 🌙 **Dark UI** | Antarmuka modern dark-mode |
-| 📱 **Responsive** | Optimal di desktop, tablet, dan mobile |
+Berikut adalah daftar fitur yang **aktif dan tersedia langsung pada website MedikaGuard**:
+
+| Fitur | Deskripsi | Status di Website |
+|---|---|:---:|
+| 📸 **AI Vision Scanner & OCR** | Pindai kemasan obat via kamera langsung (dengan *reticle guide*) atau unggah file. Ekstraksi nama, tanggal kedaluwarsa, dan status registrasi BPOM. | ✅ Ada (`/`) |
+| 🛡️ **4-State Safety Evaluation** | Klasifikasi keamanan: 🟢 Aman, 🟡 Perhatian Khusus (Obat Keras/Hampir Exp), 🔴 Bahaya (Kedaluwarsa/Kontraindikasi), ⚪ Peringatan (Tidak Terbaca). | ✅ Ada (`/`) |
+| 📊 **AI Confidence Score Panel** | Transparansi metrik keyakinan AI: Skor OCR, skor kecocokan database, indikator risiko klinis, dan alasan evaluasi. | ✅ Ada (`/`) |
+| 👤 **Personalized Safety Screener** | Skrining otomatis kecocokan obat terhadap profil penyakit kronis (Hipertensi, Diabetes, Ginjal) dan riwayat alergi pengguna secara real-time. | ✅ Ada (`/`) |
+| 🔊 **Voice Guidance (Panduan Suara)** | Fitur Text-to-Speech (TTS) Bahasa Indonesia untuk membacakan nama obat, aturan minum, dosis, dan status keamanan bagi lansia. | ✅ Ada (`/`) |
+| 🔍 **Pencarian Manual Fallback** | Akses cepat ke basis data obat Indonesia jika kemasan obat buram, rusak, atau sulit terbaca kamera. | ✅ Ada (`/`) |
+| ⏰ **Pengingat WhatsApp 3-Tahap** | Alur notifikasi WhatsApp otomatis: Tahap 1 (Konfirmasi), Tahap 2 (H-10 menit), dan Tahap 3 (Waktu H interaktif balasan `1`/`2`). | ✅ Ada (`/reminders`) |
+| 🔄 **Dynamic Rescheduling Engine** | Rekalkulasi jeda dosis berikutnya secara otomatis jika pasien terlambat minum obat untuk mencegah overdosis atau penumpukan obat. | ✅ Ada (`/reminders`) |
+| 📱 **Import Kontak via QR WhatsApp** | Pindai atau unggah screenshot kode QR WhatsApp pasien untuk mengisi nomor telepon secara otomatis tanpa input manual. | ✅ Ada (`/reminders`) |
+| 🧪 **Simulator & Live Testing** | Tombol pengujian pemicu pengingat (*Trigger Stage* H-10/H-0, *Simulate Tick*, *Test Send WA*, dan log webhook) langsung di UI. | ✅ Ada (`/reminders`) |
+| 💊 **Cek Interaksi Obat** | Skrining kombinasi 2 atau lebih obat dengan autocomplete katalog, indikator keparahan (Ringan/Sedang/Berat), dan mekanisme interaksi. | ✅ Ada (`/interactions`) |
+| 📋 **Datasheet 1000+ Obat Indonesia** | Direktori obat penyakit umum masyarakat Indonesia dengan filter golongan BPOM (Bebas, Bebas Terbatas, Keras, Herbal). | ✅ Ada (`/medicines`) |
+| 📜 **Riwayat Pindai Lengkap** | Tabel rekam jejak scan obat dengan filter status keamanan, pencarian riwayat, tampilan detail, dan opsi hapus satuan/semua. | ✅ Ada (`/history`) |
+| 📈 **Analitik & Grafik Visual** | Visualisasi diagram radial sebaran status keamanan obat, proporsi golongan BPOM, dan ringkasan metrik kepatuhan. | ✅ Ada (`/analytics`) |
+| ♿ **Pusat Aksesibilitas Terpadu** | Modal pengaturan ukuran teks (Normal 100%, Besar 115%, Sangat Besar 130%), Mode Kontras Tinggi, dan tema Ocean Blue / Neon Lime. | ✅ Ada (Global) |
+| ⚙️ **Pengaturan & Uji Koneksi** | Uji status koneksi live ke backend FastAPI, informasi konfigurasi Tesseract OCR, dan WhatsApp Gateway. | ✅ Ada (`/settings`) |
+| 🔐 **Autentikasi & Mode Tamu** | Login dan Register dengan JWT token, serta Mode Tamu (*Guest Mode*) tanpa paksaan login untuk mencoba scanner. | ✅ Ada (Global) |
 
 ---
 
@@ -114,43 +129,59 @@
 
 ```mermaid
 flowchart TD
-    subgraph ClientLayer["🖥️ Frontend & Client Layer"]
-        User(["👤 User / Pasien / Keluarga"])
-        NextApp["🌐 Next.js 14 Frontend Web App<br/>(Tailwind CSS, Lucide Icons, App Router)"]
-        User -->|"Browser Desktop / Mobile<br/>(localhost:3000 / Vercel)"| NextApp
+    subgraph ClientLayer["🖥️ Frontend & Client Layer (Next.js 14 App Router)"]
+        User(["👤 User / Pasien / Caregiver"])
+        NextApp["🌐 MedikaGuard Web App<br/>(Tailwind CSS, Lucide Icons, Theme & A11y Engine)"]
+        User -->|"Browser Desktop / Tablet / Mobile<br/>(localhost:3000 / Vercel)"| NextApp
+        
+        subgraph UIModules["Komponen Antarmuka Utama"]
+            CameraModule["📸 Camera Reticle & Upload Scanner"]
+            ResultCard["🛡️ 4-State Safety Result & Voice Guidance TTS"]
+            ReminderModule["⏰ WhatsApp Reminder Dashboard & QR Importer"]
+            InteractionModule["💊 Multi-Drug Interaction Checker"]
+            CatalogModule["📋 Datasheet 1000+ Obat Indonesia"]
+            A11yModal["♿ Accessibility Modal (Font Scaling & High Contrast)"]
+        end
+        NextApp --- UIModules
     end
 
-    subgraph BackendLayer["⚡ Backend & API Server"]
-        FastAPI["🚀 FastAPI REST Backend<br/>(Python 3.10+, Uvicorn, port 8000)"]
+    subgraph BackendLayer["⚡ Backend & API Server (FastAPI)"]
+        FastAPI["🚀 FastAPI REST Backend Engine<br/>(Python 3.10+, Uvicorn, port 8000)"]
         NextApp -->|"HTTP REST API & JSON Payload"| FastAPI
         
-        SchedulerWorker[["⏰ High-Precision Background Scheduler<br/>Evaluasi Jadwal Setiap 10 Detik"]]
+        SchedulerWorker[["⏰ High-Precision Background Scheduler<br/>Evaluasi Jadwal Otomatis Setiap 10 Detik"]]
         FastAPI --- SchedulerWorker
     end
 
     subgraph ServiceEngines["🧠 Core Intelligent Engines"]
         direction TB
-        OCREngine["🔍 OCR Engine<br/>Tesseract + RapidOCR ONNX"]
-        SafetyEngine["🛡️ Safety Evaluator<br/>3-Level Safety Grading System"]
-        MatchingEngine["💊 Fuzzy Drug Matching<br/>RapidFuzz + 1000+ DB Obat Indonesia"]
-        InteractionEngine["⚠️ Drug Interaction Checker<br/>Multi-Prescription Cross Check"]
-        DynamicRescheduler["🔄 Dynamic Rescheduling Engine<br/>Kalkulasi Waktu Aman Pasca Keterlambatan"]
+        OCREngine["🔍 OCR Engine<br/>Tesseract OCR + RapidOCR ONNX"]
+        SafetyEngine["🛡️ 4-State Safety Evaluator<br/>Kalkulasi Kedaluwarsa & Klasifikasi Risiko"]
+        PersonalizedEngine["👤 Personalized Safety Screener<br/>Pemeriksaan Kontraindikasi Penyakit Kronis & Alergi"]
+        MatchingEngine["💊 Fuzzy Drug Matching<br/>RapidFuzz + Basis Data Obat Indonesia"]
+        InteractionEngine["⚠️ Drug Interaction Checker<br/>Multi-Prescription Cross Check Clinical DB"]
+        QRService["📱 WhatsApp QR Contact Decoder<br/>Ekstraksi Nomor Telepon Otomatis"]
+        DynamicRescheduler["🔄 Dynamic Rescheduling Engine<br/>Kalkulasi Interval Aman Pasca Keterlambatan"]
     end
 
     FastAPI --> OCREngine
     FastAPI --> SafetyEngine
+    FastAPI --> PersonalizedEngine
     FastAPI --> MatchingEngine
     FastAPI --> InteractionEngine
+    FastAPI --> QRService
     SchedulerWorker --> DynamicRescheduler
 
     subgraph ExternalGateways["☁️ External Cloud Services & Gateways"]
-        GeminiAPI["🤖 Google Gemini 1.5 Flash<br/>Vision AI Scanner & Chatbot Farmasi"]
+        GeminiAPI["🤖 Google Gemini 1.5 Flash<br/>Vision AI Multimodal Packaging Scanner"]
         FonnteAPI["📲 Fonnte WhatsApp Gateway<br/>Inbound Webhook & Outbound Messaging"]
+        MetaWA["☁️ Meta WhatsApp Cloud API<br/>Enterprise WhatsApp Messaging"]
         PatientWA["📱 WhatsApp Pasien & Caregiver<br/>(Nomor Riil Pasien)"]
     end
 
-    FastAPI <-->|"Multimodal Vision & Prompts"| GeminiAPI
+    FastAPI <-->|"Multimodal Packaging Vision Analysis"| GeminiAPI
     SchedulerWorker -->|"Kirim Notifikasi H-10 & H-0"| FonnteAPI
+    SchedulerWorker -.->|"Alternatif Enterprise Gateway"| MetaWA
     FonnteAPI <-->|"Pesan Interaktif Balas [1] / [2]"| PatientWA
     FonnteAPI -->|"Webhook Masuk: POST /api/webhook/fonnte"| FastAPI
 ```
@@ -159,123 +190,114 @@ flowchart TD
 
 ## 🗺️ User Flow
 
-Berikut adalah diagram alur pengguna untuk setiap fitur utama MedikaGuard, dibuat berdasarkan kode sumber aktual.
+Berikut adalah diagram alur pengguna untuk setiap alur utama yang **aktif pada website MedikaGuard**:
 
 ---
 
-### Flow 1 — Autentikasi (Login & Register)
+### Flow 1 — Autentikasi & Mode Tamu
 
 ```mermaid
 flowchart TD
-    Start([🌐 Buka Aplikasi PharmaShield]) --> CheckAuth{Status Autentikasi?}
+    Start([🌐 Buka Aplikasi MedikaGuard]) --> CheckAuth{Punya Akun / Mau Login?}
     
-    CheckAuth -- Sudah Login / Token Valid --> Dashboard[🏠 Halaman Dashboard Utama]
-    CheckAuth -- Belum Login / Sesi Habis --> AuthChoice{Pilih Aksi Masuk}
+    CheckAuth -- Lanjut Tanpa Login --> GuestMode["👤 Mode Tamu (Guest Mode)<br/>• Langsung pakai AI Scanner<br/>• Jelajahi Datasheet Obat ID<br/>• Cek Interaksi Obat Bebas"]
+    CheckAuth -- Ingin Login / Daftar --> AuthModalView["Buka Modal Autentikasi"]
 
     subgraph RegisterFlow ["📝 Alur Pendaftaran Akun Baru (Register)"]
-        AuthChoice -- Pilih Daftar --> RegForm["Formulir Registrasi:<br/>• Nama Lengkap<br/>• Email Aktif<br/>• Kata Sandi Minimal 8 Karakter"]
+        AuthModalView -- Pilih Tab Daftar --> RegForm["Formulir Registrasi:<br/>• Nama Lengkap<br/>• Email Aktif<br/>• Password"]
         RegForm --> RegSubmit["Kirim Data: POST /api/auth/register"]
         RegSubmit --> RegCheck{Validasi Backend?}
-        RegCheck -- Email Sudah Terdaftar / Data Tidak Valid --> RegErr["❌ Tampilkan Pesan Error Validasi"]
+        RegCheck -- Email Sudah Dipakai / Error --> RegErr["❌ Tampilkan Pesan Error Validasi"]
         RegErr --> RegForm
-        RegCheck -- Berhasil --> RegSuccess["✅ Akun Terbuat & Auto-Login<br/>(Generate Token JWT)"]
+        RegCheck -- Sukses --> RegSuccess["✅ Akun Terbuat & Auto-Login<br/>(Generate Token JWT)"]
+        RegSuccess --> OpenProfile["📋 Buka Modal Profil Medis Pasien<br/>(Isi riwayat penyakit & alergi)"]
     end
 
     subgraph LoginFlow ["🔐 Alur Masuk Akun (Login)"]
-        AuthChoice -- Pilih Masuk --> LoginForm["Formulir Login:<br/>• Masukkan Email<br/>• Masukkan Kata Sandi"]
+        AuthModalView -- Pilih Tab Masuk --> LoginForm["Formulir Login:<br/>• Email<br/>• Password"]
         LoginForm --> LoginSubmit["Kirim Kredensial: POST /api/auth/login"]
         LoginSubmit --> LoginCheck{Verifikasi Kredensial?}
-        LoginCheck -- Email/Password Salah --> LoginErr["❌ Tampilkan Notifikasi Kredensial Salah"]
+        LoginCheck -- Kredensial Salah --> LoginErr["❌ Notifikasi Kredensial Tidak Valid"]
         LoginErr --> LoginForm
-        LoginCheck -- Berhasil --> LoginSuccess["✅ Login Sukses<br/>(Simpan JWT Token di LocalStorage/Cookie)"]
+        LoginCheck -- Sukses --> LoginSuccess["✅ Login Berhasil<br/>(Simpan JWT Token di LocalStorage)"]
     end
 
-    subgraph ForgotFlow ["🔑 Pemulihan Kata Sandi (Forgot Password)"]
-        AuthChoice -- Lupa Sandi --> ForgotForm["Masukkan Alamat Email Terdaftar"]
-        ForgotForm --> ForgotSubmit["Kirim Permintaan: POST /api/auth/forgot-password"]
-        ForgotSubmit --> ForgotSuccess["✉️ Tautan Reset Sandi Dikirim ke Email"]
-    end
-
-    RegSuccess --> Dashboard
+    OpenProfile --> Dashboard["🏠 Dashboard MedikaGuard Aktif"]
     LoginSuccess --> Dashboard
-    Dashboard --> AppReady["🚀 Akses Seluruh Fitur Terbuka<br/>(AI Vision Scanner, Pengingat WA, Cek Interaksi Obat, Riwayat)"]
+    GuestMode --> Dashboard
 ```
 
 ---
 
-### Flow 2 — Scan Kemasan Obat (AI Scanner)
+### Flow 2 — Scan Kemasan Obat & Evaluasi Keamanan
 
 ```mermaid
 flowchart TD
-    A([🏠 Dashboard / Halaman Utama]) --> B{Mode input}
-    B -- Upload foto --> C[Pilih file gambar kemasan]
-    B -- Kamera --> D[Buka kamera browser]
-    D --> E[Ambil foto kemasan]
-    E --> C
-    C --> F[Preview gambar]
-    F --> G{Gambar OK?}
-    G -- Retake --> B
-    G -- Ya --> H["POST /api/scan-medicine<br/>kirim file ke backend"]
-    H --> I["OCR Engine<br/>Tesseract + RapidOCR"]
-    I --> J[Ekstrak teks dari kemasan]
-    J --> K["Fuzzy Matching<br/>cocokkan nama obat ke database"]
-    K --> L["Safety Evaluator<br/>hitung sisa hari kedaluwarsa"]
-    L --> M{Status keamanan}
-    M -- Aman --> N["🟢 AMAN<br/>Sisa hari tertera"]
-    M -- Hampir exp --> O["🟡 PERHATIAN<br/>Segera habiskan"]
-    M -- Kedaluwarsa --> P["🔴 BERBAHAYA<br/>Jangan dikonsumsi"]
-    M -- Tidak terbaca --> Q[⚪ DATA TIDAK TERBACA]
-    N & O & P & Q --> R["Tampilkan MedicineResultCard<br/>nama obat, exp date, rekomendasi"]
-    R --> S[Simpan ke riwayat /api/history]
-    S --> T{Kirim notif WA?}
-    T -- Ya --> U["POST /api/wa/send-alert<br/>Fonnte API"]
-    U --> V[📱 WhatsApp dikirim ke nomor target]
-    T -- Tidak --> W[✅ Selesai]
-    V --> W
-    R --> X{Gemini AI Vision tersedia?}
-    X -- Ya --> Y["POST /api/ai/scan-vision<br/>analisis lebih dalam"]
-    Y --> Z[Tampilkan AI Confidence Score Panel]
+    A([🏠 Halaman Dashboard / Scanner]) --> B{Pilih Metode Input}
+    B -- Kamera Langsung --> C["Buka Kamera Web dengan Bidikan Reticle"]
+    C --> D[Ambil Foto Kemasan Obat]
+    B -- Unggah File --> E[Pilih File Gambar dari Perangkat]
+    D & E --> F[Tampilkan Pratinjau Gambar]
+    F --> G{Hasil Foto Jelas?}
+    G -- Ambil Ulang --> B
+    G -- Ya, Proses --> H["POST /api/scan-medicine<br/>Kirim Foto + Profil Medis Pasien"]
+    
+    H --> I["Dual OCR Engine (Tesseract + RapidOCR) & Gemini Vision"]
+    I --> J["Ekstraksi Teks: Nama Obat, Komposisi, Tanggal Kedaluwarsa"]
+    J --> K["Fuzzy Matching ke Database 1000+ Obat Indonesia"]
+    K --> L["Personalized Safety Screener:<br/>Cek konflik dengan Hipertensi, Ginjal, Alergi pengguna"]
+    L --> M{Klasifikasi Keamanan}
+    
+    M -- Terdaftar & Aman --> N["🟢 AMAN<br/>Masa simpan berlaku & bebas konflik"]
+    M -- Perhatian Khusus --> O["🟡 PERHATIAN KHUSUS<br/>Obat Keras / Butuh Resep / Hampir Exp"]
+    M -- Bahaya --> P["🔴 BERBAHAYA<br/>Kedaluwarsa atau Ada Kontraindikasi Alergi Fatal"]
+    M -- Tidak Terbaca --> Q["⚪ PERINGATAN / TIDAK DIKENALI<br/>Gunakan Fallback Pencarian Manual"]
+
+    N & O & P & Q --> R["Tampilkan MedicineResultCard Lengkap"]
+    R --> S["Panel AI Confidence Score Breakdown"]
+    R --> T["🔊 Tombol Panduan Suara (Voice Guidance TTS Bahasa Indonesia)"]
+    R --> U["⏰ Tombol Aksi: Buat Pengingat Minum Obat Langsung"]
+    R --> V["Simpan Otomatis ke Riwayat (/api/history)"]
 ```
 
 ---
 
-### Flow 3 — Pengingat Minum Obat (WhatsApp Bot)
+### Flow 3 — Pengingat Minum Obat WhatsApp & Smart Timeline
 
 ```mermaid
 flowchart TD
-    A([⏰ Halaman Pengingat]) --> B{Token Fonnte terpasang?}
-    B -- Belum --> C[🔑 Klik Masukkan Token WA]
-    C --> D[Input Device Token dari fonnte.com]
-    D --> E[POST /api/reminders/update-credentials]
-    E --> F[✅ Token tersimpan]
-    F --> B
-    B -- Sudah --> G[Dashboard Pengingat Aktif]
-    G --> H{Aksi pengguna}
+    A([⏰ Halaman Pengingat WhatsApp]) --> B{Status Gateway WA}
+    B -- Belum Konfigurasi --> C["Klik Pengaturan Kredensial Gateway<br/>(Fonnte Token / Meta API)"]
+    C --> D["POST /api/reminders/update-gateway"]
+    D --> E[✅ Gateway Terhubung]
+    B -- Sudah Aktif --> E
 
-    H -- Daftarkan pasien --> I["Isi Nama & Nomor WA<br/>atau Scan QR Kontak"]
-    I --> J[POST /api/reminders/patients]
-    J --> K[✅ Pasien terdaftar]
+    E --> F{Tambah Pasien Baru}
+    F -- Cara 1: Input Form --> G[Ketik Nama & Nomor WhatsApp]
+    F -- Cara 2: Pindai QR Kontak --> H["Unggah Foto QR Kontak WhatsApp<br/>(POST /api/reminders/scan-qr-contact)"]
+    H --> I["Decoder Otomatis Mengekstrak Nomor HP"]
+    G & I --> J["POST /api/reminders/patients"]
+    J --> K[✅ Pasien Terdaftar]
 
-    H -- Tambah jadwal obat --> L["Pilih pasien<br/>Isi nama obat, dosis, jam minum"]
-    L --> M[POST /api/reminders/schedules]
-    M --> N["📤 Kirim WA konfirmasi jadwal<br/>ke nomor pasien"]
-    N --> O[✅ Jadwal aktif]
+    K --> L["Input Jadwal Obat Pasien:<br/>Nama obat, dosis, frekuensi, aturan makan, jam minum"]
+    L --> M["POST /api/reminders/medications"]
+    M --> N["📤 Tahap 1: Kirim Pesan WA Konfirmasi Pendaftaran Jadwal"]
 
-    O --> P[["🔄 High-Precision Scheduler<br/>Evaluasi Setiap 10 Detik"]]
-    P --> Q{10 menit sebelum jadwal?}
-    Q -- Ya --> R["📱 Kirim WA Persiapan<br/>H-10 menit ke pasien"]
-    Q --> S{Tepat waktu jadwal?}
-    S -- Ya --> T["📱 Kirim WA Interaktif H-0<br/>Pilihan: 1 Ya Sudah / 2 Belum"]
-    T --> U{Respons pasien}
-    U -- Ketik 1 Ya Sudah --> V["✅ Log TAKEN / COMPLETED<br/>Stok berkurang & edukasi terkirim"]
-    U -- Ketik 2 Belum --> W["⏳ Kirim Menu Opsi Tunda<br/>1 Tunda 15m / 2 Tunda 30m / 3 Lewati"]
-    W --> X{Pilihan tunda}
-    X -- Ketik 1 / 2 --> Y["⏱️ Status SNOOZED<br/>Jadwal dihitung ulang real-time"]
-    X -- Ketik 3 --> SK["🚫 Status SKIPPED<br/>Dosis dilewati aman"]
-    U -- Timeout > 15 Menit --> Z["🔄 DELAYED (Terlambat)<br/>Kirim pesan peringatan follow-up"]
-    Z --> AA{Respons keterlambatan}
-    AA -- Balas 1 --> DR["💊 Dynamic Rescheduling<br/>Jadwal berikutnya digeser aman"]
-    AA -- Timeout > 30 Menit --> ESC["🚨 Status ESCALATED<br/>Notifikasi diteruskan ke Caregiver/Keluarga"]
+    N --> O[["⏰ Scheduler Worker Aktif (Evaluasi Setiap 10 Detik)"]]
+    O --> P{H - 10 Menit Sebelum Jadwal?}
+    P -- Ya --> Q["📱 Tahap 2: Kirim WA Pra-Pengingat Persiapan Minum Obat"]
+    
+    P --> R{Tepat Waktu Jam Minum (H-0)?}
+    R -- Ya --> S["📱 Tahap 3: Kirim WA Interaktif H-0<br/>Pilihan Balas: [1] Sudah Minum, [2] Tunda/Belum"]
+
+    S --> T{Respons Balasan Pasien}
+    T -- Balas 1 (Sudah) --> U["✅ Status TAKEN / COMPLETED<br/>Kepatuhan tercatat & edukasi terkirim"]
+    T -- Balas 2 (Belum) --> V["⏳ Kirim Menu Opsi Tunda (15m / 30m)<br/>Status SNOOZED"]
+    V --> S
+    T -- Tidak Membalas (>15 Menit) --> W["⚠️ Status DELAYED (Terlambat)<br/>Kirim pesan peringatan follow-up"]
+    W --> X{Pasien Membalas Terlambat?}
+    X -- Balas 1 --> Y["💊 Dynamic Rescheduling Engine:<br/>Jadwal berikutnya digeser adaptif mencegah akumulasi dosis"]
+    X -- Tidak Membalas (>30 Menit) --> Z["🚨 Status ESCALATED:<br/>Notifikasi darurat diteruskan ke Caregiver/Keluarga"]
 ```
 
 ---
@@ -284,83 +306,76 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A([💊 Halaman Interaksi Obat]) --> B[Ketik nama obat pertama]
-    B --> C["Autocomplete dari katalog<br/>1000+ obat Indonesia"]
-    C --> D[Pilih / tambah obat ke daftar]
-    D --> E{Sudah 2+ obat?}
+    A([💊 Halaman Interaksi Obat]) --> B[Ketik Nama Obat Pertama]
+    B --> C["Autocomplete Otomatis dari 1000+ Database Obat Indonesia"]
+    C --> D[Pilih Obat & Tambahkan ke Daftar Skrining]
+    D --> E{Sudah Memilih Minimal 2 Obat?}
     E -- Belum --> B
-    E -- Ya --> F[Klik Periksa Interaksi]
-    F --> G["POST /api/interactions/check<br/>kirim array nama obat"]
-    G --> H["Drug Interaction Service<br/>cek database interaksi"]
-    H --> I{Ada interaksi?}
-    I -- Tidak ada --> J[✅ Aman dikonsumsi bersamaan]
-    I -- Ada --> K{Tingkat keparahan}
-    K -- Minor --> L["🟡 Interaksi Ringan<br/>Perlu perhatian"]
-    K -- Moderate --> M["🟠 Interaksi Sedang<br/>Konsultasi dokter"]
-    K -- Severe --> N["🔴 Interaksi Berat<br/>Jangan dikombinasikan"]
-    J & L & M & N --> O[Tampilkan detail & rekomendasi]
-    O --> P{Hapus obat & coba lain?}
-    P -- Ya --> B
-    P -- Tidak --> Q[✅ Selesai]
+    E -- Sudah (2+ Obat) --> F[Klik Tombol Periksa Interaksi]
+    
+    F --> G["POST /api/interactions<br/>Kirim Daftar Nama Obat"]
+    G --> H["Drug Interaction Service:<br/>Analisis silang matriks interaksi klinis"]
+    
+    H --> I{Apakah Ditemukan Potensi Interaksi?}
+    I -- Tidak Ditemukan --> J["🟢 AMAN DIKONSUMSI BERSAMAAN<br/>Tidak ada interaksi merugikan yang tercatat"]
+    I -- Ditemukan --> K{Tingkat Keparahan Interaksi}
+    K -- Ringan --> L["🟡 Interaksi Ringan (Minor)<br/>Perlu pemantauan efek ringan"]
+    K -- Sedang --> M["🟠 Interaksi Sedang (Moderate)<br/>Pertimbangkan jeda waktu atau konsultasi apoteker"]
+    K -- Berat / Mayor --> N["🔴 Interaksi Berat (Severe / Kontraindikasi)<br/>Risiko toksisitas tinggi — hindari kombinasi"]
+    
+    J & L & M & N --> O["Tampilkan Penjelasan Mekanisme & Rekomendasi Medis Lengkap"]
 ```
 
 ---
 
-### Flow 5 — Riwayat & Analitik
+### Flow 5 — Riwayat Pindai & Analitik
 
 ```mermaid
 flowchart TD
-    A([📋 Halaman Riwayat]) --> B{User login?}
-    B -- Tidak --> C[❌ Tampil pesan belum login]
-    B -- Ya --> D["GET /api/history<br/>ambil semua riwayat scan"]
-    D --> E["Tampil tabel riwayat<br/>nama obat, status, tanggal scan"]
-    E --> F{Filter / Cari}
-    F -- Filter status --> G[Filter: Aman / Perhatian / Berbahaya]
-    F -- Cari nama --> H[Search by nama obat]
-    G & H --> E
-    E --> I{Aksi item}
-    I -- Hapus satu --> J[DELETE /api/history/id]
-    I -- Hapus semua --> K["Konfirmasi dialog<br/>Hapus semua?"]
-    K -- Ya --> L["DELETE /api/history/clear-all"]
-    J & L --> D
+    A([📜 Halaman Riwayat]) --> B{Status Sesi Pengguna}
+    B -- Belum Login --> C["Tampilkan Pesan Riwayat Pribadi Membutuhkan Login"]
+    B -- Sudah Login --> D["GET /api/history<br/>Ambil Semua Log Pindai Pengguna"]
+    D --> E["Tampilkan Tabel Riwayat:<br/>Nama obat, tanggal, status keamanan, detail"]
+    E --> F{Fitur Interaktif}
+    F -- Filter Status --> G[Filter: Semua / Aman / Perhatian / Bahaya]
+    F -- Pencarian --> H[Cari berdasarkan Nama Obat]
+    F -- Detail Item --> I[Buka Modal Detail Informasi Obat Lama]
+    F -- Hapus Item --> J["DELETE /api/history/{id}"]
+    F -- Hapus Semua --> K["DELETE /api/history (Bersihkan Semua Log)"]
 
-    M([📊 Halaman Analitik]) --> N["GET /api/history<br/>ambil semua data"]
-    N --> O["Hitung statistik:<br/>Total scan, Aman, Perhatian, Berbahaya"]
-    O --> P["Tampil Radial Chart<br/>Distribusi status keamanan"]
-    P --> Q["Tampil Distribusi BPOM<br/>Bebas / Bebas Terbatas / Keras"]
-    Q --> R["Tampil Tren Penyakit Umum<br/>Indonesia dari katalog"]
+    L([📊 Halaman Analitik & Grafik]) --> M["GET /api/history & Database Metrics"]
+    M --> N["Kalkulasi Distribusi Keamanan (Aman vs Perhatian vs Bahaya)"]
+    N --> O["Tampilkan Diagram Radial & Persentase Keamanan"]
+    N --> P["Tampilkan Distribusi Kategori Obat BPOM"]
+    N --> Q["Tampilkan Statistik Penyakit Umum Masyarakat Indonesia"]
 ```
 
 ---
 
-### Flow 6 — AI Chatbot Farmasi
+### Flow 6 — Pusat Aksesibilitas & Profil Medis Lansia
 
 ```mermaid
 flowchart TD
-    A([🤖 Buka AI Chatbot]) --> B[Sidebar chatbot muncul]
-    B --> C["User ketik pertanyaan<br/>tentang obat / kesehatan"]
-    C --> D["POST /api/ai/chat<br/>kirim pesan + history konteks"]
-    D --> E[Gemini 1.5 Flash API]
-    E --> F{Response berhasil?}
-    F -- Tidak --> G[❌ Tampil pesan error koneksi]
-    G --> C
-    F -- Ya --> H["Tampilkan jawaban AI<br/>di bubble chat"]
-    H --> I{Pertanyaan lanjutan?}
-    I -- Ya --> C
-    I -- Tidak --> J["Riwayat chat tersimpan<br/>di sesi browser"]
+    A([♿ Menu Aksesibilitas di Sidebar]) --> B[Buka Accessibility Modal]
+    B --> C{Pengaturan yang Dipilih}
+    
+    C -- Ukuran Teks --> D["Pilih Ukuran Font:<br/>• Normal (100%)<br/>• Besar (115%)<br/>• Sangat Besar (130%)"]
+    D --> E["Diterapkan Langsung ke Seluruh Elemen DOM Web"]
 
-    K([📸 Scan via AI Vision]) --> L[Upload gambar kemasan obat]
-    L --> M["POST /api/ai/scan-vision<br/>kirim gambar ke Gemini Vision"]
-    M --> N[Gemini analisis gambar]
-    N --> O["Tampilkan hasil analisis<br/>nama obat, komposisi, saran"]
-    O --> P["Confidence Score Panel<br/>tingkat kepercayaan hasil"]
+    C -- Mode Tampilan --> F["Aktifkan Mode Kontras Tinggi (High Contrast)<br/>Teks & Border Lebih Tegas"]
+    C -- Ganti Tema --> G["Sakelar Tema Terang (Ocean Blue) / Gelap (Neon Lime)"]
+
+    H([👤 Profil Medis Lansia]) --> I[Buka Medical Profile Modal di Header]
+    I --> J["Isi / Perbarui Data:<br/>• Usia & Golongan Darah<br/>• Penyakit Kronis (Hipertensi, Diabetes, Ginjal, Asma)<br/>• Riwayat Alergi Obat"]
+    J --> K["PUT /api/auth/profile"]
+    K --> L["Profil Tersimpan & Otomatis Dipakai pada Setiap Scan Obat"]
 ```
 
 ---
 
 ### State Machine Reminder Engine
 
-Diagram transisi status (*finite state machine*) pada setiap jadwal dosis minum obat pasien di PharmaShield:
+Diagram transisi status (*finite state machine*) pada setiap jadwal dosis minum obat pasien di MedikaGuard:
 
 ```mermaid
 stateDiagram-v2
@@ -370,7 +385,7 @@ stateDiagram-v2
     REMINDED_10M --> DUE_0M: Waktu H (T - 0)<br/>Kirim WA Interaktif [1] Sudah / [2] Belum
     PENDING --> DUE_0M: Waktu H Tiba Langsung<br/>Kirim WA Interaktif
 
-    DUE_0M --> TAKEN: Pasien Balas 1 atau sudah<br/>Stok Berkurang & Edukasi Medis
+    DUE_0M --> TAKEN: Pasien Balas 1 atau sudah<br/>Kepatuhan Tercatat & Edukasi Medis
     DUE_0M --> SNOOZED: Pasien Balas 2 atau Opsi Tunda<br/>Tunda 15 atau 30 Menit
     DUE_0M --> DELAYED: Tidak Merespons (>15 Menit)<br/>Kirim WA Follow-Up Keterlambatan
 
@@ -378,7 +393,7 @@ stateDiagram-v2
 
     DELAYED --> TAKEN: Dibalas 1 (Sudah Minum Terlambat)<br/>Dynamic Rescheduling Dosis Berikutnya
     DELAYED --> SNOOZED: Dibalas 2 (Belum Minum)<br/>Buka Pilihan Tunda
-    DELAYED --> ESCALATED: Tidak Merespons (>30 Menit)<br/>Eskalasi ke Caregiver / Keluarga
+    DELAYED --> ESCALATED: Tidak Merespons (>30 Menit)<br/>Eskalasi Notifikasi ke Caregiver / Keluarga
 
     ESCALATED --> TAKEN: Dikonfirmasi Sudah Diminum<br/>Keluarga Diberitahu Otomatis
     
@@ -400,8 +415,8 @@ stateDiagram-v2
 | **`DELAYED`** | Pasien belum minum atau tidak ada respons > 15 menit | Mengirimkan pesan WhatsApp follow-up peringatan keterlambatan. | Menunggu konfirmasi lanjutan atau eskalasi ke keluarga. |
 | **`ESCALATED`** | Pasien tidak merespons > 30 menit | Mengirimkan notifikasi darurat ke nomor WhatsApp Caregiver/Keluarga terdaftar. | Memastikan pasien tidak melewatkan obat kritis. |
 | **`RESCHEDULED`** | Dosis diminum terlambat (setelah follow-up/eskalasi) | Mengaktifkan **Dynamic Rescheduling**: menggeser jadwal dosis berikutnya (`waktu aktual + interval`). | Menghindari risiko akumulasi toksisitas atau overdosis obat. |
-| **`TAKEN` / `COMPLETED`** | Pasien membalas `1` / `sudah` | Mengurangi stok obat di inventaris, menghitung persentase kepatuhan mingguan, dan mengirim edukasi medis. | Status dosis ditutup selesai (`[*]`). |
-| **`SKIPPED`** | Pasien membalas `3` / `lewati` | Membatalkan dosis saat ini secara aman dengan peringatan medis. | Dosis ditutup tanpa menggeser jadwal reguler berikutnya (`[*]`). |
+| **`TAKEN` / `COMPLETED`** | Pasien membalas `1` / `sudah` | Mencatat kepatuhan minum obat, dan mengirimkan pesan edukasi medis penutup. | Status dosis ditutup selesai (`[*]`). |
+| **`SKIPPED`** | Pasien membalas `3` / `lewati` | Membatalkan dosis saat ini secara aman dengan catatan peringatan medis. | Dosis ditutup tanpa menggeser jadwal reguler berikutnya (`[*]`). |
 
 ---
 
@@ -410,62 +425,79 @@ stateDiagram-v2
 ```
 pharmashield-project/
 │
-├── 📂 backend/                        # FastAPI Backend (Python)
+├── 📂 backend/                        # Backend Server (FastAPI Python)
 │   ├── 📂 app/
 │   │   ├── 📂 api/                    # Route Handlers
-│   │   │   ├── endpoints.py           # Scan & History endpoints
-│   │   │   ├── reminder_endpoints.py  # Reminder CRUD & bot control
-│   │   │   ├── ai_endpoints.py        # AI Chatbot endpoints
-│   │   │   ├── scan.py                # OCR scan pipeline
-│   │   │   └── history.py             # Scan history
-│   │   ├── 📂 services/               # Business Logic
-│   │   │   ├── wa_service.py          # WhatsApp alert (Fonnte)
-│   │   │   ├── meta_wa_service.py     # WhatsApp Cloud API + Fonnte fallback
-│   │   │   ├── reminder_service.py    # Patient & schedule engine
-│   │   │   ├── scheduler_worker.py    # Background scheduler (30s tick)
-│   │   │   ├── ai_service.py          # Gemini AI chatbot
-│   │   │   ├── ocr_service.py         # OCR + image preprocessing
-│   │   │   ├── safety_evaluator.py    # Expiry & safety check
-│   │   │   ├── matching_service.py    # Fuzzy medicine matching
-│   │   │   ├── drug_interaction_service.py  # Drug interaction check
-│   │   │   ├── auth_service.py        # JWT authentication
-│   │   │   └── personalized_safety.py # Personalized safety AI
-│   │   ├── config.py                  # Centralized settings (.env loader)
-│   │   └── main.py                    # FastAPI app entry + lifespan
-│   ├── 📂 data/                       # JSON persistence storage
-│   │   ├── scan_history.json          # Riwayat scan
-│   │   ├── users.json                 # Data user
-│   │   └── reminders_engine.json      # Pasien & jadwal obat
-│   ├── 📂 database/                   # Medicines database
-│   │   ├── medicines.db               # SQLite
-│   │   └── medicines_alodokter_1000.json  # 1000+ obat Indonesia
-│   ├── 📂 tests/                      # Unit & Integration tests
-│   ├── 📂 uploads/                    # Temporary scan uploads
-│   ├── .env                           # ⚠️ Secret! Jangan di-commit
-│   ├── requirements.txt               # Python dependencies
-│   └── run.py                         # Entry point server
+│   │   │   ├── endpoints.py           # Scan, Verifikasi, History, Stats, & Auth
+│   │   │   ├── reminder_endpoints.py  # Reminder CRUD, Webhook, QR & Gateway
+│   │   │   ├── ai_endpoints.py        # Gemini Vision Scan endpoint
+│   │   │   ├── scan.py                # Pipeline OCR & image processing
+│   │   │   └── history.py             # Model histori scan
+│   │   ├── 📂 services/               # Core Business Logic & Engines
+│   │   │   ├── ocr_service.py         # Dual OCR (Tesseract + RapidOCR ONNX)
+│   │   │   ├── safety_evaluator.py    # 4-State Safety Grading & Exp Calculator
+│   │   │   ├── personalized_safety.py # Skrining alergi obat & penyakit kronis
+│   │   │   ├── matching_service.py    # Fuzzy Drug Matching (RapidFuzz)
+│   │   │   ├── drug_interaction_service.py  # Pemeriksaan interaksi obat multipel
+│   │   │   ├── reminder_service.py    # Reminder State Machine & Dynamic Rescheduling
+│   │   │   ├── scheduler_worker.py    # Background Scheduler Worker (tick 10 detik)
+│   │   │   ├── wa_qr_service.py       # QR Code Decoder untuk kontak WhatsApp
+│   │   │   ├── wa_service.py          # WhatsApp Messaging via Fonnte Gateway
+│   │   │   ├── meta_wa_service.py     # Meta WhatsApp Cloud API & gateway fallback
+│   │   │   ├── ai_service.py          # Integrasi Google Gemini 1.5 Flash Vision
+│   │   │   └── auth_service.py        # Keamanan JWT & manajemen pengguna
+│   │   ├── config.py                  # Konfigurasi terpusat (.env loader)
+│   │   └── main.py                    # Aplikasi FastAPI, CORS, & Lifespan
+│   ├── 📂 data/                       # Penyimpanan Persistensi JSON
+│   │   ├── scan_history.json          # Rekam jejak pemindaian
+│   │   ├── users.json                 # Data profil & kredensial akun
+│   │   └── reminders_engine.json      # Data pasien, obat, dan log pengingat
+│   ├── 📂 database/                   # Basis Data Obat Indonesia
+│   │   ├── medicines.json             # Dataset obat terstruktur
+│   │   └── medicines_alodokter_1000.json  # 1000+ data obat BPOM & Alodokter
+│   ├── 📂 tests/                      # Unit & Integration Tests (Pytest)
+│   ├── requirements.txt               # Daftar dependensi Python backend
+│   └── run.py                         # Skrip runner backend
 │
-├── 📂 frontend/                       # Next.js 14 Frontend
+├── 📂 frontend/                       # Frontend Web Application (Next.js 14)
 │   ├── 📂 src/
-│   │   ├── 📂 app/                    # Next.js App Router pages
-│   │   │   ├── page.jsx               # Home — AI Scanner
-│   │   │   ├── reminders/page.jsx     # Pengingat Obat & Bot WA
-│   │   │   ├── history/page.jsx       # Riwayat Pemindaian
-│   │   │   ├── medicines/page.jsx     # Katalog Obat
-│   │   │   ├── interactions/page.jsx  # Cek Interaksi Obat
-│   │   │   ├── analytics/page.jsx     # Analitik & Statistik
-│   │   │   └── settings/page.jsx      # Pengaturan
-│   │   ├── 📂 components/             # Reusable React Components
-│   │   └── 📂 lib/                    # Utilities & API clients
-│   ├── .env.local                     # ⚠️ Secret! Jangan di-commit
-│   ├── .env.example                   # Template env variables
-│   └── package.json
+│   │   ├── 📂 app/                    # Halaman & Rute (App Router)
+│   │   │   ├── page.jsx               # Dashboard Hub & AI Camera Scanner (`/`)
+│   │   │   ├── reminders/page.jsx     # Pengingat WhatsApp & Monitoring (`/reminders`)
+│   │   │   ├── interactions/page.jsx  # Skrining Interaksi Obat (`/interactions`)
+│   │   │   ├── medicines/page.jsx     # Datasheet 1000+ Obat Indonesia (`/medicines`)
+│   │   │   ├── history/page.jsx       # Log Riwayat Pindai (`/history`)
+│   │   │   ├── analytics/page.jsx     # Analitik & Diagram Keamanan (`/analytics`)
+│   │   │   ├── settings/page.jsx      # Pengaturan & Uji Koneksi (`/settings`)
+│   │   │   ├── layout.jsx             # Root Layout (Theme & Auth Providers)
+│   │   │   └── globals.css            # Desain Adaptive Light / Dark Mode
+│   │   ├── 📂 components/             # Komponen Antarmuka Web
+│   │   │   ├── CameraScanner.jsx      # Antarmuka kamera dengan reticle panduan
+│   │   │   ├── MedicineResultCard.jsx # Kartu hasil scan, status 4 warna & aksi
+│   │   │   ├── ConfidenceScorePanel.jsx # Rincian metrik transparansi AI
+│   │   │   ├── MedicineCatalog.jsx    # Tabel pencarian & filter katalog obat
+│   │   │   ├── HistoryTable.jsx       # Tabel histori scan obat
+│   │   │   ├── AccessibilityModal.jsx # Pengatur ukuran font & kontras tinggi
+│   │   │   ├── MedicalProfileModal.jsx# Form riwayat penyakit kronis & alergi
+│   │   │   ├── AuthModal.jsx          # Modal masuk / daftar akun
+│   │   │   ├── AdminShell.jsx         # Shell layout induk & context sidebar
+│   │   │   ├── Sidebar.jsx            # Navigasi utama & menu aksesibilitas
+│   │   │   ├── TopHeader.jsx          # Header dengan status metrik & profil
+│   │   │   └── StatusBadge.jsx        # Komponen badge status obat
+│   │   └── 📂 lib/                    # State Context & API Clients
+│   │       ├── api.js                 # HTTP client komunikasi ke FastAPI
+│   │       ├── indonesiaMedicineCatalog.js # Basis data katalog obat lokal
+│   │       ├── voiceService.js        # Service Web Speech TTS Bahasa Indonesia
+│   │       ├── AccessibilityContext.jsx# Context ukuran font & kontras tinggi
+│   │       ├── AuthContext.jsx        # Context autentikasi JWT & profil medis
+│   │       └── ThemeContext.jsx       # Context dark mode & light mode
+│   ├── package.json                   # Dependensi Node.js frontend
+│   └── .env.local                     # Konfigurasi endpoint frontend
 │
-├── Dockerfile                         # Docker build config
-├── Procfile                           # Railway / Heroku runner
-├── railway.json                       # Railway deployment config
-├── vercel.json                        # Vercel API proxy config
-└── README.md                          # 📖 File ini
+├── Dockerfile                         # Konfigurasi build container
+├── railway.json                       # Konfigurasi deployment Railway
+├── vercel.json                        # Konfigurasi proxy Vercel
+└── README.md                          # Dokumentasi resmi repositori
 ```
 
 ---
@@ -473,89 +505,77 @@ pharmashield-project/
 ## 🛠️ Tech Stack
 
 ### Backend
-| Layer | Teknologi | Versi |
-|-------|-----------|-------|
-| Web Framework | FastAPI | ≥ 0.110 |
-| Language | Python | ≥ 3.10 |
-| OCR Engine | Tesseract + RapidOCR (ONNX) | Latest |
-| Image Processing | OpenCV Headless + Pillow | Latest |
-| AI / Vision | Google Gemini 1.5 Flash | Latest |
-| String Matching | RapidFuzz + Levenshtein | Latest |
-| HTTP Client | httpx (async) + requests | Latest |
-| Auth | JWT (python-jose) + bcrypt | Latest |
+| Layer | Teknologi | Deskripsi |
+|---|---|---|
+| **Web Framework** | FastAPI (≥ 0.110) | REST API asinkron performa tinggi |
+| **Runtime Language** | Python (≥ 3.10) | Bahasa backend utama |
+| **OCR Engines** | Tesseract OCR + RapidOCR (ONNX) | Ekstraksi teks multi-model cepat & akurat |
+| **Computer Vision** | OpenCV Headless + Pillow | Preprocessing citra, binarisasi & rotasi |
+| **AI Multimodal** | Google Gemini 1.5 Flash | Analisis visual kemasan obat dan verifikasi label |
+| **Fuzzy Matching** | RapidFuzz + Levenshtein | Pencocokan nama obat ke katalog 1000+ obat Indonesia |
+| **QR Code Engine** | OpenCV / Pyzbar / RapidOCR | Ekstraksi otomatis nomor WhatsApp dari screenshot QR kontak |
+| **Background Scheduler** | Asyncio Background Worker | Evaluator pengingat minum obat setiap 10 detik |
+| **WhatsApp Gateways** | Fonnte Gateway & Meta WhatsApp Cloud API | Pengiriman notifikasi pengingat & penanganan webhook |
+| **Keamanan & Autentikasi** | JWT (python-jose) + Passlib (Bcrypt) | Token autentikasi dan enkripsi kata sandi pengguna |
 
 ### Frontend
-| Layer | Teknologi | Versi |
-|-------|-----------|-------|
-| Framework | Next.js | 14 |
-| Language | JavaScript / JSX | ES2022 |
-| Styling | Tailwind CSS | 3 |
-| Icons | Lucide React | Latest |
-| HTTP Client | Axios | Latest |
+| Layer | Teknologi | Deskripsi |
+|---|---|---|
+| **Framework** | Next.js 14 (App Router) | React Server Components & Client Components |
+| **Bahasa** | JavaScript (ES2022 / JSX) | Bahasa pengembangan frontend modern |
+| **Styling** | Tailwind CSS 3 | Desain modern responsif dengan Light/Dark mode |
+| **Ikon** | Lucide React + Custom SVG | Ikon antarmuka medis & dashboard |
+| **Voice & Audio** | Web Speech API (SpeechSynthesis) | Panduan suara (TTS) Bahasa Indonesia untuk lansia |
+| **Aksesibilitas** | Dynamic CSS Root Scaling | Pengaturan ukuran font (100%–130%) & kontras tinggi |
+| **Komunikasi Data** | Native Fetch API + Axios | Integrasi HTTP ke backend FastAPI |
 
 ---
 
 ## ✅ Prasyarat
 
-Install semua tools berikut **sebelum** memulai:
+Pastikan perangkat Anda telah terpasang perangkat lunak berikut sebelum memulai instalasi:
 
 ### 1. Python ≥ 3.10
 ```bash
-# Cek versi
+# Cek versi Python
 python --version
 # atau
 python3 --version
 ```
-Download: https://www.python.org/downloads/
+Download: [python.org/downloads](https://www.python.org/downloads/)
 
-### 2. Node.js ≥ 18
+### 2. Node.js ≥ 18 & npm
 ```bash
-# Cek versi
+# Cek versi Node.js dan npm
 node --version
 npm --version
 ```
-Download: https://nodejs.org/
+Download: [nodejs.org](https://nodejs.org/)
 
 ### 3. Git
 ```bash
 git --version
 ```
-Download: https://git-scm.com/
 
 ### 4. Tesseract OCR
-Dibutuhkan untuk fitur scan kemasan obat.
-
-**Windows:**
-```bash
-winget install UB-Mannheim.TesseractOCR
-# Path default: C:\Program Files\Tesseract-OCR\tesseract.exe
-```
-Atau download installer: https://github.com/UB-Mannheim/tesseract/wiki
-
-**Ubuntu / Debian:**
-```bash
-sudo apt update
-sudo apt install tesseract-ocr tesseract-ocr-ind -y
-```
-
-**macOS:**
-```bash
-brew install tesseract
-```
-
-Verifikasi instalasi:
-```bash
-tesseract --version
-```
+- **Windows**: Unduh installer resmi dari [UB-Mannheim Tesseract](https://github.com/UB-Mannheim/tesseract/wiki).
+  - *Jalur instalasi default:* `C:\Program Files\Tesseract-OCR	esseract.exe`
+- **Linux (Ubuntu/Debian)**:
+  ```bash
+  sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-ind
+  ```
+- **macOS**:
+  ```bash
+  brew install tesseract tesseract-lang
+  ```
 
 ---
 
 ## 🚀 Cara Menjalankan Lokal (Step by Step)
 
 ### 1. Clone Repository
-
 ```bash
-git clone https://github.com/rifqiaunur666/pharmashield-project.git
+git clone https://github.com/mufumar/pharmashield-project.git
 cd pharmashield-project
 ```
 
@@ -563,89 +583,57 @@ cd pharmashield-project
 
 ### 2. Setup Backend (FastAPI)
 
-#### 2a. Masuk ke folder backend
+#### 2a. Masuk ke direktori backend
 ```bash
 cd backend
 ```
 
-#### 2b. Buat Virtual Environment
+#### 2b. Buat & Aktifkan Virtual Environment
+- **Windows (PowerShell):**
+  ```powershell
+  python -m venv .venv
+  .venv\Scripts\Activate.ps1
+  ```
+- **macOS / Linux:**
+  ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
 
-**Windows (PowerShell / CMD):**
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-**macOS / Linux:**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-> Jika berhasil, terminal akan menampilkan prefix `(venv)` di awal baris.
-
-#### 2c. Install Dependencies Python
+#### 2c. Pasang Dependensi Python
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-> ⏳ Proses ini membutuhkan waktu 2–5 menit karena menginstall library OCR dan AI.
-
 #### 2d. Buat File `.env` Backend
-
-Buat file baru bernama `.env` di dalam folder `backend/`:
-
-```bash
-# Windows
-copy NUL .env
-# atau buka dengan Notepad / VS Code
-notepad .env
-```
-
-```bash
-# macOS / Linux
-touch .env
-nano .env
-# atau
-code .env
-```
-
-Isi dengan konfigurasi berikut:
-
-```env
+Salin atau buat file `.env` di dalam folder `backend/`:
+```ini
 # ─────────────────────────────────────────────────────────────
-# WAJIB DIISI untuk fitur WhatsApp Bot
+# WhatsApp Gateway (Fonnte)
 # ─────────────────────────────────────────────────────────────
-
-# Token device WhatsApp dari fonnte.com
-# Cara dapat: Daftar di fonnte.com → Sambungkan WA → Salin Device Token
-FONNTE_TOKEN=ISI_TOKEN_FONNTE_KAMU_DISINI
-
-# Nomor bot pengirim (nomor WA yang terhubung di Fonnte)
+FONNTE_TOKEN=ISI_TOKEN_DEVICE_FONNTE_ANDA
 FONNTE_SENDER_NUMBER=6289520344305
-
-# Nomor default penerima alert scan obat (format internasional, tanpa +)
-WA_TARGET_NUMBER=6285374497583
+TARGET_PHONE_NUMBER=6281234567890
 
 # ─────────────────────────────────────────────────────────────
-# WAJIB DIISI untuk fitur AI Scanner & Chatbot
+# Google Gemini AI (Multimodal Vision Scanner)
 # ─────────────────────────────────────────────────────────────
-
-# API Key Google Gemini AI (GRATIS)
-# Cara dapat: https://aistudio.google.com/app/apikey → klik "Get API Key"
-GEMINI_API_KEY=ISI_API_KEY_GEMINI_KAMU_DISINI
+GEMINI_API_KEY=AIzaSy...
 
 # ─────────────────────────────────────────────────────────────
-# Konfigurasi Server (bisa dibiarkan default)
+# Konfigurasi Server
 # ─────────────────────────────────────────────────────────────
-APP_ENV=development
+HOST=127.0.0.1
 PORT=8000
+ENVIRONMENT=development
 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 
-# Path Tesseract OCR (sesuaikan jika berbeda)
+# ─────────────────────────────────────────────────────────────
+# Path Tesseract OCR
+# ─────────────────────────────────────────────────────────────
 # Windows default:
-TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
+TESSERACT_CMD=C:\Program Files\Tesseract-OCR	esseract.exe
 # Linux/macOS:
 # TESSERACT_CMD=/usr/bin/tesseract
 ```
@@ -654,39 +642,20 @@ TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
 
 ### 3. Setup Frontend (Next.js)
 
-Buka **terminal baru** (jangan tutup terminal backend), lalu:
-
-#### 3a. Masuk ke folder frontend
+Buka terminal baru, masuk ke direktori frontend:
 ```bash
-# Dari root project
-cd frontend
+cd pharmashield-project/frontend
 ```
 
-#### 3b. Install Dependencies Node.js
+#### 3a. Pasang Dependensi Node.js
 ```bash
 npm install
 ```
 
-> ⏳ Proses ini membutuhkan waktu 1–3 menit.
-
-#### 3c. Buat File `.env.local` Frontend
-
-```bash
-# Windows
-copy NUL .env.local
-notepad .env.local
-```
-
-```bash
-# macOS / Linux
-touch .env.local
-nano .env.local
-```
-
-Isi dengan:
-
-```env
-# URL backend FastAPI (jangan ada trailing slash)
+#### 3b. Buat File `.env.local` Frontend
+Buat file `frontend/.env.local`:
+```ini
+# Endpoint Backend FastAPI
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 ```
 
@@ -694,72 +663,28 @@ NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
 ### 4. Jalankan Aplikasi
 
-Kamu membutuhkan **2 terminal** yang berjalan bersamaan.
-
-#### Terminal 1 — Jalankan Backend
-
+#### Terminal 1 — Jalankan Server Backend
+Pastikan virtual environment aktif:
 ```bash
-# Pastikan sudah di folder backend dan venv aktif
 cd backend
-
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-
-# Jalankan server development (dengan auto-reload)
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+# Jalankan via uvicorn
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
+Backend akan aktif di: **http://127.0.0.1:8000** (Swagger UI: `http://127.0.0.1:8000/docs`).
 
-Output yang diharapkan:
-```
-INFO:     Started server process [xxxx]
-INFO:     Waiting for application startup.
-INFO:     [SchedulerWorker] High-precision background reminder worker started.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
-
-#### Terminal 2 — Jalankan Frontend
-
+#### Terminal 2 — Jalankan Server Frontend
 ```bash
-# Pastikan sudah di folder frontend
 cd frontend
-
-# Jalankan development server
 npm run dev
 ```
-
-Output yang diharapkan:
-```
-  ▲ Next.js 14.x.x
-  - Local:        http://localhost:3000
-  - Network:      http://192.168.x.x:3000
-
-✓ Ready in 2.5s
-```
+Frontend akan aktif di: **http://localhost:3000**.
 
 ---
 
 ### 5. Verifikasi Berjalan
-
-Buka browser dan akses URL berikut:
-
-| URL | Keterangan |
-|-----|-----------|
-| http://localhost:3000 | ✅ Aplikasi MedikaGuard (Frontend) |
-| http://localhost:8000 | ✅ Backend API Health Check |
-| http://localhost:8000/docs | ✅ Swagger UI — Dokumentasi API Interaktif |
-| http://localhost:8000/redoc | ✅ ReDoc — Dokumentasi API Alternatif |
-
-**Test API secara manual:**
-```bash
-# Cek health backend
-curl http://localhost:8000/health
-
-# Response yang diharapkan:
-# {"status":"ok","service":"MedikaGuard API","version":"2.0.0",...}
-```
+1. Buka browser dan kunjungi **`http://localhost:3000`**.
+2. Anda akan langsung melihat halaman **Dashboard / Scanner Obat MedikaGuard**.
+3. Navigasi ke menu **Pengaturan (`/settings`)** lalu klik tombol **"Uji Koneksi Backend"** untuk memastikan frontend dan backend saling terhubung dengan sukses.
 
 ---
 
@@ -767,204 +692,153 @@ curl http://localhost:8000/health
 
 ### Backend (`backend/.env`)
 
-| Variable | Wajib | Default | Keterangan |
-|----------|-------|---------|-----------|
-| `FONNTE_TOKEN` | ✅ Ya | — | Device token dari [fonnte.com](https://fonnte.com) |
-| `FONNTE_SENDER_NUMBER` | — | `6289520344305` | Nomor bot pengirim WA |
-| `WA_TARGET_NUMBER` | — | — | Nomor default penerima alert scan |
-| `GEMINI_API_KEY` | ✅ Ya | — | API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey) |
-| `APP_ENV` | — | `development` | `development` / `production` |
-| `PORT` | — | `8000` | Port server backend |
-| `CORS_ORIGINS` | — | `http://localhost:3000,...` | Origin yang diizinkan (pisah koma) |
-| `TESSERACT_CMD` | — | Auto-detect | Path ke binary Tesseract |
+| Variabel | Wajib? | Default | Keterangan |
+|---|:---:|---|---|
+| `GEMINI_API_KEY` | ✅ Ya | — | API Key Google Gemini AI dari [Google AI Studio](https://aistudio.google.com/) |
+| `FONNTE_TOKEN` | ⚠️ Opsional | — | Device Token WhatsApp dari [fonnte.com](https://fonnte.com) |
+| `FONNTE_SENDER_NUMBER` | — | `6289520344305` | Nomor pengirim bot WhatsApp yang terhubung di Fonnte |
+| `TARGET_PHONE_NUMBER` | — | — | Nomor default penerima uji coba notifikasi |
+| `TESSERACT_CMD` | — | `C:\Program Files\Tesseract-OCR	esseract.exe` | Jalur binary Tesseract OCR |
+| `PORT` | — | `8000` | Port listen server backend FastAPI |
+| `CORS_ORIGINS` | — | `http://localhost:3000,http://127.0.0.1:3000` | Domain frontend yang diizinkan CORS |
 
 ### Frontend (`frontend/.env.local`)
 
-| Variable | Wajib | Default | Keterangan |
-|----------|-------|---------|-----------|
-| `NEXT_PUBLIC_API_URL` | ✅ Ya | `http://127.0.0.1:8000` | URL backend FastAPI |
+| Variabel | Wajib? | Default | Keterangan |
+|---|:---:|---|---|
+| `NEXT_PUBLIC_API_URL` | ✅ Ya | `http://127.0.0.1:8000` | Base URL endpoint backend FastAPI |
 
 ---
 
 ## 🐳 Menjalankan dengan Docker
 
-Alternatif jika tidak ingin setup manual (membutuhkan [Docker Desktop](https://www.docker.com/products/docker-desktop/)):
-
-### Build & Jalankan Backend saja
-
+### Jalankan Backend via Docker
 ```bash
 # Dari root project
-docker build -t pharmashield-backend .
-
-# Jalankan dengan env variables
-docker run -p 8000:8000 \
-  -e FONNTE_TOKEN=token_kamu \
-  -e GEMINI_API_KEY=key_kamu \
-  -e APP_ENV=development \
-  pharmashield-backend
+docker build -t medikaguard-backend .
+docker run -d -p 8000:8000   -e GEMINI_API_KEY=kunci_gemini_anda   -e FONNTE_TOKEN=token_fonnte_anda   --name medikaguard-api medikaguard-backend
 ```
-
-### Menggunakan Docker Compose (Backend + Frontend)
-
-```bash
-# Dari root project
-docker compose up --build
-
-# Atau jalankan di background
-docker compose up -d --build
-
-# Stop
-docker compose down
-```
-
-Akses aplikasi di http://localhost:3000
 
 ---
 
 ## 🌐 API Endpoints
 
-### 📸 Scan & Medicine
+Seluruh endpoint backend dapat diakses melalui prefix `/api`:
 
+### 📸 Pemindaian Obat & Evaluasi Keamanan
 | Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| `POST` | `/api/scan-medicine` | Upload foto kemasan obat untuk dianalisis |
-| `GET` | `/api/history` | Ambil riwayat pemindaian |
-| `DELETE` | `/api/history/{id}` | Hapus item riwayat |
-| `GET` | `/api/stats` | Statistik penggunaan |
+|---|---|---|
+| `POST` | `/api/scan-medicine` | Memproses foto kemasan obat (OCR + Vision AI + Evaluasi Keamanan + Skrining Profil Alergi) |
+| `POST` | `/api/verify-medicine` | Verifikasi data obat dari hasil pencarian |
+| `POST` | `/api/interactions` | Memeriksa potensi interaksi berbahaya antara 2 atau lebih obat |
+| `GET` | `/api/medicines` | Query dan pencarian katalog 1000+ obat Indonesia |
+| `GET` | `/api/history` | Mengambil seluruh riwayat pemindaian pengguna |
+| `DELETE` | `/api/history/{scan_id}` | Menghapus satu item log riwayat pemindaian |
+| `DELETE` | `/api/history` | Menghapus seluruh riwayat pemindaian obat |
+| `GET` | `/api/stats` | Statistik total scan, persentase aman, dan status risiko |
 
-### ⏰ Reminder & WhatsApp Bot
-
+### ⏰ Pengingat Obat & WhatsApp Gateway
 | Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| `GET` | `/api/reminders/patients` | Daftar semua pasien |
-| `POST` | `/api/reminders/patients` | Daftarkan pasien baru |
-| `DELETE` | `/api/reminders/patients/{id}` | Hapus pasien |
-| `POST` | `/api/reminders/schedules` | Tambah jadwal minum obat |
-| `GET` | `/api/reminders/schedules` | Daftar jadwal aktif |
-| `DELETE` | `/api/reminders/schedules/{id}` | Hapus jadwal |
-| `POST` | `/api/reminders/simulate-tick` | Simulasi trigger scheduler |
-| `GET` | `/api/reminders/gateway-status` | Status koneksi bot WA |
-| `POST` | `/api/reminders/update-credentials` | Update token gateway |
-| `GET` | `/api/reminders/logs` | Riwayat pengiriman notifikasi |
+|---|---|---|
+| `POST` | `/api/reminders/scan-qr-contact` | Memindai screenshot QR kontak WhatsApp untuk ekstrak nomor telepon otomatis |
+| `GET` | `/api/reminders/patients` | Mengambil daftar seluruh pasien terdaftar |
+| `POST` | `/api/reminders/patients` | Mendaftarkan pasien baru (nama dan nomor WhatsApp) |
+| `DELETE` | `/api/reminders/patients/{id}` | Menghapus data pasien |
+| `GET` | `/api/reminders/medications` | Mengambil daftar seluruh jadwal obat |
+| `POST` | `/api/reminders/medications` | Mendaftarkan jadwal konsumsi obat baru |
+| `DELETE` | `/api/reminders/medications/{id}` | Menghapus jadwal konsumsi obat |
+| `GET` | `/api/reminders/logs` | Mengambil log pemantauan jadwal pengingat |
+| `GET` | `/api/reminders/activity-logs` | Mengambil riwayat pengiriman notifikasi WhatsApp |
+| `POST` | `/api/reminders/trigger-stage/{log_id}` | Memantik simulasi pengiriman pesan (H-10 atau H-0) untuk testing |
+| `POST` | `/api/reminders/simulate-tick` | Menjalankan evaluasi paksa scheduler worker |
+| `POST` | `/api/reminders/test-send` | Mengirim pesan tes uji coba ke nomor WhatsApp target |
+| `GET` | `/api/reminders/gateway-status` | Memeriksa status konektivitas gateway WhatsApp |
+| `POST` | `/api/reminders/update-gateway` | Memperbarui kredensial/token gateway WhatsApp |
+| `DELETE` | `/api/reminders/clear-all` | Menghapus seluruh data pasien dan log pengingat |
 
-### 🤖 AI Chatbot
-
+### 🤖 AI Vision Endpoint
 | Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| `POST` | `/api/ai/chat` | Chat dengan AI farmasi (Gemini) |
-| `POST` | `/api/ai/scan-vision` | Analisis gambar via Gemini Vision |
-| `GET` | `/api/ai/status` | Status koneksi Gemini AI |
+|---|---|---|
+| `POST` | `/api/scan-vision` | Analisis multimodal kemasan obat berbasis Google Gemini 1.5 Flash Vision |
+| `GET` | `/api/status` | Mengecek kesiapan dan konfigurasi Google Gemini API Key |
 
-### 🔐 Autentikasi
-
+### 🔐 Autentikasi Pengguna & Profil Medis
 | Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| `POST` | `/api/auth/register` | Register akun baru |
-| `POST` | `/api/auth/login` | Login & dapatkan JWT token |
-| `GET` | `/api/auth/me` | Info user yang sedang login |
-
-> 💡 Dokumentasi API interaktif lengkap tersedia di **http://localhost:8000/docs** saat backend berjalan.
+|---|---|---|
+| `POST` | `/api/auth/register` | Mendaftarkan akun pengguna baru |
+| `POST` | `/api/auth/login` | Autentikasi akun dan penerbitan token JWT |
+| `GET` | `/api/auth/me` | Mengambil profil pengguna yang sedang login |
+| `PUT` | `/api/auth/profile` | Memperbarui profil medis pasien lansia (riwayat penyakit kronis & alergi) |
 
 ---
 
-## 📱 WhatsApp Bot & Notifikasi
+## 📱 WhatsApp Gateway & Notifikasi
 
-MedikaGuard menggunakan **[Fonnte](https://fonnte.com)** sebagai gateway WhatsApp.
+MedikaGuard mendukung integrasi notifikasi WhatsApp via **[Fonnte](https://fonnte.com)** dan **Meta WhatsApp Cloud API**.
 
-### Cara Kerja Otomatis
-
+### Cara Kerja Otomatis:
 ```
-Scheduler berjalan setiap 30 detik
-         ↓
-Cek semua jadwal minum obat terdaftar
-         ↓
-H-10 menit sebelum jadwal
-→ Kirim pesan persiapan ke pasien
-         ↓
-Tepat waktu jadwal (H-0)
-→ Kirim pesan + tombol [Ya, Sudah Minum] / [Belum]
-         ↓
-Jika pasien membalas [Belum]
-→ Kirim follow-up reminder 10 menit kemudian
-         ↓
-Jika pasien membalas [Ya, Sudah] / melewati batas waktu
-→ Dynamic rescheduling: jadwal berikutnya disesuaikan otomatis
+Background Scheduler Worker berjalan setiap 10 detik
+                       ↓
+Evaluasi seluruh jadwal minum obat aktif
+                       ↓
+H-10 Menit Sebelum Jam Minum
+→ Kirim notifikasi persiapan ke nomor WhatsApp pasien
+                       ↓
+Tepat Waktu Minum (H-0)
+→ Kirim pesan interaktif konfirmasi minum obat ([1] Sudah / [2] Belum)
+                       ↓
+Jika Pasien Membalas [2] (Belum)
+→ Buka opsi penundaan 15 atau 30 menit (Status SNOOZED)
+                       ↓
+Jika Pasien Terlambat Minum
+→ Dynamic Rescheduling Engine menggeser jadwal dosis berikutnya secara aman
 ```
 
-### Cara Setup Token Fonnte
-
-1. Daftar di **[fonnte.com](https://fonnte.com)**
-2. Klik **"Tambah Device"** → sambungkan nomor WhatsApp dengan scan QR
-3. Salin **Device Token** dari dashboard Fonnte
-4. Di aplikasi MedikaGuard → halaman **Pengingat** → klik **"🔑 Masukkan Token WhatsApp"**
-5. Paste token → Simpan
-
-> **Bot Pengirim:** `+6289520344305` — Semua notifikasi dikirim dari nomor ini.
+### Konfigurasi Token WhatsApp di Website:
+1. Buka halaman **Pengingat WhatsApp (`/reminders`)**.
+2. Klik tombol **"🔑 Pengaturan Gateway WhatsApp"** di pojok kanan atas.
+3. Masukkan **Device Token Fonnte** atau kredensial **Meta Cloud API**.
+4. Klik **Simpan Kredensial**. Anda juga dapat melakukan uji coba kirim melalui tombol **"Kirim Pesan Uji Coba"**.
 
 ---
 
 ## ☁️ Deployment (Railway + Vercel)
 
 ### Backend → Railway
-
-1. Buat akun di [railway.app](https://railway.app)
-2. Klik **"New Project"** → **"Deploy from GitHub Repo"**
-3. Pilih repo `pharmashield-project`
-4. Di tab **"Variables"**, tambahkan semua env dari `backend/.env`:
-   ```
-   FONNTE_TOKEN=...
-   GEMINI_API_KEY=...
-   APP_ENV=production
-   PORT=8080
-   ```
-5. Railway akan otomatis build & deploy menggunakan `Dockerfile` dan `Procfile`
-6. Salin URL Railway yang diberikan (format: `https://xxx.up.railway.app`)
+1. Hubungkan repository GitHub ke [railway.app](https://railway.app).
+2. Tentukan root direktori ke `/backend` atau gunakan `railway.json` bawaan repository.
+3. Masukkan Environment Variables di dashboard Railway (`GEMINI_API_KEY`, `FONNTE_TOKEN`, dsb.).
+4. Deploy service dan salin URL publik Railway yang dihasilkan.
 
 ### Frontend → Vercel
-
-1. Buat akun di [vercel.com](https://vercel.com)
-2. Klik **"Add New Project"** → import dari GitHub
-3. Set **Root Directory** → `frontend`
-4. Di tab **"Environment Variables"**, tambahkan:
+1. Impor repository GitHub ke [vercel.com](https://vercel.com).
+2. Set direktori root ke `frontend`.
+3. Tambahkan environment variable:
    ```
-   NEXT_PUBLIC_API_URL=https://URL_RAILWAY_KAMU.up.railway.app
+   NEXT_PUBLIC_API_URL=https://url-backend-railway-anda.up.railway.app
    ```
-5. Klik **Deploy**
-
-### Update URL Railway di Kode
-
-Setelah dapat URL Railway, update file `frontend/next.config.js`:
-
-```js
-// Ganti baris ini:
-destination: 'https://pharmashield-project-production.up.railway.app/api/:path*'
-// Dengan URL Railway kamu:
-destination: 'https://URL_RAILWAY_KAMU.up.railway.app/api/:path*'
-```
+4. Klik **Deploy**.
 
 ---
 
 ## 🧪 Testing
 
+Jalankan test suite menggunakan **Pytest**:
 ```bash
-# Masuk ke folder backend
 cd backend
-
 # Aktifkan virtual environment
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
+# Windows: .venv\Scripts\Activate.ps1
+# Linux/macOS: source .venv/bin/activate
 
-# Jalankan semua test
-pytest tests/ -v
+# Jalankan semua pengujian
+pytest
 
-# Jalankan test tertentu
-pytest tests/test_reminder_engine.py -v
+# Jalankan pengujian spesifik
 pytest tests/test_pharmashield.py -v
-
-# Jalankan dengan coverage report
-pytest tests/ -v --tb=short
+pytest tests/test_ocr_and_verification_pipeline.py -v
+pytest tests/test_auth_and_personalized_safety.py -v
+pytest tests/test_reminder_engine.py -v
 ```
 
 ---
@@ -972,164 +846,63 @@ pytest tests/ -v --tb=short
 ## 🔧 Troubleshooting
 
 ### ❌ `ModuleNotFoundError: No module named 'app'`
+Pastikan Anda menjalankan perintah dari dalam direktori `backend/`, bukan dari root folder utama:
 ```bash
-# Pastikan menjalankan dari folder backend, bukan root project
 cd backend
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload
 ```
 
 ### ❌ `TesseractNotFoundError`
-```bash
-# Windows: Tambahkan path Tesseract ke .env
-TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
-
-# Linux/macOS: Cek path instalasi
-which tesseract
-# Lalu set di .env:
-TESSERACT_CMD=/usr/bin/tesseract
+Pastikan Tesseract OCR sudah terinstal dan path yang benar telah dimasukkan ke file `backend/.env`:
+```ini
+TESSERACT_CMD=C:\Program Files\Tesseract-OCR	esseract.exe
 ```
 
-### ❌ `CORS Error` di browser
-```bash
-# Pastikan CORS_ORIGINS di backend/.env mencakup URL frontend kamu
+### ❌ `CORS Error` di Konsol Browser
+Pastikan variabel `CORS_ORIGINS` pada `backend/.env` mencakup URL frontend lokal Anda:
+```ini
 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ```
 
-### ❌ WhatsApp bot tidak mengirim pesan
-- Pastikan `FONNTE_TOKEN` sudah diisi dengan **Device Token** (bukan Account Token)
-- Cek status device di dashboard Fonnte — harus **Connected**
-- Pastikan nomor target dalam format internasional: `628xxxxxxxxx` (tanpa `+`)
+### ❌ Notifikasi WhatsApp Tidak Terkirim
+- Pastikan `FONNTE_TOKEN` merupakan **Device Token** resmi dan status device di dashboard Fonnte berada dalam kondisi **Connected**.
+- Pastikan format nomor telepon diawali dengan kode negara tanpa simbol tambah, contoh: `628xxxxxxxxxx`.
 
-### ❌ AI Chatbot / Scanner tidak bekerja
-- Pastikan `GEMINI_API_KEY` sudah diisi dengan benar
-- Cek kuota API di [Google AI Studio](https://aistudio.google.com)
-- Tier gratis: 60 request/menit, 1.500 request/hari
+### ❌ AI Vision Scanner Tidak Merespons
+- Pastikan `GEMINI_API_KEY` terisi dengan benar di `backend/.env`.
+- Cek ketersediaan kuota API Anda di [Google AI Studio](https://aistudio.google.com).
 
-### ❌ `npm install` gagal
+### ❌ Port 8000 Sudah Digunakan Aplikasi Lain
+Ganti port backend melalui perintah uvicorn:
 ```bash
-# Hapus node_modules dan install ulang
-cd frontend
-rm -rf node_modules package-lock.json
-npm install
+uvicorn app.main:app --port 8001 --reload
 ```
-
-### ❌ Port 8000 sudah digunakan
-```bash
-# Ganti port di backend/.env
-PORT=8001
-
-# Jalankan dengan port baru
-uvicorn app.main:app --reload --port 8001
-
-# Update frontend/.env.local
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8001
-```
+Lalu perbarui `frontend/.env.local` menjadi `NEXT_PUBLIC_API_URL=http://127.0.0.1:8001`.
 
 ---
 
 ## 🤝 Kontribusi
 
-Kami sangat menyambut kontribusi! Berikut panduan untuk kolaborator:
-
-### Alur Kerja Git
-
-```
-main                    ← Branch production, selalu stabil
-  └── develop           ← Branch development utama (opsional)
-        ├── feature/xxx ← Fitur baru
-        ├── fix/xxx     ← Bug fix
-        └── docs/xxx    ← Update dokumentasi
-```
-
-### Langkah Kontribusi
-
-1. **Fork** repository ini di GitHub
-
-2. **Clone** fork kamu:
-   ```bash
-   git clone https://github.com/USERNAME_KAMU/pharmashield-project.git
-   cd pharmashield-project
-   ```
-
-3. **Buat branch** baru:
-   ```bash
-   git checkout -b feature/nama-fitur-kamu
-   # Contoh:
-   git checkout -b feature/multi-dosis-reminder
-   git checkout -b fix/parser-tanggal-kedaluwarsa
-   ```
-
-4. **Kerjakan perubahan**, lalu commit:
-   ```bash
-   git add .
-   git commit -m "feat: tambah fitur pengingat multi-dosis"
-   ```
-
-5. **Push** branch ke GitHub:
-   ```bash
-   git push origin feature/nama-fitur-kamu
-   ```
-
-6. **Buat Pull Request** di GitHub → pilih base branch `main`
-
-### Konvensi Commit Message
-
-Format: `<type>: <deskripsi singkat>`
-
-| Type | Kapan digunakan |
-|------|----------------|
-| `feat:` | Menambah fitur baru |
-| `fix:` | Memperbaiki bug |
-| `docs:` | Mengubah dokumentasi |
-| `style:` | Perubahan tampilan / CSS |
-| `refactor:` | Refactoring kode (tanpa ubah fitur) |
-| `test:` | Menambah atau mengubah test |
-| `chore:` | Update dependency, config, dll |
-
-Contoh:
-```
-feat: tambah notifikasi WhatsApp multi-bahasa
-fix: perbaiki parsing tanggal exp format MM/YYYY
-docs: tambah panduan setup Docker di README
-refactor: pisah reminder engine menjadi modul terpisah
-```
-
-### Aturan Coding
-
-- **Python**: Ikuti PEP 8, gunakan type hints untuk semua fungsi
-- **JavaScript/JSX**: Gunakan functional components & React Hooks
-- **Komentar**: Bahasa Indonesia untuk komentar bisnis logic
-- **Jangan commit**: `.env`, `node_modules/`, `venv/`, `.venv/`, `__pycache__/`, `uploads/*`
+1. Fork repository ini ke akun GitHub Anda.
+2. Buat branch fitur baru (`git checkout -b feature/fitur-baru`).
+3. Lakukan commit perubahan Anda dengan pesan yang jelas (`git commit -m 'feat: tambah validasi obat baru'`).
+4. Push ke branch remote (`git push origin feature/fitur-baru`).
+5. Buat **Pull Request** ke branch `main`.
 
 ---
 
 ## 📄 Lisensi
 
-Project ini menggunakan lisensi **MIT** — bebas digunakan, dimodifikasi, dan didistribusikan dengan menyertakan kredit.
+Project ini dilisensikan di bawah lisensi **MIT License** — silakan gunakan dan kembangkan secara terbuka untuk kemaslahatan layanan kesehatan masyarakat.
 
 ---
 
 ## 🔗 Link Penting
 
-| Resource | URL |
-|----------|-----|
-| 🌐 Demo Live | _Coming soon_ |
-| 📚 API Docs | http://localhost:8000/docs |
-| 🐙 GitHub Repo | https://github.com/rifqiaunur666/pharmashield-project |
-| 🤖 Fonnte Dashboard | https://fonnte.com |
-| 🧠 Gemini AI Studio | https://aistudio.google.com |
-| 🚂 Railway | https://railway.app |
-| ▲ Vercel | https://vercel.com |
-| 🔤 Tesseract OCR | https://github.com/UB-Mannheim/tesseract/wiki |
-
----
-
-<div align="center">
-
-Dibuat dengan ❤️ untuk membantu lansia & keluarga Indonesia 🇮🇩
-
-**MedikaGuard — Obat Aman, Keluarga Sehat**
-
-⭐ Jika project ini bermanfaat, jangan lupa beri **Star** di GitHub!
-
-</div>
+| Layanan | Tautan |
+|---|---|
+| 🌐 MedikaGuard Web App | [localhost:3000](http://localhost:3000) |
+| 📖 FastAPI Interactive Docs (Swagger) | [localhost:8000/docs](http://localhost:8000/docs) |
+| 🔑 Google AI Studio (Gemini API Key) | [aistudio.google.com](https://aistudio.google.com) |
+| 📲 Fonnte WhatsApp Gateway | [fonnte.com](https://fonnte.com) |
+| 🏢 BPOM RI | [pom.go.id](https://www.pom.go.id) |
